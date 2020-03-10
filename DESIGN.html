@@ -192,9 +192,9 @@ analysis and unit/quantity manipulation. The basic idea and design heavily bases
 <span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">q_km</span> <span class="o">+</span> <span class="mi">1</span><span class="n">q_m</span> <span class="o">==</span> <span class="mi">1001</span><span class="n">q_m</span><span class="p">);</span>
 
 <span class="c1">// dimension conversions</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">1</span><span class="n">q_s</span> <span class="o">==</span> <span class="mi">1000</span><span class="n">q_mps</span><span class="p">);</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">q_kmph</span> <span class="o">*</span> <span class="mi">2</span><span class="n">q_h</span> <span class="o">==</span> <span class="mi">4</span><span class="n">q_km</span><span class="p">);</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">q_kmph</span> <span class="o">==</span> <span class="mi">1</span><span class="n">q_h</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">1</span><span class="n">q_s</span> <span class="o">==</span> <span class="mi">1000</span><span class="n">q_m_per_s</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">q_km_per_h</span> <span class="o">*</span> <span class="mi">2</span><span class="n">q_h</span> <span class="o">==</span> <span class="mi">4</span><span class="n">q_km</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">q_km_per_h</span> <span class="o">==</span> <span class="mi">1</span><span class="n">q_h</span><span class="p">);</span>
 
 <span class="k">static_assert</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="mi">1</span><span class="n">q_s</span> <span class="o">==</span> <span class="mi">1</span><span class="n">q_kHz</span><span class="p">);</span>
 
@@ -717,7 +717,7 @@ in the following table:</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">units-specs</span></code> is omitted, the <code class="docutils literal notranslate"><span class="pre">quantity</span></code> object is formatted as if by streaming it to
 <code class="docutils literal notranslate"><span class="pre">std::ostringstream</span> <span class="pre">os</span></code> and copying <code class="docutils literal notranslate"><span class="pre">os.str()</span></code> through the output iterator of the context with
 additional padding and adjustments as specified by the format specifiers.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:=&gt;12}&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="n">q_kmph</span><span class="p">);</span> <span class="c1">// value of s is &quot;====120 km/h&quot;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:=&gt;12}&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="n">q_km_per_h</span><span class="p">);</span> <span class="c1">// value of s is &quot;====120 km/h&quot;</span>
 </pre></div>
 </div>
 </div>
