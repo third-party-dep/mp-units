@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation Guide &mdash; mp-units 0.5.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework.html">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Installation Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/INSTALL.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="repository-structure">
+<h2>Repository structure<a class="headerlink" href="#repository-structure" title="Permalink to this headline">¶</a></h2>
+<p>This repository contains three independent <code class="docutils literal notranslate"><span class="pre">cmake</span></code>-based projects:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./src</span></code></p>
+<ul class="simple">
+<li><p>header-only project containing whole <code class="docutils literal notranslate"><span class="pre">mp-units</span></code> library</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p>
+<ul class="simple">
+<li><p>project used as an entry point for library development (it wraps <code class="docutils literal notranslate"><span class="pre">./src</span></code> project
+together with usage examples and tests)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./test_package</span></code> - library installation and Conan package verification</p></li>
+</ol>
+<p>NOTE: Please note that this repository depends on a git submodule in the <code class="docutils literal notranslate"><span class="pre">./cmake/common</span></code>
+subdirectory.</p>
+</div>
+<div class="section" id="installation-and-reuse">
+<h2>Installation and Reuse<a class="headerlink" href="#installation-and-reuse" title="Permalink to this headline">¶</a></h2>
+<p>There are a few different ways of installing/reusing <code class="docutils literal notranslate"><span class="pre">units</span></code> in your project.</p>
+<div class="section" id="conan-quick-intro">
+<h3>Conan quick intro<a class="headerlink" href="#conan-quick-intro" title="Permalink to this headline">¶</a></h3>
+<p>In case you are not familiar with <code class="docutils literal notranslate"><span class="pre">conan</span></code>, to install it just do:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install -U conan
+</pre></div>
+</div>
+<p>After that you might need to add a custom profile in <code class="docutils literal notranslate"><span class="pre">~/.conan/profile</span></code> for your
+developnment environment. An example profile can look as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[settings]
+os=Linux
+os_build=Linux
+arch=x86_64
+arch_build=x86_64
+compiler=gcc
+compiler.version=9
+compiler.cppstd=20
+compiler.libcxx=libstdc++11
+build_type=Release
+
+[options]
+[build_requires]
+
+[env]
+CC=/usr/bin/gcc-9
+CXX=/usr/bin/g++-9
+</pre></div>
+</div>
+</div>
+<div class="section" id="copy">
+<h3>Copy<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h3>
+<p>As <code class="docutils literal notranslate"><span class="pre">units</span></code> is a header-only library you can simply copy <code class="docutils literal notranslate"><span class="pre">src/include</span></code> directory to
+your source tree and use it as regular header files.</p>
+<p>NOTE: Until C++20 arrives the library has some 3rd party dependencies that provide
+experimental C++20 features. The list of dependencies include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">range-v3&#64;ericniebler</span></code> (only for gcc-9, gcc-10 uses gcc’s concepts implementation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fmt&#64;_</span></code></p></li>
+</ul>
+<p>All of them are easily to obtain with <code class="docutils literal notranslate"><span class="pre">conan</span></code>.</p>
+<p>NOTE: In case a full library’s repository is to be compiled (instead of just copying
+<code class="docutils literal notranslate"><span class="pre">src/include</span></code> headers), additionally, the library’s unit tests depend on
+<code class="docutils literal notranslate"><span class="pre">Catch2&#64;catchorg</span></code> and <code class="docutils literal notranslate"><span class="pre">linear_algebra&#64;public-conan</span></code> conan packages.</p>
+</div>
+<div class="section" id="cmake-conan">
+<h3>cmake + conan<a class="headerlink" href="#cmake-conan" title="Permalink to this headline">¶</a></h3>
+<p>To use <code class="docutils literal notranslate"><span class="pre">units</span></code> as a <code class="docutils literal notranslate"><span class="pre">cmake</span></code> imported library via <code class="docutils literal notranslate"><span class="pre">cmake</span></code> configuration files the following
+steps may be done:</p>
+<ul>
+<li><p>clone the repository with its submodules:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/mpusz/units.git
+</pre></div>
+</div>
+<p>or in case it is already cloned without submodules initialize, fetch, and checkout them with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git submodule update --init
+</pre></div>
+</div>
+</li>
+<li><p>add the following remotes to your local <code class="docutils literal notranslate"><span class="pre">conan</span></code> instance</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add conan-mpusz https://api.bintray.com/conan/mpusz/conan-mpusz
+</pre></div>
+</div>
+</li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">units</span></code> as a dependency to your <code class="docutils literal notranslate"><span class="pre">conan</span></code> file. For example to use testing version of
+<code class="docutils literal notranslate"><span class="pre">0.5.0</span></code> of <code class="docutils literal notranslate"><span class="pre">mp-units</span></code> add:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">conanfile.txt</span></code></p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[requires]</span>
+<span class="na">mp-units/0.5.0@mpusz/testing</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conanfile.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">requires</span> <span class="o">=</span> <span class="s2">&quot;mp-units/0.5.0@mpusz/testing&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>import <code class="docutils literal notranslate"><span class="pre">conan</span></code> dependencies to top level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="o">${</span><span class="nv">CMAKE_BINARY_DIR</span><span class="o">}</span><span class="s">/conanbuildinfo.cmake</span><span class="p">)</span>
+<span class="nb">conan_basic_setup</span><span class="p">(</span><span class="s">TARGETS</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>link your <code class="docutils literal notranslate"><span class="pre">cmake</span></code> target with units</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">CONAN_PKG::mp-units</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>install <code class="docutils literal notranslate"><span class="pre">conan</span></code> dependencies before configuring cmake</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> build
+conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -b<span class="o">=</span>outdated -u
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="full-build-and-unit-testing">
+<h2>Full build and unit testing<a class="headerlink" href="#full-build-and-unit-testing" title="Permalink to this headline">¶</a></h2>
+<p>In case you would like to build all the code in this repository (with unit tests and examples)
+you should use the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> from the parent directory and run Conan with
+<code class="docutils literal notranslate"><span class="pre">CONAN_RUN_TESTS=True</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/mpusz/units.git
+mkdir units/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units/build
+conan remote add linear_algebra https://api.bintray.com/conan/twonington/public-conan
+conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e <span class="nv">CONAN_RUN_TESTS</span><span class="o">=</span>True -b outdated
+cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+cmake --build .
+ctest -VV
+</pre></div>
+</div>
+</div>
+<div class="section" id="packaging">
+<h2>Packaging<a class="headerlink" href="#packaging" title="Permalink to this headline">¶</a></h2>
+<p>To create a <code class="docutils literal notranslate"><span class="pre">conan</span></code> package and test <code class="docutils literal notranslate"><span class="pre">cmake</span></code> installation and <code class="docutils literal notranslate"><span class="pre">conan</span></code> packaging run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan create . &lt;username&gt;/&lt;channel&gt; -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e <span class="nv">CONAN_RUN_TESTS</span><span class="o">=</span>True -b outdated
+</pre></div>
+</div>
+</div>
+<div class="section" id="upload-package-to-conan-server">
+<h2>Upload package to conan server<a class="headerlink" href="#upload-package-to-conan-server" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan upload -r &lt;remote-name&gt; --all mp-units/0.5.0@&lt;user&gt;/&lt;channel&gt;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

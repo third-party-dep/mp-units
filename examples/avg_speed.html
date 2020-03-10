@@ -1,0 +1,576 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>avg_speed &mdash; mp-units 0.5.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FAQ" href="../faq.html" />
+    <link rel="prev" title="hello_units" href="hello_units.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenarios.html">Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hello_units.html">hello_units</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avg_speed</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../examples.html">Examples</a> &raquo;</li>
+        
+      <li>avg_speed</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/avg_speed.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="avg-speed">
+<h1>avg_speed<a class="headerlink" href="#avg-speed" title="Permalink to this headline">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">avg_speed.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165</pre></div></td><td class="code"><div class="highlight"><pre><span></span>#include &lt;units/physical/cgs/velocity.h&gt;
+#include &lt;units/physical/si/velocity.h&gt;
+#include &lt;units/physical/international/velocity.h&gt;
+#include &lt;iostream&gt;
+
+namespace {
+
+constexpr units::si::velocity&lt;units::si::metre_per_second, int&gt;
+fixed_int_si_avg_speed(units::si::length&lt;units::si::metre, int&gt; d,
+                       units::si::time&lt;units::si::second, int&gt; t)
+{
+  return d / t;
+}
+
+constexpr units::si::velocity&lt;units::si::metre_per_second&gt;
+fixed_double_si_avg_speed(units::si::length&lt;units::si::metre&gt; d,
+                          units::si::time&lt;units::si::second&gt; t)
+{
+  return d / t;
+}
+
+template&lt;typename U1, typename R1, typename U2, typename R2&gt;
+constexpr units::Velocity AUTO si_avg_speed(units::si::length&lt;U1, R1&gt; d,
+                                            units::si::time&lt;U2, R2&gt; t)
+{
+  return d / t;
+}
+
+constexpr units::Velocity AUTO avg_speed(units::Length AUTO d, units::Time AUTO t)
+{
+  return d / t;
+}
+
+template&lt;units::Length D, units::Time T, units::Velocity V&gt;
+void print_result(D distance, T duration, V velocity)
+{
+  const auto result_in_kmph = units::quantity_cast&lt;units::si::velocity&lt;units::si::kilometre_per_hour&gt;&gt;(velocity);
+  std::cout &lt;&lt; &quot;Average speed of a car that makes &quot; &lt;&lt; distance &lt;&lt; &quot; in &quot;
+            &lt;&lt; duration &lt;&lt; &quot; is &quot; &lt;&lt; result_in_kmph &lt;&lt; &quot;.\n&quot;;
+}
+
+void example()
+{
+  using namespace units;
+
+  // SI (int)
+  {
+    using namespace units::si::literals;
+    constexpr Length AUTO distance = 220q_km;      // constructed from a UDL
+    constexpr si::time&lt;si::hour, int&gt; duration(2); // constructed from a value
+
+    std::cout &lt;&lt; &quot;SI units with &#39;int&#39; as representation\n&quot;;
+
+    print_result(distance, duration, fixed_int_si_avg_speed(distance, duration));
+    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+    print_result(distance, duration, si_avg_speed(distance, duration));
+    print_result(distance, duration, avg_speed(distance, duration));
+  }
+
+  // SI (double)
+  {
+    using namespace units::si::literals;
+    constexpr Length AUTO distance = 220.q_km;  // constructed from a UDL
+    constexpr si::time&lt;si::hour&gt; duration(2);   // constructed from a value
+
+    std::cout &lt;&lt; &quot;\nSI units with &#39;double&#39; as representation\n&quot;;
+
+    // conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed
+    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;int&gt;(distance), quantity_cast&lt;int&gt;(duration)));
+
+    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+    print_result(distance, duration, si_avg_speed(distance, duration));
+    print_result(distance, duration, avg_speed(distance, duration));
+  }
+
+  // Customary Units (int)
+  {
+    using namespace units::international::literals;
+    constexpr Length AUTO distance = 140q_mi;      // constructed from a UDL
+    constexpr si::time&lt;si::hour, int&gt; duration(2); // constructed from a value
+
+    std::cout &lt;&lt; &quot;\nUS Customary Units with &#39;int&#39; as representation\n&quot;;
+
+    // it is not possible to make a lossless conversion of miles to meters on an integral type
+    // (explicit cast needed)
+    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::metre&gt;(distance), duration));
+    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+    print_result(distance, duration, si_avg_speed(distance, duration));
+    print_result(distance, duration, avg_speed(distance, duration));
+  }
+
+  // Customary Units (double)
+  {
+    using namespace units::international::literals;
+    constexpr Length AUTO distance = 140q_mi; // constructed from a UDL
+    constexpr si::time&lt;si::hour&gt; duration(2); // constructed from a value
+
+    std::cout &lt;&lt; &quot;\nUS Customary Units with &#39;double&#39; as representation\n&quot;;
+
+    // conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed
+    // also it is not possible to make a lossless conversion of miles to meters on an integral type
+    // (explicit cast needed)
+    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::length&lt;si::metre, int&gt;&gt;(distance), quantity_cast&lt;int&gt;(duration)));
+
+    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+    print_result(distance, duration, si_avg_speed(distance, duration));
+    print_result(distance, duration, avg_speed(distance, duration));
+  }
+
+  // CGS (int)
+  {
+    using namespace units::cgs::literals;
+    constexpr Length AUTO distance = 22&#39;000&#39;000q_cm;  // constructed from a UDL
+    constexpr cgs::time&lt;si::hour, int&gt; duration(2);   // constructed from a value
+
+    std::cout &lt;&lt; &quot;\nCGS units with &#39;int&#39; as representation\n&quot;;
+
+    // it is not possible to make a lossless conversion of centimeters to meters on an integral type
+    // (explicit cast needed)
+    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::metre&gt;(distance), duration));
+    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+
+    // not possible to convert both a dimension and a unit with implicit cast
+    print_result(distance, duration, si_avg_speed(quantity_cast&lt;si::dim_length&gt;(distance), duration));
+
+    print_result(distance, duration, avg_speed(distance, duration));
+  }
+
+  // CGS (double)
+  {
+    using namespace units::cgs::literals;
+    constexpr Length AUTO distance = 22&#39;000&#39;000q_cm; // constructed from a UDL
+    constexpr cgs::time&lt;si::hour&gt; duration(2);       // constructed from a value
+
+    std::cout &lt;&lt; &quot;\nCGS units with &#39;double&#39; as representation\n&quot;;
+
+    // conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed
+    // it is not possible to make a lossless conversion of centimeters to meters on an integral type
+    // (explicit cast needed)
+    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::length&lt;si::metre, int&gt;&gt;(distance), quantity_cast&lt;int&gt;(duration)));
+
+    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+
+    // not possible to convert both a dimension and a unit with implicit cast
+    print_result(distance, duration, si_avg_speed(quantity_cast&lt;si::dim_length&gt;(distance), duration));
+
+    print_result(distance, duration, avg_speed(distance, duration));
+  }
+
+}
+
+} // namespace
+
+int main()
+{
+  try {
+    example();
+  }
+  catch (const std::exception&amp; ex) {
+    std::cerr &lt;&lt; &quot;Unhandled std exception caught: &quot; &lt;&lt; ex.what() &lt;&lt; &#39;\n&#39;;
+  }
+  catch (...) {
+    std::cerr &lt;&lt; &quot;Unhandled unknown exception caught\n&quot;;
+  }
+}
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hello_units.html" class="btn btn-neutral float-left" title="hello_units" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
