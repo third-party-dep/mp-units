@@ -324,38 +324,38 @@ Parameter) idiom to provide the best user experience in terms of readability of 
 errors and during debugging. It is possible thanks to the downcasting facility described later
 in the design documentation.</p>
 <p>Coming back to units, here are a few examples of unit definitions:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>namespace units::si {
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
 
-// prefixes
-struct prefix : prefix_type {};
-struct centi : units::prefix&lt;centi, prefix, &quot;c&quot;, ratio&lt;1, 1, -2&gt;&gt; {};
-struct kilo : units::prefix&lt;kilo, prefix, &quot;k&quot;, ratio&lt;1, 1, 3&gt;&gt; {};
+<span class="c1">// prefixes</span>
+<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_type</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">centi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">centi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">kilo</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">kilo</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 
-// length
-struct metre : named_unit&lt;metre, &quot;m&quot;, prefix&gt; {};
-struct centimetre : prefixed_unit&lt;centimetre, centi, metre&gt; {};
-struct kilometre : prefixed_unit&lt;kilometre, kilo, metre&gt; {};
+<span class="c1">// length</span>
+<span class="k">struct</span> <span class="nl">metre</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">metre</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">centimetre</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">centimetre</span><span class="p">,</span> <span class="n">centi</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">kilometre</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">kilo</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-// time
-struct second : named_unit&lt;second, &quot;s&quot;, prefix&gt; {};
-struct hour : named_scaled_unit&lt;hour, &quot;h&quot;, no_prefix, ratio&lt;3600&gt;, second&gt; {};
+<span class="c1">// time</span>
+<span class="k">struct</span> <span class="nl">second</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">second</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">hour</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">hour</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">3600</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">second</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-// velocity
-struct metre_per_second : unit&lt;metre_per_second&gt; {};
-struct kilometre_per_hour : deduced_unit&lt;kilometre_per_hour, dim_velocity, kilometre, hour&gt; {};
+<span class="c1">// velocity</span>
+<span class="k">struct</span> <span class="nl">metre_per_second</span> <span class="p">:</span> <span class="n">unit</span><span class="o">&lt;</span><span class="n">metre_per_second</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">kilometre_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">kilometre_per_hour</span><span class="p">,</span> <span class="n">dim_velocity</span><span class="p">,</span> <span class="n">kilometre</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-}
+<span class="p">}</span>
 
-namespace units::us {
+<span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">us</span> <span class="p">{</span>
 
-// length
-struct yard : named_scaled_unit&lt;yard, &quot;yd&quot;, no_prefix, ratio&lt;9&#39;144, 10&#39;000&gt;, si::metre&gt; {};
-struct mile : named_scaled_unit&lt;mile, &quot;mi&quot;, no_prefix, ratio&lt;1&#39;760&gt;, yard&gt; {};
+<span class="c1">// length</span>
+<span class="k">struct</span> <span class="nl">yard</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">yard</span><span class="p">,</span> <span class="s">&quot;yd&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">9&#39;144</span><span class="p">,</span> <span class="mi">10&#39;000</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">mile</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">mile</span><span class="p">,</span> <span class="s">&quot;mi&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1&#39;760</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">yard</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-// velocity
-struct mile_per_hour : deduced_unit&lt;mile_per_hour, si::dim_velocity, mile, si::hour&gt; {};
+<span class="c1">// velocity</span>
+<span class="k">struct</span> <span class="nl">mile_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">mile_per_hour</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_velocity</span><span class="p">,</span> <span class="n">mile</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-}
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Please note that thanks to C++20 features we are able to provide all information about the unit
@@ -887,14 +887,14 @@ and can be easily extended, or its content can be partially/fully imported to ot
 adds support for digital information quantities. In summary it adds:</p>
 <ol>
 <li><p>New prefix type and its prefixes:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>namespace units::data {
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">data</span> <span class="p">{</span>
 
-struct prefix : prefix_type {};
+<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_type</span> <span class="p">{};</span>
 
-struct kibi : units::prefix&lt;kibi, prefix, &quot;Ki&quot;, ratio&lt;    1&#39;024&gt;&gt; {};
-struct mebi : units::prefix&lt;mebi, prefix, &quot;Mi&quot;, ratio&lt;1&#39;048&#39;576&gt;&gt; {};
+<span class="k">struct</span> <span class="nl">kibi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">kibi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;Ki&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span>    <span class="mi">1&#39;024</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">mebi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">mebi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;Mi&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1&#39;048&#39;576</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 
-}
+<span class="p">}</span>
 </pre></div>
 </div>
 </li>

@@ -352,171 +352,171 @@
 162
 163
 164
-165</pre></div></td><td class="code"><div class="highlight"><pre><span></span>#include &lt;units/physical/cgs/velocity.h&gt;
-#include &lt;units/physical/si/velocity.h&gt;
-#include &lt;units/physical/international/velocity.h&gt;
-#include &lt;iostream&gt;
+165</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/cgs/velocity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/velocity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/physical/international/velocity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-namespace {
+<span class="k">namespace</span> <span class="p">{</span>
 
-constexpr units::si::velocity&lt;units::si::metre_per_second, int&gt;
-fixed_int_si_avg_speed(units::si::length&lt;units::si::metre, int&gt; d,
-                       units::si::time&lt;units::si::second, int&gt; t)
-{
-  return d / t;
-}
+<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">velocity</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span>
+<span class="n">fixed_int_si_avg_speed</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">,</span>
+                       <span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
 
-constexpr units::si::velocity&lt;units::si::metre_per_second&gt;
-fixed_double_si_avg_speed(units::si::length&lt;units::si::metre&gt; d,
-                          units::si::time&lt;units::si::second&gt; t)
-{
-  return d / t;
-}
+<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">velocity</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span>
+<span class="n">fixed_double_si_avg_speed</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">,</span>
+                          <span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
 
-template&lt;typename U1, typename R1, typename U2, typename R2&gt;
-constexpr units::Velocity AUTO si_avg_speed(units::si::length&lt;U1, R1&gt; d,
-                                            units::si::time&lt;U2, R2&gt; t)
-{
-  return d / t;
-}
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">U1</span><span class="p">,</span> <span class="k">typename</span> <span class="n">R1</span><span class="p">,</span> <span class="k">typename</span> <span class="n">U2</span><span class="p">,</span> <span class="k">typename</span> <span class="n">R2</span><span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">Velocity</span> <span class="n">AUTO</span> <span class="n">si_avg_speed</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">U1</span><span class="p">,</span> <span class="n">R1</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">,</span>
+                                            <span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">U2</span><span class="p">,</span> <span class="n">R2</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
 
-constexpr units::Velocity AUTO avg_speed(units::Length AUTO d, units::Time AUTO t)
-{
-  return d / t;
-}
+<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">Velocity</span> <span class="n">AUTO</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">Length</span> <span class="n">AUTO</span> <span class="n">d</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">Time</span> <span class="n">AUTO</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
 
-template&lt;units::Length D, units::Time T, units::Velocity V&gt;
-void print_result(D distance, T duration, V velocity)
-{
-  const auto result_in_kmph = units::quantity_cast&lt;units::si::velocity&lt;units::si::kilometre_per_hour&gt;&gt;(velocity);
-  std::cout &lt;&lt; &quot;Average speed of a car that makes &quot; &lt;&lt; distance &lt;&lt; &quot; in &quot;
-            &lt;&lt; duration &lt;&lt; &quot; is &quot; &lt;&lt; result_in_kmph &lt;&lt; &quot;.\n&quot;;
-}
+<span class="k">template</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">Length</span> <span class="n">D</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">Time</span> <span class="n">T</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">Velocity</span> <span class="n">V</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">print_result</span><span class="p">(</span><span class="n">D</span> <span class="n">distance</span><span class="p">,</span> <span class="n">T</span> <span class="n">duration</span><span class="p">,</span> <span class="n">V</span> <span class="n">velocity</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">result_in_kmph</span> <span class="o">=</span> <span class="n">units</span><span class="o">::</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">velocity</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre_per_hour</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">velocity</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Average speed of a car that makes &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">distance</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; in &quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">duration</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result_in_kmph</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-void example()
-{
-  using namespace units;
+<span class="kt">void</span> <span class="n">example</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
 
-  // SI (int)
-  {
-    using namespace units::si::literals;
-    constexpr Length AUTO distance = 220q_km;      // constructed from a UDL
-    constexpr si::time&lt;si::hour, int&gt; duration(2); // constructed from a value
+  <span class="c1">// SI (int)</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">220</span><span class="n">q_km</span><span class="p">;</span>      <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// constructed from a value</span>
 
-    std::cout &lt;&lt; &quot;SI units with &#39;int&#39; as representation\n&quot;;
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;SI units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-    print_result(distance, duration, fixed_int_si_avg_speed(distance, duration));
-    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
-    print_result(distance, duration, si_avg_speed(distance, duration));
-    print_result(distance, duration, avg_speed(distance, duration));
-  }
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_int_si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_double_si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+  <span class="p">}</span>
 
-  // SI (double)
-  {
-    using namespace units::si::literals;
-    constexpr Length AUTO distance = 220.q_km;  // constructed from a UDL
-    constexpr si::time&lt;si::hour&gt; duration(2);   // constructed from a value
+  <span class="c1">// SI (double)</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">220.</span><span class="n">q_km</span><span class="p">;</span>  <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
 
-    std::cout &lt;&lt; &quot;\nSI units with &#39;double&#39; as representation\n&quot;;
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">SI units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-    // conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed
-    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;int&gt;(distance), quantity_cast&lt;int&gt;(duration)));
+    <span class="c1">// conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_int_si_avg_speed</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">duration</span><span class="p">)));</span>
 
-    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
-    print_result(distance, duration, si_avg_speed(distance, duration));
-    print_result(distance, duration, avg_speed(distance, duration));
-  }
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_double_si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+  <span class="p">}</span>
 
-  // Customary Units (int)
-  {
-    using namespace units::international::literals;
-    constexpr Length AUTO distance = 140q_mi;      // constructed from a UDL
-    constexpr si::time&lt;si::hour, int&gt; duration(2); // constructed from a value
+  <span class="c1">// Customary Units (int)</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">140</span><span class="n">q_mi</span><span class="p">;</span>      <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// constructed from a value</span>
 
-    std::cout &lt;&lt; &quot;\nUS Customary Units with &#39;int&#39; as representation\n&quot;;
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">US Customary Units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-    // it is not possible to make a lossless conversion of miles to meters on an integral type
-    // (explicit cast needed)
-    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::metre&gt;(distance), duration));
-    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
-    print_result(distance, duration, si_avg_speed(distance, duration));
-    print_result(distance, duration, avg_speed(distance, duration));
-  }
+    <span class="c1">// it is not possible to make a lossless conversion of miles to meters on an integral type</span>
+    <span class="c1">// (explicit cast needed)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_int_si_avg_speed</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_double_si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+  <span class="p">}</span>
 
-  // Customary Units (double)
-  {
-    using namespace units::international::literals;
-    constexpr Length AUTO distance = 140q_mi; // constructed from a UDL
-    constexpr si::time&lt;si::hour&gt; duration(2); // constructed from a value
+  <span class="c1">// Customary Units (double)</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">140</span><span class="n">q_mi</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// constructed from a value</span>
 
-    std::cout &lt;&lt; &quot;\nUS Customary Units with &#39;double&#39; as representation\n&quot;;
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">US Customary Units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-    // conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed
-    // also it is not possible to make a lossless conversion of miles to meters on an integral type
-    // (explicit cast needed)
-    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::length&lt;si::metre, int&gt;&gt;(distance), quantity_cast&lt;int&gt;(duration)));
+    <span class="c1">// conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed</span>
+    <span class="c1">// also it is not possible to make a lossless conversion of miles to meters on an integral type</span>
+    <span class="c1">// (explicit cast needed)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_int_si_avg_speed</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">duration</span><span class="p">)));</span>
 
-    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
-    print_result(distance, duration, si_avg_speed(distance, duration));
-    print_result(distance, duration, avg_speed(distance, duration));
-  }
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_double_si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+  <span class="p">}</span>
 
-  // CGS (int)
-  {
-    using namespace units::cgs::literals;
-    constexpr Length AUTO distance = 22&#39;000&#39;000q_cm;  // constructed from a UDL
-    constexpr cgs::time&lt;si::hour, int&gt; duration(2);   // constructed from a value
+  <span class="c1">// CGS (int)</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">22&#39;000&#39;000</span><span class="n">q_cm</span><span class="p">;</span>  <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">cgs</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
 
-    std::cout &lt;&lt; &quot;\nCGS units with &#39;int&#39; as representation\n&quot;;
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">CGS units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-    // it is not possible to make a lossless conversion of centimeters to meters on an integral type
-    // (explicit cast needed)
-    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::metre&gt;(distance), duration));
-    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+    <span class="c1">// it is not possible to make a lossless conversion of centimeters to meters on an integral type</span>
+    <span class="c1">// (explicit cast needed)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_int_si_avg_speed</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span> <span class="n">duration</span><span class="p">));</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_double_si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
 
-    // not possible to convert both a dimension and a unit with implicit cast
-    print_result(distance, duration, si_avg_speed(quantity_cast&lt;si::dim_length&gt;(distance), duration));
+    <span class="c1">// not possible to convert both a dimension and a unit with implicit cast</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">si_avg_speed</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span> <span class="n">duration</span><span class="p">));</span>
 
-    print_result(distance, duration, avg_speed(distance, duration));
-  }
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+  <span class="p">}</span>
 
-  // CGS (double)
-  {
-    using namespace units::cgs::literals;
-    constexpr Length AUTO distance = 22&#39;000&#39;000q_cm; // constructed from a UDL
-    constexpr cgs::time&lt;si::hour&gt; duration(2);       // constructed from a value
+  <span class="c1">// CGS (double)</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">22&#39;000&#39;000</span><span class="n">q_cm</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">cgs</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>       <span class="c1">// constructed from a value</span>
 
-    std::cout &lt;&lt; &quot;\nCGS units with &#39;double&#39; as representation\n&quot;;
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">CGS units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-    // conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed
-    // it is not possible to make a lossless conversion of centimeters to meters on an integral type
-    // (explicit cast needed)
-    print_result(distance, duration, fixed_int_si_avg_speed(quantity_cast&lt;si::length&lt;si::metre, int&gt;&gt;(distance), quantity_cast&lt;int&gt;(duration)));
+    <span class="c1">// conversion from a floating-point to an integral type is a truncating one so an explicit cast is needed</span>
+    <span class="c1">// it is not possible to make a lossless conversion of centimeters to meters on an integral type</span>
+    <span class="c1">// (explicit cast needed)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_int_si_avg_speed</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">duration</span><span class="p">)));</span>
 
-    print_result(distance, duration, fixed_double_si_avg_speed(distance, duration));
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fixed_double_si_avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
 
-    // not possible to convert both a dimension and a unit with implicit cast
-    print_result(distance, duration, si_avg_speed(quantity_cast&lt;si::dim_length&gt;(distance), duration));
+    <span class="c1">// not possible to convert both a dimension and a unit with implicit cast</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">si_avg_speed</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span> <span class="n">duration</span><span class="p">));</span>
 
-    print_result(distance, duration, avg_speed(distance, duration));
-  }
+    <span class="n">print_result</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">duration</span><span class="p">));</span>
+  <span class="p">}</span>
 
-}
+<span class="p">}</span>
 
-} // namespace
+<span class="p">}</span> <span class="c1">// namespace</span>
 
-int main()
-{
-  try {
-    example();
-  }
-  catch (const std::exception&amp; ex) {
-    std::cerr &lt;&lt; &quot;Unhandled std exception caught: &quot; &lt;&lt; ex.what() &lt;&lt; &#39;\n&#39;;
-  }
-  catch (...) {
-    std::cerr &lt;&lt; &quot;Unhandled unknown exception caught\n&quot;;
-  }
-}
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="n">example</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Unhandled std exception caught: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Unhandled unknown exception caught</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 </div>
