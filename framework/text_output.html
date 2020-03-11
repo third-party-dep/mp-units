@@ -210,7 +210,7 @@ stream:</p>
 </div>
 <p>The text output will always print the <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> followed
 by the symbol of a <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> associated with this quantity. We will learn
-more about units in the <a class="reference internal" href="../nomnoml.html#units"><span class="std std-ref">Units</span></a> chapter, but for now, it is important
+more about units in the <a class="reference internal" href="units.html#units"><span class="std std-ref">Units</span></a> chapter, but for now, it is important
 to remember that it is a good practice to always <a class="reference internal" href="../reference/functions.html#_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE" title="units::quantity_cast"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast()</span></code></a> a quantity
 of an unknown <code class="docutils literal notranslate"><span class="pre">auto</span></code> type before passing it to the text output:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre_per_hour</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>  <span class="c1">// 110 km/h</span>

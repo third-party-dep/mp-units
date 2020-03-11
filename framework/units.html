@@ -111,6 +111,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#deduced-units">Deduced Units</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#class-hierarchy">Class hierarchy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="conversions_and_casting.html">Conversions and Casting</a></li>
@@ -253,7 +254,7 @@ definitions of prefixed units using <code class="xref cpp cpp-any docutils liter
 child class inherited from the instantiation of this <a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_10PrefixTypeEN5units10named_unitE" title="units::named_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_unit</span></code></a>
 class template. This is called a
 <abbr title="Curiously Recurring Template Parameter">CRTP</abbr> Idiom and is used
-in many places in this library to provide <span class="xref std std-ref">The Downcasting Facility</span>.
+in many places in this library to provide <a class="reference internal" href="../design.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>.
 Hopefully if <a class="reference internal" href="#p0847" id="id1"><span>[P0847]</span></a> will land in C++23 the additional CRTP-related
 template parameter will be removed from this definition.</p>
 </div>
@@ -474,13 +475,38 @@ used for its definition. Based on the information stored in the recipe
 (order, type, and exponents of composite dimensions) and the ratios of units
 provided in the template parameter list after the derived dimension parameter,
 the library calculates the final ratio for this unit.</p>
+</div>
+</div>
+<div class="section" id="class-hierarchy">
+<h2>Class hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<p>All of the above class templates to produce unit types inherit from some instance
+of a <a class="reference internal" href="../reference/types.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> class template:</p>
+<img alt="../_images/units.png" class="align-center" src="../_images/units.png" />
+<p><a class="reference internal" href="../reference/types.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> is a class template used exclusively by the library’s framework
+and user should not instantiate it by him/her-self. However the user can sometimes
+observe this type in case an unit/dimension conversion expression will end up with an
+unknown/undefined unit type like in the below example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+
+<span class="n">Length</span> <span class="k">auto</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">100</span><span class="n">q_km_per_h</span> <span class="o">*</span> <span class="mi">10</span><span class="n">q_s</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The type of <code class="docutils literal notranslate"><span class="pre">l</span></code> above will be
+<code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="../reference/systems.html#_CPPv4N5units2siE" title="units::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="../reference/types.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><span class="pre">scaled_unit</span></a><span class="pre">&lt;</span><span class="pre">ratio</span><span class="pre">&lt;</span><span class="pre">1</span><span class="pre">,</span> <span class="pre">36</span><span class="pre">,</span> <span class="pre">1</span><span class="pre">&gt;</span><span class="pre">,</span> <a class="reference internal" href="../reference/systems.html#_CPPv4N5units2siE" title="units::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">metre</span><span class="pre">&gt;</span><span class="pre">,</span> <span class="pre">long</span> <span class="pre">double</span><span class="pre">&gt;</span></code>. This is caused
+by the fact that the library does not define a unit of a length quantity that has the
+ratio <code class="docutils literal notranslate"><span class="pre">10/36</span></code> of a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::metre</span></code>. If such a unit was predefined we would see its concrete
+type here instead.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>To learn more about unknown units please refer to
+<a class="reference internal" href="../scenarios/unknown_units_and_dimensions.html#working-with-unknown-units-and-dimensions"><span class="std std-ref">Working with Unknown Units and Dimensions</span></a> chapter.</p>
+</div>
 <p class="rubric">Citations:</p>
 <dl class="citation">
 <dt class="label" id="p0847"><span class="brackets"><a class="fn-backref" href="#id1">P0847</a></span></dt>
 <dd><p><a class="reference external" href="https://wg21.link/P0847">“Deducing this”</a>, Programming Language C++ proposal</p>
 </dd>
 </dl>
-</div>
 </div>
 </div>
 
