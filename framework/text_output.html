@@ -102,7 +102,10 @@
 <li class="toctree-l2"><a class="reference internal" href="conversions_and_casting.html">Conversions and Casting</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Text output</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#output-streams">Output streams</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#formatting-the-output">Formatting the output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formatting-the-output">Formatting the output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#grammar">Grammar:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -220,7 +223,8 @@ of an unknown <code class="docutils literal notranslate"><span class="pre">auto<
 </div>
 <div class="section" id="formatting-the-output">
 <h2>Formatting the output<a class="headerlink" href="#formatting-the-output" title="Permalink to this headline">¶</a></h2>
-<p>Grammar:</p>
+<div class="section" id="grammar">
+<h3>Grammar:<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
 <pre>
 <strong id="grammar-token-units-format-spec">units-format-spec</strong> ::=  fill-and-align[opt] sign[opt] width[opt] precision[opt] units-specs[opt]
 <strong id="grammar-token-units-specs">units-specs      </strong> ::=  conversion-spec
@@ -228,9 +232,10 @@ of an unknown <code class="docutils literal notranslate"><span class="pre">auto<
                        units-specs literal-char
 <strong id="grammar-token-literal-char">literal-char     </strong> ::=  any character other than '{' or '}'
 <strong id="grammar-token-conversion-spec">conversion-spec  </strong> ::=  '%' modifier[opt] type
-<strong id="grammar-token-modifier">modifier         </strong> ::=  one of 'E', 'O'
+<strong id="grammar-token-modifier">modifier         </strong> ::=  'A'
 <strong id="grammar-token-type">type             </strong> ::=  one of 'n', 'q', 'Q', 't', '%'
 </pre>
+</div>
 </div>
 </div>
 
