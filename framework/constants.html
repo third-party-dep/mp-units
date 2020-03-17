@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Concepts &mdash; mp-units 0.5.0 documentation</title>
+  <title>Quantity Constants &mdash; mp-units 0.5.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quantities" href="quantities.html" />
-    <link rel="prev" title="Framework" href="../framework.html" /> 
+    <link rel="next" title="Conversions and Casting" href="conversions_and_casting.html" />
+    <link rel="prev" title="Units" href="units.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,11 +95,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../framework.html">Framework</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_concepts.html">Basic Concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quantities.html">Quantities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="units.html">Units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="constants.html">Quantity Constants</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Quantity Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conversions_and_casting.html">Conversions and Casting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="text_output.html">Text output</a></li>
 </ul>
@@ -170,13 +170,13 @@
         
           <li><a href="../framework.html">Framework</a> &raquo;</li>
         
-      <li>Basic Concepts</li>
+      <li>Quantity Constants</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/framework/basic_concepts.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/framework/constants.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,20 +189,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="basic-concepts">
-<h1>Basic Concepts<a class="headerlink" href="#basic-concepts" title="Permalink to this headline">¶</a></h1>
-<p>The most important concepts in the library are <a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Unit</span></code></a>, <a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a>, and
-<a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a>:</p>
-<img alt="../_images/concepts.png" class="align-center" src="../_images/concepts.png" />
-<p><a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Unit</span></code></a> is a basic building block of the library. Every dimension works with
-a concrete hierarchy of units. Such hierarchy defines a reference unit and
-often a few scaled versions of it.</p>
-<p><a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a> concept matches a dimension of either a base or derived quantity.
-<a class="reference internal" href="../reference/types.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code></a> is instantiated with a unique symbol identifier and a base
-unit. <a class="reference internal" href="../reference/types.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> is a list of exponents of either base or other
-derived dimensions.</p>
-<p><a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a> is a concrete amount of a unit for a specified dimension with a
-specific representation.</p>
+  <div class="section" id="quantity-constants">
+<h1>Quantity Constants<a class="headerlink" href="#quantity-constants" title="Permalink to this headline">¶</a></h1>
+<p>In the <strong>mp-units</strong> library quantity constants are implemented as variable
+templates of <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> types parametrized by the quantity’s representation
+type.</p>
+<p>Additionally, in case of the <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a> its physical constants are put in
+separate namespaces named after the official release of the <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a>
+specification. This is needed to be able to provide backward and forward
+compatibility as exact values of physical constants tend to change with time
+(in most cases they are getting more and more accurate with every
+specification release).</p>
+<p>For example the speed of light constant in <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a> is defined as:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">si2019</span> <span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">speed_of_light</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">&lt;</span><span class="n">metre_per_second</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">299792458</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The same constant defined for natural units may be provided as:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">natural</span> <span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">speed_of_light</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">&lt;</span><span class="n">unitless</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -213,10 +228,10 @@ specific representation.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="quantities.html" class="btn btn-neutral float-right" title="Quantities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="conversions_and_casting.html" class="btn btn-neutral float-right" title="Conversions and Casting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../framework.html" class="btn btn-neutral float-left" title="Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="units.html" class="btn btn-neutral float-left" title="Units" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
