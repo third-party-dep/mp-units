@@ -103,7 +103,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Text output</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#output-streams">Output streams</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#formatting-the-output">Formatting the output</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#grammar">Grammar:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grammar">Grammar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-formatting">Default formatting</a></li>
 </ul>
 </li>
 </ul>
@@ -224,17 +225,29 @@ of an unknown <code class="docutils literal notranslate"><span class="pre">auto<
 <div class="section" id="formatting-the-output">
 <h2>Formatting the output<a class="headerlink" href="#formatting-the-output" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="grammar">
-<h3>Grammar:<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
+<h3>Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
 <pre>
-<strong id="grammar-token-units-format-spec">units-format-spec</strong> ::=  fill-and-align[opt] sign[opt] width[opt] precision[opt] type[opt] units-specs[opt]
+<strong id="grammar-token-units-format-spec">units-format-spec</strong> ::=  [fill-and-align] [sign] [width] [precision] [type] [units-specs]
 <strong id="grammar-token-units-specs">units-specs      </strong> ::=  conversion-spec
                        units-specs conversion-spec
                        units-specs literal-char
 <strong id="grammar-token-literal-char">literal-char     </strong> ::=  any character other than '{' or '}'
-<strong id="grammar-token-conversion-spec">conversion-spec  </strong> ::=  '%' modifier[opt] units-type
+<strong id="grammar-token-conversion-spec">conversion-spec  </strong> ::=  '%' [modifier] units-type
 <strong id="grammar-token-modifier">modifier         </strong> ::=  'A'
 <strong id="grammar-token-units-type">units-type       </strong> ::=  one of 'n', 'q', 'Q', 't', '%'
 </pre>
+</div>
+<div class="section" id="default-formatting">
+<h3>Default formatting<a class="headerlink" href="#default-formatting" title="Permalink to this headline">¶</a></h3>
+<p>To format <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> values the formatting facility uses <a class="reference internal" href="#grammar-token-units-format-spec"><code class="xref std std-token docutils literal notranslate"><span class="pre">units-format-spec</span></code></a>.
+In case it is left empty the default formatting of <code class="docutils literal notranslate"><span class="pre">{:%Q</span> <span class="pre">%q}</span></code> is applied. The same
+default formatting is also applied to output streams. This is why the following lines
+produce the same output:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="mi">123</span><span class="n">q_km</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Distance: {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="n">q_km</span><span class="p">);</span>
+<span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Distance: {:%Q %q}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="n">q_km</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
