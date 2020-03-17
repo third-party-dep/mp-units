@@ -226,14 +226,14 @@ of an unknown <code class="docutils literal notranslate"><span class="pre">auto<
 <div class="section" id="grammar">
 <h3>Grammar:<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
 <pre>
-<strong id="grammar-token-units-format-spec">units-format-spec</strong> ::=  fill-and-align[opt] sign[opt] width[opt] precision[opt] units-specs[opt]
+<strong id="grammar-token-units-format-spec">units-format-spec</strong> ::=  fill-and-align[opt] sign[opt] width[opt] precision[opt] type[opt] units-specs[opt]
 <strong id="grammar-token-units-specs">units-specs      </strong> ::=  conversion-spec
                        units-specs conversion-spec
                        units-specs literal-char
 <strong id="grammar-token-literal-char">literal-char     </strong> ::=  any character other than '{' or '}'
-<strong id="grammar-token-conversion-spec">conversion-spec  </strong> ::=  '%' modifier[opt] type
+<strong id="grammar-token-conversion-spec">conversion-spec  </strong> ::=  '%' modifier[opt] units-type
 <strong id="grammar-token-modifier">modifier         </strong> ::=  'A'
-<strong id="grammar-token-type">type             </strong> ::=  one of 'n', 'q', 'Q', 't', '%'
+<strong id="grammar-token-units-type">units-type       </strong> ::=  one of 'n', 'q', 'Q', 't', '%'
 </pre>
 </div>
 </div>
