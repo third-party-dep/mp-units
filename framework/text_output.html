@@ -236,11 +236,23 @@ of an unknown <code class="docutils literal notranslate"><span class="pre">auto<
 <strong id="grammar-token-conversion-spec">conversion-spec    </strong> ::=  '%' units-type
 <strong id="grammar-token-units-type">units-type         </strong> ::=  [units-rep-modifier] 'Q'
                          [units-unit-modifier] 'q'
-                         one of 'n', 't', '%'
+                         one of &quot;nt%&quot;
 <strong id="grammar-token-units-rep-modifier">units-rep-modifier </strong> ::=  [sign] [#] [precision] [units-rep-type]
-<strong id="grammar-token-units-rep-type">units-rep-type     </strong> ::=  one of 'a', 'A', 'b', 'B', 'd', 'e', 'E', 'f', 'F', 'g', 'G', 'o', 'x', 'X'
+<strong id="grammar-token-units-rep-type">units-rep-type     </strong> ::=  one of &quot;aAbBdeEfFgGoxX&quot;
 <strong id="grammar-token-units-unit-modifier">units-unit-modifier</strong> ::=  'A'
 </pre>
+<p>In the above grammar:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fill-and-align</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">sign</span></code>, <code class="docutils literal notranslate"><span class="pre">#</span></code>, and <code class="docutils literal notranslate"><span class="pre">precision</span></code> tokens and
+individual tokens of <a class="reference internal" href="#grammar-token-units-rep-type"><code class="xref std std-token docutils literal notranslate"><span class="pre">units-rep-type</span></code></a> are defined in the
+<a class="reference external" href="https://wg21.link/format.string.std">format.string.std</a> chapter of the C++
+standard specification,</p></li>
+<li><p>tokens <code class="docutils literal notranslate"><span class="pre">Q</span></code>, <code class="docutils literal notranslate"><span class="pre">q</span></code>, <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">t</span></code>, and <code class="docutils literal notranslate"><span class="pre">%</span></code> of <a class="reference internal" href="#grammar-token-units-type"><code class="xref std std-token docutils literal notranslate"><span class="pre">units-type</span></code></a> are described
+in the <a class="reference external" href="https://wg21.link/time.format">time.format</a> chapter of the C++ standard
+specification,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> token of <a class="reference internal" href="#grammar-token-units-unit-modifier"><code class="xref std std-token docutils literal notranslate"><span class="pre">units-unit-modifier</span></code></a> forces ASCII-only output (instead of the
+default Unicode symbols defined by the <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a> specification).</p></li>
+</ul>
 </div>
 <div class="section" id="default-formatting">
 <h3>Default formatting<a class="headerlink" href="#default-formatting" title="Permalink to this headline">¶</a></h3>
