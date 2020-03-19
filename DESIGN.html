@@ -92,9 +92,9 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="framework.html">Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -271,7 +271,7 @@ dimension and it should be passed in this dimension’s definition.</p></li>
 <li><p>Defines a named, in most cases base or coherent unit that is then passed to a dimension’s
 definition.</p></li>
 <li><p>A named unit may be used by other units defined with the prefix of the same type, unless
-<code class="docutils literal notranslate"><span class="pre">no_prefix</span></code> is provided for <code class="docutils literal notranslate"><span class="pre">PrefixType</span></code> template parameter (in such a case it is impossible
+<code class="docutils literal notranslate"><span class="pre">no_prefix</span></code> is provided for <code class="docutils literal notranslate"><span class="pre">PrefixFamily</span></code> template parameter (in such a case it is impossible
 to define a prefixed unit based on this one).</p></li>
 </ul>
 </li>
@@ -279,7 +279,7 @@ to define a prefixed unit based on this one).</p></li>
 <ul>
 <li><p>Defines a new named unit that is a scaled version of another unit.</p></li>
 <li><p>Such unit can be used by other units defined with the prefix of the same type, unless
-<code class="docutils literal notranslate"><span class="pre">no_prefix</span></code> is provided for <code class="docutils literal notranslate"><span class="pre">PrefixType</span></code> template parameter (in such a case it is impossible
+<code class="docutils literal notranslate"><span class="pre">no_prefix</span></code> is provided for <code class="docutils literal notranslate"><span class="pre">PrefixFamily</span></code> template parameter (in such a case it is impossible
 to define a prefixed unit based on this one).</p></li>
 </ul>
 </li>
@@ -300,20 +300,20 @@ symbol text.</p></li>
 </ul>
 </li>
 </ul>
-<p>Some of the above types depend on <code class="docutils literal notranslate"><span class="pre">PrefixType</span></code> and <code class="docutils literal notranslate"><span class="pre">no_prefix</span></code>. <code class="docutils literal notranslate"><span class="pre">PrefixType</span></code> is a concept that
+<p>Some of the above types depend on <code class="docutils literal notranslate"><span class="pre">PrefixFamily</span></code> and <code class="docutils literal notranslate"><span class="pre">no_prefix</span></code>. <code class="docutils literal notranslate"><span class="pre">PrefixFamily</span></code> is a concept that
 is defined as:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="k">concept</span> <span class="n">PrefixType</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">derived_from</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">prefix_type</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">concept</span> <span class="n">PrefixFamily</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">derived_from</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">prefix_family</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">prefix_type</span></code> is just an empty tag type used to identify the beginning of prefix types
+<p>where <code class="docutils literal notranslate"><span class="pre">prefix_family</span></code> is just an empty tag type used to identify the beginning of prefix types
 hierarchy and <code class="docutils literal notranslate"><span class="pre">no_prefix</span></code> is one of its children:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">prefix_type</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">no_prefix</span> <span class="p">:</span> <span class="n">prefix_type</span> <span class="p">{};</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">prefix_family</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">no_prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
 </pre></div>
 </div>
 <p>Concrete prefix derives from a <code class="docutils literal notranslate"><span class="pre">prefix</span></code> class template:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Child</span><span class="p">,</span> <span class="n">PrefixType</span> <span class="n">PT</span><span class="p">,</span> <span class="n">basic_fixed_string</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Ratio</span> <span class="n">R</span><span class="o">&gt;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Child</span><span class="p">,</span> <span class="n">PrefixFamily</span> <span class="n">PT</span><span class="p">,</span> <span class="n">basic_fixed_string</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Ratio</span> <span class="n">R</span><span class="o">&gt;</span>
   <span class="k">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">PT</span><span class="p">,</span> <span class="n">no_prefix</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="k">struct</span> <span class="n">prefix</span><span class="p">;</span>
 </pre></div>
@@ -327,7 +327,7 @@ in the design documentation.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
 
 <span class="c1">// prefixes</span>
-<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_type</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">centi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">centi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">kilo</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">kilo</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 
@@ -654,7 +654,7 @@ dimension:</p></li>
 <li><p>prefix:</p>
 <ul>
 <li><p>if ratio of the scaled unit is <code class="docutils literal notranslate"><span class="pre">1</span></code>, than no prefix is being printed,</p></li>
-<li><p>otherwise, if <code class="docutils literal notranslate"><span class="pre">PrefixType</span></code> template parameter of a reference unit is different than
+<li><p>otherwise, if <code class="docutils literal notranslate"><span class="pre">PrefixFamily</span></code> template parameter of a reference unit is different than
 <code class="docutils literal notranslate"><span class="pre">no_prefix</span></code>, and if the ratio of scaled unit matches the ratio of a prefix of a specified
 type, than the symbol of this prefix will be used,</p></li>
 <li><p>otherwise, non-standard ratio (i.e. <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">[60]Hz</span></code>) will be printed.</p></li>
@@ -889,7 +889,7 @@ adds support for digital information quantities. In summary it adds:</p>
 <li><p>New prefix type and its prefixes:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">data</span> <span class="p">{</span>
 
-<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_type</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
 
 <span class="k">struct</span> <span class="nl">kibi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">kibi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;Ki&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span>    <span class="mi">1&#39;024</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">mebi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">mebi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;Mi&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1&#39;048&#39;576</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>

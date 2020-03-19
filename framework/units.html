@@ -94,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../framework.html">Framework</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../framework.html">Framework Basics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic_concepts.html">Basic Concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quantities.html">Quantities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
@@ -119,8 +119,8 @@
 <li class="toctree-l2"><a class="reference internal" href="text_output.html">Text output</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../scenarios.html">Scenarios</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
@@ -183,7 +183,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../framework.html">Framework</a> &raquo;</li>
+          <li><a href="../framework.html">Framework Basics</a> &raquo;</li>
         
       <li>Units</li>
     
@@ -251,8 +251,8 @@ definitions of prefixed units using <code class="xref cpp cpp-any docutils liter
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The first template argument of <a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_10PrefixTypeEN5units10named_unitE" title="units::named_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_unit</span></code></a> is the type of the
-child class inherited from the instantiation of this <a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_10PrefixTypeEN5units10named_unitE" title="units::named_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_unit</span></code></a>
+<p>The first template argument of <a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_12PrefixFamilyEN5units10named_unitE" title="units::named_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_unit</span></code></a> is the type of the
+child class inherited from the instantiation of this <a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_12PrefixFamilyEN5units10named_unitE" title="units::named_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_unit</span></code></a>
 class template. This is called a
 <abbr title="Curiously Recurring Template Parameter">CRTP</abbr> Idiom and is used
 in many places in this library to provide <a class="reference internal" href="../design.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>.
@@ -361,7 +361,7 @@ other units of measurement to describe their magnitude (numerical value).</p>
 <p>We are used to use minutes, hours, or days to measure quantities of time.
 Those units are the scaled versions of a time dimension’s base unit,
 namely second. Those can be defined easily in the library using
-<a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_10PrefixType_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_scaled_unit</span></code></a> class template:</p>
+<a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_scaled_unit</span></code></a> class template:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">minute</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">minute</span><span class="p">,</span> <span class="s">&quot;min&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">60</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">second</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">hour</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">hour</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">60</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">minute</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">day</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">hour</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">24</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
@@ -378,7 +378,7 @@ and define units like:</p>
                                         <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1&#39;602&#39;176&#39;634</span><span class="p">,</span> <span class="mi">1&#39;000&#39;000&#39;000</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">joule</span><span class="o">&gt;</span> <span class="p">{};</span>
 </pre></div>
 </div>
-<p>Finally, the last of the <a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_10PrefixType_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_scaled_unit</span></code></a> class template parameters
+<p>Finally, the last of the <a class="reference internal" href="../reference/types.html#_CPPv4I0_18basic_fixed_string_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_scaled_unit</span></code></a> class template parameters
 provide a reference unit for scaling. Please note that it can be a dimension’s
 base/coherent unit (like <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::second</span></code>) or any other unit (i.e. <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::minute</span></code>,
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::hour</span></code>) that is a scaled version of the dimension’s base/coherent unit.</p>
@@ -390,7 +390,7 @@ base/coherent unit (like <code class="xref cpp cpp-any docutils literal notransl
 complete list of all the <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a> prefixes supported by the library:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
-<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_type</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
 
 <span class="k">struct</span> <span class="nl">yocto</span>  <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">yocto</span><span class="p">,</span>  <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">,</span>  <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">24</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">zepto</span>  <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">zepto</span><span class="p">,</span>  <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;z&quot;</span><span class="p">,</span>  <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">21</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
@@ -420,7 +420,7 @@ complete list of all the <a class="reference internal" href="../glossary.html#te
 domain:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">data</span> <span class="p">{</span>
 
-<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_type</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
 
 <span class="k">struct</span> <span class="nl">kibi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">kibi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;Ki&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span>                    <span class="mi">1&#39;024</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">mebi</span> <span class="p">:</span> <span class="n">units</span><span class="o">::</span><span class="n">prefix</span><span class="o">&lt;</span><span class="n">mebi</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s">&quot;Mi&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span>                <span class="mi">1&#39;048&#39;576</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
@@ -500,7 +500,7 @@ type here instead.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>To learn more about unknown units please refer to
-<a class="reference internal" href="../scenarios/unknown_units_and_dimensions.html#working-with-unknown-units-and-dimensions"><span class="std std-ref">Working with Unknown Units and Dimensions</span></a> chapter.</p>
+<a class="reference internal" href="../use_cases/unknown_units_and_dimensions.html#working-with-unknown-units-and-dimensions"><span class="std std-ref">Working with Unknown Units and Dimensions</span></a> chapter.</p>
 </div>
 <p class="rubric">Citations:</p>
 <dl class="citation">

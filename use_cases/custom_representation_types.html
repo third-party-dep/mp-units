@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Extending the library &mdash; mp-units 0.5.0 documentation</title>
+  <title>Using Custom Representation Types &mdash; mp-units 0.5.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Design" href="../design.html" />
-    <link rel="prev" title="Custom Representation Type" href="custom_representation_types.html" /> 
+    <link rel="next" title="Extending the library" href="extensions.html" />
+    <link rel="prev" title="Working with Legacy Interfaces" href="legacy_interfaces.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,24 +94,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../scenarios.html">Scenarios</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../use_cases.html">Use Cases</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="legacy_interfaces.html">Working with Legacy Interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="custom_representation_types.html">Custom Representation Type</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Extending the library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#custom-units">Custom Units</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#custom-dimensions">Custom Dimensions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#custom-base-dimensions">Custom Base Dimensions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#custom-derived-dimensions">Custom Derived Dimensions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using Custom Representation Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#customization-points">Customization points</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#custom-systems">Custom Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html">Extending the library</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
@@ -174,15 +168,15 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../scenarios.html">Scenarios</a> &raquo;</li>
+          <li><a href="../use_cases.html">Use Cases</a> &raquo;</li>
         
-      <li>Extending the library</li>
+      <li>Using Custom Representation Types</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/scenarios/extensions.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/use_cases/custom_representation_types.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -195,22 +189,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="extending-the-library">
-<h1>Extending the library<a class="headerlink" href="#extending-the-library" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="custom-units">
-<h2>Custom Units<a class="headerlink" href="#custom-units" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="custom-dimensions">
-<h2>Custom Dimensions<a class="headerlink" href="#custom-dimensions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="custom-base-dimensions">
-<h3>Custom Base Dimensions<a class="headerlink" href="#custom-base-dimensions" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="custom-derived-dimensions">
-<h3>Custom Derived Dimensions<a class="headerlink" href="#custom-derived-dimensions" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="custom-systems">
-<h2>Custom Systems<a class="headerlink" href="#custom-systems" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="using-custom-representation-types">
+<h1>Using Custom Representation Types<a class="headerlink" href="#using-custom-representation-types" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="customization-points">
+<h2>Customization points<a class="headerlink" href="#customization-points" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -222,10 +204,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../design.html" class="btn btn-neutral float-right" title="Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="extensions.html" class="btn btn-neutral float-right" title="Extending the library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="custom_representation_types.html" class="btn btn-neutral float-left" title="Custom Representation Type" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="legacy_interfaces.html" class="btn btn-neutral float-left" title="Working with Legacy Interfaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

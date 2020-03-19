@@ -94,9 +94,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scenarios.html">Scenarios</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
@@ -182,86 +182,102 @@
 <h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All names defined in this chapter reside in the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code> namespace unless specified otherwise.</p>
+<p>All names defined in this chapter reside in the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code> namespace unless
+specified otherwise.</p>
 </div>
 <dl class="concept">
-<dt id="_CPPv4I0EN5units10PrefixTypeE">
-<span id="_CPPv3I0EN5units10PrefixTypeE"></span><span id="_CPPv2I0EN5units10PrefixTypeE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">PrefixType</code><a class="headerlink" href="#_CPPv4I0EN5units10PrefixTypeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all types derived from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">prefix_type</span></code>.</p>
+<dt id="_CPPv4I0EN5units12PrefixFamilyE">
+<span id="_CPPv3I0EN5units12PrefixFamilyE"></span><span id="_CPPv2I0EN5units12PrefixFamilyE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">PrefixFamily</code><a class="headerlink" href="#_CPPv4I0EN5units12PrefixFamilyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching a prefix family. Satisfied by all types derived from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">prefix_family</span></code>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units6PrefixE">
 <span id="_CPPv3I0EN5units6PrefixE"></span><span id="_CPPv2I0EN5units6PrefixE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Prefix</code><a class="headerlink" href="#_CPPv4I0EN5units6PrefixE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">prefix</span></code>.</p>
+<dd><p>A concept matching a symbol prefix. Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">prefix</span></code>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units5RatioE">
 <span id="_CPPv3I0EN5units5RatioE"></span><span id="_CPPv2I0EN5units5RatioE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Ratio</code><a class="headerlink" href="#_CPPv4I0EN5units5RatioE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">ratio</span></code>.</p>
+<dd><p>A concept matching a ratio. Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">ratio</span></code>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units9UnitRatioE">
 <span id="_CPPv3I0EN5units9UnitRatioE"></span><span id="_CPPv2I0EN5units9UnitRatioE"></span>template&lt;typename <code class="sig-name descname">R</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">UnitRatio</code><a class="headerlink" href="#_CPPv4I0EN5units9UnitRatioE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all types that satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units5RatioE" title="units::Ratio"><span class="pre">Ratio</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">&gt;</span></code> and for which <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">::</span><span class="pre">num</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">::</span><span class="pre">den</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
+<dd><p>A concept matching unit’s ratio. Satisfied by all types that satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units5RatioE" title="units::Ratio"><span class="pre">Ratio</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">&gt;</span></code> and
+for which <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">::</span><span class="pre">num</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">::</span><span class="pre">den</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units13BaseDimensionE">
 <span id="_CPPv3I0EN5units13BaseDimensionE"></span><span id="_CPPv2I0EN5units13BaseDimensionE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">BaseDimension</code><a class="headerlink" href="#_CPPv4I0EN5units13BaseDimensionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all dimension types derived from instantiation of <a class="reference internal" href="types.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">base_dimension</span></code></a>.</p>
+<dd><p>A concept matching all base dimensions in the library. Satisfied by all dimension types
+derived from the instantiation of <a class="reference internal" href="types.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">base_dimension</span></code></a>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units8ExponentE">
 <span id="_CPPv3I0EN5units8ExponentE"></span><span id="_CPPv2I0EN5units8ExponentE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Exponent</code><a class="headerlink" href="#_CPPv4I0EN5units8ExponentE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">exp</span></code>.</p>
+<dd><p>A concept matching dimension’s exponents. Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">exp</span></code>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units16DerivedDimensionE">
 <span id="_CPPv3I0EN5units16DerivedDimensionE"></span><span id="_CPPv2I0EN5units16DerivedDimensionE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">DerivedDimension</code><a class="headerlink" href="#_CPPv4I0EN5units16DerivedDimensionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all dimension types derived from instantiation of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">detail::derived_dimension_base</span></code>.</p>
+<dd><p>A concept matching all derived dimensions in the library. Satisfied by all dimension
+types derived from the instantiation of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">detail::derived_dimension_base</span></code>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units9DimensionE">
 <span id="_CPPv3I0EN5units9DimensionE"></span><span id="_CPPv2I0EN5units9DimensionE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Dimension</code><a class="headerlink" href="#_CPPv4I0EN5units9DimensionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all dimension types for which either <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units13BaseDimensionE" title="units::BaseDimension"><span class="pre">BaseDimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units16DerivedDimensionE" title="units::DerivedDimension"><span class="pre">DerivedDimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<dd><p>A concept matching all dimensions in the library. Satisfied by all dimension types for
+which either <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units13BaseDimensionE" title="units::BaseDimension"><span class="pre">BaseDimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units16DerivedDimensionE" title="units::DerivedDimension"><span class="pre">DerivedDimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units4UnitE">
 <span id="_CPPv3I0EN5units4UnitE"></span><span id="_CPPv2I0EN5units4UnitE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Unit</code><a class="headerlink" href="#_CPPv4I0EN5units4UnitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all unit types derived from instantiation of <a class="reference internal" href="types.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">scaled_unit</span></code></a>.</p>
+<dd><p>A concept matching all unit types in the library. Satisfied by all unit types derived
+from the instantiation of <a class="reference internal" href="types.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">scaled_unit</span></code></a>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I00EN5units6UnitOfE">
 <span id="_CPPv3I00EN5units6UnitOfE"></span><span id="_CPPv2I00EN5units6UnitOfE"></span>template&lt;typename <code class="sig-name descname">U</code>, typename <code class="sig-name descname">D</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">UnitOf</code><a class="headerlink" href="#_CPPv4I00EN5units6UnitOfE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all unit types that satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units4UnitE" title="units::Unit"><span class="pre">Unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::U"><span class="pre">U</span></a><span class="pre">&gt;</span></code>, <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><span class="pre">Dimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::D"><span class="pre">D</span></a><span class="pre">&gt;</span></code>, and for which
-<code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::U"><span class="pre">U</span></a><span class="pre">::</span><span class="pre">reference</span></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="functions.html#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit"><span class="pre">dimension_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::D"><span class="pre">D</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">reference</span></code> denote the same unit type.</p>
+<dd><p>A concept matching only units of a specified dimension. Satisfied by all unit types that
+satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units4UnitE" title="units::Unit"><span class="pre">Unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::U"><span class="pre">U</span></a><span class="pre">&gt;</span></code>, <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><span class="pre">Dimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::D"><span class="pre">D</span></a><span class="pre">&gt;</span></code>, and for which <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::U"><span class="pre">U</span></a><span class="pre">::</span><span class="pre">reference</span></code> and
+<code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="functions.html#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit"><span class="pre">dimension_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::D"><span class="pre">D</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">reference</span></code> denote the same unit type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> – Type to verify against concept constraints.</p></li>
+<li><p><strong>D</strong> – Dimension type to use for verification.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units8QuantityE">
 <span id="_CPPv3I0EN5units8QuantityE"></span><span id="_CPPv2I0EN5units8QuantityE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Quantity</code><a class="headerlink" href="#_CPPv4I0EN5units8QuantityE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all instantiations of <a class="reference internal" href="types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity</span></code></a>.</p>
+<dd><p>A concept matching all quantities in the library. Satisfied by all instantiations of <a class="reference internal" href="types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity</span></code></a>.</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units15WrappedQuantityE">
 <span id="_CPPv3I0EN5units15WrappedQuantityE"></span><span id="_CPPv2I0EN5units15WrappedQuantityE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">WrappedQuantity</code><a class="headerlink" href="#_CPPv4I0EN5units15WrappedQuantityE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by all wrapper types that satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><span class="pre">Quantity</span></a><span class="pre">&lt;</span><em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4I0EN5units15WrappedQuantityE" title="units::WrappedQuantity::T"><span class="pre">T</span></a><span class="pre">::</span><span class="pre">value_type</span><span class="pre">&gt;</span></code> recursively
+<dd><p>A concept matching types that wrap quantity objects. Satisfied by all wrapper types that
+satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><span class="pre">Quantity</span></a><span class="pre">&lt;</span><em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4I0EN5units15WrappedQuantityE" title="units::WrappedQuantity::T"><span class="pre">T</span></a><span class="pre">::</span><span class="pre">value_type</span><span class="pre">&gt;</span></code> recursively
 (i.e. <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><a class="reference internal" href="systems.html#_CPPv4N5units2siE" title="units::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="systems.html#_CPPv4N5units2siE" title="units::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">metre</span><span class="pre">&gt;</span><span class="pre">&gt;</span></code>).</p>
 </dd></dl>
 
 <dl class="concept">
 <dt id="_CPPv4I0EN5units6ScalarE">
 <span id="_CPPv3I0EN5units6ScalarE"></span><span id="_CPPv2I0EN5units6ScalarE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Scalar</code><a class="headerlink" href="#_CPPv4I0EN5units6ScalarE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Satisfied by types that satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">(</span><span class="pre">!</span><a class="reference internal" href="#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><span class="pre">Quantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a><span class="pre">&gt;</span><span class="pre">)</span> <span class="pre">&amp;&amp;</span> <span class="pre">(</span><span class="pre">!</span><a class="reference internal" href="#_CPPv4I0EN5units15WrappedQuantityE" title="units::WrappedQuantity"><span class="pre">WrappedQuantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a><span class="pre">&gt;</span><span class="pre">)</span> <span class="pre">&amp;&amp;</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">regular</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code>.</p>
+<dd><p>A concept matching non-Quantity types. Satisfied by types that satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">(</span><span class="pre">!</span><a class="reference internal" href="#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><span class="pre">Quantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a><span class="pre">&gt;</span><span class="pre">)</span> <span class="pre">&amp;&amp;</span> <span class="pre">(</span><span class="pre">!</span><a class="reference internal" href="#_CPPv4I0EN5units15WrappedQuantityE" title="units::WrappedQuantity"><span class="pre">WrappedQuantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a><span class="pre">&gt;</span><span class="pre">)</span> <span class="pre">&amp;&amp;</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">regular</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code>.</p>
 </dd></dl>
 
 </div>

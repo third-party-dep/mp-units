@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Scenarios &mdash; mp-units 0.5.0 documentation</title>
+  <title>Use Cases &mdash; mp-units 0.5.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working with Unknown Units and Dimensions" href="scenarios/unknown_units_and_dimensions.html" />
+    <link rel="next" title="Working with Unknown Units and Dimensions" href="use_cases/unknown_units_and_dimensions.html" />
     <link rel="prev" title="Text output" href="framework/text_output.html" /> 
 </head>
 
@@ -94,15 +94,15 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="framework.html">Framework</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Scenarios</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/legacy_interfaces.html">Working with Legacy Interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/custom_representation_types.html">Custom Representation Type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/extensions.html">Extending the library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework.html">Framework Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/legacy_interfaces.html">Working with Legacy Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html">Using Custom Representation Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/extensions.html">Extending the library</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -165,13 +165,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Scenarios</li>
+      <li>Use Cases</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/scenarios.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/use_cases.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,8 +184,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="scenarios">
-<h1>Scenarios<a class="headerlink" href="#scenarios" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="use-cases">
+<h1>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For brevity all the code examples in this chapter assume:</p>
@@ -195,16 +195,16 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="scenarios/unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scenarios/legacy_interfaces.html">Working with Legacy Interfaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scenarios/custom_representation_types.html">Custom Representation Type</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/custom_representation_types.html#customization-points">Customization points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/legacy_interfaces.html">Working with Legacy Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/custom_representation_types.html">Using Custom Representation Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html#customization-points">Customization points</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scenarios/extensions.html">Extending the library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/extensions.html#custom-units">Custom Units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/extensions.html#custom-dimensions">Custom Dimensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios/extensions.html#custom-systems">Custom Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/extensions.html">Extending the library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/extensions.html#custom-units">Custom Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/extensions.html#custom-dimensions">Custom Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/extensions.html#custom-systems">Custom Systems</a></li>
 </ul>
 </li>
 </ul>
@@ -219,7 +219,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scenarios/unknown_units_and_dimensions.html" class="btn btn-neutral float-right" title="Working with Unknown Units and Dimensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="use_cases/unknown_units_and_dimensions.html" class="btn btn-neutral float-right" title="Working with Unknown Units and Dimensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="framework/text_output.html" class="btn btn-neutral float-left" title="Text output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
