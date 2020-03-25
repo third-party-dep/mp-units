@@ -211,9 +211,19 @@
 </p>
 <p>This cast gets only the target unit to cast to. For example:</p>
 <p>auto q1 = units::quantity_cast&lt;units::si::second&gt;(1q_ms);</p>
+<p><p>Implicit conversions between quantities of different types are allowed only for “safe” (i.e. non-truncating) conversion. In such cases an explicit cast have to be used.</p>
+<dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ToU</span></code>: a unit type to use for a target quantity</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>This cast gets only representation to cast to. For example:</p>
+<p>auto q1 = units::quantity_cast&lt;int&gt;(1q_ms);</p>
 <p><dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ToU</span></code>: a unit type to use for a target quantity </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ToRep</span></code>: a representation type to use for a target quantity </p></li>
 </ul>
 </dd>
 </dl>
