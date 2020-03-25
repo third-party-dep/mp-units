@@ -327,7 +327,30 @@
 135
 136
 137
-138</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/acceleration.h&gt;</span><span class="cp"></span>
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/acceleration.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
@@ -347,8 +370,7 @@
 
   <span class="n">measurement</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
 
-  <span class="k">constexpr</span> <span class="cm">/* explicit */</span> <span class="n">measurement</span><span class="p">(</span><span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">val</span><span class="p">,</span> <span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">err</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">:</span>
-      <span class="c1">// cannot be explicit as `magma` concept requires implicit conversions :-(</span>
+  <span class="k">constexpr</span> <span class="k">explicit</span> <span class="nf">measurement</span><span class="p">(</span><span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">val</span><span class="p">,</span> <span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">err</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">:</span>
       <span class="n">value_</span><span class="p">(</span><span class="n">val</span><span class="p">),</span>
       <span class="n">uncertainty_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
   <span class="p">{</span>
@@ -379,10 +401,34 @@
     <span class="k">return</span> <span class="nf">measurement</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span> <span class="o">*</span> <span class="n">rss</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">(),</span> <span class="n">rhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">()));</span>
   <span class="p">}</span>
 
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">measurement</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">val</span> <span class="o">=</span> <span class="n">lhs</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nf">measurement</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span> <span class="o">*</span> <span class="n">lhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">measurement</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">,</span> <span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">val</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nf">measurement</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">());</span>
+  <span class="p">}</span>
+
   <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">measurement</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="k">const</span> <span class="k">auto</span> <span class="n">val</span> <span class="o">=</span> <span class="n">lhs</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
     <span class="k">return</span> <span class="nf">measurement</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span> <span class="o">*</span> <span class="n">rss</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">(),</span> <span class="n">rhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">()));</span>
+  <span class="p">}</span>
+
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">measurement</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">val</span> <span class="o">=</span> <span class="n">lhs</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">/</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nf">measurement</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span> <span class="o">*</span> <span class="n">lhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">measurement</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">value_type</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">,</span> <span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">val</span> <span class="o">=</span> <span class="n">value</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nf">measurement</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">());</span>
   <span class="p">}</span>
 
 <span class="cp">#if __GNUC__ &gt;= 10</span>
