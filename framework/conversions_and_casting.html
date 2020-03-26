@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Text output" href="text_output.html" />
+    <link rel="next" title="Text Output" href="text_output.html" />
     <link rel="prev" title="Quantity Constants" href="constants.html" /> 
 </head>
 
@@ -101,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="units.html">Units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">Quantity Constants</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Conversions and Casting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#no-conversions">No conversions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#no-conversions">No Conversions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implicit">Implicit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#explicit">Explicit</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#quantity-cast-overloads">Quantity Cast Overloads</a></li>
@@ -109,7 +109,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="text_output.html">Text output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_output.html">Text Output</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../use_cases.html">Use Cases</a></li>
@@ -210,7 +210,7 @@ information.”</strong> That can reasonably easily be explained to non-language
 <p>The library tries to follow the above principle and at the same time is also consistent
 with conversions of <code class="docutils literal notranslate"><span class="pre">std::chrono::duration</span></code>.</p>
 <div class="section" id="no-conversions">
-<h2>No conversions<a class="headerlink" href="#no-conversions" title="Permalink to this headline">¶</a></h2>
+<h2>No Conversions<a class="headerlink" href="#no-conversions" title="Permalink to this headline">¶</a></h2>
 <p>No conversions (either implicit or explicit) are available across quantities of
 different dimensions:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_s</span><span class="p">;</span>            <span class="c1">// Compile-time error</span>
@@ -299,7 +299,7 @@ chapter.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="text_output.html" class="btn btn-neutral float-right" title="Text output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="text_output.html" class="btn btn-neutral float-right" title="Text Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="constants.html" class="btn btn-neutral float-left" title="Quantity Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

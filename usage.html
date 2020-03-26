@@ -94,24 +94,24 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#repository-structure-and-dependencies">Repository structure and dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repository-structure-and-dependencies">Repository Structure and Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#obtaining-dependencies">Obtaining Dependencies</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#conan-quick-intro">Conan quick intro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conan-quick-intro">Conan Quick Intro</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#non-standard-conan-remotes">Non-standard Conan remotes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#build-options">Build options</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-options">Build Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#building-installation-and-reuse">Building, Installation, and Reuse</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#copy">Copy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cmake-conan">CMake + Conan</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#full-mp-units-build-unit-testing-and-documentation-generation">Full <strong>mp-units</strong> build, unit testing, and documentation generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-mp-units-build-unit-testing-and-documentation-generation">Full <strong>mp-units</strong> Build, Unit Testing, and Documentation Generation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#packaging">Packaging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#uploading-mp-units-package-to-the-conan-server">Uploading <strong>mp-units</strong> package to the Conan server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uploading-mp-units-package-to-the-conan-server">Uploading <strong>mp-units</strong> Package to the Conan Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="framework.html">Framework Basics</a></li>
@@ -206,7 +206,7 @@
 only with gcc-9.1 and newer.</p>
 </div>
 <div class="section" id="repository-structure-and-dependencies">
-<h2>Repository structure and dependencies<a class="headerlink" href="#repository-structure-and-dependencies" title="Permalink to this headline">¶</a></h2>
+<h2>Repository Structure and Dependencies<a class="headerlink" href="#repository-structure-and-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>This repository contains three independent CMake-based projects:</p>
 <ul class="simple">
 <li><p><em>./src</em></p>
@@ -261,7 +261,7 @@ The rest of the dependencies are provided by <strong class="command">python3-pip
 <p>A full list of dependencies can be found in <a class="reference internal" href="#repository-structure-and-dependencies">Repository structure and dependencies</a>.</p>
 </div>
 <div class="section" id="conan-quick-intro">
-<h3>Conan quick intro<a class="headerlink" href="#conan-quick-intro" title="Permalink to this headline">¶</a></h3>
+<h3>Conan Quick Intro<a class="headerlink" href="#conan-quick-intro" title="Permalink to this headline">¶</a></h3>
 <p>In case you are not familiar with Conan, to install it (or upgrade) just do:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install -U conan
 </pre></div>
@@ -310,9 +310,9 @@ in <strong>mp-units</strong> repository.</p>
 </div>
 </div>
 <div class="section" id="build-options">
-<h2>Build options<a class="headerlink" href="#build-options" title="Permalink to this headline">¶</a></h2>
+<h2>Build Options<a class="headerlink" href="#build-options" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="environment-variables">
-<h3>Environment variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
 <dl class="envvar">
 <dt id="envvar-CONAN_RUN_TESTS">
 <code class="sig-name descname">CONAN_RUN_TESTS</code><a class="headerlink" href="#envvar-CONAN_RUN_TESTS" title="Permalink to this definition">¶</a></dt>
@@ -396,7 +396,7 @@ conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o
 </ol>
 </div>
 <div class="section" id="full-mp-units-build-unit-testing-and-documentation-generation">
-<h3>Full <strong>mp-units</strong> build, unit testing, and documentation generation<a class="headerlink" href="#full-mp-units-build-unit-testing-and-documentation-generation" title="Permalink to this headline">¶</a></h3>
+<h3>Full <strong>mp-units</strong> Build, Unit Testing, and Documentation Generation<a class="headerlink" href="#full-mp-units-build-unit-testing-and-documentation-generation" title="Permalink to this headline">¶</a></h3>
 <p>In case you would like to build all the source code (with unit tests and examples) and documentation
 in <strong>mp-units</strong> repository, you should use the <em>CMakeLists.txt</em> from the top-level directory,
 obtain Python dependencies, and run Conan with <span class="target" id="index-0"></span><a class="reference internal" href="#envvar-CONAN_RUN_TESTS"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">CONAN_RUN_TESTS</span></code></a> = <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
@@ -424,7 +424,7 @@ conan create . &lt;username&gt;/&lt;channel&gt; -pr &lt;your_conan_profile&gt; -
 <p>The above will create a Conan package and run tests provided in <em>./test_package</em> directory.</p>
 </div>
 <div class="section" id="uploading-mp-units-package-to-the-conan-server">
-<h2>Uploading <strong>mp-units</strong> package to the Conan server<a class="headerlink" href="#uploading-mp-units-package-to-the-conan-server" title="Permalink to this headline">¶</a></h2>
+<h2>Uploading <strong>mp-units</strong> Package to the Conan Server<a class="headerlink" href="#uploading-mp-units-package-to-the-conan-server" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan upload -r &lt;remote-name&gt; --all mp-units/0.5.0@&lt;user&gt;/&lt;channel&gt;
 </pre></div>
 </div>

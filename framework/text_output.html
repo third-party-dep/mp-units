@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Text output &mdash; mp-units 0.5.0 documentation</title>
+  <title>Text Output &mdash; mp-units 0.5.0 documentation</title>
   
 
   
@@ -101,19 +101,19 @@
 <li class="toctree-l2"><a class="reference internal" href="units.html">Units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">Quantity Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conversions_and_casting.html">Conversions and Casting</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Text output</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#output-streams">Output streams</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#stream-output-formatting">Stream output formatting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Text Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#output-streams">Output Streams</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stream-output-formatting">Stream Output Formatting</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#fmt-format">fmt::format</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#grammar">Grammar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#default-formatting">Default formatting</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#quantity-value-symbol-or-both">Quantity value, symbol, or both?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#controlling-width-fill-and-alignment">Controlling width, fill, and alignment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ascii-only-quantity-symbols">ASCII-only quantity symbols</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#controlling-on-how-the-quantity-value-is-being-printed">Controlling on how the quantity value is being printed</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#special-signs">Special signs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantity-value-symbol-or-both">Quantity Value, Symbol, or Both?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controlling-width-fill-and-alignment">Controlling Width, Fill, and Alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ascii-only-quantity-symbols">ASCII-only Quantity Symbols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controlling-on-how-the-quantity-value-is-being-printed">Controlling on How the Quantity Value Is Being Printed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#special-signs">Special Signs</a></li>
 </ul>
 </li>
 </ul>
@@ -186,7 +186,7 @@
         
           <li><a href="../framework.html">Framework Basics</a> &raquo;</li>
         
-      <li>Text output</li>
+      <li>Text Output</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -206,11 +206,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="text-output">
-<h1>Text output<a class="headerlink" href="#text-output" title="Permalink to this headline">¶</a></h1>
+<h1>Text Output<a class="headerlink" href="#text-output" title="Permalink to this headline">¶</a></h1>
 <p>Beside providing dimensional analysis and units conversions, the library
 also tries really hard to print any quantity in the most user friendly way.</p>
 <div class="section" id="output-streams">
-<h2>Output streams<a class="headerlink" href="#output-streams" title="Permalink to this headline">¶</a></h2>
+<h2>Output Streams<a class="headerlink" href="#output-streams" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to print a quantity is to provide its object to the output
 stream:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
@@ -233,7 +233,7 @@ of an unknown <code class="docutils literal notranslate"><span class="pre">auto<
 </div>
 </div>
 <div class="section" id="stream-output-formatting">
-<h3>Stream output formatting<a class="headerlink" href="#stream-output-formatting" title="Permalink to this headline">¶</a></h3>
+<h3>Stream Output Formatting<a class="headerlink" href="#stream-output-formatting" title="Permalink to this headline">¶</a></h3>
 <p>Only a basic formatting can be applied for output streams. It includes control
 over width, fill, and alignment:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">123</span><span class="n">q_m</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|&quot;</span><span class="p">;</span>                       <span class="c1">// |     123 m|</span>
@@ -289,7 +289,7 @@ code lines produce the same output:</p>
 </div>
 </div>
 <div class="section" id="quantity-value-symbol-or-both">
-<h3>Quantity value, symbol, or both?<a class="headerlink" href="#quantity-value-symbol-or-both" title="Permalink to this headline">¶</a></h3>
+<h3>Quantity Value, Symbol, or Both?<a class="headerlink" href="#quantity-value-symbol-or-both" title="Permalink to this headline">¶</a></h3>
 <p>The user can easily decide to either print a whole quantity (value and symbol) or
 only its parts. Also a different quantity formatting might be applied:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{:%Q}&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="n">q_km</span><span class="p">);</span>    <span class="c1">// 123</span>
@@ -299,7 +299,7 @@ only its parts. Also a different quantity formatting might be applied:</p>
 </div>
 </div>
 <div class="section" id="controlling-width-fill-and-alignment">
-<h3>Controlling width, fill, and alignment<a class="headerlink" href="#controlling-width-fill-and-alignment" title="Permalink to this headline">¶</a></h3>
+<h3>Controlling Width, Fill, and Alignment<a class="headerlink" href="#controlling-width-fill-and-alignment" title="Permalink to this headline">¶</a></h3>
 <p>To control width, fill, and alignment the C++ standard grammar tokens <code class="docutils literal notranslate"><span class="pre">fill-and-align</span></code>
 and <code class="docutils literal notranslate"><span class="pre">width</span></code> are being used and they treat a quantity value and symbol as a contiguous
 text:</p>
@@ -315,7 +315,7 @@ text:</p>
 </div>
 </div>
 <div class="section" id="ascii-only-quantity-symbols">
-<h3>ASCII-only quantity symbols<a class="headerlink" href="#ascii-only-quantity-symbols" title="Permalink to this headline">¶</a></h3>
+<h3>ASCII-only Quantity Symbols<a class="headerlink" href="#ascii-only-quantity-symbols" title="Permalink to this headline">¶</a></h3>
 <p>Unit symbols of some quantities are specified to use Unicode signs by the <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a>
 standard (i.e. <code class="docutils literal notranslate"><span class="pre">Ω</span></code> symbol for the resistance quantity). <strong>mp-units</strong> library follows
 this by default. From the engineering point of view sometimes Unicode text  might
@@ -331,7 +331,7 @@ In such a case the unit symbol can be forced to be printed using ASCII-only char
 </div>
 </div>
 <div class="section" id="controlling-on-how-the-quantity-value-is-being-printed">
-<h3>Controlling on how the quantity value is being printed<a class="headerlink" href="#controlling-on-how-the-quantity-value-is-being-printed" title="Permalink to this headline">¶</a></h3>
+<h3>Controlling on How the Quantity Value Is Being Printed<a class="headerlink" href="#controlling-on-how-the-quantity-value-is-being-printed" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">sign</span></code> token allows us to specify on how the value’s sign is being printed:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{0:%Q %q},{0:%+Q %q},{0:%-Q %q},{0:% Q %q}&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">);</span>   <span class="c1">// 1 m,+1 m,1 m, 1 m</span>
 <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{0:%Q %q},{0:%+Q %q},{0:%-Q %q},{0:% Q %q}&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="n">q_m</span><span class="p">);</span>  <span class="c1">// -1 m,-1 m,-1 m,-1 m</span>
@@ -390,7 +390,7 @@ printed. For integral types:</p>
 </div>
 </div>
 <div class="section" id="special-signs">
-<h3>Special signs<a class="headerlink" href="#special-signs" title="Permalink to this headline">¶</a></h3>
+<h3>Special Signs<a class="headerlink" href="#special-signs" title="Permalink to this headline">¶</a></h3>
 <p>Beside adding any list of regular characters as a separator between the value and the
 symbol, it is possible to type a few special signs there too:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{:%Q_%q}&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="n">q_km</span><span class="p">);</span>    <span class="c1">// 123_km</span>
