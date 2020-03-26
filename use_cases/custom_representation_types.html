@@ -99,12 +99,22 @@
 <li class="toctree-l2"><a class="reference internal" href="unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="legacy_interfaces.html">Working with Legacy Interfaces</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Using Custom Representation Types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#a-scalar-concept">A <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Scalar</span></code> concept</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#additional-requirements">Additional requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#construction-of-quantities-with-custom-representation-types">Construction of Quantities with Custom Representation Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-scalar-concept">A <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Scalar</span></code> concept</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-simplest-custom-representation-type">The Simplest Custom Representation Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#construction-of-quantities-with-custom-representation-types">Construction of Quantities with Custom Representation Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-requirements">Additional Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relational-quantity-operators">Relational Quantity Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arithmetic-quantity-operators">Arithmetic Quantity Operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#customization-points">Customization Points</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantity-value"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#treat-as-floating-point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">treat_as_floating_point</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#conversions-of-quantities-with-custom-representation-types">Conversions of Quantities with Custom Representation Types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tricky-cases">Tricky cases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customization-points">Customization points</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">Linear Algebra of Quantities</a></li>
@@ -206,68 +216,234 @@ not only a value but also a measurement error).</p>
 <p>To support a minimum set of <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> operations all custom representation types have to
 satisfy at least the <a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units6ScalarE" title="units::Scalar"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Scalar</span></code></a> concept. Which means that they:</p>
 <ul class="simple">
-<li><p>cannot be quantities or be wrappers over the <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> type
-(i.e. <code class="docutils literal notranslate"><span class="pre">std::optional&lt;si::length&lt;si::metre&gt;&gt;</span></code>),</p></li>
+<li><p>cannot be quantities by themselves,</p></li>
+<li><p>cannot be wrappers over the <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> type (i.e. <code class="docutils literal notranslate"><span class="pre">std::optional&lt;si::length&lt;si::metre&gt;&gt;</span></code>),</p></li>
 <li><p>have to be regular types (e.g. they have to provide equality operators)</p></li>
-<li><p>must be constructible from a fundamental integral type (to</p></li>
+<li><p>if they are constructible from a fundamental integral type, they have to provide multiplication
+and division operators for their types,</p></li>
+<li><p>otherwise, their values need to support the multiplication or division by the values of the
+<code class="docutils literal notranslate"><span class="pre">std::int64_t</span></code> type which is the type used to store elements of a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ratio</span></code>.</p></li>
 </ul>
 <p>With the above we will be able to construct quantities, convert between the units of the same
-dimension and compare them for equality. To provide additional <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> operations the
-custom representation type have to satisfy more requirements.</p>
+dimension, and compare them for equality.</p>
+<div class="section" id="the-simplest-custom-representation-type">
+<h3>The Simplest Custom Representation Type<a class="headerlink" href="#the-simplest-custom-representation-type" title="Permalink to this headline">¶</a></h3>
+<p>The simplest representation type that fullfills the above requirements can look as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">my_rep</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">value_</span><span class="p">{};</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">my_rep</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="nf">my_rep</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="o">:</span> <span class="n">value_</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">my_rep</span> <span class="n">rhs</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">my_rep</span> <span class="n">rhs</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">my_rep</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">value_</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">value_</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">my_rep</span> <span class="n">rhs</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">my_rep</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">value_</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">value_</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
 </div>
-<div class="section" id="additional-requirements">
-<h2>Additional requirements<a class="headerlink" href="#additional-requirements" title="Permalink to this headline">¶</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The requirements described in the chapter are optional in a meaning that if someone does
-not plan to use a specific quantity’s operation his/her custom representation type can
-ignore (not implement/satisfy) the requirements for it.</p>
+<p>Now we can put <code class="docutils literal notranslate"><span class="pre">my_rep</span></code> as the last parameter of the <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template and the following
+code will work just fine:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">my_rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2&#39;000</span><span class="p">)</span> <span class="o">==</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">my_rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="construction-of-quantities-with-custom-representation-types">
-<h2>Construction of Quantities with Custom Representation Types<a class="headerlink" href="#construction-of-quantities-with-custom-representation-types" title="Permalink to this headline">¶</a></h2>
-<p>Let’s assume two types:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="k">class</span> <span class="nc">impl</span> <span class="p">{</span>
-  <span class="n">T</span> <span class="n">value_</span><span class="p">{};</span>
+<h3>Construction of Quantities with Custom Representation Types<a class="headerlink" href="#construction-of-quantities-with-custom-representation-types" title="Permalink to this headline">¶</a></h3>
+<p>Assuming that our custom representation type is constructible from a fundamental integral type,
+let’s assume two types:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">impl</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">value_</span><span class="p">{};</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">impl</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-<span class="hll">  <span class="k">constexpr</span> <span class="nf">impl</span><span class="p">(</span><span class="n">T</span> <span class="n">v</span><span class="p">)</span><span class="o">:</span> <span class="n">value_</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{}</span>
+<span class="hll">  <span class="k">constexpr</span> <span class="nf">impl</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span><span class="o">:</span> <span class="n">value_</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{}</span>
 </span>  <span class="c1">// the rest of the representation type implementation</span>
 <span class="p">};</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">expl</span> <span class="p">{</span>
-  <span class="n">T</span> <span class="n">value_</span><span class="p">{};</span>
+  <span class="kt">int</span> <span class="n">value_</span><span class="p">{};</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">expl</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-<span class="hll">  <span class="k">constexpr</span> <span class="k">explicit</span> <span class="nf">expl</span><span class="p">(</span><span class="n">T</span> <span class="n">v</span><span class="p">)</span><span class="o">:</span> <span class="n">value_</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{}</span>
+<span class="hll">  <span class="k">constexpr</span> <span class="k">explicit</span> <span class="nf">expl</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span><span class="o">:</span> <span class="n">value_</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{}</span>
 </span>  <span class="c1">// the rest of the representation type implementation</span>
 <span class="p">};</span>
 </pre></div>
 </div>
 <p>The difference between the above types is that <code class="docutils literal notranslate"><span class="pre">impl</span></code> class is implicitly constructible
-from values of type <code class="docutils literal notranslate"><span class="pre">T</span></code> while <code class="docutils literal notranslate"><span class="pre">expl</span></code> is not. To create quantities using those types as
+from values of type <code class="docutils literal notranslate"><span class="pre">int</span></code> while <code class="docutils literal notranslate"><span class="pre">expl</span></code> is not. To create quantities using those as their
 representation types we have to obey similar rules:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">impl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d1</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>         <span class="c1">// OK</span>
-<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d2</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>         <span class="c1">// Compile-time error</span>
-<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d3</span><span class="p">(</span><span class="n">expl</span><span class="p">(</span><span class="mi">123</span><span class="p">));</span>   <span class="c1">// OK</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">impl</span><span class="o">&gt;</span> <span class="n">d1</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>         <span class="c1">// OK</span>
+<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&gt;</span> <span class="n">d2</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>         <span class="c1">// Compile-time error</span>
+<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&gt;</span> <span class="n">d3</span><span class="p">(</span><span class="n">expl</span><span class="p">(</span><span class="mi">123</span><span class="p">));</span>   <span class="c1">// OK</span>
 </pre></div>
 </div>
 <p>This also applies when we want to create a quantity with a custom representation type
 from a regular quantity value:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">123</span><span class="n">q_m</span><span class="p">;</span>
-<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">impl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d1</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>                           <span class="c1">// OK</span>
-<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d2</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>                           <span class="c1">// Compile-time error</span>
-<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d3</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">expl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">));</span> <span class="c1">// OK</span>
+<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">impl</span><span class="o">&gt;</span> <span class="n">d1</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>                      <span class="c1">// OK</span>
+<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&gt;</span> <span class="n">d2</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>                      <span class="c1">// Compile-time error</span>
+<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">expl</span><span class="o">&gt;</span> <span class="n">d3</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">expl</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">));</span> <span class="c1">// OK</span>
 </pre></div>
+</div>
+<p>The only difference here is that in this case we have to explicitly cast the <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> with
+<a class="reference internal" href="../reference/functions.html#_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE" title="units::quantity_cast"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast()</span></code></a> overload that scopes only on changing the representation type.</p>
+</div>
+</div>
+<div class="section" id="additional-requirements">
+<h2>Additional Requirements<a class="headerlink" href="#additional-requirements" title="Permalink to this headline">¶</a></h2>
+<p>As noted in the previous chapter, the <a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units6ScalarE" title="units::Scalar"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Scalar</span></code></a> concept guarantees us the possibility to
+construct quantities, convert between the units of the same dimension, and compare them
+for equality. To provide additional <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> operations the custom representation type
+have to satisfy more requirements.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The requirements described in this chapter are optional in a meaning that if someone does
+not plan to use a specific quantity’s operation his/her custom representation type can
+ignore (not implement/satisfy) the requirements for it.</p>
+</div>
+<div class="section" id="relational-quantity-operators">
+<h3>Relational Quantity Operators<a class="headerlink" href="#relational-quantity-operators" title="Permalink to this headline">¶</a></h3>
+<p>In case we want to to compare the values of <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> type not only for equality but
+also for ordering, we have to provide a corresponding operators to our <code class="docutils literal notranslate"><span class="pre">my_rep</span></code> class.
+With C++20 it is really easy to do:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">my_rep</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;=&gt;</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">my_rep</span> <span class="n">rhs</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>With the above the following code will compile fine:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">my_rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2&#39;000</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">my_rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arithmetic-quantity-operators">
+<h3>Arithmetic Quantity Operators<a class="headerlink" href="#arithmetic-quantity-operators" title="Permalink to this headline">¶</a></h3>
+<p>In case we plan to perform arithmetic operations on our <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> type we have to provide
+at least the following:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">my_rep</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">my_rep</span> <span class="n">rhs</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">my_rep</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">value_</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">value_</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">my_rep</span> <span class="n">rhs</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">my_rep</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">value_</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">.</span><span class="n">value_</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Thanks to it the following code will run as expected:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">my_rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2&#39;000</span><span class="p">)</span> <span class="o">+</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">my_rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span>
+              <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">my_rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Of course, the above operators are the smallest possible set to provide support for basic
+arithmetic operations. In case the user wants to use faster or more sofisticated operators
+the following ones can be provided:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">my_rep</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">+</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">-</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="k">constexpr</span> <span class="n">my_rep</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">++</span><span class="p">();</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">--</span><span class="p">();</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">--</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">q</span><span class="p">);</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">q</span><span class="p">);</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">*=</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">rhs</span><span class="p">);</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">/=</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">rhs</span><span class="p">);</span>
+  <span class="k">constexpr</span> <span class="n">my_rep</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">%=</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">rhs</span><span class="p">);</span>
+
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="n">my_rep</span> <span class="k">operator</span><span class="o">%</span><span class="p">(</span><span class="n">my_rep</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">my_rep</span> <span class="n">rhs</span><span class="p">);</span>
+
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Each of the above operators will enable a respective operator in the <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a>
+type.</p>
+</div>
+</div>
+<div class="section" id="customization-points">
+<h2>Customization Points<a class="headerlink" href="#customization-points" title="Permalink to this headline">¶</a></h2>
+<p>Up to now we were enabling new functionalities by adding new operations to the custom representation
+type. However, we can also enable more operations and customize the engine behavior through a few
+customization points.</p>
+<div class="section" id="quantity-value">
+<h3><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_value</span></code><a class="headerlink" href="#quantity-value" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template has a few static member functions: <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::zero</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::one</span></code>,
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::min</span></code>, and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::max</span></code>. Those return the respective quantity values for a specific
+representation type. The default implementation is provided through the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_values</span></code> class
+template:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">Scalar</span> <span class="n">Rep</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">quantity_values</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="n">Rep</span> <span class="n">zero</span><span class="p">()</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Rep</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="n">Rep</span> <span class="n">one</span><span class="p">()</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Rep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="n">Rep</span> <span class="n">min</span><span class="p">()</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">Rep</span><span class="o">&gt;::</span><span class="n">lowest</span><span class="p">();</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="n">Rep</span> <span class="n">max</span><span class="p">()</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">Rep</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The user can provide an explicit/partial class template specialization for his/her custom
+representation type and provide values that should be returned by the respective <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a>
+operations.</p>
+</div>
+<div class="section" id="treat-as-floating-point">
+<h3><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">treat_as_floating_point</span></code><a class="headerlink" href="#treat-as-floating-point" title="Permalink to this headline">¶</a></h3>
+<p>In the <a class="reference internal" href="../framework/conversions_and_casting.html#conversions-and-casting"><span class="std std-ref">Conversions and Casting</span></a> chapter we learned that the conversions provided by the
+library’s framework treat floating-point representation types differently than the integral
+ones. This behavior can also be extended to the custom representation types with
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">treat_as_floating_point</span></code> customization point which default definition is:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">Scalar</span> <span class="n">Rep</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">treat_as_floating_point</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_floating_point_v</span><span class="o">&lt;</span><span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If our representation type should have a floating-point semantics or if it is a class
+template, in which case we may not know exactly what is the final representation type,
+we can specialize this variable template as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">custom</span> <span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">my_rep</span> <span class="p">{</span>
+  <span class="n">T</span> <span class="n">value_</span><span class="p">{};</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="p">}</span>  <span class="c1">// namespace custom</span>
+
+<span class="k">namespace</span> <span class="n">units</span> <span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">treat_as_floating_point</span><span class="o">&lt;</span><span class="n">custom</span><span class="o">::</span><span class="n">my_rep</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_floating_point_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="p">}</span>  <span class="c1">// namespace units</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Please remember that by the C++ language rules all template specializations have to be put
+always in the same namespace as the primary template definition.</p>
+</div>
 </div>
 </div>
 <div class="section" id="conversions-of-quantities-with-custom-representation-types">
 <h2>Conversions of Quantities with Custom Representation Types<a class="headerlink" href="#conversions-of-quantities-with-custom-representation-types" title="Permalink to this headline">¶</a></h2>
 <p>In case we want to mix quantities of our Custom Representation Type with the quantities using
-fundamental arithmetic types as their representation we have to provide conversion operators.</p>
-<p>Again let’s assume two types but this time let’s scope on conversion operators rather
+fundamental arithmetic types as their representation we have to provide conversion operators
+in our representation type.</p>
+<p>Again let’s assume two types, but this time let’s scope on conversion operators rather
 than on constructors:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">impl</span> <span class="p">{</span>
@@ -294,7 +470,7 @@ than on constructors:</p>
 <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">d3</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="n">v_expl</span><span class="p">);</span>  <span class="c1">// OK</span>
 </pre></div>
 </div>
-<p>Similarly, when we have quantities of above types we can create quantities of other
+<p>Similarly, when we have quantities of the above types we can create quantities of other
 representation types with:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">impl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d_impl</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">impl</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">d_expl</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -303,18 +479,10 @@ representation types with:</p>
 <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">d3</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d_expl</span><span class="p">));</span>  <span class="c1">// OK</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="tricky-cases">
-<h2>Tricky cases<a class="headerlink" href="#tricky-cases" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="customization-points">
-<h2>Customization points<a class="headerlink" href="#customization-points" title="Permalink to this headline">¶</a></h2>
-<p>treat_as_floating_point</p>
-<p>quantity_value</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>For more examples of custom representation types usage please refer to <a class="reference internal" href="../examples/measurement.html#measurement"><span class="std std-ref">measurement</span></a>
-example.</p>
+<p>For more examples of custom representation types usage please refer to the
+<a class="reference internal" href="linear_algebra.html#linear-algebra-of-quantities"><span class="std std-ref">Linear Algebra of Quantities</span></a> chapter and <a class="reference internal" href="../examples/measurement.html#measurement"><span class="std std-ref">measurement</span></a> example.</p>
 </div>
 </div>
 </div>
