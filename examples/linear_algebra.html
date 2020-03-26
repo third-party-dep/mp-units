@@ -370,7 +370,161 @@
 178
 179
 180
-181</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/velocity.h&gt;</span><span class="cp"></span>
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/velocity.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/force.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/energy.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
@@ -408,13 +562,20 @@
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">vector</span> <span class="o">=</span> <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">Rep</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">matrix</span> <span class="o">=</span> <span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">Rep</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span>
+
+
 <span class="kt">void</span> <span class="nf">vector_of_quantity_add</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">vector_of_quantity_add:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">};</span>
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_km</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_km</span> <span class="p">};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -422,15 +583,15 @@
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + t = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;fs_vector&lt;si::length&lt;si::metre&gt;, 3&gt;(t) = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;vector&lt;si::length&lt;si::metre&gt;&gt;(t) = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">vector_of_quantity_multiply_same</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">vector_of_quantity_multiply_same:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">};</span>
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -443,8 +604,8 @@
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">vector_of_quantity_multiply_different:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">force</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">newton</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_N</span> <span class="p">};</span>
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">force</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">newton</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_N</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -458,7 +619,7 @@
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">vector_of_quantity_divide_by_scalar:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">12</span><span class="n">q_m</span> <span class="p">};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">12</span><span class="n">q_m</span> <span class="p">};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -479,9 +640,9 @@
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">matrix_of_quantity_add:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">9</span><span class="n">q_m</span> <span class="p">}};</span>
-  <span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">}};</span>
-  <span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">millimetre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">3</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_mm</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_mm</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_mm</span> <span class="p">}};</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">9</span><span class="n">q_m</span> <span class="p">}};</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">}};</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">millimetre</span><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">3</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_mm</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_mm</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_mm</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_mm</span> <span class="p">}};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -491,15 +652,15 @@
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + t =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
   <span class="c1">// TODO Uncomment when fixed in the LA lib</span>
-  <span class="c1">// std::cout &lt;&lt; &quot;fs_matrix&lt;si::length&lt;si::millimetre&gt;, 3, 3&gt;(v) =\n&quot; &lt;&lt; fs_matrix&lt;si::length&lt;si::millimetre&gt;, 3, 3&gt;(v) &lt;&lt; &quot;\n&quot;;</span>
+  <span class="c1">// std::cout &lt;&lt; &quot;matrix&lt;si::length&lt;si::millimetre&gt;&gt;(v) =\n&quot; &lt;&lt; matrix&lt;si::length&lt;si::millimetre&gt;&gt;(v) &lt;&lt; &quot;\n&quot;;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">matrix_of_quantity_multiply_same</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">matrix_of_quantity_multiply_same:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   
-  <span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">9</span><span class="n">q_m</span> <span class="p">}};</span>
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">9</span><span class="n">q_m</span> <span class="p">}};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -512,8 +673,8 @@
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">matrix_of_quantity_multiply_different:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">force</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">newton</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_N</span> <span class="p">};</span>
-  <span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">9</span><span class="n">q_m</span> <span class="p">}};</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">force</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">newton</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_N</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_N</span> <span class="p">};</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">9</span><span class="n">q_m</span> <span class="p">}};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -527,7 +688,7 @@
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">matrix_of_quantity_divide_by_scalar:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span> <span class="p">}};</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">6</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">8</span><span class="n">q_m</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">8</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">4</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span> <span class="p">}};</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v =</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -544,12 +705,159 @@
   <span class="n">matrix_of_quantity_divide_by_scalar</span><span class="p">();</span>
 <span class="p">}</span>
 
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">length_v</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Rep</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">newton</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">force_v</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">force</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Rep</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">quantity_of_vector_add</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">quantity_of_vector_add:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="n">length_v</span><span class="o">&lt;&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">});</span>
+  <span class="n">length_v</span><span class="o">&lt;&gt;</span> <span class="n">u</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">});</span>
+  <span class="n">length_v</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">});</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + t = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;quantity_cast&lt;si::metre&gt;(t) = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">quantity_of_vector_multiply_same</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">quantity_of_vector_multiply_same:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="n">length_v</span><span class="o">&lt;&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">});</span>
+  <span class="n">length_v</span><span class="o">&lt;&gt;</span> <span class="n">u</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">});</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v * u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">*</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2q_m * v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="n">q_m</span> <span class="o">*</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">quantity_of_vector_multiply_different</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">quantity_of_vector_multiply_different:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="n">force_v</span><span class="o">&lt;&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">});</span>
+  <span class="n">length_v</span><span class="o">&lt;&gt;</span> <span class="n">u</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">});</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v * u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">*</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2q_N * u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="n">q_N</span> <span class="o">*</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2 * u = &quot;</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">quantity_of_vector_divide_by_scalar</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">quantity_of_vector_divide_by_scalar:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="n">length_v</span><span class="o">&lt;&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;&gt;</span><span class="p">{</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span> <span class="p">});</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="c1">// TODO Uncomment when bug in the LA is fixed</span>
+  <span class="c1">// std::cout &lt;&lt; &quot;v / 2q_s = &quot; &lt;&lt; v / 2q_s &lt;&lt; &quot;\n&quot;;</span>
+  <span class="c1">// std::cout &lt;&lt; &quot;v / 2 = &quot; &lt;&lt; v / 2 &lt;&lt; &quot;\n&quot;;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">quantity_of_vector_tests</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">quantity_of_vector_add</span><span class="p">();</span>
+  <span class="n">quantity_of_vector_multiply_same</span><span class="p">();</span>
+  <span class="n">quantity_of_vector_multiply_different</span><span class="p">();</span>
+  <span class="n">quantity_of_vector_divide_by_scalar</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// template&lt;Unit U = si::metre, Scalar Rep = double&gt;</span>
+<span class="c1">// using length_m = si::length&lt;U, matrix&lt;Rep&gt;&gt;;</span>
+
+<span class="c1">// void quantity_of_matrix_add()</span>
+<span class="c1">// {</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;\nquantity_of_matrix_add:\n&quot;;</span>
+
+<span class="c1">//   length_m v(matrix&lt;&gt;{{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }});</span>
+<span class="c1">//   length_m u(matrix&lt;&gt;{{ 3, 2, 1 }, { 3, 2, 1 }, { 3, 2, 1 }});</span>
+<span class="c1">//   length_m&lt;si::kilometre&gt; t(matrix&lt;&gt;{{ 3, 2, 1 }, { 3, 2, 1 }, { 3, 2, 1 }});</span>
+
+<span class="c1">//   std::cout &lt;&lt; &quot;v =\n&quot; &lt;&lt; v &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;u =\n&quot; &lt;&lt; u &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;t =\n&quot; &lt;&lt; t &lt;&lt; &quot;\n&quot;;</span>
+
+<span class="c1">//   std::cout &lt;&lt; &quot;v + u =\n&quot; &lt;&lt; v + u &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;v + t =\n&quot; &lt;&lt; v + t &lt;&lt; &quot;\n&quot;;</span>
+
+<span class="c1">//   // TODO Uncomment when fixed in the LA lib</span>
+<span class="c1">//   // std::cout &lt;&lt; &quot;matrix&lt;si::length&lt;si::millimetre&gt;&gt;(v) =\n&quot; &lt;&lt; matrix&lt;si::length&lt;si::millimetre&gt;&gt;(v) &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">// }</span>
+
+<span class="c1">// void quantity_of_matrix_multiply_same()</span>
+<span class="c1">// {</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;\nquantity_of_matrix_multiply_same:\n&quot;;</span>
+  
+<span class="c1">//   length_m v(matrix&lt;&gt;{{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }});</span>
+<span class="c1">//   length_v u(vector&lt;&gt;{ 3, 2, 1 });</span>
+
+<span class="c1">//   std::cout &lt;&lt; &quot;v =\n&quot; &lt;&lt; v &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;u =\n&quot; &lt;&lt; u &lt;&lt; &quot;\n&quot;;</span>
+
+<span class="c1">//   std::cout &lt;&lt; &quot;v * u =\n&quot; &lt;&lt; v * u &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;2q_m * u =\n&quot; &lt;&lt; 2q_m * u &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">// }</span>
+
+<span class="c1">// void quantity_of_matrix_multiply_different()</span>
+<span class="c1">// {</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;\nquantity_of_matrix_multiply_different:\n&quot;;</span>
+
+<span class="c1">//   force_v v(vector&lt;&gt;{ 1, 2, 3 });</span>
+<span class="c1">//   length_m u(matrix&lt;&gt;{{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }});</span>
+
+<span class="c1">//   std::cout &lt;&lt; &quot;v =\n&quot; &lt;&lt; v &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;u =\n&quot; &lt;&lt; u &lt;&lt; &quot;\n&quot;;</span>
+
+<span class="c1">//   std::cout &lt;&lt; &quot;v * u =\n&quot; &lt;&lt; v * u &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;2q_N * u =\n&quot; &lt;&lt; 2q_N * u &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;2 * u =\n&quot; &lt;&lt; 2 * u &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">// }</span>
+
+<span class="c1">// void quantity_of_matrix_divide_by_scalar()</span>
+<span class="c1">// {</span>
+<span class="c1">//   std::cout &lt;&lt; &quot;\nquantity_of_matrix_divide_by_scalar:\n&quot;;</span>
+
+<span class="c1">//   length_m v(matrix&lt;&gt;{{ 2, 4, 6 }, { 4, 6, 8 }, { 8, 4, 2 }});</span>
+
+<span class="c1">//   std::cout &lt;&lt; &quot;v =\n&quot; &lt;&lt; v &lt;&lt; &quot;\n&quot;;</span>
+
+<span class="c1">//   // TODO Uncomment when bug in the LA is fixed</span>
+<span class="c1">//   // std::cout &lt;&lt; &quot;v / 2q_s =\n&quot; &lt;&lt; v / 2q_s &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">//   // std::cout &lt;&lt; &quot;v / 2 =\n&quot; &lt;&lt; v / 2 &lt;&lt; &quot;\n&quot;;</span>
+<span class="c1">// }</span>
+
+<span class="c1">// void quantity_of_matrix_tests()</span>
+<span class="c1">// {</span>
+<span class="c1">//   quantity_of_matrix_add();</span>
+<span class="c1">//   quantity_of_matrix_multiply_same();</span>
+<span class="c1">//   quantity_of_matrix_multiply_different();</span>
+<span class="c1">//   quantity_of_matrix_divide_by_scalar();</span>
+<span class="c1">// }</span>
+
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="n">vector_of_quantity_tests</span><span class="p">();</span>
   <span class="n">matrix_of_quantity_tests</span><span class="p">();</span>
+  <span class="n">quantity_of_vector_tests</span><span class="p">();</span>
+  <span class="c1">// quantity_of_matrix_tests();</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
