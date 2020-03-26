@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linear Algebra of Quantities &mdash; mp-units 0.5.0 documentation</title>
+  <title>Linear Algebra vs. Quantities &mdash; mp-units 0.5.0 documentation</title>
   
 
   
@@ -99,7 +99,11 @@
 <li class="toctree-l2"><a class="reference internal" href="unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="legacy_interfaces.html">Working with Legacy Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_representation_types.html">Using Custom Representation Types</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Linear Algebra of Quantities</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linear Algebra vs. Quantities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linear-algebra-of-quantities">Linear Algebra of Quantities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quantities-of-linear-algebra-types">Quantities of Linear Algebra Types</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="extensions.html">Extending the Library</a></li>
 </ul>
 </li>
@@ -168,7 +172,7 @@
         
           <li><a href="../use_cases.html">Use Cases</a> &raquo;</li>
         
-      <li>Linear Algebra of Quantities</li>
+      <li>Linear Algebra vs. Quantities</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,8 +191,83 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="linear-algebra-of-quantities">
-<h1>Linear Algebra of Quantities<a class="headerlink" href="#linear-algebra-of-quantities" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="linear-algebra-vs-quantities">
+<h1>Linear Algebra vs. Quantities<a class="headerlink" href="#linear-algebra-vs-quantities" title="Permalink to this headline">¶</a></h1>
+<p>Even though <strong>mp-units</strong> library does not implement any Linear Algebra types it is generic
+enough to be used with other Linear Algebra libraries existing on the market.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of the examples provided in this chapter refer to the official proposal of the
+Linear Algebra Library for the C++23 defined in <a class="reference external" href="https://wg21.link/P1385">P1385</a>
+and its latest implementation from <a class="reference external" href="https://github.com/BobSteagall/wg21">GitHub</a>
+or <a class="reference external" href="https://bintray.com/twonington/public-conan/linear_algebra%3Apublic-conan">Conan</a>.
+Also, to simplify the examples all of them assume:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="o">::</span><span class="n">experimental</span><span class="o">::</span><span class="n">math</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linear-algebra-of-quantities">
+<h2>Linear Algebra of Quantities<a class="headerlink" href="#linear-algebra-of-quantities" title="Permalink to this headline">¶</a></h2>
+<p>The official <a class="reference internal" href="../glossary.html#term-quantity"><span class="xref std std-term">quantity</span></a> definition states:</p>
+<blockquote>
+<div><p><em>A quantity as defined here is a scalar. However, a vector or a tensor, the components of
+which are quantities, is also considered to be a quantity.</em></p>
+</div></blockquote>
+<p>So the most common use case would be to create a vector or matrix of quantities:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">};</span>
+<span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
+<span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_km</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>Having such definitions we can perform full dimensional analysis operations for the operations
+allowed by the Linear Algebra rules. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + u    = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + t    = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t[m]     = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v * u    = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">*</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2q_m * v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="n">q_m</span> <span class="o">*</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The above code works as expected and produces the following output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>v + u    = |       4 m       4 m       4 m |
+v + t    = |    3001 m    2002 m    1003 m |
+t[m]     = |    3000 m    2000 m    1000 m |
+v * u    = 10 m²
+2q_m * v = |     2 m²     4 m²     6 m² |
+</pre></div>
+</div>
+</div>
+<div class="section" id="quantities-of-linear-algebra-types">
+<h2>Quantities of Linear Algebra Types<a class="headerlink" href="#quantities-of-linear-algebra-types" title="Permalink to this headline">¶</a></h2>
+<p>The previous chapter should address most of the Linear Algebra related requirements.
+However, it is also possible to use Linear Algebra entities as custom representation
+types provided to a <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More information on providing custom representation types for <a class="reference internal" href="../reference/types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> can be
+found in the <a class="reference internal" href="custom_representation_types.html#using-custom-representation-types"><span class="std std-ref">Using Custom Representation Types</span></a> chapter.</p>
+</div>
+<p>With this the above vector definitions can be rewritten as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">fs_vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">fs_vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">});</span>
+<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="n">fs_vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;</span> <span class="n">u</span><span class="p">(</span><span class="n">fs_vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">});</span>
+<span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">fs_vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">(</span><span class="n">fs_vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Now the same code doing basic Linear Algebra operations will provide the following
+output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>v + u    = |         4         4         4 | m
+v + t    = |      3001      2002      1003 | m
+t[m]     = |      3000      2000      1000 | m
+v * u    = 10 m²
+2q_m * v = |         2         4         6 | m²
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more examples of Linear Algebra definition and operations please refer to
+the <a class="reference internal" href="../examples/linear_algebra.html#linear-algebra"><span class="std std-ref">linear_algebra</span></a> example.</p>
+</div>
+</div>
 </div>
 
 
