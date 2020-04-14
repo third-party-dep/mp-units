@@ -219,7 +219,7 @@ in terms of <a class="reference internal" href="../glossary.html#term-derived-un
 <h2>Base Units<a class="headerlink" href="#base-units" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">Base units</span></a> are the units of
 <a class="reference internal" href="../glossary.html#term-base-quantity"><span class="xref std std-term">base quantities</span></a> defined for
-<a class="reference internal" href="../glossary.html#term-base-dimension"><span class="xref std std-term">base dimensions</span></a>. For example in <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a>
+<a class="reference internal" href="../glossary.html#term-base-dimension"><span class="xref std std-term">base dimensions</span></a>. For example in <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a>
 <code class="docutils literal notranslate"><span class="pre">m</span></code> (meter) is a base unit of length, <code class="docutils literal notranslate"><span class="pre">s</span></code> (second) is a base unit of
 time. In each <a class="reference internal" href="../glossary.html#term-coherent-system-of-units"><span class="xref std std-term">coherent system of units</span></a>, there is only one base
 unit for each base quantity. This is why a base unit type is required by
@@ -259,7 +259,7 @@ in many places in this library to provide <a class="reference internal" href="..
 Hopefully if <a class="reference internal" href="#p0847" id="id1"><span>[P0847]</span></a> will land in C++23 the additional CRTP-related
 template parameter will be removed from this definition.</p>
 </div>
-<p>It is important to notice here that <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a> is not the only system used
+<p>It is important to notice here that <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> is not the only system used
 in the industry and the library has to support other systems too. Also
 in some cases conversions between such systems should be allowed. The
 fact that the <a class="reference internal" href="../reference/types.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code></a> takes the base unit in its definition makes
@@ -386,8 +386,8 @@ base/coherent unit (like <code class="xref cpp cpp-any docutils literal notransl
 <div class="section" id="prefixed-unit">
 <h3>Prefixed Unit<a class="headerlink" href="#prefixed-unit" title="Permalink to this headline">¶</a></h3>
 <p>Prefixed units are just scaled units with a standardized ratio. For example
-<a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a> defines prefixes based on the exponent of <code class="docutils literal notranslate"><span class="pre">10</span></code>. Here is a
-complete list of all the <a class="reference internal" href="../glossary.html#term-si"><span class="xref std std-term">SI</span></a> prefixes supported by the library:</p>
+<a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> defines prefixes based on the exponent of <code class="docutils literal notranslate"><span class="pre">10</span></code>. Here is a
+complete list of all the <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> prefixes supported by the library:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
