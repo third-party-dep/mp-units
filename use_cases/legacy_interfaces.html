@@ -204,18 +204,18 @@ pass it to the library’s output:</p>
 </div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;legacy.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/velocity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
 
-<span class="k">constexpr</span> <span class="n">Velocity</span> <span class="k">auto</span> <span class="nf">avg_speed</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d</span><span class="p">,</span> <span class="n">Time</span> <span class="k">auto</span> <span class="n">t</span><span class="p">)</span>
+<span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="nf">avg_speed</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d</span><span class="p">,</span> <span class="n">Time</span> <span class="k">auto</span> <span class="n">t</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">print_eta</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d</span><span class="p">,</span> <span class="n">Time</span> <span class="k">auto</span> <span class="n">t</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">Velocity</span> <span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
   <span class="n">legacy</span><span class="o">::</span><span class="n">print_eta</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -223,7 +223,7 @@ pass it to the library’s output:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>When dealing with a quantity of an unknown <code class="docutils literal notranslate"><span class="pre">auto</span></code> type please remember
-to always use <a class="reference internal" href="../reference/functions.html#_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE" title="units::quantity_cast"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast()</span></code></a> to cast it to a desired unit before calling
+to always use <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> to cast it to a desired unit before calling
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::count</span></code> and passing the raw value to the legacy/unsafe interface.</p>
 </div>
 </div>

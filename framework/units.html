@@ -111,6 +111,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#deduced-units">Deduced Units</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#aliased-units">Aliased Units</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#class-hierarchy">Class Hierarchy</a></li>
 </ul>
 </li>
@@ -326,7 +327,7 @@ will result in a different unnamed unit symbol:</p>
 </pre></div>
 </div>
 <p>However, the easiest way to define momentum is just to use the
-<a class="reference internal" href="../reference/systems.html#_CPPv4I_4Unit_6ScalarEN5units2si8velocityE" title="units::si::velocity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::velocity</span></code></a> derived dimension in the recipe:</p>
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::speed</span></code> derived dimension in the recipe:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
                                         <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="hll">                                        <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_velocity</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// kg ⋅ m/s</span>
@@ -341,8 +342,8 @@ here that some of the derived unnamed units are defined in terms of other
 derived named units (i.e. surface tension quantity is measured in terms
 of <code class="docutils literal notranslate"><span class="pre">N/m</span></code>):</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_surface_tension</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_surface_tension</span><span class="p">,</span> <span class="n">newton_per_metre</span><span class="p">,</span>
-<span class="hll">                                                <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_force</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span>                                                <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// N/m</span>
+<span class="hll">                                               <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_force</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span>                                               <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// N/m</span>
 </pre></div>
 </div>
 <p>If we defined the above in terms of base units we would end up with
@@ -478,6 +479,30 @@ provided in the template parameter list after the derived dimension parameter,
 the library calculates the final ratio for this unit.</p>
 </div>
 </div>
+<div class="section" id="aliased-units">
+<h2>Aliased Units<a class="headerlink" href="#aliased-units" title="Permalink to this headline">¶</a></h2>
+<p>In order to make our life easier people tend to assign alternative/aliased names
+to some popular units. As an example we often use “tonne” instead of “megagram”,
+“litre” instead of “cubic decimetre”, or “hectare” instead of “square hectometre”.</p>
+<p>This library provides facilities to define aliased names to already defined units
+with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">alias_unit</span></code> class template:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
+
+<span class="k">struct</span> <span class="nl">litre</span> <span class="p">:</span> <span class="n">alias_unit</span><span class="o">&lt;</span><span class="n">cubic_decimetre</span><span class="p">,</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Also, it is possible to add prefixes to such aliased units with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">prefixed_alias_unit</span></code>
+class template:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
+
+<span class="k">struct</span> <span class="nl">millilitre</span> <span class="p">:</span> <span class="n">prefixed_alias_unit</span><span class="o">&lt;</span><span class="n">cubic_centimetre</span><span class="p">,</span> <span class="n">milli</span><span class="p">,</span> <span class="n">litre</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="class-hierarchy">
 <h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline">¶</a></h2>
 <p>All of the above class templates to produce unit types inherit from some instance
@@ -487,13 +512,13 @@ of a <a class="reference internal" href="../reference/types.html#_CPPv4I_9UnitRa
 and user should not instantiate it by him/her-self. However the user can sometimes
 observe this type in case an unit/dimension conversion expression will end up with an
 unknown/undefined unit type like in the below example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 
 <span class="n">Length</span> <span class="k">auto</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">100</span><span class="n">q_km_per_h</span> <span class="o">*</span> <span class="mi">10</span><span class="n">q_s</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The type of <code class="docutils literal notranslate"><span class="pre">l</span></code> above will be
-<code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="../reference/systems.html#_CPPv4N5units2siE" title="units::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="../reference/types.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><span class="pre">scaled_unit</span></a><span class="pre">&lt;</span><span class="pre">ratio</span><span class="pre">&lt;</span><span class="pre">1</span><span class="pre">,</span> <span class="pre">36</span><span class="pre">,</span> <span class="pre">1</span><span class="pre">&gt;</span><span class="pre">,</span> <a class="reference internal" href="../reference/systems.html#_CPPv4N5units2siE" title="units::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">metre</span><span class="pre">&gt;</span><span class="pre">,</span> <span class="pre">long</span> <span class="pre">double</span><span class="pre">&gt;</span></code>. This is caused
+<code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">si</span><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="../reference/types.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><span class="pre">scaled_unit</span></a><span class="pre">&lt;</span><span class="pre">ratio</span><span class="pre">&lt;</span><span class="pre">1</span><span class="pre">,</span> <span class="pre">36</span><span class="pre">,</span> <span class="pre">1</span><span class="pre">&gt;</span><span class="pre">,</span> <span class="pre">si</span><span class="pre">::</span><span class="pre">metre</span><span class="pre">&gt;</span><span class="pre">,</span> <span class="pre">long</span> <span class="pre">double</span><span class="pre">&gt;</span></code>. This is caused
 by the fact that the library does not define a unit of a length quantity that has the
 ratio <code class="docutils literal notranslate"><span class="pre">10/36</span></code> of a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::metre</span></code>. If such a unit was predefined we would see its concrete
 type here instead.</p>

@@ -313,8 +313,8 @@ hierarchy and <code class="docutils literal notranslate"><span class="pre">no_pr
 </pre></div>
 </div>
 <p>Concrete prefix derives from a <code class="docutils literal notranslate"><span class="pre">prefix</span></code> class template:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Child</span><span class="p">,</span> <span class="n">PrefixFamily</span> <span class="n">PT</span><span class="p">,</span> <span class="n">basic_fixed_string</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Ratio</span> <span class="n">R</span><span class="o">&gt;</span>
-  <span class="k">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">PT</span><span class="p">,</span> <span class="n">no_prefix</span><span class="o">&gt;</span><span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Child</span><span class="p">,</span> <span class="n">PrefixFamily</span> <span class="n">PF</span><span class="p">,</span> <span class="n">basic_fixed_string</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Ratio</span> <span class="n">R</span><span class="o">&gt;</span>
+  <span class="k">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">PF</span><span class="p">,</span> <span class="n">no_prefix</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="k">struct</span> <span class="n">prefix</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -324,7 +324,7 @@ Parameter) idiom to provide the best user experience in terms of readability of 
 errors and during debugging. It is possible thanks to the downcasting facility described later
 in the design documentation.</p>
 <p>Coming back to units, here are a few examples of unit definitions:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
 
 <span class="c1">// prefixes</span>
 <span class="k">struct</span> <span class="nl">prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
@@ -340,19 +340,19 @@ in the design documentation.</p>
 <span class="k">struct</span> <span class="nl">second</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">second</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">hour</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">hour</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">3600</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">second</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-<span class="c1">// velocity</span>
+<span class="c1">// speed</span>
 <span class="k">struct</span> <span class="nl">metre_per_second</span> <span class="p">:</span> <span class="n">unit</span><span class="o">&lt;</span><span class="n">metre_per_second</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">kilometre_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">kilometre_per_hour</span><span class="p">,</span> <span class="n">dim_velocity</span><span class="p">,</span> <span class="n">kilometre</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="p">}</span>
 
-<span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">us</span> <span class="p">{</span>
+<span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">us</span> <span class="p">{</span>
 
 <span class="c1">// length</span>
 <span class="k">struct</span> <span class="nl">yard</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">yard</span><span class="p">,</span> <span class="s">&quot;yd&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">9&#39;144</span><span class="p">,</span> <span class="mi">10&#39;000</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">mile</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">mile</span><span class="p">,</span> <span class="s">&quot;mi&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1&#39;760</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">yard</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-<span class="c1">// velocity</span>
+<span class="c1">// speed</span>
 <span class="k">struct</span> <span class="nl">mile_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">mile_per_hour</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_velocity</span><span class="p">,</span> <span class="n">mile</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="p">}</span>
@@ -391,7 +391,7 @@ dimension:</p>
 <p>Pair of symbol and unit template parameters form an unique identifier of the base dimension.
 These identifiers provide total ordering of exponents of base dimensions in a derived dimension.</p>
 <p>The SI physical units system defines 7 base dimensions:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">dim_mass</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;M&quot;</span><span class="p">,</span> <span class="n">kilogram</span><span class="o">&gt;</span> <span class="p">{};</span>
@@ -408,7 +408,7 @@ These identifiers provide total ordering of exponents of base dimensions in a de
 <p>There are two reasons why a <code class="docutils literal notranslate"><span class="pre">base_dimension</span></code> gets a unit as its template parameter. First, the
 base unit is needed for the text output of unnamed derived units. Second, there is more than
 one system of physical units. For example CGS definitions look as follows:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">cgs</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">cgs</span> <span class="p">{</span>
 
 <span class="k">using</span> <span class="n">si</span><span class="o">::</span><span class="n">centimetre</span><span class="p">;</span>
 <span class="k">using</span> <span class="n">si</span><span class="o">::</span><span class="n">gram</span><span class="p">;</span>
@@ -445,7 +445,7 @@ type that stores an ordered list of exponents of one or more base dimensions:</p
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>A derived dimension can be formed from multiple exponents (i.e. velocity is represented as
+<p>A derived dimension can be formed from multiple exponents (i.e. speed is represented as
 <code class="docutils literal notranslate"><span class="pre">exp&lt;L,</span> <span class="pre">1&gt;,</span> <span class="pre">exp&lt;T,</span> <span class="pre">-1&gt;</span></code>). It is also possible to form a derived dimension with only one exponent
 (i.e. frequency is represented as just <code class="docutils literal notranslate"><span class="pre">exp&lt;T,</span> <span class="pre">-1&gt;</span></code>).</p>
 <p>Exponents are implemented with <code class="docutils literal notranslate"><span class="pre">exp</span></code> class template that provides an information about a single
@@ -502,7 +502,7 @@ division of two <code class="docutils literal notranslate"><span class="pre">bas
 systems gives a ratio between their coherent units. Alternatively, the user would always have to
 directly define a barye in terms of pascal or vice versa.</p>
 <p>Below are a few examples of derived dimension definitions:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">dim_velocity</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_velocity</span><span class="p">,</span> <span class="n">metre_per_second</span><span class="p">,</span>
                                         <span class="n">exp</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exp</span><span class="o">&lt;</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
@@ -593,8 +593,8 @@ conversions.</p></li>
 <p>To simplify writing efficient generic code quantities of each dimension have associated:</p>
 <ol class="simple">
 <li><p>Concept (i.e. <code class="docutils literal notranslate"><span class="pre">units::Length</span></code>) that matches a length dimension of any physical systems.</p></li>
-<li><p>Per-system quantity alias (i.e. <code class="docutils literal notranslate"><span class="pre">units::si::length&lt;Unit,</span> <span class="pre">Rep&gt;</span></code> for
-<code class="docutils literal notranslate"><span class="pre">units::quantity&lt;units::si::dim_length,</span> <span class="pre">Unit,</span> <span class="pre">Rep&gt;</span></code>).</p></li>
+<li><p>Per-system quantity alias (i.e. <code class="docutils literal notranslate"><span class="pre">units::physical::si::length&lt;Unit,</span> <span class="pre">Rep&gt;</span></code> for
+<code class="docutils literal notranslate"><span class="pre">units::quantity&lt;units::physical::si::dim_length,</span> <span class="pre">Unit,</span> <span class="pre">Rep&gt;</span></code>).</p></li>
 </ol>
 <p>Also, to help instantiate quantities with compile-time known values every unit in the library
 has an associated UDL. For example:</p>
@@ -741,9 +741,9 @@ Other libraries will do it in the following way:</p>
 <p>The above solution does provide a good developer’s experience but a really poor one for the end
 user. If we will get a compilation error message containing <code class="docutils literal notranslate"><span class="pre">dim_capacitance</span></code> in most cases
 the compiler will print the following type instead of the alias:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>units::detail::derived_dimension_base&lt;units::exp&lt;units::si::dim_electric_current, 2, 1&gt;,
-units::exp&lt;units::si::dim_length, -2, 1&gt;, units::exp&lt;units::si::dim_mass, -1, 1&gt;,
-units::exp&lt;units::si::dim_time, 4, 1&gt; &gt;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>units::detail::derived_dimension_base&lt;units::exp&lt;units::physical::si::dim_electric_current, 2, 1&gt;,
+units::exp&lt;units::physical::si::dim_length, -2, 1&gt;, units::exp&lt;units::physical::si::dim_mass, -1, 1&gt;,
+units::exp&lt;units::physical::si::dim_time, 4, 1&gt; &gt;
 </pre></div>
 </div>
 <p>You can notice that even this long syntax was carefully selected to provide quite good user
@@ -848,11 +848,11 @@ predefined by the user in the downcasting facility. A typical example of such a 
 temporary results of calculations:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">::</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">123</span><span class="n">q_m</span><span class="p">;</span>
 <span class="n">units</span><span class="o">::</span><span class="n">Time</span> <span class="k">auto</span> <span class="n">t1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_s</span><span class="p">;</span>
-<span class="n">units</span><span class="o">::</span><span class="n">Velocity</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">t1</span><span class="p">);</span>
+<span class="n">units</span><span class="o">::</span><span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">t1</span><span class="p">);</span>
 
 <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">*</span> <span class="mi">50</span><span class="n">q_m</span><span class="p">;</span>  <span class="c1">// intermediate unknown dimension</span>
 
-<span class="n">units</span><span class="o">::</span><span class="n">Velocity</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">100</span><span class="n">q_m</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
+<span class="n">units</span><span class="o">::</span><span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">100</span><span class="n">q_m</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
 <span class="n">units</span><span class="o">::</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">*</span> <span class="mi">60</span><span class="n">q_s</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -870,8 +870,8 @@ it is an unknown dimension the library framework will provide an instance of:</p
 </pre></div>
 </div>
 <p>with this the error log or a debugger breakpoint involving a <code class="docutils literal notranslate"><span class="pre">temp1</span></code> type will include:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>units::quantity&lt;units::unknown_dimension&lt;units::exp&lt;units::si::dim_length, 2, 1&gt;,
-units::exp&lt;units::si::dim_time, -1, 1&gt; &gt;, units::unknown_coherent_unit, long int&gt;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>units::quantity&lt;units::unknown_dimension&lt;units::exp&lt;units::physical::si::dim_length, 2, 1&gt;,
+units::exp&lt;units::physical::si::dim_time, -1, 1&gt; &gt;, units::unknown_coherent_unit, long int&gt;
 </pre></div>
 </div>
 </div>

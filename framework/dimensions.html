@@ -199,7 +199,7 @@
 <h1>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h1>
 <p>In the previous chapter we briefly introduced the notion of a physical
 <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a>. Now it is time to learn much more about this subject.
-Length, time, velocity, area, energy are only a few examples of physical
+Length, time, speed, area, energy are only a few examples of physical
 dimensions.</p>
 <div class="section" id="operations">
 <h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
@@ -227,7 +227,7 @@ probably will always end up in a quantity of a yet another dimension:</p>
 <span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">;</span>
 <span class="n">Time</span> <span class="k">auto</span> <span class="n">dur1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">q_s</span><span class="p">;</span>
 <span class="hll"><span class="n">Area</span> <span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">*</span> <span class="n">dist2</span><span class="p">;</span>     <span class="c1">// 6 m²</span>
-</span><span class="hll"><span class="n">Velocity</span> <span class="k">auto</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">/</span> <span class="n">dur1</span><span class="p">;</span>  <span class="c1">// 1 m/s</span>
+</span><span class="hll"><span class="n">Speed</span> <span class="k">auto</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">/</span> <span class="n">dur1</span><span class="p">;</span>     <span class="c1">// 1 m/s</span>
 </span><span class="hll"><span class="n">Frequency</span> <span class="k">auto</span> <span class="n">res3</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">dur1</span><span class="p">;</span>    <span class="c1">// 5 Hz</span>
 </span></pre></div>
 </div>
@@ -272,12 +272,12 @@ obtain those back easily with:</p>
 <a class="reference internal" href="../glossary.html#term-derived-quantity"><span class="xref std std-term">derived quantities</span></a> and are derived from base
 quantities. This means that they are created by multiplying or dividing
 quantities of other dimensions.</p>
-<p>Looking at the previous code snippets the area, velocity, or frequency are
+<p>Looking at the previous code snippets the area, speed, or frequency are
 the examples of such quantities. Each derived quantity can be represented
 as a unique list of exponents of base quantities. For example:</p>
 <ul class="simple">
 <li><p>an area is a length base quantity raised to the exponent <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
-<li><p>a velocity is formed from the length base quantity with exponent <code class="docutils literal notranslate"><span class="pre">1</span></code>
+<li><p>a speed is formed from the length base quantity with exponent <code class="docutils literal notranslate"><span class="pre">1</span></code>
 and time base quantity with exponent <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p></li>
 </ul>
 <p>The above dimensions can be defined in the library with the

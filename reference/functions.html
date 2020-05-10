@@ -184,13 +184,13 @@
 </div>
 <div class="section" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE">
-<span id="_CPPv3I_8Quantity000EN5units13quantity_castERK8quantityI1D1U3RepE"></span><span id="_CPPv2I_8Quantity000EN5units13quantity_castERK8quantityI1D1U3RepE"></span><span class="target" id="namespaceunits_1aa6c00f741adb967299312a654a577e5a"></span>template&lt;<a class="reference internal" href="concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity">Quantity</a> <code class="sig-name descname">To</code>, typename <code class="sig-name descname">D</code>, typename <code class="sig-name descname">U</code>, typename <code class="sig-name descname">Rep</code>&gt;<br /><em class="property">constexpr</em> auto <code class="sig-prename descclassname">units<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">quantity_cast</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="types.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity">quantity</a>&lt;<a class="reference internal" href="#_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE" title="units::quantity_cast::D">D</a>, <a class="reference internal" href="#_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE" title="units::quantity_cast::U">U</a>, <a class="reference internal" href="#_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE" title="units::quantity_cast::Rep">Rep</a>&gt; &amp;<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_8Quantity000EN5units13quantity_castEDaRK8quantityI1D1U3RepE" title="Permalink to this definition">¶</a><br /></dt>
+<dl class="cpp function">
+<dt>
+<span class="target" id="namespaceunits_1aa6c00f741adb967299312a654a577e5a"></span><code class="sig-name descname">template&lt;Quantity To, typename D, typename U, typename Rep&gt; constexpr auto units::quantity_cast (const quantity&lt; D, U, Rep &gt; &amp;q) requires QuantityOf&lt; To</code></dt>
 <dd><p>Explcit cast of a quantity. </p>
 <p>Implicit conversions between quantities of different types are allowed only for “safe” (i.e. non-truncating) conversion. In such cases an explicit cast have to be used.</p>
 <p>This cast gets the target quantity type to cast to. For example:</p>
-<p>auto q1 = <a class="reference internal" href="#namespaceunits_1aa6c00f741adb967299312a654a577e5a"><span class="std std-ref">units::quantity_cast</span></a>&lt;<a class="reference internal" href="systems.html#namespaceunits_1_1si_1a63d9bdf12a3f560d73212791ae330de6"><span class="std std-ref">units::si::time&lt;units::si::second&gt;</span></a>&gt;(1q_ms);</p>
+<p>auto q1 = <a class="reference internal" href="#namespaceunits_1aa6c00f741adb967299312a654a577e5a"><span class="std std-ref">units::quantity_cast</span></a>&lt;<a class="reference internal" href="systems.html#namespaceunits_1_1physical_1_1si_1a86ff4b46eedd5d0bef7d950b762d957b"><span class="std std-ref">units::physical::si::time&lt;units::physical::si::second&gt;</span></a>&gt;(1q_ms);</p>
 <p><p>Implicit conversions between quantities of different types are allowed only for “safe” (i.e. non-truncating) conversion. In such cases an explicit cast have to be used.</p>
 <dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -200,7 +200,7 @@
 </dl>
 </p>
 <p>This cast gets only the target dimension to cast to. For example:</p>
-<p>auto q1 = units::quantity_cast&lt;units::si::acceleration&gt;(200q_Gal);</p>
+<p>auto q1 = units::quantity_cast&lt;units::physical::si::acceleration&gt;(200q_Gal);</p>
 <p><p>Implicit conversions between quantities of different types are allowed only for “safe” (i.e. non-truncating) conversion. In such cases an explicit cast have to be used.</p>
 <dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -210,7 +210,7 @@
 </dl>
 </p>
 <p>This cast gets only the target unit to cast to. For example:</p>
-<p>auto q1 = units::quantity_cast&lt;units::si::second&gt;(1q_ms);</p>
+<p>auto q1 = units::quantity_cast&lt;units::physical::si::second&gt;(1q_ms);</p>
 <p><p>Implicit conversions between quantities of different types are allowed only for “safe” (i.e. non-truncating) conversion. In such cases an explicit cast have to be used.</p>
 <dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -233,7 +233,7 @@
 </div>
 <div class="section" id="metafunctions">
 <h1>Metafunctions<a class="headerlink" href="#metafunctions" title="Permalink to this headline">¶</a></h1>
-<dl class="type">
+<dl class="cpp type">
 <dt id="_CPPv4I_9DimensionEN5units14dimension_unitE">
 <span id="_CPPv3I_9DimensionEN5units14dimension_unitE"></span><span id="_CPPv2I_9DimensionEN5units14dimension_unitE"></span>template&lt;<a class="reference internal" href="concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension">Dimension</a> <code class="sig-name descname">D</code>&gt;<br /><span class="target" id="namespaceunits_1a1ffb3e641e6f0c438800b355f5d739fe"></span><em class="property">using </em><code class="sig-prename descclassname">units<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">dimension_unit</code> = detail::dimension_unit_impl&lt;<a class="reference internal" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit::D">D</a>&gt;::type<a class="headerlink" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>

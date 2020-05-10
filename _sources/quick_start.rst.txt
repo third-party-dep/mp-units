@@ -20,7 +20,7 @@ Here is a small example of possible operations::
 
 .. admonition:: Try it on Compiler Explorer
 
-    `Example #1 <https://godbolt.org/z/BZjWbD>`_
+    `Example #1 <https://godbolt.org/z/_TS2ey>`_
 
 This library requires some C++20 features (concepts, classes as
 :abbr:`NTTP (Non-Type Template Parameter)`, ...). Thanks to them the user gets a powerful
@@ -28,24 +28,24 @@ but still easy to use interface where all unit conversions and dimensional analy
 performed without sacrificing on accuracy. Please see the below example for a quick preview
 of basic library features::
 
-    #include <units/physical/si/velocity.h>
-    #include <units/physical/international/velocity.h>
+    #include <units/physical/si/speed.h>
+    #include <units/physical/international/speed.h>
     #include <iostream>
 
-    using namespace units;
+    using namespace units::physical;
 
-    constexpr Velocity auto avg_speed(Length auto d, Time auto t)
+    constexpr Speed auto avg_speed(Length auto d, Time auto t)
     {
       return d / t;
     }
 
     int main()
     {
-      using namespace si::literals;
-      Velocity auto v1 = avg_speed(220q_km, 2q_h);
-      Velocity auto v2 = avg_speed(si::length<international::mile>(140), si::time<si::hour>(2));
-      Velocity auto v3 = quantity_cast<si::metre_per_second>(v2);
-      Velocity auto v4 = quantity_cast<int>(v3);
+      using namespace units::physical::si::literals;
+      Speed auto v1 = avg_speed(220q_km, 2q_h);
+      Speed auto v2 = avg_speed(si::length<international::mile>(140), si::time<si::hour>(2));
+      Speed auto v3 = quantity_cast<si::metre_per_second>(v2);
+      Speed auto v4 = quantity_cast<int>(v3);
 
       std::cout << v1 << '\n';    // 110 km/h
       std::cout << v2 << '\n';    // 70 mi/h
@@ -55,7 +55,7 @@ of basic library features::
 
 .. admonition:: Try it on Compiler Explorer
 
-    `Example #2 <https://godbolt.org/z/_Yx6D7>`_
+    `Example #2 <https://godbolt.org/z/LfxpkL>`_
 
 .. seealso::
 

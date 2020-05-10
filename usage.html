@@ -399,11 +399,11 @@ conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o
 <h3>Full <strong>mp-units</strong> Build, Unit Testing, and Documentation Generation<a class="headerlink" href="#full-mp-units-build-unit-testing-and-documentation-generation" title="Permalink to this headline">¶</a></h3>
 <p>In case you would like to build all the source code (with unit tests and examples) and documentation
 in <strong>mp-units</strong> repository, you should use the <em>CMakeLists.txt</em> from the top-level directory,
-obtain Python dependencies, and run Conan with <span class="target" id="index-0"></span><a class="reference internal" href="#envvar-CONAN_RUN_TESTS"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">CONAN_RUN_TESTS</span></code></a> = <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+obtain Python dependencies, and run Conan with <span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">mp-units:CONAN_RUN_TESTS</span></code> = <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
 mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e <span class="nv">CONAN_RUN_TESTS</span><span class="o">=</span>True -b outdated
+conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated
 cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
 cmake --build .
 ctest
@@ -418,7 +418,7 @@ build all of the source code and documentation, and run unit tests.</p>
 <p>To test CMake installation and Conan packaging or create a Conan package run:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
-conan create . &lt;username&gt;/&lt;channel&gt; -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e <span class="nv">CONAN_RUN_TESTS</span><span class="o">=</span>True -b outdated
+conan create . &lt;username&gt;/&lt;channel&gt; -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated
 </pre></div>
 </div>
 <p>The above will create a Conan package and run tests provided in <em>./test_package</em> directory.</p>

@@ -137,7 +137,7 @@ where ``kilogram_metre_per_second`` is defined as::
     struct kilogram_metre_per_second : unit<kilogram_metre_per_second> {};
 
 However, the easiest way to define momentum is just to use the
-`si::velocity` derived dimension in the recipe:
+`si::speed` derived dimension in the recipe:
 
 .. code-block::
     :emphasize-lines: 3
@@ -161,8 +161,8 @@ of ``N/m``):
     :emphasize-lines: 2
 
     struct dim_surface_tension : derived_dimension<dim_surface_tension, newton_per_metre,
-                                                    exp<si::dim_force, 1>,
-                                                    exp<si::dim_length, -1>> {}; // N/m
+                                                   exp<si::dim_force, 1>,
+                                                   exp<si::dim_length, -1>> {}; // N/m
 
 If we defined the above in terms of base units we would end up with
 a ``kg/s²`` derived unit symbol.
@@ -308,6 +308,32 @@ provided in the template parameter list after the derived dimension parameter,
 the library calculates the final ratio for this unit.
 
 
+Aliased Units
+-------------
+
+In order to make our life easier people tend to assign alternative/aliased names
+to some popular units. As an example we often use "tonne" instead of "megagram",
+"litre" instead of "cubic decimetre", or "hectare" instead of "square hectometre".
+
+This library provides facilities to define aliased names to already defined units
+with `alias_unit` class template::
+
+    namespace si {
+
+    struct litre : alias_unit<cubic_decimetre, "l", prefix> {};
+
+    }
+
+Also, it is possible to add prefixes to such aliased units with `prefixed_alias_unit`
+class template::
+
+    namespace si {
+
+    struct millilitre : prefixed_alias_unit<cubic_centimetre, milli, litre> {};
+
+    }
+
+
 Class Hierarchy
 ---------------
 
@@ -327,13 +353,15 @@ of a `scaled_unit` class template:
     [scaled_unit<UnitRatio, Unit>]<:-[named_scaled_unit<Child, Symbol, PrefixFamily, Ratio, Unit>]
     [scaled_unit<UnitRatio, Unit>]<:-[prefixed_unit<Child, Prefix, Unit>]
     [scaled_unit<UnitRatio, Unit>]<:-[deduced_unit<Child, Dimension, Unit, Unit...>]
+    [scaled_unit<UnitRatio, Unit>]<:-[alias_unit<Unit, Symbol, PrefixFamily>]
+    [scaled_unit<UnitRatio, Unit>]<:-[prefixed_alias_unit<Unit, Prefix, AliasUnit>]
 
 `scaled_unit` is a class template used exclusively by the library's framework
 and user should not instantiate it by him/her-self. However the user can sometimes
 observe this type in case an unit/dimension conversion expression will end up with an
 unknown/undefined unit type like in the below example::
 
-    using namespace si::literals;
+    using namespace units::physical::si::literals;
 
     Length auto l = 100q_km_per_h * 10q_s;
 
