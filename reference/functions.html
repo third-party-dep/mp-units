@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Systems" href="systems.html" />
-    <link rel="prev" title="Types" href="types.html" /> 
+    <link rel="next" title="Metafunctions" href="metafunctions.html" />
+    <link rel="prev" title="basic_fixed_string" href="types/utilities/basic_fixed_string.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,8 +104,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#casting-and-converions">Casting and Converions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#math">Math</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -178,19 +183,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All names defined in this chapter reside in the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code> namespace unless specified otherwise.</p>
-</div>
-<div class="section" id="functions">
+  <div class="section" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="casting-and-converions">
+<h2>Casting and Converions<a class="headerlink" href="#casting-and-converions" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp function">
 <dt>
 <span class="target" id="namespaceunits_1aa6c00f741adb967299312a654a577e5a"></span><code class="sig-name descname">template&lt;Quantity To, typename D, typename U, typename Rep&gt; constexpr auto units::quantity_cast (const quantity&lt; D, U, Rep &gt; &amp;q) requires QuantityOf&lt; To</code></dt>
 <dd><p>Explcit cast of a quantity. </p>
 <p>Implicit conversions between quantities of different types are allowed only for “safe” (i.e. non-truncating) conversion. In such cases an explicit cast have to be used.</p>
 <p>This cast gets the target quantity type to cast to. For example:</p>
-<p>auto q1 = <a class="reference internal" href="#namespaceunits_1aa6c00f741adb967299312a654a577e5a"><span class="std std-ref">units::quantity_cast</span></a>&lt;<a class="reference internal" href="systems.html#namespaceunits_1_1physical_1_1si_1a86ff4b46eedd5d0bef7d950b762d957b"><span class="std std-ref">units::physical::si::time&lt;units::physical::si::second&gt;</span></a>&gt;(1q_ms);</p>
+<p>auto q1 = <a class="reference internal" href="#namespaceunits_1aa6c00f741adb967299312a654a577e5a"><span class="std std-ref">units::quantity_cast</span></a>&lt;<a class="reference internal" href="systems/physical/si/time.html#namespaceunits_1_1physical_1_1si_1a86ff4b46eedd5d0bef7d950b762d957b"><span class="std std-ref">units::physical::si::time&lt;units::physical::si::second&gt;</span></a>&gt;(1q_ms);</p>
 <p><p>Implicit conversions between quantities of different types are allowed only for “safe” (i.e. non-truncating) conversion. In such cases an explicit cast have to be used.</p>
 <dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -231,13 +234,49 @@
 </dd></dl>
 
 </div>
-<div class="section" id="metafunctions">
-<h1>Metafunctions<a class="headerlink" href="#metafunctions" title="Permalink to this headline">¶</a></h1>
-<dl class="cpp type">
-<dt id="_CPPv4I_9DimensionEN5units14dimension_unitE">
-<span id="_CPPv3I_9DimensionEN5units14dimension_unitE"></span><span id="_CPPv2I_9DimensionEN5units14dimension_unitE"></span>template&lt;<a class="reference internal" href="concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension">Dimension</a> <code class="sig-name descname">D</code>&gt;<br /><span class="target" id="namespaceunits_1a1ffb3e641e6f0c438800b355f5d739fe"></span><em class="property">using </em><code class="sig-prename descclassname">units<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">dimension_unit</code> = detail::dimension_unit_impl&lt;<a class="reference internal" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit::D">D</a>&gt;::type<a class="headerlink" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="Permalink to this definition">¶</a><br /></dt>
+<div class="section" id="math">
+<h2>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “units::pow” in doxygen xml output for project “mp-units” from directory: /home/conan/.conan/data/mp-units/0.5.0/mpusz/testing/build/1421870e4de0dfe98851ac189e31501e65b0d0ff/docs/doxygen/xml</p>
+</div>
+<dl class="cpp function">
+<dt>
+<span class="target" id="namespaceunits_1aa06145986e8e58f82e11b402c58b97f7"></span><code class="sig-name descname">template&lt;typename D, typename U, typename Rep&gt; Quantity AUTO units::sqrt (const quantity&lt; D, U, Rep &gt; &amp;q) noexcept requires requires</code></dt>
+<dd><p>Computes the square root of a quantity. </p>
+<p>Both the quantity value and its dimension are the base of the operation.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Quantity The result of computation </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">q</span></code>: Quantity being the base of the operation </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="namespaceunits_1a1b54c0ec7450e7fc5b3f550ef7b95081"></span><code class="sig-name descname">template&lt;typename D, typename U, typename Rep&gt; constexpr Quantity AUTO units::abs (const quantity&lt; D, U, Rep &gt; &amp;q) noexcept requires requires</code></dt>
+<dd><p>Computes the absolute value of a quantity. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Quantity The absolute value of a provided quantity </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">q</span></code>: Quantity being the base of the operation </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="namespaceunits_1a98f4112b12c866b42e03bc308e9234aa"></span><code class="sig-name descname">constexpr Quantity AUTO units::epsilon () noexcept</code></dt>
 <dd></dd></dl>
 
+</div>
 </div>
 
 
@@ -248,10 +287,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="systems.html" class="btn btn-neutral float-right" title="Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metafunctions.html" class="btn btn-neutral float-right" title="Metafunctions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="types.html" class="btn btn-neutral float-left" title="Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="types/utilities/basic_fixed_string.html" class="btn btn-neutral float-left" title="basic_fixed_string" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

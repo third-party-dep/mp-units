@@ -96,15 +96,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../use_cases.html">Use Cases</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unknown_dimensions.html">Working with Unknown Dimensions and Their Units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="legacy_interfaces.html">Working with Legacy Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_representation_types.html">Using Custom Representation Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">Linear Algebra vs. Quantities</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Extending the Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#custom-units">Custom Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-units">Custom Units</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#defining-a-new-unit">Defining a New Unit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-a-unit-for-prefixing">Enabling a Unit for Prefixing</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-dimensions">Custom Dimensions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#custom-base-dimensions">Custom Base Dimensions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#custom-derived-dimensions">Custom Derived Dimensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-base-dimensions">Custom Base Dimensions</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-systems">Custom Systems</a></li>
@@ -122,7 +126,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -199,20 +204,192 @@
             
   <div class="section" id="extending-the-library">
 <h1>Extending the Library<a class="headerlink" href="#extending-the-library" title="Permalink to this headline">¶</a></h1>
+<p>The library was designed with a simple extensibility in mind. It is easy to add new units,
+dimensions, and prefixes. The systems of units are not closed (classes) but open (namespaces)
+and can be easily extended, or its content can be partially/fully imported to other systems.</p>
 <div class="section" id="custom-units">
 <h2>Custom Units<a class="headerlink" href="#custom-units" title="Permalink to this headline">¶</a></h2>
+<p>It might happen that the user would like to use a unit that is not predefined by the library
+or is predefined but the user would like to name it differently, assign a different symbol
+to existing unit, or make it a base unit for prefixes.</p>
+<div class="section" id="defining-a-new-unit">
+<h3>Defining a New Unit<a class="headerlink" href="#defining-a-new-unit" title="Permalink to this headline">¶</a></h3>
+<p>My working desk is of <code class="docutils literal notranslate"><span class="pre">180</span> <span class="pre">cm</span> <span class="pre">x</span> <span class="pre">60</span> <span class="pre">cm</span></code> which gives an area of <code class="docutils literal notranslate"><span class="pre">0.3</span> <span class="pre">m²</span></code>. I would like to
+make it a unit of area for my project:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">desk</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">desk</span><span class="p">,</span> <span class="s">&quot;desk&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>With the above I can define a quantity with the area of <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">desks</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">desk</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In case I feel it is too verbose to type the above every time I can easily create a custom
+alias or an <abbr title="User Defined Literal">UDL</abbr>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// alias with fixed integral representation</span>
+<span class="k">using</span> <span class="n">desks</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">desk</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// UDLs</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="s">&quot;&quot;</span> <span class="n">_d</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">desk</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">l</span><span class="p">);</span> <span class="p">}</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="s">&quot;&quot;</span> <span class="n">_d</span><span class="p">(</span><span class="kt">long</span> <span class="kt">double</span> <span class="n">l</span><span class="p">)</span>        <span class="p">{</span> <span class="k">return</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">desk</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">l</span><span class="p">);</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Right now I am fully set up for my project and can start my work of tracking the area taken
+by my desks:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">desk</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">desks</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">d3</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_d</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">d3</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Area: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sum</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>  <span class="c1">// prints &#39;Area: 6 desk&#39;</span>
+</pre></div>
+</div>
+<p>In case I would like to check how much area <code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">desks</span></code> take in SI units:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">sum_si</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sum</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Area (SI): &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sum_si</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>  <span class="c1">// prints &#39;Area (SI): 1.8 m²&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enabling-a-unit-for-prefixing">
+<h3>Enabling a Unit for Prefixing<a class="headerlink" href="#enabling-a-unit-for-prefixing" title="Permalink to this headline">¶</a></h3>
+<p>In case I decide it is reasonable to express my desks with SI prefixes the only thing I have
+to change in the above code is to replace <a class="reference internal" href="../reference/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">no_prefix</span></code></a> with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si_prefix</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">desk</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">desk</span><span class="p">,</span> <span class="s">&quot;desk&quot;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>Now I can define a new unit named <code class="docutils literal notranslate"><span class="pre">kilodesk</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">kilodesk</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">kilodesk</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilo</span><span class="p">,</span> <span class="n">desk</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">3</span><span class="n">_d</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">==</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">kilodesk</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>But maybe SI prefixes are not good for me. Maybe I always pack <code class="docutils literal notranslate"><span class="pre">6</span></code> desks into one package
+for shipment and <code class="docutils literal notranslate"><span class="pre">40</span></code> such packages fit into my lorry. To express this with prefixes a new
+prefix family and prefixes are needed:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">shipping_prefix</span> <span class="p">:</span> <span class="n">prefix_family</span> <span class="p">{};</span>
+
+<span class="k">struct</span> <span class="nl">package</span> <span class="p">:</span> <span class="n">prefix</span><span class="o">&lt;</span><span class="n">package</span><span class="p">,</span> <span class="n">shipping_prefix</span><span class="p">,</span> <span class="s">&quot;pkg&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">lorry</span> <span class="p">:</span> <span class="n">prefix</span><span class="o">&lt;</span><span class="n">lorry</span><span class="p">,</span> <span class="n">shipping_prefix</span><span class="p">,</span> <span class="s">&quot;lorry&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">6</span> <span class="o">*</span> <span class="mi">40</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>Now we can use it for our unit:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">desk</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">desk</span><span class="p">,</span> <span class="s">&quot;desk&quot;</span><span class="p">,</span> <span class="n">shipping_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">packagedesk</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">packagedesk</span><span class="p">,</span> <span class="n">package</span><span class="p">,</span> <span class="n">desk</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">lorrydesk</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">lorrydesk</span><span class="p">,</span> <span class="n">lorry</span><span class="p">,</span> <span class="n">desk</span><span class="o">&gt;</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>With the above:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="mi">6</span><span class="n">_d</span> <span class="o">==</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">packagedesk</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">240</span><span class="n">_d</span> <span class="o">==</span> <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">lorrydesk</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Area: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">packagedesk</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sum</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span> <span class="c1">// prints &#39;Area: 1 pkgdesk&#39;</span>
+</pre></div>
+</div>
+<p>It is important to notice that with the definition of a custom prefix I did not loose SI
+units compatibility. If I want to calculate how much area I can cover with desks delivered
+by <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">lorries</span></code> I can do the following:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">area</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">lorrydesk</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Area: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">area</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>  <span class="c1">// prints &#39;Area: 216 m²&#39;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="custom-dimensions">
 <h2>Custom Dimensions<a class="headerlink" href="#custom-dimensions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="custom-base-dimensions">
-<h3>Custom Base Dimensions<a class="headerlink" href="#custom-base-dimensions" title="Permalink to this headline">¶</a></h3>
-</div>
+<p>There are cases were a custom unit is not enough and the user would like to define custom
+dimensions. The most common case is to define a new derived dimension from other dimensions
+already predefined in various systems. But in <strong>mp-units</strong> library it is also really easy to
+define a new base dimension for a custom units system.</p>
 <div class="section" id="custom-derived-dimensions">
 <h3>Custom Derived Dimensions<a class="headerlink" href="#custom-derived-dimensions" title="Permalink to this headline">¶</a></h3>
+<p>In case I want to track how many desks I can produce over time or what is the consumption
+rate of wood during production I need to define a new derived dimension together with its
+coherent unit:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// coherent unit must apply to the system rules (in this case SI)</span>
+<span class="k">struct</span> <span class="nl">square_metre_per_second</span> <span class="p">:</span> <span class="n">unit</span><span class="o">&lt;</span><span class="n">square_metre_per_second</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="c1">// new derived dimensions</span>
+<span class="k">struct</span> <span class="nl">dim_desk_rate</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_desk_rate</span><span class="p">,</span> <span class="n">square_metre_per_second</span><span class="p">,</span>
+                                         <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_area</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+
+<span class="c1">// our unit of interest for a new derived dimension</span>
+<span class="k">struct</span> <span class="nl">desk_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">desk_per_hour</span><span class="p">,</span> <span class="n">dim_desk_rate</span><span class="p">,</span> <span class="n">desk</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="c1">// a quantity of our dimension</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">desk_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_desk_rate</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// a concept matching the above quantity</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">concept</span> <span class="n">DeskRate</span> <span class="o">=</span> <span class="n">QuantityOf</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">dim_desk_rate</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>With the above we can now check what is the production rate:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">DeskRate</span> <span class="k">auto</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">desk_per_hour</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">3.</span><span class="n">_d</span> <span class="o">/</span> <span class="mi">20</span><span class="n">q_min</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Desk rate: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">rate</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>  <span class="c1">// prints &#39;Desk rate: 9 desk/h&#39;</span>
+</pre></div>
+</div>
+<p>and how much wood is being consumed over a unit of time:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">wood_rate</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">square_metre_per_second</span><span class="o">&gt;</span><span class="p">(</span><span class="n">rate</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Wood rate: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">wood_rate</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>  <span class="c1">// prints &#39;Wood rate: 0.00075 m²/s&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-base-dimensions">
+<h3>Custom Base Dimensions<a class="headerlink" href="#custom-base-dimensions" title="Permalink to this headline">¶</a></h3>
+<p>In case I want to monitor what is the average number of people sitting by one desk in
+a customer’s office I would need a unit called <code class="docutils literal notranslate"><span class="pre">person_per_desk</span></code> of a new derived
+dimension. However, our library does not know what a <code class="docutils literal notranslate"><span class="pre">person</span></code> is. For this I need to
+define a new base dimension, its units, quantity helper, concept, and UDLs:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">person</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">person</span><span class="p">,</span> <span class="s">&quot;person&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">dim_people</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;people&quot;</span><span class="p">,</span> <span class="n">person</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">people</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_people</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">concept</span> <span class="n">People</span> <span class="o">=</span> <span class="n">QuantityOf</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">dim_people</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="s">&quot;&quot;</span> <span class="n">_p</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">people</span><span class="o">&lt;</span><span class="n">person</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">l</span><span class="p">);</span> <span class="p">}</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="s">&quot;&quot;</span> <span class="n">_p</span><span class="p">(</span><span class="kt">long</span> <span class="kt">double</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">people</span><span class="o">&lt;</span><span class="n">person</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">l</span><span class="p">);</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>With the above we can now define a new derived dimension:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">person_per_square_metre</span> <span class="p">:</span> <span class="n">unit</span><span class="o">&lt;</span><span class="n">person_per_square_metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">dim_occupancy_rate</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_occupancy_rate</span><span class="p">,</span> <span class="n">person_per_square_metre</span><span class="p">,</span>
+                                              <span class="n">exp</span><span class="o">&lt;</span><span class="n">dim_people</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_area</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+
+<span class="k">struct</span> <span class="nl">person_per_desk</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">person_per_desk</span><span class="p">,</span> <span class="n">dim_occupancy_rate</span><span class="p">,</span> <span class="n">person</span><span class="p">,</span> <span class="n">desk</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">occupancy_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_occupancy_rate</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">concept</span> <span class="n">OccupancyRate</span> <span class="o">=</span> <span class="n">QuantityOf</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">dim_occupancy_rate</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now we can play with our new feature:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">People</span> <span class="k">auto</span> <span class="n">employees</span> <span class="o">=</span> <span class="mf">1450.</span><span class="n">_p</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">office_desks</span> <span class="o">=</span> <span class="mi">967</span><span class="n">_d</span><span class="p">;</span>
+<span class="n">OccupancyRate</span> <span class="k">auto</span> <span class="n">occupancy</span> <span class="o">=</span> <span class="n">employees</span> <span class="o">/</span> <span class="n">office_desks</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Occupancy: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">occupancy</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>  <span class="c1">// prints &#39;Occupancy: 1.49948 person/desk&#39;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="custom-systems">
 <h2>Custom Systems<a class="headerlink" href="#custom-systems" title="Permalink to this headline">¶</a></h2>
+<p>Being able to extend predefined systems is a mandatory feature of any physical
+units library. Fortunately, for <strong>mp-units</strong> there is nothing special to do here.</p>
+<p>A system is defined in terms of its base dimensions. If you are using only SI
+base dimensions then you are in the boundaries of the SI system. If you are
+adding new base dimensions, like we did in the <a class="reference internal" href="#custom-base-dimensions">Custom Base Dimensions</a>
+chapter, you are defining a new system.</p>
+<p>In <strong>mp-units</strong> library a custom system can either be constructed from
+unique/new custom base dimensions or reuse dimensions of other systems. This
+allows extending, mixing, reuse, and interoperation between different systems.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More information on extending the library can be found in the
+<a class="reference internal" href="custom_representation_types.html#using-custom-representation-types"><span class="std std-ref">Using Custom Representation Types</span></a> chapter.</p>
+</div>
 </div>
 </div>
 

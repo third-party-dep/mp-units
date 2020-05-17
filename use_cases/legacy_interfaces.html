@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using Custom Representation Types" href="custom_representation_types.html" />
-    <link rel="prev" title="Working with Unknown Units and Dimensions" href="unknown_units_and_dimensions.html" /> 
+    <link rel="prev" title="Working with Unknown Dimensions and Their Units" href="unknown_dimensions.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../use_cases.html">Use Cases</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unknown_dimensions.html">Working with Unknown Dimensions and Their Units</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Working with Legacy Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_representation_types.html">Using Custom Representation Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">Linear Algebra vs. Quantities</a></li>
@@ -113,7 +113,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -191,7 +192,7 @@
   <div class="section" id="working-with-legacy-interfaces">
 <h1>Working with Legacy Interfaces<a class="headerlink" href="#working-with-legacy-interfaces" title="Permalink to this headline">¶</a></h1>
 <p>In case we are working with a legacy/unsafe interface we may be forced to
-extract a <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity::count()</span></code> and
+extract a <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> with <a class="reference internal" href="../reference/types/quantity.html#_CPPv4NK5units8quantity5countEv" title="units::quantity::count"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity::count()</span></code></a> and
 pass it to the library’s output:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">legacy.h</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
@@ -224,7 +225,7 @@ pass it to the library’s output:</p>
 <p class="admonition-title">Important</p>
 <p>When dealing with a quantity of an unknown <code class="docutils literal notranslate"><span class="pre">auto</span></code> type please remember
 to always use <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> to cast it to a desired unit before calling
-<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::count</span></code> and passing the raw value to the legacy/unsafe interface.</p>
+<a class="reference internal" href="../reference/types/quantity.html#_CPPv4NK5units8quantity5countEv" title="units::quantity::count"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::count()</span></code></a> and passing the raw value to the legacy/unsafe interface.</p>
 </div>
 </div>
 
@@ -239,7 +240,7 @@ to always use <code class="xref cpp cpp-any docutils literal notranslate"><span 
         <a href="custom_representation_types.html" class="btn btn-neutral float-right" title="Using Custom Representation Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="unknown_units_and_dimensions.html" class="btn btn-neutral float-left" title="Working with Unknown Units and Dimensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="unknown_dimensions.html" class="btn btn-neutral float-left" title="Working with Unknown Dimensions and Their Units" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FAQ" href="../faq.html" />
+    <link rel="next" title="capacitor_time_curve" href="capacitor_time_curve.html" />
     <link rel="prev" title="measurement" href="measurement.html" /> 
 </head>
 
@@ -100,8 +100,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="hello_units.html">hello_units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avg_speed.html">avg_speed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="box_example.html">box_example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unknown_dimension.html">unknown_dimension</a></li>
 <li class="toctree-l2"><a class="reference internal" href="measurement.html">measurement</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">linear_algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="capacitor_time_curve.html">capacitor_time_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clcpp_response.html">clcpp_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversion_factor.html">conversion_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kalman_filter-alpha_beta_filter_example2.html">kalman_filter-alpha_beta_filter_example2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="total_energy.html">total_energy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
@@ -111,7 +118,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -537,7 +545,7 @@
 <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">experimental</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ET</span><span class="p">,</span> <span class="n">OT</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|&quot;</span><span class="p">;</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>  <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>  <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot; {:&gt;9}&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
   <span class="p">}</span>
   <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; |&quot;</span><span class="p">;</span>
@@ -547,9 +555,9 @@
 <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">ET</span><span class="p">,</span> <span class="k">class</span> <span class="nc">OT</span><span class="o">&gt;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">experimental</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">matrix</span><span class="o">&lt;</span><span class="n">ET</span><span class="p">,</span> <span class="n">OT</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span>  <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span>  <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|&quot;</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="n">j</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">columns</span><span class="p">();</span>  <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="n">j</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">columns</span><span class="p">();</span>  <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot; {:&gt;9}&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">));</span>
     <span class="p">}</span>
     <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">rows</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">?</span> <span class="s">&quot; |</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">:</span> <span class="s">&quot; |&quot;</span><span class="p">);</span>
@@ -872,7 +880,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="capacitor_time_curve.html" class="btn btn-neutral float-right" title="capacitor_time_curve" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="measurement.html" class="btn btn-neutral float-left" title="measurement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

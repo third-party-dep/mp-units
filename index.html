@@ -104,7 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -200,6 +201,7 @@ only with gcc-9.1 and newer.</p>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#open-source">Open Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#approach">Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#with-the-user-s-experience-in-mind">With the User’s Experience in Mind</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
@@ -223,7 +225,7 @@ only with gcc-9.1 and newer.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="use_cases.html">Use Cases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/unknown_dimensions.html">Working with Unknown Dimensions and Their Units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_cases/legacy_interfaces.html">Working with Legacy Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html">Using Custom Representation Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_cases/linear_algebra.html">Linear Algebra vs. Quantities</a></li>
@@ -234,14 +236,21 @@ only with gcc-9.1 and newer.</p>
 <li class="toctree-l1"><a class="reference internal" href="design.html">Design Deep Dive</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design/directories.html">Library Directories Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="design/quantity.html">quantity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="design.html#the-downcasting-facility">The Downcasting Facility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design/downcasting.html">The Downcasting Facility</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/hello_units.html">hello_units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/avg_speed.html">avg_speed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/box_example.html">box_example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/unknown_dimension.html">unknown_dimension</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/measurement.html">measurement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/linear_algebra.html">linear_algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/capacitor_time_curve.html">capacitor_time_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/clcpp_response.html">clcpp_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/conversion_factor.html">conversion_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/kalman_filter-alpha_beta_filter_example2.html">kalman_filter-alpha_beta_filter_example2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/total_energy.html">total_energy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
@@ -258,9 +267,16 @@ only with gcc-9.1 and newer.</p>
 <li class="toctree-l1"><a class="reference internal" href="reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
 </ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Source code documentation tools used to generate the above chapter still do not understand
+C++20 to well which results in some issues in the generated output. We do our best to address
+this ASAP.</p>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Appendix:</span></p>

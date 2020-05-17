@@ -104,7 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -180,13 +181,14 @@
   <div class="section" id="release-notes">
 <h1>Release notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p><strong>0.5.0 WIP</strong></p>
+<li><p><strong>0.5.0 May 17, 2020</strong></p>
 <ul class="simple">
 <li><p>Major refactoring and rewrite of the library</p></li>
 <li><p>Units are now independent from dimensions</p></li>
 <li><p>Dimensions now depend on units (base or coherent units are provided in a class template)</p></li>
 <li><p>Quantity gets a Dimension template parameter again (as unit does not provide information about
 its dimension anymore)</p></li>
+<li><p>Spaceship operator support added</p></li>
 <li><p>Added official CGS system support</p></li>
 <li><p>Added official data information system support</p></li>
 <li><p>Repository file tree cleanup</p></li>
@@ -208,10 +210,10 @@ its dimension anymore)</p></li>
 <li><p>All physical dimensions and units put into <code class="docutils literal notranslate"><span class="pre">physical</span></code> namespace</p></li>
 <li><p>CMake improvements</p></li>
 <li><p>Velocity renamed to speed</p></li>
-<li><p>…</p></li>
 </ul>
-<p>Many thanks to GitHub users <a class="reference external" href="https://github.com/oschonrock">&#64;oschonrock</a> and
-<a class="reference external" href="https://github.com/kwikius">&#64;kwikius</a> for their support in drafting a new library design.</p>
+<p>Many thanks to GitHub users <a class="reference external" href="https://github.com/oschonrock">&#64;oschonrock</a>,
+<a class="reference external" href="https://github.com/kwikius">&#64;kwikius</a>, and <a class="reference external" href="https://github.com/i-ky">&#64;i-ky</a> for their support
+in drafting a new library design.</p>
 </li>
 <li><p><strong>0.4.0 Nov 17, 2019</strong></p>
 <ul class="simple">

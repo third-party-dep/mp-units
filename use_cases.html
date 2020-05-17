@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working with Unknown Units and Dimensions" href="use_cases/unknown_units_and_dimensions.html" />
+    <link rel="next" title="Working with Unknown Dimensions and Their Units" href="use_cases/unknown_dimensions.html" />
     <link rel="prev" title="Text Output" href="framework/text_output.html" /> 
 </head>
 
@@ -96,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="framework.html">Framework Basics</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Use Cases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases/unknown_dimensions.html">Working with Unknown Dimensions and Their Units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_cases/legacy_interfaces.html">Working with Legacy Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html">Using Custom Representation Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_cases/linear_algebra.html">Linear Algebra vs. Quantities</a></li>
@@ -113,7 +113,8 @@
 <li class="toctree-l1"><a class="reference internal" href="reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -198,31 +199,12 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="use_cases/unknown_units_and_dimensions.html">Working with Unknown Units and Dimensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/unknown_dimensions.html">Working with Unknown Dimensions and Their Units</a></li>
 <li class="toctree-l1"><a class="reference internal" href="use_cases/legacy_interfaces.html">Working with Legacy Interfaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="use_cases/custom_representation_types.html">Using Custom Representation Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html#a-scalar-concept">A <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Scalar</span></code> concept</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html#additional-requirements">Additional Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html#customization-points">Customization Points</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/custom_representation_types.html#conversions-of-quantities-with-custom-representation-types">Conversions of Quantities with Custom Representation Types</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="use_cases/linear_algebra.html">Linear Algebra vs. Quantities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/linear_algebra.html#linear-algebra-of-quantities">Linear Algebra of Quantities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/linear_algebra.html#quantities-of-linear-algebra-types">Quantities of Linear Algebra Types</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="use_cases/extensions.html">Extending the Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/extensions.html#custom-units">Custom Units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/extensions.html#custom-dimensions">Custom Dimensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/extensions.html#custom-systems">Custom Systems</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="use_cases/natural_units.html">Working with Natural Units</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/natural_units.html#isq-based-implementation"><span class="xref std std-term">ISQ</span> based implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_cases/natural_units.html#pure-implementation">“Pure” implementation</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/custom_representation_types.html">Using Custom Representation Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/linear_algebra.html">Linear Algebra vs. Quantities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/extensions.html">Extending the Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases/natural_units.html">Working with Natural Units</a></li>
 </ul>
 </div>
 </div>
@@ -235,7 +217,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="use_cases/unknown_units_and_dimensions.html" class="btn btn-neutral float-right" title="Working with Unknown Units and Dimensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="use_cases/unknown_dimensions.html" class="btn btn-neutral float-right" title="Working with Unknown Dimensions and Their Units" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="framework/text_output.html" class="btn btn-neutral float-left" title="Text Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

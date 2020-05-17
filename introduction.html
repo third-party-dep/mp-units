@@ -94,6 +94,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#open-source">Open Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#approach">Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#with-the-user-s-experience-in-mind">With the User’s Experience in Mind</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
@@ -109,7 +110,8 @@
 <li class="toctree-l1"><a class="reference internal" href="reference/concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -232,6 +234,28 @@ bugs and suggesting feature requests and improvements) at <a class="reference ex
 <li><p>Possibility to be standardized as a freestanding part of the C++ Standard
 Library</p></li>
 </ol>
+</div>
+<div class="section" id="with-the-user-s-experience-in-mind">
+<h2>With the User’s Experience in Mind<a class="headerlink" href="#with-the-user-s-experience-in-mind" title="Permalink to this headline">¶</a></h2>
+<p>Most of the important design decisions in the library are dictated by the requirement of
+providing the best user experience as possible. Other C++ physical units libraries are
+“famous” for their huge error messages (one line of the error log often do not fit on one
+slide). The ultimate goal of <strong>mp-units</strong> is to improve this and make compile-time errors
+and debugging as easy and user-friendly as possible.</p>
+<p>To achieve this goal several techniques are applied:</p>
+<ul class="simple">
+<li><p>usage of C++20 concepts,</p></li>
+<li><p>using strong types for framework entities (instead of type aliases),</p></li>
+<li><p>limiting the number of template arguments to the bare minimum,</p></li>
+<li><p><a class="reference internal" href="design/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In many generic C++ libraries compile-time errors do not happen often. It is hard to
+break <code class="docutils literal notranslate"><span class="pre">std::string</span></code> or <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> in a way it won’t compile with a huge error
+log. Physical Units libraries are different. <strong>Generation of compile-time errors
+is the main reason to create such a library.</strong></p>
+</div>
 </div>
 </div>
 

@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="next" title="Quantity" href="types/quantity.html" />
     <link rel="prev" title="Concepts" href="concepts.html" /> 
 </head>
 
@@ -104,14 +104,16 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quantity">Quantity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dimension">Dimension</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#unit">Unit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ratio">Ratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types/quantity.html">Quantity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types/dimensions.html">Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types/units.html">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types/prefixes.html">Prefixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types/utilities.html">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html#metafunctions">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customization_points.html">Customization Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="systems.html">Systems</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
@@ -184,177 +186,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All names defined in this chapter reside in the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code> namespace unless specified otherwise.</p>
-</div>
-<div class="section" id="types">
+  <div class="section" id="types">
 <h1>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="quantity">
-<h2>Quantity<a class="headerlink" href="#quantity" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp class">
-<dt id="_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE">
-<span id="_CPPv3I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE"></span><span id="_CPPv2I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE"></span>template&lt;<a class="reference internal" href="concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension">Dimension</a> <code class="sig-name descname">D</code>, <a class="reference internal" href="concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf">UnitOf</a>&lt;<a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity::D">D</a>&gt; <code class="sig-name descname">U</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units6ScalarE" title="units::Scalar">Scalar</a> <code class="sig-name descname">Rep</code> = double&gt;<br /><span class="target" id="classunits_1_1quantity"></span><em class="property">class </em><code class="sig-name descname">quantity</code><a class="headerlink" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A quantity. </p>
-<p>Property of a phenomenon, body, or substance, where the property has a magnitude that can be expressed by means of a number and a measurement unit.</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code>: a dimension of the quantity (can be either a BaseDimension or a DerivedDimension) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: a measurement unit of the quantity </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Rep</span></code>: a type to be used to represent values of a quantity </p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types/quantity.html">Quantity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/dimensions.html">Dimensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/units.html">Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/prefixes.html">Prefixes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/utilities.html">Utilities</a></li>
 </ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-</div>
-<div class="section" id="dimension">
-<h2>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp struct">
-<dt id="_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE">
-<span id="_CPPv3I_18basic_fixed_string_4UnitEN5units14base_dimensionE"></span><span id="_CPPv2I_18basic_fixed_string_4UnitEN5units14base_dimensionE"></span>template&lt;basic_fixed_string <code class="sig-name descname">Symbol</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>&gt;<br /><span class="target" id="structunits_1_1base__dimension"></span><em class="property">struct </em><code class="sig-name descname">base_dimension</code><a class="headerlink" href="#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A dimension of a base quantity. </p>
-<p>Base quantity is a quantity in a conventionally chosen subset of a given system of quantities, where no quantity in the subset can be expressed in terms of the other quantities within that subset. They are referred to as being mutually independent since a base quantity cannot be expressed as a product of powers of the other base quantities.</p>
-<p>Base unit is a measurement unit that is adopted by convention for a base quantity in a specific system of units.</p>
-<p>Pair of Symbol and Unit template parameters form an unique identifier of the base dimension. The same identifiers can be multiplied and divided which will result with an adjustment of its factor in an Exponent of a DerivedDimension (in case of zero the dimension will be simplified and removed from further analysis of current expresion). In case the Symbol is the same but the Unit differs (i.e. mixing SI and CGS length), there is no automatic simplification but is possible to force it with a quantity_cast.</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Symbol</span></code>: an unique identifier of the base dimension used to provide dimensional analysis support </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: a base unit to be used for this base dimension </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt id="_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE">
-<span id="_CPPv3I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE"></span><span id="_CPPv2I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE"></span>template&lt;typename <code class="sig-name descname">Child</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units8ExponentE" title="units::Exponent">Exponent</a> <code class="sig-name descname">E</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units8ExponentE" title="units::Exponent">Exponent</a>... <code class="sig-name descname">ERest</code>&gt;<br /><span class="target" id="structunits_1_1derived__dimension"></span><em class="property">struct </em><code class="sig-name descname">derived_dimension</code> : <em class="property">public</em> units::downcast_child&lt;<a class="reference internal" href="#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension::Child">Child</a>, detail::make_dimension&lt;<a class="reference internal" href="#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension::E">E</a>, <a class="reference internal" href="#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension::ERest">ERest</a>...&gt;&gt;<a class="headerlink" href="#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The list of exponents of dimensions (both base and derived) provided by the user. </p>
-<p>This is the user’s interface to create derived dimensions. Exponents list can contain powers of factors of both base and derived dimensions. This is called a “recipe” of the dimension and among others is used to print unnamed coherent units of this dimension.</p>
-<p>Coherent unit is a unit that, for a given system of quantities and for a chosen set of base units, is a product of powers of base units with no other proportionality factor than one.</p>
-<p>The implementation is responsible for unpacking all of the dimensions into a list containing only base dimensions and their factors and putting them to derived_dimension_base class template.</p>
-<p>Sometimes units of equivalent quantities in different systems of units do not share the same reference so they cannot be easily converted to each other. An example can be a pressure for which a coherent unit in SI is pascal and in CGS barye. Those two units are not directly related with each other with some ratio. As they both are coherent units of their dimensions, the ratio between them is directly determined by the ratios of base units defined in base dimensions end their exponents in the derived dimension recipe. To provide interoperability of such quantities of different systems base_units_ratio is being used. The result of the division of two base_units_ratio of two quantities of equivalent dimensions in two different systems gives a ratio between their coherent units. Alternatively, the user would always have to directly define a barye in terms of pascal or vice versa.</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Child</span></code>: inherited class type used by the downcasting facility (CRTP Idiom) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: a coherent unit of a derived dimension </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E</span></code>: the list of exponents of ingredient dimensions </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ERest</span></code>: the list of exponents of ingredient dimensions </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-</div>
-<div class="section" id="unit">
-<h2>Unit<a class="headerlink" href="#unit" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp struct">
-<dt id="_CPPv4I_9UnitRatio0EN5units11scaled_unitE">
-<span id="_CPPv3I_9UnitRatio0EN5units11scaled_unitE"></span><span id="_CPPv2I_9UnitRatio0EN5units11scaled_unitE"></span>template&lt;<a class="reference internal" href="concepts.html#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio">UnitRatio</a> <code class="sig-name descname">R</code>, typename <code class="sig-name descname">U</code>&gt;<br /><span class="target" id="structunits_1_1scaled__unit"></span><em class="property">struct </em><code class="sig-name descname">scaled_unit</code><a class="headerlink" href="#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A common point for a hierarchy of units. </p>
-<p>A unit is an entity defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number.</p>
-<p>All units of the same dimension can be convereted between each other. To allow this all of them are expressed as different ratios of the same one proprietary chosen reference unit (i.e. all length units are expressed in terms of meter, all mass units are expressed in terms of gram, …)</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: a unit to use as a reference for this dimension </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">R</span></code>: a ratio of a reference unit </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt id="_CPPv4I0EN5units4unitE">
-<span id="_CPPv3I0EN5units4unitE"></span><span id="_CPPv2I0EN5units4unitE"></span>template&lt;typename <code class="sig-name descname">Child</code>&gt;<br /><span class="target" id="structunits_1_1unit"></span><em class="property">struct </em><code class="sig-name descname">unit</code> : <em class="property">public</em> units::downcast_child&lt;<a class="reference internal" href="#_CPPv4I0EN5units4unitE" title="units::unit::Child">Child</a>, <a class="reference internal" href="#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit">scaled_unit</a>&lt;ratio&lt;1&gt;, <a class="reference internal" href="#_CPPv4I0EN5units4unitE" title="units::unit::Child">Child</a>&gt;&gt;<a class="headerlink" href="#_CPPv4I0EN5units4unitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>An unnamed unit. </p>
-<p>Defines a new unnamed (in most cases coherent) derived unit of a specific derived dimension and it should be passed in this dimension’s definition.</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Child</span></code>: inherited class type used by the downcasting facility (CRTP Idiom) </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt id="_CPPv4I0_17basic_symbol_text_12PrefixFamilyEN5units10named_unitE">
-<span id="_CPPv3I0_17basic_symbol_text_12PrefixFamilyEN5units10named_unitE"></span><span id="_CPPv2I0_17basic_symbol_text_12PrefixFamilyEN5units10named_unitE"></span>template&lt;typename <code class="sig-name descname">Child</code>, basic_symbol_text <code class="sig-name descname">Symbol</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units12PrefixFamilyE" title="units::PrefixFamily">PrefixFamily</a> <code class="sig-name descname">PF</code>&gt;<br /><span class="target" id="structunits_1_1named__unit"></span><em class="property">struct </em><code class="sig-name descname">named_unit</code> : <em class="property">public</em> units::downcast_child&lt;<a class="reference internal" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamilyEN5units10named_unitE" title="units::named_unit::Child">Child</a>, <a class="reference internal" href="#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit">scaled_unit</a>&lt;ratio&lt;1&gt;, <a class="reference internal" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamilyEN5units10named_unitE" title="units::named_unit::Child">Child</a>&gt;&gt;<a class="headerlink" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamilyEN5units10named_unitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A named unit. </p>
-<p>Defines a named (in most cases coherent) unit that is then passed to a dimension definition. A named unit may be used by other units defined with the prefix of the same type, unless no_prefix is provided for PF template parameter (in such a case it is impossible to define a prefix unit based on this one).</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Child</span></code>: inherited class type used by the downcasting facility (CRTP Idiom) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Symbol</span></code>: a short text representation of the unit </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PF</span></code>: no_prefix or a type of prefix family </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt id="_CPPv4I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE">
-<span id="_CPPv3I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE"></span><span id="_CPPv2I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE"></span>template&lt;typename <code class="sig-name descname">Child</code>, basic_symbol_text <code class="sig-name descname">Symbol</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units12PrefixFamilyE" title="units::PrefixFamily">PrefixFamily</a> <code class="sig-name descname">PF</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio">UnitRatio</a> <code class="sig-name descname">R</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>&gt;<br /><span class="target" id="structunits_1_1named__scaled__unit"></span><em class="property">struct </em><code class="sig-name descname">named_scaled_unit</code> : <em class="property">public</em> units::downcast_child&lt;<a class="reference internal" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit::Child">Child</a>, <a class="reference internal" href="#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit">scaled_unit</a>&lt;ratio_multiply&lt;<a class="reference internal" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit::R">R</a>, <a class="reference internal" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit::U">U</a>::ratio&gt;, <a class="reference internal" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit::U">U</a>::reference&gt;&gt;<a class="headerlink" href="#_CPPv4I0_17basic_symbol_text_12PrefixFamily_9UnitRatio_4UnitEN5units17named_scaled_unitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A scaled unit. </p>
-<p>Defines a new named unit that is a scaled version of another unit. Such unit can be used by other units defined with the prefix of the same type, unless no_prefix is provided for PF template parameter (in such a case it is impossible to define a prefix unit based on this one).</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Child</span></code>: inherited class type used by the downcasting facility (CRTP Idiom) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Symbol</span></code>: a short text representation of the unit </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PF</span></code>: no_prefix or a type of prefix family </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">R</span></code>: a scale to apply to U </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: a reference unit to scale </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt id="_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE">
-<span id="_CPPv3I0_6Prefix_4UnitEN5units13prefixed_unitE"></span><span id="_CPPv2I0_6Prefix_4UnitEN5units13prefixed_unitE"></span>template&lt;typename <code class="sig-name descname">Child</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units6PrefixE" title="units::Prefix">Prefix</a> <code class="sig-name descname">P</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>&gt;<br /><span class="target" id="structunits_1_1prefixed__unit"></span><em class="property">struct </em><code class="sig-name descname">prefixed_unit</code> : <em class="property">public</em> units::downcast_child&lt;<a class="reference internal" href="#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit::Child">Child</a>, <a class="reference internal" href="#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit">scaled_unit</a>&lt;ratio_multiply&lt;<a class="reference internal" href="#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit::P">P</a>::ratio, <a class="reference internal" href="#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit::U">U</a>::ratio&gt;, <a class="reference internal" href="#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit::U">U</a>::reference&gt;&gt;<a class="headerlink" href="#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A prefixed unit. </p>
-<p>Defines a new unit that is a scaled version of another unit by the provided prefix. It is only possible to create such a unit if the given prefix type matches the one defined in a reference unit.</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Child</span></code>: inherited class type used by the downcasting facility (CRTP Idiom) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code>: prefix to be appied to the reference unit </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: reference unit </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt id="_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE">
-<span id="_CPPv3I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE"></span><span id="_CPPv2I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE"></span>template&lt;typename <code class="sig-name descname">Child</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units16DerivedDimensionE" title="units::DerivedDimension">DerivedDimension</a> <code class="sig-name descname">Dim</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>, <a class="reference internal" href="concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a>... <code class="sig-name descname">URest</code>&gt;<br /><span class="target" id="structunits_1_1deduced__unit"></span><em class="property">struct </em><code class="sig-name descname">deduced_unit</code> : <em class="property">public</em> units::downcast_child&lt;<a class="reference internal" href="#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit::Child">Child</a>, detail::deduced_unit&lt;<a class="reference internal" href="#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit::Dim">Dim</a>, <a class="reference internal" href="#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit::U">U</a>, <a class="reference internal" href="#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit::URest">URest</a>...&gt;&gt;<a class="headerlink" href="#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A unit with a deduced ratio and symbol. </p>
-<p>Defines a new unit with a deduced ratio and symbol based on the recipe from the provided derived dimension. The number and order of provided units should match the recipe of the derived dimension. All of the units provided should also be a named ones so it is possible to create a deduced symbol text.</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Child</span></code>: inherited class type used by the downcasting facility (CRTP Idiom) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Dim</span></code>: a derived dimension recipe to use for deduction </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: the unit of the first composite dimension from provided derived dimension’s recipe </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">URest</span></code>: the units for the rest of dimensions from the recipe </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-</div>
-<div class="section" id="ratio">
-<h2>Ratio<a class="headerlink" href="#ratio" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “units::ratio” in doxygen xml output for project “mp-units” from directory: /home/conan/.conan/data/mp-units/0.5.0/mpusz/testing/build/1421870e4de0dfe98851ac189e31501e65b0d0ff/docs/doxygen/xml</p>
-</div>
 </div>
 </div>
 
@@ -366,7 +207,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="functions.html" class="btn btn-neutral float-right" title="Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="types/quantity.html" class="btn btn-neutral float-right" title="Quantity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="concepts.html" class="btn btn-neutral float-left" title="Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
