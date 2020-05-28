@@ -110,12 +110,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/concepts.html">Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/types.html">Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/metafunctions.html">Metafunctions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/customization_points.html">Customization Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
@@ -193,7 +191,7 @@
 <h1>quantity<a class="headerlink" href="#quantity" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="interface">
 <h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../reference/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template provides a similar interface to
+<p><a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template provides a similar interface to
 <a class="reference external" href="https://en.cppreference.com/w/cpp/chrono/duration">std::chrono::duration</a>.
 The difference is that it uses <code class="docutils literal notranslate"><span class="pre">double</span></code> as a default representation and has
 a few additional member types and functions:</p>
@@ -246,9 +244,9 @@ class template:</p>
 representation for a calculation result. Such a design was reported as problematic
 by SG6 (numerics study group) members as sometimes we want to provide a different
 type in case of multiplication and different in case of division. <code class="docutils literal notranslate"><span class="pre">std::common_type</span></code>
-lacks that additional information. That is why <a class="reference internal" href="../reference/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units::quantity</span></code></a> uses the resulting
+lacks that additional information. That is why <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units::quantity</span></code></a> uses the resulting
 type of a concrete operator operation.</p></li>
-<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">operator</span> <span class="pre">%</span></code> is constrained with <a class="reference internal" href="../reference/customization_points.html#_CPPv4I_6ScalarEN5units23treat_as_floating_pointE" title="units::treat_as_floating_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">treat_as_floating_point</span></code></a> type trait to limit the
+<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">operator</span> <span class="pre">%</span></code> is constrained with <a class="reference internal" href="../reference/core/customization_points.html#_CPPv4I_6ScalarEN5units23treat_as_floating_pointE" title="units::treat_as_floating_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">treat_as_floating_point</span></code></a> type trait to limit the
 types to integral representations only. Also <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">operator</span> <span class="pre">%(Rep)</span></code> takes <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Rep</span></code> as a
 template argument to limit implicit conversions.</p></li>
 </ol>

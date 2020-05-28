@@ -111,12 +111,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/concepts.html">Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/types.html">Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/metafunctions.html">Metafunctions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/customization_points.html">Customization Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
@@ -192,17 +190,17 @@
             
   <div class="section" id="basic-concepts">
 <h1>Basic Concepts<a class="headerlink" href="#basic-concepts" title="Permalink to this headline">¶</a></h1>
-<p>The most important concepts in the library are <a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Unit</span></code></a>, <a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a>, and
-<a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a>:</p>
+<p>The most important concepts in the library are <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Unit</span></code></a>, <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a>, and
+<a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a>:</p>
 <img alt="../_images/concepts.png" class="align-center" src="../_images/concepts.png" />
-<p><a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Unit</span></code></a> is a basic building block of the library. Every dimension works with
+<p><a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Unit</span></code></a> is a basic building block of the library. Every dimension works with
 a concrete hierarchy of units. Such hierarchy defines a reference unit and
 often a few scaled versions of it.</p>
-<p><a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a> concept matches a dimension of either a base or derived quantity.
-<a class="reference internal" href="../reference/types/dimensions.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code></a> is instantiated with a unique symbol identifier and a base
-unit. <a class="reference internal" href="../reference/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> is a list of exponents of either base or other
+<p><a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a> concept matches a dimension of either a base or derived quantity.
+<a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code></a> is instantiated with a unique symbol identifier and a base
+unit. <a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> is a list of exponents of either base or other
 derived dimensions.</p>
-<p><a class="reference internal" href="../reference/concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a> is a concrete amount of a unit for a specified dimension with a
+<p><a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a> is a concrete amount of a unit for a specified dimension with a
 specific representation.</p>
 </div>
 

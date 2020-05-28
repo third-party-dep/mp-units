@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>basic_symbol_text &mdash; mp-units 0.6.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="basic_fixed_string" href="basic_fixed_string.html" />
+    <link rel="prev" title="ratio" href="ratio.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../core.html">Core Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../concepts.html">Concepts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../types.html">Types</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../quantity.html">Quantity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dimensions.html">Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../units.html">Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../prefixes.html">Prefixes</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../utilities.html">Utilities</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ratio.html">ratio</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">basic_symbol_text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic_fixed_string.html">basic_fixed_string</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../customization_points.html">Customization Points</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../math.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../core.html">Core Library</a> &raquo;</li>
+        
+          <li><a href="../../types.html">Types</a> &raquo;</li>
+        
+          <li><a href="../utilities.html">Utilities</a> &raquo;</li>
+        
+      <li>basic_symbol_text</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/reference/core/types/utilities/basic_symbol_text.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basic-symbol-text">
+<h1>basic_symbol_text<a class="headerlink" href="#basic-symbol-text" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp struct">
+<dt id="_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE">
+<span id="_CPPv3I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE"></span><span id="_CPPv2I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE"></span>template&lt;typename <code class="sig-name descname">StandardCharT</code>, std::size_t <code class="sig-name descname">N</code>, std::size_t <code class="sig-name descname">M</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text"></span><em class="property">struct </em><code class="sig-prename descclassname"><a class="reference internal" href="../../../systems/data/bitrate.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">basic_symbol_text</code><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A symbol text representation. </p>
+<p>This class template is responsible for definition and handling of a symbol text representation. In the libary it is used to define symbols of units and prefixes. Each symbol can have two versions: Unicode and ASCI-only.</p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">StandardCharT</span></code>: Character type to be used for a Unicode representation </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code>: The size of a Unicode symbol </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code>: The size of the ASCII-only symbol </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text17basic_symbol_textE13StandardCharT">
+<span id="_CPPv3N5units17basic_symbol_text17basic_symbol_textE13StandardCharT"></span><span id="_CPPv2N5units17basic_symbol_text17basic_symbol_textE13StandardCharT"></span><span id="units::basic_symbol_text::basic_symbol_text__StandardCharTCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1af30db1f7ff0db4ca13b8320dcec0bccc"></span><em class="property">constexpr</em> <code class="sig-name descname">basic_symbol_text</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> <em>s</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text17basic_symbol_textE13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text17basic_symbol_textE13StandardCharTc">
+<span id="_CPPv3N5units17basic_symbol_text17basic_symbol_textE13StandardCharTc"></span><span id="_CPPv2N5units17basic_symbol_text17basic_symbol_textE13StandardCharTc"></span><span id="units::basic_symbol_text::basic_symbol_text__StandardCharT.cCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a2b8d70ac4b2c5094f8230522dfb0d92a"></span><em class="property">constexpr</em> <code class="sig-name descname">basic_symbol_text</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> <em>s</em>, char <em>a</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text17basic_symbol_textE13StandardCharTc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text17basic_symbol_textERApl1NL1E_K13StandardCharT">
+<span id="_CPPv3N5units17basic_symbol_text17basic_symbol_textERApl1NL1E_K13StandardCharT"></span><span id="_CPPv2N5units17basic_symbol_text17basic_symbol_textERAN + 1_K13StandardCharT"></span><span class="target" id="structunits_1_1basic__symbol__text_1ae981c8ad4c2fd6ce55e5efcdf64b1654"></span><em class="property">constexpr</em> <code class="sig-name descname">basic_symbol_text</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> (&amp;<em>s</em>)[N + 1]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text17basic_symbol_textERApl1NL1E_K13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NE">
+<span id="_CPPv3N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NE"></span><span id="_CPPv2N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NE"></span><span id="units::basic_symbol_text::basic_symbol_text__basic_fixed_string:StandardCharT.N:CRCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a29f7f169d0a31dc314e1560842dd8357"></span><em class="property">constexpr</em> <code class="sig-name descname">basic_symbol_text</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a>&gt; &amp;<em>s</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text17basic_symbol_textERApl1NL1E_K13StandardCharTRApl1ML1E_Kc">
+<span id="_CPPv3N5units17basic_symbol_text17basic_symbol_textERApl1NL1E_K13StandardCharTRApl1ML1E_Kc"></span><span id="_CPPv2N5units17basic_symbol_text17basic_symbol_textERAN + 1_K13StandardCharTRAM + 1_Kc"></span><span class="target" id="structunits_1_1basic__symbol__text_1a5d3586f51dad65e16291fccfd82586e0"></span><em class="property">constexpr</em> <code class="sig-name descname">basic_symbol_text</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> (&amp;<em>s</em>)[N + 1], <em class="property">const</em> char (&amp;<em>a</em>)[M + 1]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text17basic_symbol_textERApl1NL1E_K13StandardCharTRApl1ML1E_Kc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NERK18basic_fixed_stringIc1ME">
+<span id="_CPPv3N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NERK18basic_fixed_stringIc1ME"></span><span id="_CPPv2N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NERK18basic_fixed_stringIc1ME"></span><span id="units::basic_symbol_text::basic_symbol_text__basic_fixed_string:StandardCharT.N:CR.basic_fixed_string:c.M:CRCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a153855303616f27d78ab82cf539b6540"></span><em class="property">constexpr</em> <code class="sig-name descname">basic_symbol_text</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a>&gt; &amp;<em>s</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;char, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a>&gt; &amp;<em>a</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text17basic_symbol_textERK18basic_fixed_stringI13StandardCharT1NERK18basic_fixed_stringIc1ME" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text8standardEv">
+<span id="_CPPv3N5units17basic_symbol_text8standardEv"></span><span id="_CPPv2N5units17basic_symbol_text8standardEv"></span><span id="units::basic_symbol_text::standardCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1af3e41072a155b07650a317be81230a05"></span><em class="property">constexpr</em> auto &amp;<code class="sig-name descname">standard</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text8standardEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5units17basic_symbol_text8standardEv">
+<span id="_CPPv3NK5units17basic_symbol_text8standardEv"></span><span id="_CPPv2NK5units17basic_symbol_text8standardEv"></span><span id="units::basic_symbol_text::standardCCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a928565b5e2ba42785ad24c983ea77725"></span><em class="property">constexpr</em> <em class="property">const</em> auto &amp;<code class="sig-name descname">standard</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5units17basic_symbol_text8standardEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_text5asciiEv">
+<span id="_CPPv3N5units17basic_symbol_text5asciiEv"></span><span id="_CPPv2N5units17basic_symbol_text5asciiEv"></span><span id="units::basic_symbol_text::asciiCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a37a37e9de6797fe2f7d0dbf27ef2d0b4"></span><em class="property">constexpr</em> auto &amp;<code class="sig-name descname">ascii</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text5asciiEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5units17basic_symbol_text5asciiEv">
+<span id="_CPPv3NK5units17basic_symbol_text5asciiEv"></span><span id="_CPPv2NK5units17basic_symbol_text5asciiEv"></span><span id="units::basic_symbol_text::asciiCCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1ac621655991cbdb8098526e8d4bed39ec"></span><em class="property">constexpr</em> <em class="property">const</em> auto &amp;<code class="sig-name descname">ascii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5units17basic_symbol_text5asciiEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N5units17basic_symbol_text9standard_E">
+<span id="_CPPv3N5units17basic_symbol_text9standard_E"></span><span id="_CPPv2N5units17basic_symbol_text9standard_E"></span><span id="units::basic_symbol_text::standard___basic_fixed_string:StandardCharT.N:"></span><span class="target" id="structunits_1_1basic__symbol__text_1a1c1deb9945be12809e8dd2970dc6b8fe"></span><a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a>&gt; <code class="sig-name descname">standard_</code><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text9standard_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units17basic_symbol_text6ascii_E">
+<span id="_CPPv3N5units17basic_symbol_text6ascii_E"></span><span id="_CPPv2N5units17basic_symbol_text6ascii_E"></span><span id="units::basic_symbol_text::ascii___basic_fixed_string:c.M:"></span><span class="target" id="structunits_1_1basic__symbol__text_1a62c3da2946f8bb2efbd1c6b795b57ee5"></span><a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;char, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a>&gt; <code class="sig-name descname">ascii_</code><a class="headerlink" href="#_CPPv4N5units17basic_symbol_text6ascii_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Friends</p>
+<dl class="cpp function">
+<dt id="_CPPv4I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2M2EERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E">
+<span id="_CPPv3I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E"></span><span id="_CPPv2I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E"></span>template&lt;std::size_t <code class="sig-name descname">N2</code>, std::size_t <code class="sig-name descname">M2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1afda4484f972cdfed483424dd6046dfc0"></span><em class="property">friend</em> <em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2M2EERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E" title="units::basic_symbol_text::operator+::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2M2EERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E" title="units::basic_symbol_text::operator+::M2">M2</a>&gt; <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2M2EERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E" title="units::basic_symbol_text::operator+::N2">N2</a>, <a class="reference internal" href="#_CPPv4I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2M2EERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E" title="units::basic_symbol_text::operator+::M2">M2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2M2EERK17basic_symbol_textRK17basic_symbol_textI13StandardCharT2N22M2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT2N2E">
+<span id="_CPPv3I_NSt6size_tEEN5units17basic_symbol_textplERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT2N2E"></span><span id="_CPPv2I_NSt6size_tEEN5units17basic_symbol_textplERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT2N2E"></span>template&lt;std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1af8b1d0bfbfc9848678a88db6e374672e"></span><em class="property">friend</em> <em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT2N2E" title="units::basic_symbol_text::operator+::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT2N2E" title="units::basic_symbol_text::operator+::N2">N2</a>&gt; <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT2N2E" title="units::basic_symbol_text::operator+::N2">N2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT2N2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK18basic_fixed_stringI13StandardCharT2N2ERK17basic_symbol_text">
+<span id="_CPPv3I_NSt6size_tEEN5units17basic_symbol_textplERK18basic_fixed_stringI13StandardCharT2N2ERK17basic_symbol_text"></span><span id="_CPPv2I_NSt6size_tEEN5units17basic_symbol_textplERK18basic_fixed_stringI13StandardCharT2N2ERK17basic_symbol_text"></span>template&lt;std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a2b73542ce6c96a48fb79fe6d65f65ea6"></span><em class="property">friend</em> <em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK18basic_fixed_stringI13StandardCharT2N2ERK17basic_symbol_text" title="units::basic_symbol_text::operator+::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK18basic_fixed_stringI13StandardCharT2N2ERK17basic_symbol_text" title="units::basic_symbol_text::operator+::N2">N2</a>&gt; <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK18basic_fixed_stringI13StandardCharT2N2ERK17basic_symbol_text" title="units::basic_symbol_text::operator+::N2">N2</a>&gt; &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1N2N2EXpl1M2N2EERK18basic_fixed_stringI13StandardCharT2N2ERK17basic_symbol_text" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERK17basic_symbol_textRA2N2_K13StandardCharT">
+<span id="_CPPv3I_NSt6size_tEEN5units17basic_symbol_textplERK17basic_symbol_textRA2N2_K13StandardCharT"></span><span id="_CPPv2I_NSt6size_tEEN5units17basic_symbol_textplERK17basic_symbol_textRAN2_K13StandardCharT"></span>template&lt;std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a21a007a00819de4f027a94e78df1aa32"></span><em class="property">friend</em> <em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERK17basic_symbol_textRA2N2_K13StandardCharT" title="units::basic_symbol_text::operator+::N2">N2</a> - 1, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERK17basic_symbol_textRA2N2_K13StandardCharT" title="units::basic_symbol_text::operator+::N2">N2</a> - 1&gt; <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> (&amp;<em>rhs</em>)[N2]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERK17basic_symbol_textRA2N2_K13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERA2N2_K13StandardCharTRK17basic_symbol_text">
+<span id="_CPPv3I_NSt6size_tEEN5units17basic_symbol_textplERA2N2_K13StandardCharTRK17basic_symbol_text"></span><span id="_CPPv2I_NSt6size_tEEN5units17basic_symbol_textplERAN2_K13StandardCharTRK17basic_symbol_text"></span>template&lt;std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a9f10a94377bf9b707837f734e9ee6b31"></span><em class="property">friend</em> <em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERA2N2_K13StandardCharTRK17basic_symbol_text" title="units::basic_symbol_text::operator+::N2">N2</a> - 1, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a> + <a class="reference internal" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERA2N2_K13StandardCharTRK17basic_symbol_text" title="units::basic_symbol_text::operator+::N2">N2</a> - 1&gt; <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> (&amp;<em>lhs</em>)[N2], <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I_NSt6size_tEEN5units17basic_symbol_textplE17basic_symbol_textI13StandardCharTXpl1Nmi2N2L1EEXpl1Mmi2N2L1EEERA2N2_K13StandardCharTRK17basic_symbol_text" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_textplERK17basic_symbol_text13StandardCharT">
+<span id="_CPPv3N5units17basic_symbol_textplERK17basic_symbol_text13StandardCharT"></span><span id="_CPPv2N5units17basic_symbol_textplERK17basic_symbol_text13StandardCharT"></span><span id="units::basic_symbol_text::add-operator__basic_symbol_textCR.StandardCharTCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1abb188b51820232f00484f95ed023a9a2"></span><em class="property">friend</em> <em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a> + 1, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a> + 1&gt; <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> <em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_textplERK17basic_symbol_text13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_textplE13StandardCharTRK17basic_symbol_text">
+<span id="_CPPv3N5units17basic_symbol_textplE13StandardCharTRK17basic_symbol_text"></span><span id="_CPPv2N5units17basic_symbol_textplE13StandardCharTRK17basic_symbol_text"></span><span id="units::basic_symbol_text::add-operator__StandardCharT.basic_symbol_textCRCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a45854aba6c47d53bc752f1938e8b6e7c"></span><em class="property">friend</em> <em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a> + 1, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::M">M</a> + 1&gt; <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> <em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_textplE13StandardCharTRK17basic_symbol_text" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E">
+<span id="_CPPv3I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_texteqERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span><span id="_CPPv2I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_texteqERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>, std::size_t <code class="sig-name descname">M2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a5d7ec0a8b7ee7188afe737fd25046af8"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator==::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator==::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator==::M2">M2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E">
+<span id="_CPPv3I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textneERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span><span id="_CPPv2I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textneERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>, std::size_t <code class="sig-name descname">M2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a92f96a7dbc2c34e6e55042bc3e569e06"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator!=::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator!=::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator!=::M2">M2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_texteqERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE">
+<span id="_CPPv3N5units17basic_symbol_texteqERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE"></span><span id="_CPPv2N5units17basic_symbol_texteqERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE"></span><span id="units::basic_symbol_text::eq-operator__basic_symbol_textCR.basic_fixed_string:StandardCharT.N:CRCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1ae9cf839303641deaf5f465f1daef4b1f"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_texteqERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_textneERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE">
+<span id="_CPPv3N5units17basic_symbol_textneERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE"></span><span id="_CPPv2N5units17basic_symbol_textneERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE"></span><span id="units::basic_symbol_text::neq-operator__basic_symbol_textCR.basic_fixed_string:StandardCharT.N:CRCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a06a7a9e2c14597661f4e0c2af731f6a7"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::N">N</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_textneERK17basic_symbol_textRK18basic_fixed_stringI13StandardCharT1NE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_texteqERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_texteqERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a2ca578f4bc4ecf89c2033b5b8b5a1282"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&amp;, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator==::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator==::N2">N2</a>&gt;&amp;<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textneERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textneERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1ae12ec21bc43505bc37491ec25a2f83c6"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&amp;, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator!=::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator!=::N2">N2</a>&gt;&amp;<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_texteqERK17basic_symbol_textRApl1NL1E_K13StandardCharT">
+<span id="_CPPv3N5units17basic_symbol_texteqERK17basic_symbol_textRApl1NL1E_K13StandardCharT"></span><span id="_CPPv2N5units17basic_symbol_texteqERK17basic_symbol_textRAN + 1_K13StandardCharT"></span><span class="target" id="structunits_1_1basic__symbol__text_1a60a8a545390097c9a1e9ef584f0b11cb"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> (&amp;<em>rhs</em>)[N + 1]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_texteqERK17basic_symbol_textRApl1NL1E_K13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_textneERK17basic_symbol_textRApl1NL1E_K13StandardCharT">
+<span id="_CPPv3N5units17basic_symbol_textneERK17basic_symbol_textRApl1NL1E_K13StandardCharT"></span><span id="_CPPv2N5units17basic_symbol_textneERK17basic_symbol_textRAN + 1_K13StandardCharT"></span><span class="target" id="structunits_1_1basic__symbol__text_1a02458543a88328b9cab69d14bdd4a306"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> (&amp;<em>rhs</em>)[N + 1]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_textneERK17basic_symbol_textRApl1NL1E_K13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRApl2N2L1E_K14StandardCharT2">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_texteqERK17basic_symbol_textRApl2N2L1E_K14StandardCharT2"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_texteqERK17basic_symbol_textRAN2 + 1_K14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1ac99a208b261d301ae17648ae205243fe"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&amp;, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRApl2N2L1E_K14StandardCharT2" title="units::basic_symbol_text::operator==::StandardCharT2">StandardCharT2</a> (&amp;)[N2 + 1]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_texteqEbRK17basic_symbol_textRApl2N2L1E_K14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRApl2N2L1E_K14StandardCharT2">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textneERK17basic_symbol_textRApl2N2L1E_K14StandardCharT2"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textneERK17basic_symbol_textRAN2 + 1_K14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a81a49bf44ca42605f8b5bf01549d3263"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&amp;, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRApl2N2L1E_K14StandardCharT2" title="units::basic_symbol_text::operator!=::StandardCharT2">StandardCharT2</a> (&amp;)[N2 + 1]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textneEbRK17basic_symbol_textRApl2N2L1E_K14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_texteqERK17basic_symbol_text13StandardCharT">
+<span id="_CPPv3N5units17basic_symbol_texteqERK17basic_symbol_text13StandardCharT"></span><span id="_CPPv2N5units17basic_symbol_texteqERK17basic_symbol_text13StandardCharT"></span><span id="units::basic_symbol_text::eq-operator__basic_symbol_textCR.StandardCharTCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a931b96f70b3e88642dded6ee52977e59"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> <em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_texteqERK17basic_symbol_text13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units17basic_symbol_textneERK17basic_symbol_text13StandardCharT">
+<span id="_CPPv3N5units17basic_symbol_textneERK17basic_symbol_text13StandardCharT"></span><span id="_CPPv2N5units17basic_symbol_textneERK17basic_symbol_text13StandardCharT"></span><span id="units::basic_symbol_text::neq-operator__basic_symbol_textCR.StandardCharTCE"></span><span class="target" id="structunits_1_1basic__symbol__text_1a489bc39d52ac12faddba014ee95cfcad"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text::StandardCharT">StandardCharT</a> <em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N5units17basic_symbol_textneERK17basic_symbol_text13StandardCharT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN5units17basic_symbol_texteqEbRK17basic_symbol_text14StandardCharT2">
+<span id="_CPPv3I0EN5units17basic_symbol_texteqERK17basic_symbol_text14StandardCharT2"></span><span id="_CPPv2I0EN5units17basic_symbol_texteqERK17basic_symbol_text14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a6a2f2cacb57e6cda8c97cf4ed7360a2f"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&amp;, <a class="reference internal" href="#_CPPv4I0EN5units17basic_symbol_texteqEbRK17basic_symbol_text14StandardCharT2" title="units::basic_symbol_text::operator==::StandardCharT2">StandardCharT2</a><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0EN5units17basic_symbol_texteqEbRK17basic_symbol_text14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN5units17basic_symbol_textneEbRK17basic_symbol_text14StandardCharT2">
+<span id="_CPPv3I0EN5units17basic_symbol_textneERK17basic_symbol_text14StandardCharT2"></span><span id="_CPPv2I0EN5units17basic_symbol_textneERK17basic_symbol_text14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a141e906fc231d17976737d381a38b1dd"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&amp;, <a class="reference internal" href="#_CPPv4I0EN5units17basic_symbol_textneEbRK17basic_symbol_text14StandardCharT2" title="units::basic_symbol_text::operator!=::StandardCharT2">StandardCharT2</a><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0EN5units17basic_symbol_textneEbRK17basic_symbol_text14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E">
+<span id="_CPPv3I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textltERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span><span id="_CPPv2I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textltERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>, std::size_t <code class="sig-name descname">M2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a08c5ba616fa5c1edbc8011715532c52c"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&lt;::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&lt;::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&lt;::M2">M2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textltERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textltERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1ad09f92cabb98cbbabb3962bb32c68723"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&lt;::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&lt;::N2">N2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRA2N2_K14StandardCharT2">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textltERK17basic_symbol_textRA2N2_K14StandardCharT2"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textltERK17basic_symbol_textRAN2_K14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a5d4d27164648ccf40f0e6ea3d7864a42"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="units::basic_symbol_text::operator&lt;::StandardCharT2">StandardCharT2</a> (&amp;<em>rhs</em>)[N2]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textltEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN5units17basic_symbol_textltEbRK17basic_symbol_text14StandardCharT2">
+<span id="_CPPv3I0EN5units17basic_symbol_textltERK17basic_symbol_text14StandardCharT2"></span><span id="_CPPv2I0EN5units17basic_symbol_textltERK17basic_symbol_text14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a0660ec70b52bb8938132ee200c07e017"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <a class="reference internal" href="#_CPPv4I0EN5units17basic_symbol_textltEbRK17basic_symbol_text14StandardCharT2" title="units::basic_symbol_text::operator&lt;::StandardCharT2">StandardCharT2</a> <em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0EN5units17basic_symbol_textltEbRK17basic_symbol_text14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E">
+<span id="_CPPv3I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgtERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span><span id="_CPPv2I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgtERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>, std::size_t <code class="sig-name descname">M2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a6c562fc1f2691cb8a4400d311f8e6501"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&gt;::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&gt;::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&gt;::M2">M2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textgtERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textgtERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1af7c01b63a0c348b88b58856daf363f54"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&gt;::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&gt;::N2">N2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRA2N2_K14StandardCharT2">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textgtERK17basic_symbol_textRA2N2_K14StandardCharT2"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textgtERK17basic_symbol_textRAN2_K14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a33ddcb10f381a68e83a697e105c6b5e4"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="units::basic_symbol_text::operator&gt;::StandardCharT2">StandardCharT2</a> (&amp;<em>rhs</em>)[N2]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgtEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN5units17basic_symbol_textgtEbRK17basic_symbol_text14StandardCharT2">
+<span id="_CPPv3I0EN5units17basic_symbol_textgtERK17basic_symbol_text14StandardCharT2"></span><span id="_CPPv2I0EN5units17basic_symbol_textgtERK17basic_symbol_text14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a18a3463a9f762faa176174d1e65d2dfc"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <a class="reference internal" href="#_CPPv4I0EN5units17basic_symbol_textgtEbRK17basic_symbol_text14StandardCharT2" title="units::basic_symbol_text::operator&gt;::StandardCharT2">StandardCharT2</a> <em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0EN5units17basic_symbol_textgtEbRK17basic_symbol_text14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E">
+<span id="_CPPv3I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textleERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span><span id="_CPPv2I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textleERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>, std::size_t <code class="sig-name descname">M2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1ad99c5da54e9f2fc246e38efe531bebfd"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&lt;=::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&lt;=::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&lt;=::M2">M2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textleERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textleERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a8e055f1fa2828ca41822b7eab9a55edb"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&lt;=::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&lt;=::N2">N2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRA2N2_K14StandardCharT2">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textleERK17basic_symbol_textRA2N2_K14StandardCharT2"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textleERK17basic_symbol_textRAN2_K14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1aba6b78f316585a246d33f4a0fae031db"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="units::basic_symbol_text::operator&lt;=::StandardCharT2">StandardCharT2</a> (&amp;<em>rhs</em>)[N2]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textleEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN5units17basic_symbol_textleEbRK17basic_symbol_text14StandardCharT2">
+<span id="_CPPv3I0EN5units17basic_symbol_textleERK17basic_symbol_text14StandardCharT2"></span><span id="_CPPv2I0EN5units17basic_symbol_textleERK17basic_symbol_text14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a5195c81f02bafb2faf09d37c1db6a4d1"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <a class="reference internal" href="#_CPPv4I0EN5units17basic_symbol_textleEbRK17basic_symbol_text14StandardCharT2" title="units::basic_symbol_text::operator&lt;=::StandardCharT2">StandardCharT2</a> <em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0EN5units17basic_symbol_textleEbRK17basic_symbol_text14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E">
+<span id="_CPPv3I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgeERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span><span id="_CPPv2I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgeERK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>, std::size_t <code class="sig-name descname">M2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1ad77f4fdd523ca7da8834d9470aa3ee39"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&gt;=::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&gt;=::N2">N2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="units::basic_symbol_text::operator&gt;=::M2">M2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK17basic_symbol_textI14StandardCharT22N22M2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textgeERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textgeERK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1ada807ffebb8087c981098f5999c3db45"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&gt;=::StandardCharT2">StandardCharT2</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="units::basic_symbol_text::operator&gt;=::N2">N2</a>&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRK18basic_fixed_stringI14StandardCharT22N2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRA2N2_K14StandardCharT2">
+<span id="_CPPv3I0_NSt6size_tEEN5units17basic_symbol_textgeERK17basic_symbol_textRA2N2_K14StandardCharT2"></span><span id="_CPPv2I0_NSt6size_tEEN5units17basic_symbol_textgeERK17basic_symbol_textRAN2_K14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>, std::size_t <code class="sig-name descname">N2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1a3204e68ebfe4436f989cfc353d2e53f5"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="units::basic_symbol_text::operator&gt;=::StandardCharT2">StandardCharT2</a> (&amp;<em>rhs</em>)[N2]<span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN5units17basic_symbol_textgeEbRK17basic_symbol_textRA2N2_K14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN5units17basic_symbol_textgeEbRK17basic_symbol_text14StandardCharT2">
+<span id="_CPPv3I0EN5units17basic_symbol_textgeERK17basic_symbol_text14StandardCharT2"></span><span id="_CPPv2I0EN5units17basic_symbol_textgeERK17basic_symbol_text14StandardCharT2"></span>template&lt;typename <code class="sig-name descname">StandardCharT2</code>&gt;<br /><span class="target" id="structunits_1_1basic__symbol__text_1ae124a86775824906c933a4204ab1b3cb"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_NSt6size_tEEN5units17basic_symbol_textE" title="units::basic_symbol_text">basic_symbol_text</a> &amp;<em>lhs</em>, <a class="reference internal" href="#_CPPv4I0EN5units17basic_symbol_textgeEbRK17basic_symbol_text14StandardCharT2" title="units::basic_symbol_text::operator&gt;=::StandardCharT2">StandardCharT2</a> <em>rhs</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I0EN5units17basic_symbol_textgeEbRK17basic_symbol_text14StandardCharT2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="basic_fixed_string.html" class="btn btn-neutral float-right" title="basic_fixed_string" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ratio.html" class="btn btn-neutral float-left" title="ratio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

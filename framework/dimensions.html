@@ -117,12 +117,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/concepts.html">Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/types.html">Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/metafunctions.html">Metafunctions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/customization_points.html">Customization Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
@@ -250,7 +248,7 @@ dimension, than we will end up with just a scalar type:</p>
 of a <a class="reference internal" href="../glossary.html#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>. For example the The International System
 of Units (<a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a>) defines 7 of them: length, mass, time, electric
 current, thermodynamic temperature, substance, and luminous intensity.</p>
-<p>To define a new base dimension the <a class="reference internal" href="../reference/types/dimensions.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code></a> class template is
+<p>To define a new base dimension the <a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code></a> class template is
 provided. For example the SI base dimension of length can be defined as:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
@@ -282,7 +280,7 @@ as a unique list of exponents of base quantities. For example:</p>
 and time base quantity with exponent <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p></li>
 </ul>
 <p>The above dimensions can be defined in the library with the
-<a class="reference internal" href="../reference/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> class template as follows:</p>
+<a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> class template as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">dim_area</span>  <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_area</span><span class="p">,</span> <span class="n">square_metre</span><span class="p">,</span>
@@ -308,7 +306,7 @@ an dimension’s unnamed unit symbol is being printed in the text output.</p>
 of unnamed unit can be found in the <a class="reference internal" href="units.html#derived-unnamed-units"><span class="std std-ref">Derived Unnamed Units</span></a> chapter.</p>
 </div>
 <p>It is important to mention here that beside text output the order and
-the number of elements in the <a class="reference internal" href="../reference/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> definition does not
+the number of elements in the <a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> definition does not
 matter. Even if we define the above as:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
@@ -325,8 +323,8 @@ matter. Even if we define the above as:</p>
 analysis in the library to work as expected.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The first template argument of <a class="reference internal" href="../reference/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> is the type of the
-child class inherited from the instantiation of this <a class="reference internal" href="../reference/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a>
+<p>The first template argument of <a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> is the type of the
+child class inherited from the instantiation of this <a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I0_4Unit_8Exponent_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a>
 class template. This is called a
 <abbr title="Curiously Recurring Template Parameter">CRTP</abbr> Idiom and is used
 in many places in this library to provide <a class="reference internal" href="../design/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>.
@@ -337,7 +335,7 @@ template parameter will be removed from this definition.</p>
 <div class="section" id="obtaining-a-unit-of-the-dimension">
 <h2>Obtaining a Unit of the Dimension<a class="headerlink" href="#obtaining-a-unit-of-the-dimension" title="Permalink to this headline">¶</a></h2>
 <p>In order to obtain the base/coherent unit of any dimension type a
-<a class="reference internal" href="../reference/metafunctions.html#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dimension_unit</span></code></a> helper was introduced:</p>
+<a class="reference internal" href="../reference/core/metafunctions.html#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dimension_unit</span></code></a> helper was introduced:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">dimension_unit</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">);</span>
 <span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">dimension_unit</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">);</span>
 </pre></div>
