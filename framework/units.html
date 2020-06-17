@@ -32,7 +32,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -470,8 +470,21 @@ does not exist at all. With it <code class="xref cpp cpp-any docutils literal no
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Please note that this is the only unit-related class template that takes
-a dimension as its parameter. This derived dimension provides a <a class="reference internal" href="../glossary.html#term-recipe"><span class="xref std std-term">recipe</span></a>
+<p>In case the deduced unit should served as a named one we can use ether a
+<a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_17basic_symbol_text_12PrefixFamily_4Unit_Dp4UnitEN5units18named_deduced_unitE" title="units::named_deduced_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_deduced_unit</span></code></a> where the user is able to provide a symbol for the unit
+by him/her-self or <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units18noble_deduced_unitE" title="units::noble_deduced_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">noble_deduced_unit</span></code></a> where the symbol is the deduced name
+based on the ingredients:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">fps</span> <span class="p">{</span>
+
+<span class="k">struct</span> <span class="nl">nautical_mile_per_hour</span> <span class="p">:</span> <span class="n">named_deduced_unit</span><span class="o">&lt;</span><span class="n">nautical_mile_per_hour</span><span class="p">,</span> <span class="n">dim_speed</span><span class="p">,</span>
+                                                   <span class="s">&quot;knot&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">nautical_mile</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">foot_pound_force</span> <span class="p">:</span> <span class="n">noble_deduced_unit</span><span class="o">&lt;</span><span class="n">foot_pound_force</span><span class="p">,</span> <span class="n">dim_energy</span><span class="p">,</span> <span class="n">pound_force</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Please note that deduced units are the only unit-related class template that
+take a dimension as its parameter. This derived dimension provides a <a class="reference internal" href="../glossary.html#term-recipe"><span class="xref std std-term">recipe</span></a>
 used for its definition. Based on the information stored in the recipe
 (order, type, and exponents of composite dimensions) and the ratios of units
 provided in the template parameter list after the derived dimension parameter,
