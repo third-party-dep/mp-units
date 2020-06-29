@@ -202,7 +202,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As this library targets C++23 and extensively uses C++20 features as of now it compiles correctly
-only with gcc-9.1 and newer.</p>
+only with gcc-9.3 and newer.</p>
 </div>
 <div class="section" id="repository-structure-and-dependencies">
 <h2>Repository Structure and Dependencies<a class="headerlink" href="#repository-structure-and-dependencies" title="Permalink to this headline">¶</a></h2>
@@ -339,7 +339,7 @@ your source tree and use it as regular header files.</p>
 <li><p>Clone the repository together with its submodules:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/mpusz/units.git
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/mpusz/units.git
 </pre></div>
 </div>
 <p>or in case it is already cloned without submodules, initialize, fetch, and checkout them with:</p>
@@ -399,7 +399,7 @@ conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o
 <p>In case you would like to build all the source code (with unit tests and examples) and documentation
 in <strong>mp-units</strong> repository, you should use the <em>CMakeLists.txt</em> from the top-level directory,
 obtain Python dependencies, and run Conan with <span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">mp-units:CONAN_RUN_TESTS</span></code> = <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
 mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated
@@ -415,7 +415,7 @@ build all of the source code and documentation, and run unit tests.</p>
 <div class="section" id="packaging">
 <h2>Packaging<a class="headerlink" href="#packaging" title="Permalink to this headline">¶</a></h2>
 <p>To test CMake installation and Conan packaging or create a Conan package run:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
 conan create . &lt;username&gt;/&lt;channel&gt; -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated
 </pre></div>

@@ -190,7 +190,7 @@
 <h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All names defined in this chapter reside in the <a class="reference internal" href="../systems/physical/typographic/length.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace unless
+<p>All names defined in this chapter reside in the <a class="reference internal" href="../systems/physical/si/volume.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace unless
 specified otherwise.</p>
 </div>
 <dl class="cpp concept">
@@ -206,16 +206,9 @@ specified otherwise.</p>
 </dd></dl>
 
 <dl class="cpp concept">
-<dt id="_CPPv4I0EN5units5RatioE">
-<span id="_CPPv3I0EN5units5RatioE"></span><span id="_CPPv2I0EN5units5RatioE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Ratio</code><a class="headerlink" href="#_CPPv4I0EN5units5RatioE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A concept matching a ratio. Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">ratio</span></code>.</p>
-</dd></dl>
-
-<dl class="cpp concept">
-<dt id="_CPPv4I0EN5units9UnitRatioE">
-<span id="_CPPv3I0EN5units9UnitRatioE"></span><span id="_CPPv2I0EN5units9UnitRatioE"></span>template&lt;typename <code class="sig-name descname">R</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">UnitRatio</code><a class="headerlink" href="#_CPPv4I0EN5units9UnitRatioE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A concept matching unit’s ratio. Satisfied by all types that satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units5RatioE" title="units::Ratio"><span class="pre">Ratio</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">&gt;</span></code> and
-for which <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">::</span><span class="pre">num</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">::</span><span class="pre">den</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
+<dt id="_CPPv4I_5ratioEN5units9UnitRatioE">
+<span id="_CPPv3I_5ratioEN5units9UnitRatioE"></span><span id="_CPPv2I_5ratioEN5units9UnitRatioE"></span>template&lt;<a class="reference internal" href="types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a> <code class="sig-name descname">R</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">UnitRatio</code><a class="headerlink" href="#_CPPv4I_5ratioEN5units9UnitRatioE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Satisfied by all ratio values for which <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I_5ratioEN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">.</span><span class="pre">num</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I_5ratioEN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">.</span><span class="pre">den</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
@@ -249,7 +242,7 @@ which either <code class="xref cpp cpp-expr docutils literal notranslate"><a cla
 <dt id="_CPPv4I0EN5units4UnitE">
 <span id="_CPPv3I0EN5units4UnitE"></span><span id="_CPPv2I0EN5units4UnitE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Unit</code><a class="headerlink" href="#_CPPv4I0EN5units4UnitE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A concept matching all unit types in the library. Satisfied by all unit types derived
-from the instantiation of <a class="reference internal" href="types/units.html#_CPPv4I_9UnitRatio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">scaled_unit</span></code></a>.</p>
+from the instantiation of <a class="reference internal" href="types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">scaled_unit</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
@@ -290,7 +283,7 @@ satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="r
 following:</p>
 <ul class="simple">
 <li><p>if type <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a></code> is constructible from <code class="docutils literal notranslate"><span class="pre">std::int64_t</span></code> (which is the type that stores
-the elements of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ratio</span></code>), <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a> <span class="pre">*</span> <a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a> <span class="pre">/</span> <a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a></code> must be valid,</p></li>
+the elements of <a class="reference internal" href="types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ratio</span></code></a>), <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a> <span class="pre">*</span> <a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a> <span class="pre">/</span> <a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a></code> must be valid,</p></li>
 <li><p>otherwise, <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a> <span class="pre">*</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span></code>, <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <span class="pre">*</span> <a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a></code>, and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units6ScalarE" title="units::Scalar::T"><span class="pre">T</span></a> <span class="pre">/</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span></code>
 must be valid.</p></li>
 </ul>
