@@ -318,42 +318,22 @@ template&lt;typename <code class="sig-name descname">T</code> = <a class="refere
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1aaa21450326bb5d255b63809d37d08390"></span><code class="sig-name descname">template&lt;typename T = Rep&gt; requires requires (T v1, T v2)</code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N5units8quantitypLERK8quantity">
-<span id="_CPPv3N5units8quantitypLERK8quantity"></span><span id="_CPPv2N5units8quantitypLERK8quantity"></span><span id="units::quantity::add-assign-operator__quantityCRCE"></span><span class="target" id="classunits_1_1quantity_1a3d8c8e918cc685debd23ad1a8d84efe9"></span><em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity">quantity</a> &amp;<code class="sig-name descname">operator+=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity">quantity</a> &amp;<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8quantitypLERK8quantity" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="classunits_1_1quantity_1a0d53d0ee7c311a2a9716be13afc38491"></span><code class="sig-name descname">template&lt;typename Rep2&gt; requires constexpr detail::safe_convertible&lt; Rep2, rep &gt; quantity &amp; operator+= (const quantity&lt; D, U, Rep2 &gt; &amp;q)</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1aaa21450326bb5d255b63809d37d08390"></span><code class="sig-name descname">template&lt;typename T = Rep&gt; requires requires (T v1, T v2)</code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N5units8quantitymIERK8quantity">
-<span id="_CPPv3N5units8quantitymIERK8quantity"></span><span id="_CPPv2N5units8quantitymIERK8quantity"></span><span id="units::quantity::sub-assign-operator__quantityCRCE"></span><span class="target" id="classunits_1_1quantity_1ac9a3772cb1288f6dd2fc54d154caa58d"></span><em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity">quantity</a> &amp;<code class="sig-name descname">operator-=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity">quantity</a> &amp;<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8quantitymIERK8quantity" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="classunits_1_1quantity_1a30c7e9e6207eef6ea12a936b2ce275f6"></span><code class="sig-name descname">template&lt;typename Rep2&gt; requires constexpr detail::safe_convertible&lt; Rep2, rep &gt; quantity &amp; operator-= (const quantity&lt; D, U, Rep2 &gt; &amp;q)</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1aaa21450326bb5d255b63809d37d08390"></span><code class="sig-name descname">template&lt;typename T = Rep&gt; requires requires (T v1, T v2)</code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N5units8quantitymLERK3rep">
-<span id="_CPPv3N5units8quantitymLERK3rep"></span><span id="_CPPv2N5units8quantitymLERK3rep"></span><span id="units::quantity::mul-assign-operator__repCRCE"></span><span class="target" id="classunits_1_1quantity_1a9961d79c9f1b15b4293eaf0dfb20d902"></span><em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity">quantity</a> &amp;<code class="sig-name descname">operator*=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep">rep</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8quantitymLERK3rep" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="classunits_1_1quantity_1ac0246484f28956fa869917da5f068f94"></span><code class="sig-name descname">template&lt;typename Rep2&gt; requires constexpr detail::safe_convertible&lt; Rep2, rep &gt; quantity &amp; operator*= (const Rep2 &amp;rhs)</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1aaa21450326bb5d255b63809d37d08390"></span><code class="sig-name descname">template&lt;typename T = Rep&gt; requires requires (T v1, T v2)</code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N5units8quantitydVERK3rep">
-<span id="_CPPv3N5units8quantitydVERK3rep"></span><span id="_CPPv2N5units8quantitydVERK3rep"></span><span id="units::quantity::div-assign-operator__repCRCE"></span><span class="target" id="classunits_1_1quantity_1a1ecb5a1a84132ff574ab04add2a81579"></span><em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity">quantity</a> &amp;<code class="sig-name descname">operator/=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep">rep</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8quantitydVERK3rep" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="classunits_1_1quantity_1a3736463d9e39f16da0fa682b3aec9f34"></span><code class="sig-name descname">template&lt;typename Rep2&gt; requires constexpr detail::safe_convertible&lt; Rep2, rep &gt; quantity &amp; operator/= (const Rep2 &amp;rhs)</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
