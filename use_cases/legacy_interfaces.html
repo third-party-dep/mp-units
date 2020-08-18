@@ -190,13 +190,15 @@
   <div class="section" id="working-with-legacy-interfaces">
 <h1>Working with Legacy Interfaces<a class="headerlink" href="#working-with-legacy-interfaces" title="Permalink to this headline">¶</a></h1>
 <p>In case we are working with a legacy/unsafe interface we may be forced to
-extract a <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> with <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity5countEv" title="units::quantity::count"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity::count()</span></code></a> and
-pass it to the library’s output:</p>
+extract the <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> with <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity5countEv" title="units::quantity::count"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity::count()</span></code></a> or to
+extract the <span class="xref std std-term">value of a quantity_point</span> with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity_point::relative()</span></code>
+and pass it to the library’s output:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">legacy.h</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">legacy</span> <span class="p">{</span>
 
 <span class="kt">void</span> <span class="n">print_eta</span><span class="p">(</span><span class="kt">double</span> <span class="n">speed_in_mps</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">set_path_position</span><span class="p">(</span><span class="kt">double</span> <span class="n">meter</span><span class="p">);</span>
 
 <span class="p">}</span> <span class="c1">// namespace legacy</span>
 </pre></div>
@@ -204,6 +206,7 @@ pass it to the library’s output:</p>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;legacy.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/quantity_point.h&gt;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
 
@@ -216,6 +219,13 @@ pass it to the library’s output:</p>
 <span class="p">{</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
   <span class="n">legacy</span><span class="o">::</span><span class="n">print_eta</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">QuantityPoint</span> <span class="n">QP</span><span class="o">&gt;</span>
+  <span class="k">requires</span> <span class="n">Length</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">QP</span><span class="o">::</span><span class="n">quantity_type</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">set_path_position</span><span class="p">(</span><span class="n">QP</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">legacy</span><span class="o">::</span><span class="n">set_path_position</span><span class="p">(</span><span class="n">quantity_point_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">p</span><span class="p">).</span><span class="n">relative</span><span class="p">().</span><span class="n">count</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 </div>

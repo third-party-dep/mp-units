@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Units" href="units.html" />
-    <link rel="prev" title="Quantities" href="quantities.html" /> 
+    <link rel="prev" title="Quantity Points" href="quantity_points.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,6 +97,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../framework.html">Framework Basics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic_concepts.html">Basic Concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quantities.html">Quantities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantity_points.html">Quantity Points</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Dimensions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#operations">Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#base-dimensions">Base Dimensions</a></li>
@@ -240,6 +241,29 @@ dimension, than we will end up with just a scalar type:</p>
 </span><span class="hll"><span class="n">Scalar</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// 50</span>
 </span></pre></div>
 </div>
+<p>Quantity points have a more restricted set of operations.
+Quantity points can’t be added together,
+but can be added to or subtracted from quantities.
+The result will always be a quantity point of the same dimension:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">;</span>
+<span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">;</span>
+<span class="hll"><span class="n">QuantityPoint</span> <span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">+</span> <span class="n">dist2</span><span class="p">;</span>
+</span><span class="hll"><span class="n">QuantityPoint</span> <span class="k">auto</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">+</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>
+</span><span class="n">QuantityPoint</span> <span class="k">auto</span> <span class="n">res3</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">-</span> <span class="n">dist2</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can’t subtract a quantity from a quantity point:</p>
+</div>
+<p>We can also substract two quantity points.
+The result is a relative quantity of the same dimension:</p>
+<blockquote>
+<div><p>Length auto dist1 = 2q_m;
+Length auto dist2 = 1q_m;
+Length auto res1 = quantity_point{dist1} - quantity_point{dist2};</p>
+</div></blockquote>
+<p>That’s it! You can’t multiply nor divide quantity points with anything else.</p>
 </div>
 <div class="section" id="base-dimensions">
 <h2>Base Dimensions<a class="headerlink" href="#base-dimensions" title="Permalink to this headline">¶</a></h2>
@@ -360,7 +384,7 @@ template parameter will be removed from this definition.</p>
         <a href="units.html" class="btn btn-neutral float-right" title="Units" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quantities.html" class="btn btn-neutral float-left" title="Quantities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="quantity_points.html" class="btn btn-neutral float-left" title="Quantity Points" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

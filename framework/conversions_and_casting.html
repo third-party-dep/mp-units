@@ -97,6 +97,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../framework.html">Framework Basics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic_concepts.html">Basic Concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quantities.html">Quantities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantity_points.html">Quantity Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="units.html">Units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">Quantity Constants</a></li>
@@ -249,8 +250,9 @@ ratio:</p>
 </div>
 <div class="section" id="explicit">
 <h2>Explicit<a class="headerlink" href="#explicit" title="Permalink to this headline">¶</a></h2>
-<p>Explicit conversions are available with a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> function template. They
-are especially useful to force a truncating conversion across quantities of the same
+<p>Explicit conversions are available with
+the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code> function templates.
+They are especially useful to force a truncating conversion across quantities of the same
 dimension for integral representation types and ratios that may cause precision loss:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="n">km</span> <span class="o">+</span> <span class="mi">1</span><span class="n">m</span><span class="p">);</span>    <span class="c1">// OK</span>
 <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="n">s</span><span class="p">);</span>          <span class="c1">// Error</span>
@@ -280,6 +282,14 @@ once and leave the rest intact:</p>
 <li><p>line #2 forces only a specific destination unit type,</p></li>
 <li><p>line #3 sets only a representation type to the type provided by the user.</p></li>
 </ul>
+<p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code> takes anything that works for <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code>
+or a specific target <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code>:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>std::cout &lt;&lt; “Point: ” &lt;&lt; quantity_point_cast&lt;decltype(quantity_point{0q_m})&gt;(d)</dt><dd><p>&lt;&lt; ‘n’;</p>
+</dd>
+</dl>
+</div></blockquote>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>For more information on conversion and casting and on how to extend the above “integral”
