@@ -388,13 +388,21 @@ and some for quantity points (additional constructor).</p>
 196
 197
 198
-199</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
+199
+200
+201
+202
+203</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/international/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/math.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity_point.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="cp">#if COMP_MSVC || COMP_GCC &gt;= 10</span>
+<span class="cp">#include</span> <span class="cpf">&lt;compare&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
 
 <span class="c1">// horizontal/vertical vector</span>
 <span class="k">namespace</span> <span class="p">{</span>
@@ -438,7 +446,7 @@ and some for quantity points (additional constructor).</p>
     <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
   <span class="p">}</span>
 
-<span class="cp">#if __GNUC__ &gt;= 10</span>
+<span class="cp">#if COMP_MSVC || COMP_GCC &gt;= 10</span>
 
   <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
   <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;=&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
@@ -579,11 +587,7 @@ we have 3 <a class="reference internal" href="../glossary.html#term-kind"><span 
 facility.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>201
-202
-203
-204
-205
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>205
 206
 207
 208
@@ -609,7 +613,11 @@ facility.</p>
 228
 229
 230
-231</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// custom types</span>
+231
+232
+233
+234
+235</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// custom types</span>
 <span class="k">namespace</span> <span class="p">{</span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
@@ -651,11 +659,7 @@ to finish a task and the duration needed to finish it while flying a selected gl
 conditions.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>233
-234
-235
-236
-237
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>237
 238
 239
 240
@@ -990,7 +994,11 @@ conditions.</p>
 569
 570
 571
-572</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// An example of a really simplified tactical glide computer</span>
+572
+573
+574
+575
+576</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// An example of a really simplified tactical glide computer</span>
 <span class="c1">// Simplifications:</span>
 <span class="c1">// - glider 100% clean and with full factory performance (brand new painting)</span>
 <span class="c1">// - no influence of the ballast (pilot weight, water, etc) to glider performance</span>

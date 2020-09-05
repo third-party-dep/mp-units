@@ -358,9 +358,17 @@
 158
 159
 160
-161</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/acceleration.h&gt;</span><span class="cp"></span>
+161
+162
+163
+164
+165</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/acceleration.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="cp">#if COMP_MSVC || COMP_GCC &gt;= 10</span>
+<span class="cp">#include</span> <span class="cpf">&lt;compare&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
 
 <span class="k">namespace</span> <span class="p">{</span>
 
@@ -439,9 +447,9 @@
     <span class="k">return</span> <span class="nf">measurement</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">relative_uncertainty</span><span class="p">());</span>
   <span class="p">}</span>
 
-<span class="cp">#if __GNUC__ &gt;= 10</span>
+<span class="cp">#if COMP_MSVC || COMP_GCC &gt;= 10</span>
 
-  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;=&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;=&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">measurement</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
 
 <span class="cp">#else</span>
 
