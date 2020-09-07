@@ -468,7 +468,7 @@ differences:</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li><p>Force Conan to check for updated recipes <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">-u</span></code> and to build outdated packages <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">-b</span> <span class="pre">outdated</span></code>:</p></li>
+<li><p>Force Conan to check for updated recipes <code class="docutils literal notranslate"><span class="pre">-u</span></code> and to build outdated packages <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">outdated</span></code>:</p></li>
 </ol>
 <blockquote>
 <div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
@@ -486,7 +486,7 @@ enough to handle simple dependencies and configurations. If your project setup i
 may prefer to use <code class="docutils literal notranslate"><span class="pre">cmake</span></code> generator. In such a case the above procedures should be updated as
 follows:</p>
 <ol class="arabic simple">
-<li><p>Specify <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">cmake</span></code> generator in your Conan configuration file:</p></li>
+<li><p>Specify <code class="docutils literal notranslate"><span class="pre">cmake</span></code> generator in your Conan configuration file:</p></li>
 </ol>
 <blockquote>
 <div><div class="literal-block-wrapper docutils container" id="id3">
@@ -529,7 +529,7 @@ in <strong>mp-units</strong> repository, you should:</p>
 <li><p>Add remotes of additional Conan dependencies.</p></li>
 <li><p>Use the <em>CMakeLists.txt</em> from the top-level directory.</p></li>
 <li><p>Obtain Python dependencies.</p></li>
-<li><p>Run Conan with <span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">CONAN_RUN_TESTS</span></code> = <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p>Run Conan with <a class="reference internal" href="#conan-run-tests">CONAN_RUN_TESTS</a> = <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add linear-algebra https://api.bintray.com/conan/twonington/public-conan
 git clone https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units

@@ -106,7 +106,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#user-defined-literals-udls">User Defined Literals (UDLs)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#why-all-udls-are-prefixed-with-q-instead-of-just-using-unit-symbol">Why all UDLs are prefixed with <code class="docutils literal notranslate"><span class="pre">q_</span></code> instead of just using unit symbol?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#why-do-we-use-udls-reserved-for-the-c-standard-no-prefix">Why do we use UDLs reserved for the C++ standard (no <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">_</span></code> prefix)?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-do-we-use-udls-reserved-for-the-c-standard-no-prefix">Why do we use UDLs reserved for the C++ standard (no <code class="docutils literal notranslate"><span class="pre">_</span></code> prefix)?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#text-formatting">Text formatting</a><ul>
@@ -212,7 +212,7 @@
 <li><p><a class="reference internal" href="#user-defined-literals-udls" id="id7">User Defined Literals (UDLs)</a></p>
 <ul>
 <li><p><a class="reference internal" href="#why-all-udls-are-prefixed-with-q-instead-of-just-using-unit-symbol" id="id8">Why all UDLs are prefixed with <code class="docutils literal notranslate"><span class="pre">q_</span></code> instead of just using unit symbol?</a></p></li>
-<li><p><a class="reference internal" href="#why-do-we-use-udls-reserved-for-the-c-standard-no-prefix" id="id9">Why do we use UDLs reserved for the C++ standard (no <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">_</span></code> prefix)?</a></p></li>
+<li><p><a class="reference internal" href="#why-do-we-use-udls-reserved-for-the-c-standard-no-prefix" id="id9">Why do we use UDLs reserved for the C++ standard (no <code class="docutils literal notranslate"><span class="pre">_</span></code> prefix)?</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#text-formatting" id="id10">Text formatting</a></p>
@@ -266,7 +266,7 @@ naming and we came up with <code class="docutils literal notranslate"><span clas
 quantity of a provided unit.</p>
 </div>
 <div class="section" id="why-do-we-use-udls-reserved-for-the-c-standard-no-prefix">
-<h3><a class="toc-backref" href="#id9">Why do we use UDLs reserved for the C++ standard (no <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">_</span></code> prefix)?</a><a class="headerlink" href="#why-do-we-use-udls-reserved-for-the-c-standard-no-prefix" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Why do we use UDLs reserved for the C++ standard (no <code class="docutils literal notranslate"><span class="pre">_</span></code> prefix)?</a><a class="headerlink" href="#why-do-we-use-udls-reserved-for-the-c-standard-no-prefix" title="Permalink to this headline">¶</a></h3>
 <p>This library is meant to become a part of the C++ Standard Library at some point
 in the future. We decided to work with the target interface to get implementation
 and user experience. Only thanks to this we were able to detect multiple collisions
@@ -275,8 +275,8 @@ with literals already existing in the language in our initial approach
 This approach has some side effects though. We had to disable some compiler warnings
 to make it work:</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">/wd4455</span></code> on MSVC,</p></li>
-<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">-Wno-literal-suffix</span></code> on other compilers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/wd4455</span></code> on MSVC,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Wno-literal-suffix</span></code> on other compilers.</p></li>
 </ul>
 </div>
 </div>
