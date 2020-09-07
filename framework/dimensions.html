@@ -255,9 +255,19 @@ The result will always be a quantity point of the same dimension:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can’t subtract a quantity from a quantity point:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">;</span>
+<span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">;</span>
+<span class="hll"><span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">-</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>  <span class="c1">// ERROR</span>
+</span></pre></div>
 </div>
-<p>We can also substract two quantity points.
+</div>
+<p>We can also subtract two quantity points.
 The result is a relative quantity of the same dimension:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">;</span>
+<span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">;</span>
+<span class="hll"><span class="n">Length</span> <span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">-</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>
+</span></pre></div>
+</div>
 <p>That’s it! You can’t multiply nor divide quantity points with anything else.</p>
 </div>
 <div class="section" id="base-dimensions">

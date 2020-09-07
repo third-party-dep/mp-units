@@ -284,12 +284,9 @@ once and leave the rest intact:</p>
 </ul>
 <p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code> takes anything that works for <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code>
 or a specific target <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code>:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>std::cout &lt;&lt; “Point: ” &lt;&lt; quantity_point_cast&lt;decltype(quantity_point{0q_m})&gt;(d)</dt><dd><p>&lt;&lt; ‘n’;</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Point: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_point_cast</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity_point</span><span class="p">{</span><span class="mi">0</span><span class="n">q_m</span><span class="p">})</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>For more information on conversion and casting and on how to extend the above “integral”
