@@ -206,7 +206,7 @@ each other and the result will always be a quantity of the same dimension:</p>
 </span></pre></div>
 </div>
 <p>Additionally, we can always multiply or divide a quantity by a
-<a class="reference internal" href="../glossary.html#term-scalar"><span class="xref std std-term">scalar</span></a> and in such a case the quantity’s dimension will also
+<a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a> and in such a case the quantity’s dimension will also
 not change:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist</span> <span class="o">=</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">;</span>
 <span class="hll"><span class="n">Length</span> <span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>   <span class="c1">// 4 m</span>
@@ -215,7 +215,7 @@ not change:</p>
 </span></pre></div>
 </div>
 <p>However, if we try to multiply or divide quantities of the same or
-different dimensions, or we will divide a scalar by a quantity, we most
+different dimensions, or we will divide a scalable number by a quantity, we most
 probably will always end up in a quantity of a yet another dimension:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">;</span>
 <span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">;</span>
@@ -227,12 +227,12 @@ probably will always end up in a quantity of a yet another dimension:</p>
 </div>
 <p>However, please note that there is an exception from the above rule.
 In case we divide the same dimensions, or multiply by the inverted
-dimension, than we will end up with just a scalar type:</p>
+dimension, than we will end up with just a scalable number type:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="k">auto</span> <span class="n">dur1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_s</span><span class="p">;</span>
 <span class="n">Time</span> <span class="k">auto</span> <span class="n">dur2</span> <span class="o">=</span> <span class="mi">2</span><span class="n">q_s</span><span class="p">;</span>
 <span class="n">Frequency</span> <span class="k">auto</span> <span class="n">fr1</span> <span class="o">=</span> <span class="mi">5</span><span class="n">q_Hz</span><span class="p">;</span>
-<span class="hll"><span class="n">Scalar</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">/</span> <span class="n">dur2</span><span class="p">;</span>    <span class="c1">// 5</span>
-</span><span class="hll"><span class="n">Scalar</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// 50</span>
+<span class="hll"><span class="n">ScalableNumber</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">/</span> <span class="n">dur2</span><span class="p">;</span>    <span class="c1">// 5</span>
+</span><span class="hll"><span class="n">ScalableNumber</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// 50</span>
 </span></pre></div>
 </div>
 <p>Quantity points have a more restricted set of operations.

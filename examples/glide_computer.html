@@ -402,7 +402,7 @@ and some for quantity points (additional constructor).</p>
   <span class="p">}</span>
 
   <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">V</span><span class="o">&gt;</span>
-    <span class="k">requires</span> <span class="p">(</span><span class="n">Scalar</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">Dimensionless</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="k">requires</span> <span class="p">(</span><span class="n">ScalableNumber</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">Dimensionless</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span>
   <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
     <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span> <span class="p">}</span>
   <span class="p">{</span>
@@ -410,7 +410,7 @@ and some for quantity points (additional constructor).</p>
   <span class="p">}</span>
 
   <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">V</span><span class="o">&gt;</span>
-    <span class="k">requires</span> <span class="p">(</span><span class="n">Scalar</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">Dimensionless</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="k">requires</span> <span class="p">(</span><span class="n">ScalableNumber</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">Dimensionless</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span>
   <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
     <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">value</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
   <span class="p">{</span>

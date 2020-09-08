@@ -196,7 +196,7 @@ with a specific representation and is represented in the library with a
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code> class template.</p>
 <div class="section" id="quantity-construction">
 <h2>Quantity Construction<a class="headerlink" href="#quantity-construction" title="Permalink to this headline">¶</a></h2>
-<p>To create the quantity object from a <a class="reference internal" href="../glossary.html#term-scalar"><span class="xref std std-term">scalar</span></a> we just have to pass
+<p>To create the quantity object from a <a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a> we just have to pass
 the value to the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code> class template explicit constructor:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
 </pre></div>
@@ -218,7 +218,7 @@ quantities of each <a class="reference internal" href="../glossary.html#term-dim
 type to <code class="docutils literal notranslate"><span class="pre">double</span></code> by default:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">ScalableNumber</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">length</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="p">}</span>
@@ -257,7 +257,8 @@ be used:</p>
 <p class="admonition-title">Note</p>
 <p>All instances of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code> class always match the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code> concept.
 All other regular types that are not quantities are called
-<a class="reference internal" href="../glossary.html#term-scalar"><span class="xref std std-term">scalars</span></a> by the library and match the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Scalar</span></code> concept.</p>
+<a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable numbers</span></a> by the library and match the
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ScalableNumber</span></code> concept.</p>
 </div>
 <p>However, the above is not the most important usage of those concepts. Let’s
 assume that the user wants to implement an <code class="docutils literal notranslate"><span class="pre">avg_speed</span></code> function that will
@@ -365,7 +366,7 @@ are provided:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="k">concept</span> <span class="n">Dimensionless</span> <span class="o">=</span> <span class="n">QuantityOf</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">dim_one</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">ScalableNumber</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">dimensionless</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_one</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
