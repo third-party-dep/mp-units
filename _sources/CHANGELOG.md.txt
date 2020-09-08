@@ -1,7 +1,7 @@
 # Release notes
 
 - **0.6.0 WIP**
-  - Minimum compiler version supported changed to gcc-9.3
+  - gcc-9 is no longer supported (at least gcc-10 is required)
   - MSVC 16.7 support added
   - linear_algebra updated to 0.7.0/stable
   - fmt updated to 7.0.3
@@ -15,6 +15,9 @@
   - FPS system added (thanks [@mikeford3](https://github.com/mikeford3))
   - `quantity_point` support added (thanks [@johelegp](https://github.com/johelegp))
   - `ratio` changed to the NTTP kind
+  - `exp` and `Exp` renamed to `exponent` and `Exponent`
+  - Added support for `exp()` mathematical support
+  - Dimensionless quantities redesigned to be of `quantity` type
 
 - **0.5.0 May 17, 2020**
   - Major refactoring and rewrite of the library

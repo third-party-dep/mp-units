@@ -115,18 +115,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
             
@@ -239,7 +233,7 @@
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/resistance.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/time.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/voltage.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/math.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
@@ -256,7 +250,7 @@
   <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">4.7</span><span class="n">q_kR</span><span class="p">;</span>
 
   <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="n">q_ms</span><span class="p">;</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="n">q_ms</span><span class="p">;</span> <span class="o">++</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">const</span> <span class="n">Voltage</span> <span class="n">AUTO</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">C</span><span class="p">));</span>
+    <span class="k">const</span> <span class="n">Voltage</span> <span class="k">auto</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">units</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">C</span><span class="p">));</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;at &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; voltage is &quot;</span><span class="p">;</span>
 

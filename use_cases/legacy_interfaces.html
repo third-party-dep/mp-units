@@ -108,18 +108,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
             
@@ -190,7 +184,7 @@
   <div class="section" id="working-with-legacy-interfaces">
 <h1>Working with Legacy Interfaces<a class="headerlink" href="#working-with-legacy-interfaces" title="Permalink to this headline">¶</a></h1>
 <p>In case we are working with a legacy/unsafe interface we may be forced to
-extract the <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> with <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity5countEv" title="units::quantity::count"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity::count()</span></code></a> or to
+extract the <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity::count()</span></code> or to
 extract the value of a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code> with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity_point::relative()</span></code>
 and pass it to the library’s output:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
@@ -233,7 +227,7 @@ and pass it to the library’s output:</p>
 <p class="admonition-title">Important</p>
 <p>When dealing with a quantity of an unknown <code class="docutils literal notranslate"><span class="pre">auto</span></code> type please remember
 to always use <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> to cast it to a desired unit before calling
-<a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity5countEv" title="units::quantity::count"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::count()</span></code></a> and passing the raw value to the legacy/unsafe interface.</p>
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::count</span></code> and passing the raw value to the legacy/unsafe interface.</p>
 </div>
 </div>
 

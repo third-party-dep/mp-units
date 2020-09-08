@@ -121,18 +121,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
             
@@ -249,7 +243,7 @@ by my desks:</p>
 <div class="section" id="enabling-a-unit-for-prefixing">
 <h3>Enabling a Unit for Prefixing<a class="headerlink" href="#enabling-a-unit-for-prefixing" title="Permalink to this headline">¶</a></h3>
 <p>In case I decide it is reasonable to express my desks with SI prefixes the only thing I have
-to change in the above code is to replace <a class="reference internal" href="../reference/core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">no_prefix</span></code></a> with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si_prefix</span></code>:</p>
+to change in the above code is to replace <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">no_prefix</span></code> with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si_prefix</span></code>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">desk</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">desk</span><span class="p">,</span> <span class="s">&quot;desk&quot;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 </pre></div>
 </div>
@@ -304,7 +298,7 @@ coherent unit:</p>
 
 <span class="c1">// new derived dimensions</span>
 <span class="k">struct</span> <span class="nl">dim_desk_rate</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_desk_rate</span><span class="p">,</span> <span class="n">square_metre_per_second</span><span class="p">,</span>
-                                         <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_area</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+                                         <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_area</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 
 <span class="c1">// our unit of interest for a new derived dimension</span>
 <span class="k">struct</span> <span class="nl">desk_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">desk_per_hour</span><span class="p">,</span> <span class="n">dim_desk_rate</span><span class="p">,</span> <span class="n">desk</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
@@ -351,7 +345,8 @@ define a new base dimension, its units, quantity helper, concept, and UDLs:</p>
 <p>With the above we can now define a new derived dimension:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">person_per_square_metre</span> <span class="p">:</span> <span class="n">unit</span><span class="o">&lt;</span><span class="n">person_per_square_metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">dim_occupancy_rate</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_occupancy_rate</span><span class="p">,</span> <span class="n">person_per_square_metre</span><span class="p">,</span>
-                                              <span class="n">exp</span><span class="o">&lt;</span><span class="n">dim_people</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exp</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_area</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+                                              <span class="n">exponent</span><span class="o">&lt;</span><span class="n">dim_people</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+                                              <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_area</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
 
 <span class="k">struct</span> <span class="nl">person_per_desk</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">person_per_desk</span><span class="p">,</span> <span class="n">dim_occupancy_rate</span><span class="p">,</span> <span class="n">person</span><span class="p">,</span> <span class="n">desk</span><span class="o">&gt;</span> <span class="p">{};</span>
 

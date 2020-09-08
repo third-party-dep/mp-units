@@ -115,18 +115,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
             
@@ -249,7 +243,7 @@
 <span class="k">namespace</span> <span class="p">{</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">Length</span> <span class="n">D</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">Time</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">Speed</span> <span class="n">AUTO</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">D</span> <span class="n">d</span><span class="p">,</span> <span class="n">T</span> <span class="n">t</span><span class="p">)</span>
+<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">Speed</span> <span class="k">auto</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">D</span> <span class="n">d</span><span class="p">,</span> <span class="n">T</span> <span class="n">t</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t</span><span class="p">;</span>
 <span class="p">}</span>
@@ -259,13 +253,13 @@
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 
-  <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">123</span><span class="n">q_m</span><span class="p">;</span>
-  <span class="n">Time</span> <span class="n">AUTO</span> <span class="n">t1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_s</span><span class="p">;</span>
-  <span class="n">Speed</span> <span class="n">AUTO</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">t1</span><span class="p">);</span>
+  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">123</span><span class="n">q_m</span><span class="p">;</span>
+  <span class="n">Time</span> <span class="k">auto</span> <span class="n">t1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_s</span><span class="p">;</span>
+  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">t1</span><span class="p">);</span>
 
   <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">*</span> <span class="mi">50</span><span class="n">q_m</span><span class="p">;</span>  <span class="c1">// produces intermediate unknown dimension with &#39;unknown_coherent_unit&#39; as its &#39;coherent_unit&#39;</span>
-  <span class="n">Speed</span> <span class="n">AUTO</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">100</span><span class="n">q_m</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
-  <span class="n">Length</span> <span class="n">AUTO</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">*</span> <span class="mi">60</span><span class="n">q_s</span><span class="p">;</span>
+  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">100</span><span class="n">q_m</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
+  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">*</span> <span class="mi">60</span><span class="n">q_s</span><span class="p">;</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;d1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">d1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>

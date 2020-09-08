@@ -115,18 +115,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
             
@@ -341,68 +335,14 @@ and some for quantity points (additional constructor).</p>
 149
 150
 151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
+152</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/international/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/math.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity_point.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-
-<span class="cp">#if COMP_MSVC || COMP_GCC &gt;= 10</span>
 <span class="cp">#include</span> <span class="cpf">&lt;compare&gt;</span><span class="cp"></span>
-<span class="cp">#endif</span>
 
 <span class="c1">// horizontal/vertical vector</span>
 <span class="k">namespace</span> <span class="p">{</span>
@@ -418,6 +358,7 @@ and some for quantity points (additional constructor).</p>
   <span class="k">requires</span> <span class="n">Quantity</span><span class="o">&lt;</span><span class="n">Q</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">QuantityPoint</span><span class="o">&lt;</span><span class="n">Q</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">vector</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
+  <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">Q</span><span class="p">;</span>
   <span class="k">using</span> <span class="n">magnitude_type</span> <span class="o">=</span> <span class="n">Q</span><span class="p">;</span>
   <span class="k">static</span> <span class="k">constexpr</span> <span class="n">direction</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">D</span><span class="p">;</span>
 
@@ -430,10 +371,8 @@ and some for quantity points (additional constructor).</p>
 
   <span class="k">constexpr</span> <span class="n">Q</span> <span class="n">magnitude</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">magnitude_</span><span class="p">;</span> <span class="p">}</span>
 
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">QQ</span> <span class="o">=</span> <span class="n">Q</span><span class="o">&gt;</span>
   <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="n">vector</span> <span class="k">operator</span><span class="o">-</span><span class="p">()</span> <span class="k">const</span>
-    <span class="k">requires</span> <span class="k">requires</span><span class="p">(</span><span class="n">QQ</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span> <span class="o">-</span><span class="n">q</span><span class="p">;</span> <span class="p">}</span>
-    <span class="c1">// requires requires { -magnitude(); } // TODO gated by gcc-9 (fixed in gcc-10)</span>
+    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="o">-</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
   <span class="p">{</span>
     <span class="k">return</span> <span class="n">vector</span><span class="p">(</span><span class="o">-</span><span class="n">magnitude</span><span class="p">());</span>
   <span class="p">}</span>
@@ -446,7 +385,44 @@ and some for quantity points (additional constructor).</p>
     <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
   <span class="p">}</span>
 
-<span class="cp">#if COMP_MSVC || COMP_GCC &gt;= 10</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="n">ret_type</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="n">ret_type</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">V</span><span class="o">&gt;</span>
+    <span class="k">requires</span> <span class="p">(</span><span class="n">Scalar</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">Dimensionless</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">*</span> <span class="n">value</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">V</span><span class="o">&gt;</span>
+    <span class="k">requires</span> <span class="p">(</span><span class="n">Scalar</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">Dimensionless</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">value</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="p">,</span> <span class="n">direction</span> <span class="n">D2</span><span class="o">&gt;</span>
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D2</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span>
+  <span class="p">}</span>
 
   <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
   <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;=&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
@@ -462,56 +438,8 @@ and some for quantity points (additional constructor).</p>
     <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span>
   <span class="p">}</span>
 
-<span class="cp">#else</span>
-
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
-  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span>
-  <span class="p">}</span>
-
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
-  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">!=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">lhs</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
-  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span>
-  <span class="p">}</span>
-
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
-  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="n">rhs</span> <span class="o">&lt;</span> <span class="n">lhs</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
-  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">rhs</span> <span class="o">&lt;</span> <span class="n">lhs</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q2</span><span class="o">&gt;</span>
-  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">friend</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-    <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">lhs</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">);</span>
-  <span class="p">}</span>
-
-<span class="cp">#endif</span>
-
-  <span class="c1">// template&lt;class CharT, class Traits&gt;</span>
-    <span class="c1">// requires Quantity&lt;Q&gt; // TODO gated by gcc-9 (fixed in gcc-10)</span>
-  <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">CharT</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Traits</span><span class="p">,</span> <span class="k">typename</span> <span class="n">QQ</span> <span class="o">=</span> <span class="n">Q</span><span class="o">&gt;</span>
-    <span class="k">requires</span> <span class="n">Quantity</span><span class="o">&lt;</span><span class="n">QQ</span><span class="o">&gt;</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">CharT</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Traits</span><span class="o">&gt;</span>
+    <span class="k">requires</span> <span class="n">Quantity</span><span class="o">&lt;</span><span class="n">Q</span><span class="o">&gt;</span>
   <span class="k">friend</span> <span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="n">Traits</span><span class="o">&gt;&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="n">Traits</span><span class="o">&gt;&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span>
@@ -521,42 +449,6 @@ and some for quantity points (additional constructor).</p>
   <span class="n">Q</span> <span class="n">magnitude_</span><span class="p">{};</span>
 <span class="p">};</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q1</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Q2</span><span class="p">,</span> <span class="n">direction</span> <span class="n">D</span><span class="o">&gt;</span>
-<span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q1</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-  <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-<span class="p">{</span>
-  <span class="k">using</span> <span class="n">ret_type</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
-  <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q1</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Q2</span><span class="p">,</span> <span class="n">direction</span> <span class="n">D</span><span class="o">&gt;</span>
-<span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q1</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-  <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-<span class="p">{</span>
-  <span class="k">using</span> <span class="n">ret_type</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
-  <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q</span><span class="p">,</span> <span class="n">direction</span> <span class="n">D</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">V</span><span class="o">&gt;</span>
-<span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
-  <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">*</span> <span class="n">value</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q</span><span class="p">,</span> <span class="n">direction</span> <span class="n">D</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">V</span><span class="o">&gt;</span>
-<span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-  <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">value</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">());</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Q1</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Q2</span><span class="p">,</span> <span class="n">direction</span> <span class="n">D1</span><span class="p">,</span> <span class="n">direction</span> <span class="n">D2</span><span class="o">&gt;</span>
-<span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q1</span><span class="p">,</span> <span class="n">D1</span><span class="o">&gt;&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Q2</span><span class="p">,</span> <span class="n">D2</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-  <span class="k">requires</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span> <span class="p">}</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">magnitude</span><span class="p">();</span>
-<span class="p">}</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">is_vector</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
@@ -587,37 +479,37 @@ we have 3 <a class="reference internal" href="../glossary.html#term-kind"><span 
 facility.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// custom types</span>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// custom types</span>
 <span class="k">namespace</span> <span class="p">{</span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
@@ -659,7 +551,58 @@ to finish a task and the duration needed to finish it while flying a selected gl
 conditions.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>237
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
 238
 239
 240
@@ -947,58 +890,7 @@ conditions.</p>
 522
 523
 524
-525
-526
-527
-528
-529
-530
-531
-532
-533
-534
-535
-536
-537
-538
-539
-540
-541
-542
-543
-544
-545
-546
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
-558
-559
-560
-561
-562
-563
-564
-565
-566
-567
-568
-569
-570
-571
-572
-573
-574
-575
-576</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// An example of a really simplified tactical glide computer</span>
+525</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// An example of a really simplified tactical glide computer</span>
 <span class="c1">// Simplifications:</span>
 <span class="c1">// - glider 100% clean and with full factory performance (brand new painting)</span>
 <span class="c1">// - no influence of the ballast (pilot weight, water, etc) to glider performance</span>
@@ -1040,7 +932,7 @@ conditions.</p>
   <span class="k">return</span> <span class="n">gliders</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">constexpr</span> <span class="kt">double</span> <span class="nf">glide_ratio</span><span class="p">(</span><span class="k">const</span> <span class="n">glider</span><span class="o">::</span><span class="n">polar_point</span><span class="o">&amp;</span> <span class="n">polar</span><span class="p">)</span>
+<span class="k">constexpr</span> <span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">glide_ratio</span><span class="p">(</span><span class="k">const</span> <span class="n">glider</span><span class="o">::</span><span class="n">polar_point</span><span class="o">&amp;</span> <span class="n">polar</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">polar</span><span class="p">.</span><span class="n">v</span> <span class="o">/</span> <span class="o">-</span><span class="n">polar</span><span class="p">.</span><span class="n">climb</span><span class="p">;</span>
 <span class="p">}</span>

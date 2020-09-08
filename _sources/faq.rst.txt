@@ -1,3 +1,5 @@
+.. namespace:: units
+
 FAQ
 ===
 
@@ -26,6 +28,34 @@ measured with the same unit (i.e. ``GeV``). Also if someone will decide to
 implement a systems where SI quantities of the same kind are expressed as
 different dimensions (i.e. height, width, and depth) all of them will just be
 measured in meters.
+
+
+Why a dimensionless quantity is not just an fundamental arithmetic type?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the initial design of this library the resulting type of the division of
+two quantities was their common representation type::
+
+    static_assert(std::is_same_v<decltype(10q_km / 5q_km), std::int64_t>);
+
+The reasoning behind it was to not provide a false impression of a strong `quantity` type
+for something that looks and feels like a regular number. Also all of the mathematic
+and trigonometric functions were working fine out of the box with such representation
+types, so we did not have to rewrite ``sin()``, ``cos()``, ``exp()``, and others.
+
+However, the feedback we got from the production usage was that such an approach
+is really bad for generic programming. It is really hard to handle the result of
+division (or multiplication) of two quantities as it might be either a `quantity`
+or a fundamental type. If we want to raise such a result to some power we have to
+either use ``units::pow`` or ``std::pow`` depending on the resulting type. Those
+are only a few from many similar issues related to such an approach.
+
+This is why it was decided to go with the current approach.
+
+.. seealso::
+
+    More information on the current design can be found in :ref:`Dimensionless quantities`
+    chapter.
 
 
 Why do we spell ``metre`` instead of ``meter``?
@@ -96,14 +126,6 @@ Unfortunately, if `using-directives <https://en.cppreference.com/w/cpp/language/
 (i.e. ``using namespace units::physical::si``) are being used, `units::physical::si::time` will
 collide with C `time <https://en.cppreference.com/w/c/chrono/time>`_ function. In such a case the library's
 `time` function needs to be prefixed with at least one (or all) namespace names.
-
-error: template argument 1 is invalid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Again, usage of ``using namespace units``
-`using-directive <https://en.cppreference.com/w/cpp/language/namespace#Using-directives>`_ may result in
-the collision between `units::exp` class template and C `exp <https://en.cppreference.com/w/c/numeric/math/exp>`_
-function. In such a case the library's `exp` class template needs to be prefixed with `units` namespace name.
 
 
 

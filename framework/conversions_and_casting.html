@@ -108,6 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#quantity-cast-overloads">Quantity Cast Overloads</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#implicit-conversions-of-dimensionless-quantities">Implicit conversions of dimensionless quantities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="text_output.html">Text Output</a></li>
@@ -118,18 +119,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/math.html">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
             
@@ -274,7 +269,7 @@ chapter.</p>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
-<p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> in line #1 takes a specific target <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_6ScalarEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> type to which an explicit
+<p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> in line #1 takes a specific target <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code> type to which an explicit
 cast should be performed. This option will change multiple quantity properties at once
 (unit, representation, etc). However, it is also possible to force only one property at
 once and leave the rest intact:</p>
@@ -293,6 +288,82 @@ or a specific target <code class="xref cpp cpp-any docutils literal notranslate"
 vs “floating-point” logic please refer to the <a class="reference internal" href="../use_cases/custom_representation_types.html#using-custom-representation-types"><span class="std std-ref">Using Custom Representation Types</span></a>
 chapter.</p>
 </div>
+</div>
+</div>
+<div class="section" id="implicit-conversions-of-dimensionless-quantities">
+<h2>Implicit conversions of dimensionless quantities<a class="headerlink" href="#implicit-conversions-of-dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
+<p>As noted in the <a class="reference internal" href="quantities.html#dimensionless-quantities"><span class="std std-ref">Dimensionless Quantities</span></a> chapter, <a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a>
+is somehow special but still obey most of the rules defined for quantities. However, as they
+represent numbers it would be highly uncomfortable to every time type:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_km</span><span class="p">;</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="mi">3</span><span class="n">q_km</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">unitless</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">fill_time_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">box</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">box</span><span class="p">.</span><span class="n">fill_level</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">)</span> <span class="o">-</span>
+                             <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">unitless</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This is why it was decided to allow the <code class="docutils literal notranslate"><span class="pre">dimensionless&lt;unitless&gt;</span></code> quantity of any
+representation type to be implicitly constructible from this representation type.
+With that the above examples can be rewritten as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_km</span><span class="p">;</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="mi">3</span><span class="n">q_km</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>and:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">fill_time_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">box</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">box</span><span class="p">.</span><span class="n">fill_level</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The above is true only for dimensionless quantities of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unitless</span></code> unit. If our quantity have a unit with
+ratio different than <code class="docutils literal notranslate"><span class="pre">1</span></code> the implicit conversion will not happen. This is to prevent cases were the code
+could be ambiguous. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">foo</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span><span class="p">,</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As long as we can reason about what such code means for <code class="docutils literal notranslate"><span class="pre">foo(10q_km,</span> <span class="pre">2q_km)</span></code> it is not that obvious
+at all in the case of <code class="docutils literal notranslate"><span class="pre">foo(10q_cm,</span> <span class="pre">2q_ft)</span></code>. To make such code to compile for every case we have to
+either change the type of the resulting unit to the one having <code class="docutils literal notranslate"><span class="pre">ratio(1)</span></code> (<a class="reference internal" href="../glossary.html#term-coherent-derived-unit"><span class="xref std std-term">coherent derived unit</span></a>):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">foo</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span><span class="p">,</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">unitless</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>or to explicitly state what is the unit of our dimensionless value, e.g. <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unitless</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">percent</span></code>, etc:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">foo</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span><span class="p">,</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">unitless</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There is one more important point to note here. As the the dimensionless quantity is more than just
+a number, it is never implicitly converted back to the representation type. This means that the following
+code will not compile:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mi">10</span><span class="n">q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To make it compile fine we have to either explicitly get the value stored in the quantity:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">unitless</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="n">q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>or use a mathematical wrapper function from <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code> namespace:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">units</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mi">10</span><span class="n">q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Always remember to explicitly cast the quantity to the destination unit with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> before
+calling <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::count</span></code>!</p>
 </div>
 </div>
 </div>

@@ -129,18 +129,12 @@
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="reference/core.html">Core Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/math.html">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/random.html">Random</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
             
@@ -211,7 +205,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This library targets C++23 and extensively uses C++20 features that is why, as of now, it compiles correctly
-only with gcc-9.3, MSVC 16.7, and newer.</p>
+only with gcc-10, MSVC 16.7, and newer.</p>
 </div>
 <div class="section" id="repository-structure-and-dependencies">
 <h2>Repository Structure and Dependencies<a class="headerlink" href="#repository-structure-and-dependencies" title="Permalink to this headline">¶</a></h2>
@@ -223,10 +217,8 @@ only with gcc-9.3, MSVC 16.7, and newer.</p>
 <li><p>when this library will become part of the C++ standard it will have no external dependencies
 but until then it depends on:</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/ericniebler/range-v3">range-v3</a> (only for gcc versions &lt; 10.0) to provide
-C++20 concepts library definitions.</p></li>
 <li><p><a class="reference external" href="https://github.com/fmtlib/fmt">{fmt}</a> to provide text formatting of quantities.</p></li>
-<li><p><a class="reference external" href="https://github.com/microsoft/GSL">ms-gsl</a> to verify runtime contracts with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Expects</span></code> macro.</p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/GSL">ms-gsl</a> to verify runtime contracts with <code class="docutils literal notranslate"><span class="pre">Expects</span></code> macro.</p></li>
 </ul>
 </li>
 </ul>
@@ -348,9 +340,9 @@ to make the code compile without issues.</p>
 <h3>Copy + CMake<a class="headerlink" href="#copy-cmake" title="Permalink to this headline">¶</a></h3>
 <p>In case you copy the whole <strong>mp-units</strong> repository to your project’s file tree you can reuse CMake targets
 defined by the library. To do so you should use <em>CMakeLists.txt</em> file from the <em>./src</em> directory:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span>add_subdirectory(&lt;path_to_units_folder&gt;/src)
-...
-target_link_libraries(&lt;your_target&gt; PUBLIC|PRIVATE|INTERFACE mp-units::mp-units)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">&lt;path_to_units_folder&gt;/src</span><span class="p">)</span>
+<span class="c"># ...</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">mp-units::mp-units</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition important">
