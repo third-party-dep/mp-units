@@ -175,22 +175,22 @@
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <p>Here is a small example of possible operations:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// simple numeric operations</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">5</span><span class="n">q_km</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">5</span><span class="n">_q_km</span><span class="p">);</span>
 
 <span class="c1">// unit conversions</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">q_h</span> <span class="o">==</span> <span class="mi">3600</span><span class="n">q_s</span><span class="p">);</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">q_km</span> <span class="o">+</span> <span class="mi">1</span><span class="n">q_m</span> <span class="o">==</span> <span class="mi">1001</span><span class="n">q_m</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">_q_h</span> <span class="o">==</span> <span class="mi">3600</span><span class="n">_q_s</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">_q_km</span> <span class="o">+</span> <span class="mi">1</span><span class="n">_q_m</span> <span class="o">==</span> <span class="mi">1001</span><span class="n">_q_m</span><span class="p">);</span>
 
 <span class="c1">// dimension conversions</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">1</span><span class="n">q_s</span> <span class="o">==</span> <span class="mi">1000</span><span class="n">q_m_per_s</span><span class="p">);</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">q_km_per_h</span> <span class="o">*</span> <span class="mi">2</span><span class="n">q_h</span> <span class="o">==</span> <span class="mi">4</span><span class="n">q_km</span><span class="p">);</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">q_km_per_h</span> <span class="o">==</span> <span class="mi">1</span><span class="n">q_h</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">1</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">1</span><span class="n">_q_s</span> <span class="o">==</span> <span class="mi">1000</span><span class="n">_q_m_per_s</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">_q_km_per_h</span> <span class="o">*</span> <span class="mi">2</span><span class="n">_q_h</span> <span class="o">==</span> <span class="mi">4</span><span class="n">_q_km</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">_q_km_per_h</span> <span class="o">==</span> <span class="mi">1</span><span class="n">_q_h</span><span class="p">);</span>
 
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">q_m</span> <span class="o">*</span> <span class="mi">3</span><span class="n">q_m</span> <span class="o">==</span> <span class="mi">6</span><span class="n">q_m2</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">2</span><span class="n">_q_m</span> <span class="o">*</span> <span class="mi">3</span><span class="n">_q_m</span> <span class="o">==</span> <span class="mi">6</span><span class="n">_q_m2</span><span class="p">);</span>
 
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_km</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_km</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
 
-<span class="k">static_assert</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="mi">1</span><span class="n">q_s</span> <span class="o">==</span> <span class="mi">1</span><span class="n">q_kHz</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="mi">1</span><span class="n">_q_s</span> <span class="o">==</span> <span class="mi">1</span><span class="n">_q_kHz</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition-try-it-on-compiler-explorer admonition">
@@ -217,7 +217,7 @@ of basic library features:</p>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_h</span><span class="p">);</span>
+  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">);</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">international</span><span class="o">::</span><span class="n">mile</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">140</span><span class="p">),</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v2</span><span class="p">);</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v4</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v3</span><span class="p">);</span>

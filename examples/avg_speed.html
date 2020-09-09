@@ -404,7 +404,7 @@
   <span class="c1">// SI (int)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">220</span><span class="n">q_km</span><span class="p">;</span>      <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">220</span><span class="n">_q_km</span><span class="p">;</span>     <span class="c1">// constructed from a UDL</span>
     <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// constructed from a value</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;SI units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -418,7 +418,7 @@
   <span class="c1">// SI (double)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">220.</span><span class="n">q_km</span><span class="p">;</span>  <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">220.</span><span class="n">_q_km</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
     <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">SI units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -434,7 +434,7 @@
   <span class="c1">// Customary Units (int)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">140</span><span class="n">q_mi</span><span class="p">;</span>      <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">140</span><span class="n">_q_mi</span><span class="p">;</span>     <span class="c1">// constructed from a UDL</span>
     <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// constructed from a value</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">US Customary Units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -450,8 +450,8 @@
   <span class="c1">// Customary Units (double)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">140.</span><span class="n">q_mi</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
-    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>  <span class="c1">// constructed from a value</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">140.</span><span class="n">_q_mi</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">US Customary Units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -468,7 +468,7 @@
   <span class="c1">// CGS (int)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">22&#39;000&#39;000</span><span class="n">q_cm</span><span class="p">;</span>  <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">22&#39;000&#39;000</span><span class="n">_q_cm</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
     <span class="k">constexpr</span> <span class="n">cgs</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">CGS units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -487,8 +487,8 @@
   <span class="c1">// CGS (double)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">22&#39;000&#39;000.</span><span class="n">q_cm</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
-    <span class="k">constexpr</span> <span class="n">cgs</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>        <span class="c1">// constructed from a value</span>
+    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">22&#39;000&#39;000.</span><span class="n">_q_cm</span><span class="p">;</span> <span class="c1">// constructed from a UDL</span>
+    <span class="k">constexpr</span> <span class="n">cgs</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>         <span class="c1">// constructed from a value</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">CGS units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 

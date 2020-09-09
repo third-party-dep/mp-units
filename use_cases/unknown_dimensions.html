@@ -204,7 +204,7 @@ will determine its type. The same applies to the resulting unit. For example:</p
 </span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
 
-<span class="hll"><span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">q_h</span><span class="p">;</span>
+<span class="hll"><span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">;</span>
 </span><span class="hll"><span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">dimension</span><span class="p">,</span> <span class="n">dim_speed</span><span class="o">&gt;</span><span class="p">);</span>
 </span><span class="hll"><span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">unit</span><span class="p">,</span> <span class="n">kilometre_per_hour</span><span class="o">&gt;</span><span class="p">);</span>
 </span></pre></div>
@@ -219,7 +219,7 @@ we forget to include a header file with the resulting dimension definition:</p>
 </span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
 
-<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">q_h</span><span class="p">;</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">;</span>
 <span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">dimension</span><span class="p">,</span>
 <span class="hll">                        <span class="n">unknown_dimension</span><span class="o">&lt;</span><span class="n">exponent</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">&lt;</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">);</span>
 </span><span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">unit</span><span class="p">,</span>
@@ -266,10 +266,10 @@ in your program. A typical example here are temporary results of a long calculat
 <span class="p">{</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
 
-<span class="hll">  <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">*</span> <span class="mi">200</span><span class="n">q_km</span><span class="p">;</span>  <span class="c1">// intermediate unknown dimension</span>
+<span class="hll">  <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">*</span> <span class="mi">200</span><span class="n">_q_km</span><span class="p">;</span>      <span class="c1">// intermediate unknown dimension</span>
 </span>
-<span class="hll">  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">50</span><span class="n">q_km</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
-</span>  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">s2</span> <span class="o">*</span> <span class="mi">4</span><span class="n">q_h</span><span class="p">;</span>
+<span class="hll">  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">50</span><span class="n">_q_km</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
+</span>  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">s2</span> <span class="o">*</span> <span class="mi">4</span><span class="n">_q_h</span><span class="p">;</span>
 
   <span class="c1">// ...</span>
 <span class="p">}</span>

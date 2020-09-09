@@ -348,12 +348,12 @@
   <span class="k">using</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">;</span>
   <span class="k">using</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">second</span><span class="o">&gt;</span><span class="p">;</span>
 
-  <span class="k">constexpr</span> <span class="n">distance</span> <span class="n">km</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">q_km</span><span class="p">;</span>
-  <span class="k">constexpr</span> <span class="n">distance</span> <span class="n">miles</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">q_mi</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">distance</span> <span class="n">km</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_km</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">distance</span> <span class="n">miles</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_mi</span><span class="p">;</span>
 
-  <span class="k">constexpr</span> <span class="n">duration</span> <span class="n">sec</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_s</span><span class="p">;</span>
-  <span class="k">constexpr</span> <span class="n">duration</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_min</span><span class="p">;</span>
-  <span class="k">constexpr</span> <span class="n">duration</span> <span class="n">hr</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_h</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">duration</span> <span class="n">sec</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_s</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">duration</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_min</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">duration</span> <span class="n">hr</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_h</span><span class="p">;</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;A physical quantities library can choose the simple</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;option to provide output using a single type for each base unit:</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -370,14 +370,14 @@
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">international</span><span class="p">;</span>
 
-  <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="o">&gt;</span> <span class="n">km</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">q_km</span><span class="p">;</span>
-  <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">mile</span><span class="o">&gt;</span> <span class="n">miles</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">q_mi</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="o">&gt;</span> <span class="n">km</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_km</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">mile</span><span class="o">&gt;</span> <span class="n">miles</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_mi</span><span class="p">;</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">.</span><span class="n">precision</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
 
-  <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">second</span><span class="o">&gt;</span> <span class="n">sec</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_s</span><span class="p">;</span>
-  <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">minute</span><span class="o">&gt;</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_min</span><span class="p">;</span>
-  <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">hr</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_h</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">second</span><span class="o">&gt;</span> <span class="n">sec</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_s</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">minute</span><span class="o">&gt;</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_min</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">hr</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_h</span><span class="p">;</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;A more flexible option is to provide separate types for each unit,</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">km</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
@@ -386,7 +386,7 @@
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">min</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">meter</span> <span class="o">=</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">meter</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_m</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;then a wide range of pre-defined units can be defined and converted,</span><span class="se">\n</span><span class="s">&quot;</span>
                <span class="s">&quot; for consistency and repeatability across applications:</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -420,8 +420,8 @@
                <span class="s">&quot;when adding two values of the same very big</span><span class="se">\n</span><span class="s">&quot;</span>
                <span class="s">&quot;or very small type:</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-  <span class="n">length</span><span class="o">&lt;</span><span class="n">femtometre</span><span class="p">,</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">L1A</span> <span class="o">=</span> <span class="mf">2.</span><span class="n">q_fm</span><span class="p">;</span>
-  <span class="n">length</span><span class="o">&lt;</span><span class="n">femtometre</span><span class="p">,</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">L2A</span> <span class="o">=</span> <span class="mf">3.</span><span class="n">q_fm</span><span class="p">;</span>
+  <span class="n">length</span><span class="o">&lt;</span><span class="n">femtometre</span><span class="p">,</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">L1A</span> <span class="o">=</span> <span class="mf">2.</span><span class="n">_q_fm</span><span class="p">;</span>
+  <span class="n">length</span><span class="o">&lt;</span><span class="n">femtometre</span><span class="p">,</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">L2A</span> <span class="o">=</span> <span class="mf">3.</span><span class="n">_q_fm</span><span class="p">;</span>
   <span class="n">length</span><span class="o">&lt;</span><span class="n">femtometre</span><span class="p">,</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">LrA</span> <span class="o">=</span> <span class="n">L1A</span> <span class="o">+</span> <span class="n">L2A</span><span class="p">;</span>
   <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{:%.30Q %q}</span><span class="se">\n</span><span class="s"> + {:%.30Q %q}</span><span class="se">\n</span><span class="s">   = {:%.30Q %q}</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">L1A</span><span class="p">,</span><span class="n">L2A</span><span class="p">,</span><span class="n">LrA</span><span class="p">);</span>
 

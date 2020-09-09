@@ -208,26 +208,26 @@ Also, to simplify the examples all of them assume:</p>
 which are quantities, is also considered to be a quantity.</em></p>
 </div></blockquote>
 <p>So the most common use case would be to create a vector or matrix of quantities:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">q_m</span> <span class="p">};</span>
-<span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_m</span> <span class="p">};</span>
-<span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">1</span><span class="n">q_km</span> <span class="p">};</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="n">_q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_m</span><span class="p">,</span> <span class="mi">3</span><span class="n">_q_m</span> <span class="p">};</span>
+<span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">_q_m</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_m</span><span class="p">,</span> <span class="mi">1</span><span class="n">_q_m</span> <span class="p">};</span>
+<span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">1</span><span class="n">_q_km</span> <span class="p">};</span>
 </pre></div>
 </div>
 <p>Having such definitions we can perform full dimensional analysis operations for the operations
 allowed by the Linear Algebra rules. For example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + u    = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + t    = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t[m]     = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v * u    = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">*</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2q_m * v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="n">q_m</span> <span class="o">*</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + u     = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v + t     = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t[m]      = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v * u     = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">*</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2_q_m * v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="n">_q_m</span> <span class="o">*</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The above code works as expected and produces the following output:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>v + u    = |       4 m       4 m       4 m |
-v + t    = |    3001 m    2002 m    1003 m |
-t[m]     = |    3000 m    2000 m    1000 m |
-v * u    = 10 m²
-2q_m * v = |     2 m²     4 m²     6 m² |
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>v + u     = |       4 m       4 m       4 m |
+v + t     = |    3001 m    2002 m    1003 m |
+t[m]      = |    3000 m    2000 m    1000 m |
+v * u     = 10 m²
+2_q_m * v = |     2 m²     4 m²     6 m² |
 </pre></div>
 </div>
 </div>
@@ -249,11 +249,11 @@ found in the <a class="reference internal" href="custom_representation_types.htm
 </div>
 <p>Now the same code doing basic Linear Algebra operations will provide the following
 output:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>v + u    = |         4         4         4 | m
-v + t    = |      3001      2002      1003 | m
-t[m]     = |      3000      2000      1000 | m
-v * u    = 10 m²
-2q_m * v = |         2         4         6 | m²
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>v + u     = |         4         4         4 | m
+v + t     = |      3001      2002      1003 | m
+t[m]      = |      3000      2000      1000 | m
+v * u     = 10 m²
+2_q_m * v = |         2         4         6 | m²
 </pre></div>
 </div>
 <div class="admonition seealso">

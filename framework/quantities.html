@@ -233,16 +233,16 @@ values the library provides <abbr title="User Defined Literal">UDL</abbr> s for 
 <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> of every <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a>. Thanks to them the same code can
 be as simple as:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">123</span><span class="n">q_km</span><span class="p">;</span>    <span class="c1">// si::length&lt;si::kilometre, std::int64_t&gt;</span>
-<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="mf">123.</span><span class="n">q_km</span><span class="p">;</span>   <span class="c1">// si::length&lt;si::kilometre, long double&gt;</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">123</span><span class="n">_q_km</span><span class="p">;</span>    <span class="c1">// si::length&lt;si::kilometre, std::int64_t&gt;</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="mf">123.</span><span class="n">_q_km</span><span class="p">;</span>   <span class="c1">// si::length&lt;si::kilometre, long double&gt;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">123q_km</span></code> should be read as a quantity of length in kilometers. Initially the
-library did not use the <code class="docutils literal notranslate"><span class="pre">q_</span></code> prefix for UDLs but it turned out that there are
+<p><code class="docutils literal notranslate"><span class="pre">123_q_km</span></code> should be read as a quantity of length in kilometers. Initially the
+library did not use the <code class="docutils literal notranslate"><span class="pre">_q_</span></code> prefix for UDLs but it turned out that there are
 a few unit symbols that collide with literals already existing in C and C++
 language (i.e. <code class="docutils literal notranslate"><span class="pre">F</span></code> (farad), <code class="docutils literal notranslate"><span class="pre">J</span></code> (joule), <code class="docutils literal notranslate"><span class="pre">W</span></code> (watt), <code class="docutils literal notranslate"><span class="pre">K</span></code> (kelvin),
 <code class="docutils literal notranslate"><span class="pre">d</span></code> (day), <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> (litre), <code class="docutils literal notranslate"><span class="pre">erg</span></code>, <code class="docutils literal notranslate"><span class="pre">ergps</span></code>). This is why the
-<code class="docutils literal notranslate"><span class="pre">q_</span></code> prefix was consistently applied to all the UDLs.</p>
+<code class="docutils literal notranslate"><span class="pre">_q_</span></code> prefix was consistently applied to all the UDLs.</p>
 </div>
 <div class="section" id="dimension-specific-concepts">
 <h2>Dimension-specific Concepts<a class="headerlink" href="#dimension-specific-concepts" title="Permalink to this headline">¶</a></h2>
@@ -250,7 +250,7 @@ language (i.e. <code class="docutils literal notranslate"><span class="pre">F</s
 requires quantity of a concrete dimension than dimension-specific concepts can
 be used:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-<span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">123</span><span class="n">q_km</span><span class="p">;</span>  <span class="c1">// si::length&lt;si::kilometre, std::int64_t&gt;</span>
+<span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">123</span><span class="n">_q_km</span><span class="p">;</span>  <span class="c1">// si::length&lt;si::kilometre, std::int64_t&gt;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -266,8 +266,8 @@ be calculating the average speed based on provided distance and duration
 quantities. The usage of such a function can look as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-<span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_h</span><span class="p">);</span>
-<span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">140</span><span class="n">q_mi</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_h</span><span class="p">);</span>
+<span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">);</span>
+<span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">140</span><span class="n">_q_mi</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>In this and all other physical units libraries such a function can be
@@ -323,7 +323,7 @@ of such a quantity. In many cases it might be exactly what we want to get,
 but often we would like to know a specific type too. We have two options here:</p>
 <ul>
 <li><p>query the actual dimension, unit, and representation types:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_h</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">);</span>
 <span class="k">using</span> <span class="n">quantity_type</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
 <span class="k">using</span> <span class="n">dimension_type</span> <span class="o">=</span> <span class="n">quantity_type</span><span class="o">::</span><span class="n">dimension</span><span class="p">;</span>
 <span class="k">using</span> <span class="n">unit_type</span> <span class="o">=</span> <span class="n">quantity_type</span><span class="o">::</span><span class="n">unit</span><span class="p">;</span>
@@ -332,7 +332,7 @@ but often we would like to know a specific type too. We have two options here:</
 </div>
 </li>
 <li><p>convert or cast to a desired quantity type:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mf">220.</span><span class="n">q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">q_h</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mf">220.</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">);</span>
 <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">v1</span><span class="p">;</span>
 <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v1</span><span class="p">);</span>
 </pre></div>
@@ -349,8 +349,8 @@ chapter.</p>
 <h2>Dimensionless Quantities<a class="headerlink" href="#dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
 <p>Whenever we divide two quantities of the same dimension we end up with a
 <a class="reference internal" href="../glossary.html#term-dimensionless-quantity"><span class="xref std std-term">dimensionless quantity</span></a> otherwise known as <a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a>:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_km</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="mi">10</span><span class="n">q_km</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_km</span><span class="p">),</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_one</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;&gt;</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_km</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_km</span><span class="p">),</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_one</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;&gt;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>According to the official ISO definition <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dim_one</span></code> is a dimension “for which all the
@@ -378,7 +378,7 @@ values of quantities of dimension one are numbers”),</p></li>
 <li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">percent</span></code> which has the symbol <code class="docutils literal notranslate"><span class="pre">%</span></code> and <code class="docutils literal notranslate"><span class="pre">ratio(1,</span> <span class="pre">100)</span></code> of the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">one</span></code> unit.</p></li>
 </ul>
 <p>For example the following code:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">percent</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">50.</span><span class="n">q_m</span> <span class="o">/</span> <span class="mf">100.</span><span class="n">q_m</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">percent</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">50.</span><span class="n">_q_m</span> <span class="o">/</span> <span class="mf">100.</span><span class="n">_q_m</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>will print <code class="docutils literal notranslate"><span class="pre">50</span> <span class="pre">%</span></code> to the console output.</p>
