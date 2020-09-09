@@ -297,17 +297,17 @@ is somehow special but still obey most of the rules defined for quantities. Howe
 represent numbers it would be highly uncomfortable to every time type:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_km</span><span class="p">;</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="mi">3</span><span class="n">q_km</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">unitless</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>or:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">fill_time_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">box</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">box</span><span class="p">.</span><span class="n">fill_level</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">)</span> <span class="o">-</span>
-                             <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">unitless</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
+                             <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>This is why it was decided to allow the <code class="docutils literal notranslate"><span class="pre">dimensionless&lt;unitless&gt;</span></code> quantity of any
+<p>This is why it was decided to allow the <code class="docutils literal notranslate"><span class="pre">dimensionless&lt;one&gt;</span></code> quantity of any
 representation type to be implicitly constructible from this representation type.
 With that the above examples can be rewritten as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">q_km</span><span class="p">;</span>
@@ -321,7 +321,7 @@ With that the above examples can be rewritten as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">fill_time_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">box</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">box</span><span class="p">.</span><span class="n">fill_level</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The above is true only for dimensionless quantities of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unitless</span></code> unit. If our quantity have a unit with
+<p>The above is true only for dimensionless quantities of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">one</span></code> unit. If our quantity have a unit with
 ratio different than <code class="docutils literal notranslate"><span class="pre">1</span></code> the implicit conversion will not happen. This is to prevent cases were the code
 could be ambiguous. For example:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">foo</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span><span class="p">,</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span><span class="p">)</span>
@@ -335,14 +335,14 @@ at all in the case of <code class="docutils literal notranslate"><span class="pr
 either change the type of the resulting unit to the one having <code class="docutils literal notranslate"><span class="pre">ratio(1)</span></code> (<a class="reference internal" href="../glossary.html#term-coherent-derived-unit"><span class="xref std std-term">coherent derived unit</span></a>):</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">foo</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span><span class="p">,</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">return</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">unitless</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>or to explicitly state what is the unit of our dimensionless value, e.g. <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unitless</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">percent</span></code>, etc:</p>
+<p>or to explicitly state what is the unit of our dimensionless value, e.g. <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">one</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">percent</span></code>, etc:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">foo</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span><span class="p">,</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">return</span> <span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">unitless</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -353,7 +353,7 @@ code will not compile:</p>
 </pre></div>
 </div>
 <p>To make it compile fine we have to either explicitly get the value stored in the quantity:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">unitless</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="n">q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="n">q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">q_m</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
 </pre></div>
 </div>
 <p>or use a mathematical wrapper function from <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code> namespace:</p>
