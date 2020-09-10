@@ -264,18 +264,25 @@ chapter.</p>
 <p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> comes with several overloads:</p>
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
 <p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> in line #1 takes a specific target <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code> type to which an explicit
 cast should be performed. This option will change multiple quantity properties at once
-(unit, representation, etc). However, it is also possible to force only one property at
+(unit, representation, etc). However, it is also possible to force only some properties at
 once and leave the rest intact:</p>
 <ul class="simple">
-<li><p>line #2 forces only a specific destination unit type,</p></li>
-<li><p>line #3 sets only a representation type to the type provided by the user.</p></li>
+<li><p>line #2 forces only a specific destination dimension type,</p></li>
+<li><p>line #3 forces only a specific destination unit type,</p></li>
+<li><p>line #4 sets only a representation type to the type provided by the user,</p></li>
+<li><p>line #5 forces both a specific dimension and a unit while preserving the original
+representation type.</p></li>
 </ul>
 <p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code> takes anything that works for <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code>
 or a specific target <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code>:</p>
