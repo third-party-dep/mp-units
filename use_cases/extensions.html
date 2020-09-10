@@ -378,6 +378,104 @@ chapter, you are defining a new system.</p>
 <p>In <strong>mp-units</strong> library a custom system can either be constructed from
 unique/new custom base dimensions or reuse dimensions of other systems. This
 allows extending, mixing, reuse, and interoperation between different systems.</p>
+<p>Systems can be defined as standalone or provide interoperability and conversions
+with other systems. It is up to the user to decide which one fits better to the
+requirements.</p>
+<p>A standalone system is the one that has unique <a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">base units</span></a>.
+Such units do not share their references with base units of other systems:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">fps</span> <span class="p">{</span>
+
+<span class="hll"><span class="k">struct</span> <span class="nl">foot</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">foot</span><span class="p">,</span> <span class="s">&quot;ft&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+</span><span class="k">struct</span> <span class="nl">yard</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">yard</span><span class="p">,</span> <span class="s">&quot;yd&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="hll"><span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
+</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">ScalableNumber</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">length</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="p">}</span>  <span class="c1">// namespace fps</span>
+</pre></div>
+</div>
+<p>If the base unit of one system has the same reference as the base unit of
+another system, and both systems share the same base dimension symbol, the
+library will enable conversions between units of those dimensions in
+different systems:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
+
+<span class="hll"><span class="k">struct</span> <span class="nl">metre</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">metre</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+</span><span class="k">struct</span> <span class="nl">kilometre</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">kilo</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="hll"><span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">ScalableNumber</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">length</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">fps</span> <span class="p">{</span>
+
+<span class="hll"><span class="k">struct</span> <span class="nl">foot</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">foot</span><span class="p">,</span> <span class="s">&quot;ft&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="p">(</span><span class="mi">3&#39;048</span><span class="p">,</span> <span class="mi">1&#39;000</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+</span><span class="k">struct</span> <span class="nl">yard</span> <span class="p">:</span> <span class="n">named_scaled_unit</span><span class="o">&lt;</span><span class="n">yard</span><span class="p">,</span> <span class="s">&quot;yd&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">ratio</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="hll"><span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
+</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">ScalableNumber</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">length</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="p">}</span>  <span class="c1">// namespace fps</span>
+<span class="p">}</span>  <span class="c1">// namespace si</span>
+</pre></div>
+</div>
+<p>Having the above two systems we can try the following code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="k">auto</span> <span class="n">fps_yard</span> <span class="o">=</span> <span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1.</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">fps_yard</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>     <span class="c1">// compile-time error</span>
+
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">si_fps_yard</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1.</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">si_fps_yard</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>  <span class="c1">// prints &quot;0.0009144 km&quot;</span>
+</pre></div>
+</div>
+<p>Even though the base dimension of <code class="docutils literal notranslate"><span class="pre">si::fps</span></code> is defined in terms of
+<code class="docutils literal notranslate"><span class="pre">si::metre</span></code> foot is preserved as the base unit of length in both systems:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="k">auto</span> <span class="n">fps_yard</span> <span class="o">=</span> <span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1.</span><span class="p">);</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">fps_area</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">unknown_coherent_unit</span><span class="o">&gt;</span><span class="p">(</span><span class="n">fps_yard</span> <span class="o">*</span> <span class="n">fps_yard</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fps_yard</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>     <span class="c1">// 1 yd</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fps_area</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>     <span class="c1">// 9 ft²</span>
+
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">si_fps_yard</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1.</span><span class="p">);</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">si_fps_area</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">unknown_coherent_unit</span><span class="o">&gt;</span><span class="p">(</span><span class="n">si_fps_yard</span> <span class="o">*</span> <span class="n">si_fps_yard</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">si_fps_yard</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>  <span class="c1">// 1 yd</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">si_fps_area</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>  <span class="c1">// 9 ft²</span>
+</pre></div>
+</div>
+<p>In most cases we want conversions between systems and that is why nearly all
+systems provided with this library are implemented in terms on the <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a>
+system. However, such an approach has also its problems. Let’s see the
+following simple application using the above defined systems:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">ratio</span><span class="o">&amp;</span> <span class="n">r</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ratio{&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">den</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">exp</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;}&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Unit</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">u</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="n">unit_type</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">remove_cvref_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">unit_type</span><span class="o">::</span><span class="n">ratio</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; x &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">unit_type</span><span class="o">::</span><span class="n">reference</span><span class="o">::</span><span class="n">symbol</span><span class="p">.</span><span class="n">standard</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;fps:     &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>      <span class="c1">// fps:     ratio{3, 1, 0} x ft</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;si::fps: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>  <span class="c1">// si::fps: ratio{1143, 125, -1} x m</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As we can see, even though <code class="docutils literal notranslate"><span class="pre">si::fps::yard</span></code> is defined as <code class="docutils literal notranslate"><span class="pre">3</span></code> feet,
+the library always keeps the ratio relative to the primary reference unit
+which in this case is <code class="docutils literal notranslate"><span class="pre">si::metre</span></code>. This results in much bigger ratios
+and in case of some units may result with a problem of limited resolution
+of <code class="docutils literal notranslate"><span class="pre">std::int64_t</span></code> used to store numerator, denominator, and exponent
+values of ratio. For example the <code class="docutils literal notranslate"><span class="pre">si::fps::qubic_foot</span></code> already has the
+ratio of <code class="docutils literal notranslate"><span class="pre">ratio{55306341,</span> <span class="pre">1953125,</span> <span class="pre">-3}</span></code>. In case of more complicated
+conversion ratio we can overflow <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ratio</span></code> and get a compile-time error.
+In such a situation the standalone system may be a better choice here.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>More information on extending the library can be found in the

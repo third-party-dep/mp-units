@@ -256,12 +256,13 @@ template parameter will be removed from this definition.</p>
 </div>
 <p>It is important to notice here that <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> is not the only system used
 in the industry and the library has to support other systems too. Also
-in some cases conversions between such systems should be allowed. The
-fact that the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code> takes the base unit in its definition makes
-it really easy to define other systems of units. For example length in the
+in some cases conversions between such systems should be allowed. Thanks to
+the fact that the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">base_dimension</span></code> takes the base unit type in its definition
+allows us to easily define various systems of units for the same physical
+dimension. For example length in the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">CGS</a>
 could be defined as:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">cgs</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">cgs</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">centimetre</span><span class="o">&gt;</span> <span class="p">{};</span>
 
@@ -269,12 +270,19 @@ could be defined as:</p>
 </pre></div>
 </div>
 <p>The fact that both base dimensions use the same identifier <code class="docutils literal notranslate"><span class="pre">&quot;L&quot;</span></code> tells
-the library that bot definitions refer to the same physical dimension of
+the library that both definitions refer to the same physical dimension of
 length. The only difference is the measurement unit used to define their
-base dimensions. Thanks to using <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::centimetre</span></code> in the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">cgs::dim_length</span></code>
-definition we also enabled the ability to easily convert between those
-2 base dimensions (as the library knows how to convert <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::metre</span></code> to
-<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::centimetre</span></code> and vice versa).</p>
+base dimensions. Thanks to using the unit that is defined in terms of the
+the same reference unit as the one provided to <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::dim_length</span></code> definition
+(namely <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::centimetre</span></code> which is <code class="docutils literal notranslate"><span class="pre">1/100</span></code> of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::metre</span></code>) we also enabled
+the ability to easily convert between those 2 base dimensions (as the library
+knows how to convert <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::metre</span></code> to <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">si::centimetre</span></code> and vice versa).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More details on custom systems definitions and conversions between
+units of the same physical dimension can be found in the
+<a class="reference internal" href="../use_cases/extensions.html#custom-systems"><span class="std std-ref">Custom Systems</span></a> chapter.</p>
+</div>
 </div>
 <div class="section" id="derived-units">
 <h2>Derived Units<a class="headerlink" href="#derived-units" title="Permalink to this headline">¶</a></h2>
@@ -471,7 +479,7 @@ does not exist at all. With it <code class="xref cpp cpp-any docutils literal no
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_deduced_unit</span></code> where the user is able to provide a symbol for the unit
 by him/her-self or <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">noble_deduced_unit</span></code> where the symbol is the deduced name
 based on the ingredients:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">fps</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">fps</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">nautical_mile_per_hour</span> <span class="p">:</span> <span class="n">named_deduced_unit</span><span class="o">&lt;</span><span class="n">nautical_mile_per_hour</span><span class="p">,</span> <span class="n">dim_speed</span><span class="p">,</span>
                                                    <span class="s">&quot;knot&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">nautical_mile</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span><span class="p">{};</span>
