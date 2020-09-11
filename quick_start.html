@@ -174,7 +174,11 @@
   <div class="section" id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <p>Here is a small example of possible operations:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// simple numeric operations</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/si.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+
+<span class="c1">// simple numeric operations</span>
 <span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">5</span><span class="n">_q_km</span><span class="p">);</span>
 
 <span class="c1">// unit conversions</span>
@@ -202,8 +206,8 @@
 but still easy to use interface where all unit conversions and dimensional analysis can be
 performed without sacrificing on accuracy. Please see the below example for a quick preview
 of basic library features:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/international/speed.h&gt;</span><span class="cp"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/si.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/international/international.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 

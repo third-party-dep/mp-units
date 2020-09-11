@@ -176,7 +176,7 @@
 <ul>
 <li><p><strong>0.6.0 WIP</strong></p>
 <ul class="simple">
-<li><p>gcc-9 is no longer supported (at least gcc-10 is required)</p></li>
+<li><p>(!) gcc-9 is no longer supported (at least gcc-10 is required)</p></li>
 <li><p>Visual Studio 16.7 support added</p></li>
 <li><p>linear_algebra updated to 0.7.0/stable</p></li>
 <li><p>fmt updated to 7.0.3</p></li>
@@ -184,17 +184,19 @@
 <li><p>catch2 updated to 2.13.0</p></li>
 <li><p>doxygen updated to 1.8.18</p></li>
 <li><p>ms-gsl 3.1.0 dependency added</p></li>
+<li><p>Removed the dependency on a git submodule with common CMake scripts</p></li>
+<li><p>(!) Refactored and cleaned up the library file tree</p></li>
+<li><p>(!) <code class="docutils literal notranslate"><span class="pre">q_*</span></code> UDL renamed to <code class="docutils literal notranslate"><span class="pre">_q_*</span></code></p></li>
+<li><p>(!) <code class="docutils literal notranslate"><span class="pre">ratio</span></code> changed to the NTTP kind</p></li>
+<li><p>(!) <code class="docutils literal notranslate"><span class="pre">exp</span></code> and <code class="docutils literal notranslate"><span class="pre">Exp</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">exponent</span></code> and <code class="docutils literal notranslate"><span class="pre">Exponent</span></code></p></li>
+<li><p>(!) <code class="docutils literal notranslate"><span class="pre">Scalar</span></code> concept renamed to <code class="docutils literal notranslate"><span class="pre">ScalableNumber</span></code></p></li>
+<li><p>(!) Dimensionless quantities redesigned to be of <code class="docutils literal notranslate"><span class="pre">quantity</span></code> type</p></li>
 <li><p>Added angle as SI base dimension (thanks <a class="reference external" href="https://github.com/kwikius">&#64;kwikius</a>)</p></li>
 <li><p>Added STL random number distribution wrappers (thanks <a class="reference external" href="https://github.com/yasamoka">&#64;yasamoka</a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">math.h</span></code> function signatures refactored to use a <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> concept (thanks <a class="reference external" href="https://github.com/kwikius">&#64;kwikius</a>)</p></li>
 <li><p>FPS system added (thanks <a class="reference external" href="https://github.com/mikeford3">&#64;mikeford3</a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">quantity_point</span></code> support added (thanks <a class="reference external" href="https://github.com/johelegp">&#64;johelegp</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ratio</span></code> changed to the NTTP kind</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">exp</span></code> and <code class="docutils literal notranslate"><span class="pre">Exp</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">exponent</span></code> and <code class="docutils literal notranslate"><span class="pre">Exponent</span></code></p></li>
-<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">exp()</span></code> mathematical support</p></li>
-<li><p>Dimensionless quantities redesigned to be of <code class="docutils literal notranslate"><span class="pre">quantity</span></code> type</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Scalar</span></code> concept renamed to <code class="docutils literal notranslate"><span class="pre">ScalableNumber</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">q_*</span></code> UDL renamed to <code class="docutils literal notranslate"><span class="pre">_q_*</span></code></p></li>
+<li><p>Added support for mathematical function <code class="docutils literal notranslate"><span class="pre">exp(quantity)</span></code></p></li>
 </ul>
 </li>
 <li><p><strong>0.5.0 May 17, 2020</strong></p>

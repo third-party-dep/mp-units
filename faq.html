@@ -276,18 +276,18 @@ chapter.</p>
 </div>
 <div class="section" id="why-do-we-spell-metre-instead-of-meter">
 <h3><a class="toc-backref" href="#id7">Why do we spell <code class="docutils literal notranslate"><span class="pre">metre</span></code> instead of <code class="docutils literal notranslate"><span class="pre">meter</span></code>?</a><a class="headerlink" href="#why-do-we-spell-metre-instead-of-meter" title="Permalink to this headline">¶</a></h3>
-<p>Well, this is how <a class="reference internal" href="references.html#iso-80000" id="id1"><span>[ISO-80000]</span></a> defines it (British English spelling by default).</p>
+<p>Well, this is how <a class="reference internal" href="references.html#iso80000" id="id1"><span>[ISO80000]</span></a> defines it (British English spelling by default).</p>
 </div>
 </div>
 <div class="section" id="user-defined-literals-udls">
 <h2><a class="toc-backref" href="#id8">User Defined Literals (UDLs)</a><a class="headerlink" href="#user-defined-literals-udls" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="why-all-udls-are-prefixed-with-q-instead-of-just-using-unit-symbol">
 <h3><a class="toc-backref" href="#id9">Why all UDLs are prefixed with <code class="docutils literal notranslate"><span class="pre">_q_</span></code> instead of just using unit symbol?</a><a class="headerlink" href="#why-all-udls-are-prefixed-with-q-instead-of-just-using-unit-symbol" title="Permalink to this headline">¶</a></h3>
-<p>..note ..</p>
-<blockquote>
-<div><p>Every <code class="docutils literal notranslate"><span class="pre">_q_*</span></code> UDL will be replaced by the <code class="docutils literal notranslate"><span class="pre">q_*</span></code> literal when/if <strong>mp-units</strong>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every <code class="docutils literal notranslate"><span class="pre">_q_*</span></code> UDL will be replaced by the <code class="docutils literal notranslate"><span class="pre">q_*</span></code> literal when/if <strong>mp-units</strong>
 will become a part of the C++ Standard Library.</p>
-</div></blockquote>
+</div>
 <p>Usage of only unit symbols in UDLs would be a preferred approach (less to type,
 easier to understand and maintain). However, while increasing the coverage for
 the library we learned that there are a lot unit symbols that conflict with
@@ -303,7 +303,7 @@ quantity of a provided unit.</p>
 <h2><a class="toc-backref" href="#id10">Text formatting</a><a class="headerlink" href="#text-formatting" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="why-unicode-quantity-symbols-are-used-by-default-instead-of-ascii-only-characters">
 <h3><a class="toc-backref" href="#id11">Why Unicode quantity symbols are used by default instead of ASCII-only characters?</a><a class="headerlink" href="#why-unicode-quantity-symbols-are-used-by-default-instead-of-ascii-only-characters" title="Permalink to this headline">¶</a></h3>
-<p>Both C++ and <a class="reference internal" href="glossary.html#term-SI"><span class="xref std std-term">SI</span></a> (<a class="reference internal" href="references.html#iso-80000" id="id2"><span>[ISO-80000]</span></a>) are standardized by the
+<p>Both C++ and <a class="reference internal" href="glossary.html#term-SI"><span class="xref std std-term">SI</span></a> (<a class="reference internal" href="references.html#iso80000" id="id2"><span>[ISO80000]</span></a>) are standardized by the
 <abbr title="International Organization for Standardization">ISO</abbr>. <a class="reference internal" href="glossary.html#term-SI"><span class="xref std std-term">SI</span></a> standard
 specifies Unicode symbols as the official unit names for some quantities (i.e. <code class="docutils literal notranslate"><span class="pre">Ω</span></code>
 symbol for the resistance quantity). As <strong>mp-units</strong> library
@@ -324,18 +324,6 @@ has the option of <a class="reference internal" href="framework/text_output.html
 (i.e. <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">units::physical::si</span></code>) are being used, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units::physical::si::time</span></code> will
 collide with C <a class="reference external" href="https://en.cppreference.com/w/c/chrono/time">time</a> function. In such a case the library’s
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">time</span></code> function needs to be prefixed with at least one (or all) namespace names.</p>
-<p class="rubric">Footnotes:</p>
-<dl class="citation">
-<dt class="label" id="iso-80000"><span class="brackets">ISO-80000</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
-<dd><p>ISO 80000 or IEC 80000 is an international standard promulgated jointly
-by the <abbr title="International Organization for Standardization">ISO</abbr> and the
-<abbr title="International Electrotechnical Commission">IEC</abbr>. The standard introduces the
-<a class="reference internal" href="glossary.html#term-International-System-of-Quantities"><span class="xref std std-term">International System of Quantities</span></a>. It is a style guide for the use of
-physical quantities and units of measurement, formulas involving them, and their
-corresponding units, in scientific and educational documents for worldwide use.
-Read more on <a class="reference external" href="ISO/IEC80000https://en.wikipedia.org/wiki/ISO/IEC_80000">Wikipedia</a>.</p>
-</dd>
-</dl>
 </div>
 </div>
 </div>

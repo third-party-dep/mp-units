@@ -184,6 +184,7 @@
 ├── bits
 │   └── external
 ├── data
+├── generic
 └── physical
     ├── natural
     └── si
@@ -217,6 +218,12 @@ library or should be (or already are) the subject of separate standardization
 proposals not related to a Physical Units library proposal.</p></li>
 </ul>
 </li>
+<li><p><em>./units/generic</em></p>
+<ul>
+<li><p>Provides quantity types not related to any <a class="reference internal" href="../glossary.html#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>
+(e.g. <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dimensionless</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">angle</span></code>).</p></li>
+</ul>
+</li>
 <li><p><em>./units/physical</em></p>
 <ul>
 <li><p>Contains the definition of physical units dimensions.</p></li>
@@ -235,6 +242,12 @@ one.</p></li>
 <p class="admonition-title">See also</p>
 <p>More information on provided <a class="reference internal" href="../glossary.html#term-system-of-units"><span class="xref std std-term">systems of units</span></a> can be
 found in <span class="xref std std-ref">Systems</span> chapter.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>While working with predefined systems please always include a header file with all
+the definitions for the current system to limit the possibility of an ODR violation
+(e.g. <em>units/physical/si/si.h</em>).</p>
 </div>
 </div>
 
