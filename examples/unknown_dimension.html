@@ -238,7 +238,8 @@
 43
 44
 45
-46</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
+46
+47</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/si.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="k">namespace</span> <span class="p">{</span>
@@ -258,6 +259,7 @@
   <span class="n">Time</span> <span class="k">auto</span> <span class="n">t1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_q_s</span><span class="p">;</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">t1</span><span class="p">);</span>
 
+  <span class="c1">// TODO: check if below is still true after adding whole SI module</span>
   <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">*</span> <span class="mi">50</span><span class="n">_q_m</span><span class="p">;</span>  <span class="c1">// produces intermediate unknown dimension with &#39;unknown_coherent_unit&#39; as its &#39;coherent_unit&#39;</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">100</span><span class="n">_q_m</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
   <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">*</span> <span class="mi">60</span><span class="n">_q_s</span><span class="p">;</span>
