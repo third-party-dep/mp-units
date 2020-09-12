@@ -278,7 +278,8 @@
 83
 84
 85
-86</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/quantity.h&gt;</span><span class="cp"></span>
+86
+87</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/quantity.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/prefixes.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
@@ -346,7 +347,8 @@
   <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ratio{&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">den</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">exp</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;}&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Unit</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">u</span><span class="p">)</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">U</span><span class="o">&amp;</span> <span class="n">u</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">using</span> <span class="n">unit_type</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">remove_cvref_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
   <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">unit_type</span><span class="o">::</span><span class="n">ratio</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; x &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">unit_type</span><span class="o">::</span><span class="n">reference</span><span class="o">::</span><span class="n">symbol</span><span class="p">.</span><span class="n">standard</span><span class="p">();</span>

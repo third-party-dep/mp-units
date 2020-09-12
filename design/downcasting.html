@@ -265,7 +265,7 @@ that defines the implementation of a non-member friend function of the <code cla
 template:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Target</span><span class="p">,</span> <span class="n">Downcastable</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="nl">downcast_child</span> <span class="p">:</span> <span class="n">T</span> <span class="p">{</span>
-  <span class="k">friend</span> <span class="k">auto</span> <span class="n">downcast_guide</span><span class="p">(</span><span class="k">typename</span> <span class="n">downcast_child</span><span class="o">::</span><span class="n">downcast_base</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Target</span><span class="p">();</span> <span class="p">}</span>
+  <span class="k">friend</span> <span class="k">auto</span> <span class="n">downcast_guide</span><span class="p">(</span><span class="k">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">downcast_base</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Target</span><span class="p">();</span> <span class="p">}</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -300,14 +300,12 @@ otherwise it works like a regular identity type trait returning a provided base 
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">detail</span> <span class="p">{</span>
 
   <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-  <span class="k">concept</span> <span class="n">has_downcast</span> <span class="o">=</span> <span class="k">requires</span> <span class="p">{</span>
-    <span class="n">downcast_guide</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">declval</span><span class="o">&lt;</span><span class="n">downcast_base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">());</span>
-  <span class="p">};</span>
+  <span class="k">concept</span> <span class="n">has_downcast_guide</span> <span class="o">=</span> <span class="k">requires</span><span class="p">(</span><span class="n">T</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span> <span class="n">downcast_guide</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="p">};</span>
 
   <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
   <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">downcast_target_impl</span><span class="p">()</span>
   <span class="p">{</span>
-    <span class="k">if</span> <span class="k">constexpr</span><span class="p">(</span><span class="n">has_downcast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="k">constexpr</span><span class="p">(</span><span class="n">has_downcast_guide</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span>
       <span class="k">return</span> <span class="k">decltype</span><span class="p">(</span><span class="n">downcast_guide</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">declval</span><span class="o">&lt;</span><span class="n">downcast_base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">()))();</span>
     <span class="k">else</span>
       <span class="k">return</span> <span class="nf">T</span><span class="p">();</span>
