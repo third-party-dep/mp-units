@@ -446,16 +446,6 @@ cmake --build .
 </pre></div>
 </div>
 </div></blockquote>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Due to an older Visual Studio 2019 used by the Conan-Center CI the <strong>mp-units</strong> package is
-disabled for MSVC build there (<a class="reference external" href="https://github.com/conan-io/conan/issues/7680">GitHub issue</a>).
-If you want to obtain the latest release for VS2019 please replace <code class="docutils literal notranslate"><span class="pre">mp-units/0.6.0</span></code> with
-<code class="docutils literal notranslate"><span class="pre">mp-units/0.6.0&#64;mpusz/stable</span></code> in your Conan recipe file and add the following Conan remote:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add conan-mpusz https://api.bintray.com/conan/mpusz/conan-mpusz
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="conan-cmake-live-at-head">
 <h3>Conan + CMake (Live At Head)<a class="headerlink" href="#conan-cmake-live-at-head" title="Permalink to this headline">¶</a></h3>
