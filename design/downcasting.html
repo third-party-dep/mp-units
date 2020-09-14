@@ -109,6 +109,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -199,7 +205,7 @@ quantity. Other libraries will do it in the following way:</p>
 </pre></div>
 </div>
 <p>The above solution does provide a good developer’s experience but a really poor one for the end
-user. If we will get a compilation error message containing <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dim_capacitance</span></code> in most cases
+user. If we will get a compilation error message containing <code class="docutils literal notranslate"><span class="pre">dim_capacitance</span></code> in most cases
 the compiler will print the following type instead of the alias:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">derived_dimension_base</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">exponent</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">dim_electric_current</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="n">units</span><span class="o">::</span><span class="n">exponent</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">exponent</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span>
@@ -208,11 +214,11 @@ the compiler will print the following type instead of the alias:</p>
 </div>
 <p>You can notice that in case of <strong>mp-units</strong> even this long syntax was carefully selected to
 provide quite good user experience (some other units libraries produce a type that cannot easily
-fit on one slide) but it is not questionable less readable than just <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dim_capacitance</span></code>.</p>
+fit on one slide) but it is not questionable less readable than just <code class="docutils literal notranslate"><span class="pre">dim_capacitance</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To better understand how the framework works and not clutter the text and graphs with
-long types in the following examples we will switch from <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dim_capacitance</span></code> to <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dim_area</span></code>.
+long types in the following examples we will switch from <code class="docutils literal notranslate"><span class="pre">dim_capacitance</span></code> to <code class="docutils literal notranslate"><span class="pre">dim_area</span></code>.
 The latter one has much shorter definition but the end result for both will be exactly the same -
 user-friendly, short name printed by the compiler and the debugger.</p>
 </div>
@@ -221,7 +227,7 @@ to use inheritance:</p>
 <img alt="../_images/downcast_1.png" class="align-center" src="../_images/downcast_1.png" />
 <p>This gives us a nice looking strong type when directly used by the user. However, we just got
 ourselves into problems. The library’s framework does not know how to switch from a long
-instantiation of a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension_base</span></code> class template that was generated as a result
+instantiation of a <code class="docutils literal notranslate"><span class="pre">derived_dimension_base</span></code> class template that was generated as a result
 of dimensional calculation to a nicely named child class assigned by the user for this
 instantiation.</p>
 </div>
@@ -242,8 +248,8 @@ already used base class template instantiation the program will not compile.</p>
 <p>In the above example:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">dim_area</span></code> is a downcasting target (child class)</p></li>
-<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">detail::derived_dimension_base</span></code> class template instantiation is a downcasting source (base class)</p></li>
-<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_base</span></code> is a class that implements <abbr title="Curiously Recurring Template Pattern">CRTP</abbr>
+<li><p><code class="docutils literal notranslate"><span class="pre">detail::derived_dimension_base</span></code> class template instantiation is a downcasting source (base class)</p></li>
+<li><p><a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I0EN5units13downcast_baseE" title="units::downcast_base"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_base</span></code></a> is a class that implements <abbr title="Curiously Recurring Template Pattern">CRTP</abbr>
 idiom, stores the base of a downcasting operation in a <code class="docutils literal notranslate"><span class="pre">downcast_base_type</span></code> member type,
 and provides only a Hidden Friend non-member function declaration of <code class="docutils literal notranslate"><span class="pre">downcast_guide</span></code> which is an
 <abbr title="Argument Dependent Lookup">ADL</abbr> entry  point for the downcasting operation:</p>
@@ -260,8 +266,8 @@ and provides only a Hidden Friend non-member function declaration of <code class
 in its declaration and no definition is provided at this point.</p>
 </div>
 </li>
-<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_child</span></code> is another <abbr title="Curiously Recurring Template Pattern">CRTP</abbr> class template
-that defines the implementation of a non-member friend function of the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_base</span></code> class
+<li><p><a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I0_12DowncastableEN5units14downcast_childE" title="units::downcast_child"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_child</span></code></a> is another <abbr title="Curiously Recurring Template Pattern">CRTP</abbr> class template
+that defines the implementation of a non-member friend function of the <a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I0EN5units13downcast_baseE" title="units::downcast_base"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_base</span></code></a> class
 template:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Target</span><span class="p">,</span> <span class="n">Downcastable</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="nl">downcast_child</span> <span class="p">:</span> <span class="n">T</span> <span class="p">{</span>
@@ -271,7 +277,7 @@ template:</p>
 </div>
 <p>This is the place where the actual return type of the <code class="docutils literal notranslate"><span class="pre">downcast_guide</span></code> function is provided
 which serves as a target type of the downcasting operation.</p>
-<p>In the above class template definition <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Downcastable</span></code> is a concepts that verifies if a type
+<p>In the above class template definition <a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I0E12Downcastable" title="Downcastable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Downcastable</span></code></a> is a concepts that verifies if a type
 implements and can be used in a downcasting facility:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="k">concept</span> <span class="n">Downcastable</span> <span class="o">=</span>
@@ -285,16 +291,16 @@ implements and can be used in a downcasting facility:</p>
 </ul>
 <p>With such <abbr title="Curiously Recurring Template Pattern">CRTP</abbr> types the only thing the user
 has to do in order to register a new type in the downcasting facility is to publicly derive
-from <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_child</span></code> and pass this type as the first template argument of the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_child</span></code>
+from <a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I0_12DowncastableEN5units14downcast_childE" title="units::downcast_child"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_child</span></code></a> and pass this type as the first template argument of the <a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I0_12DowncastableEN5units14downcast_childE" title="units::downcast_child"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast_child</span></code></a>
 class template.</p>
 <p>Until now we scoped on how we define the base and target of a downcasting operation. To
 perform the actual downcasting operation a dedicated alias template is provided:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">Downcastable</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="k">using</span> <span class="n">downcast</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">downcast_target_impl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="k">using</span> <span class="n">downcast</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">downcast_impl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">());</span>
 </pre></div>
 </div>
-<p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast</span></code> is used to obtain the target type of the downcasting operation registered for a
-given instantiation in a base type. <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">detail::downcast_target_impl</span></code> checks if a downcasting
+<p><a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I_12DowncastableEN5units8downcastE" title="units::downcast"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast</span></code></a> is used to obtain the target type of the downcasting operation registered for a
+given instantiation in a base type. <code class="docutils literal notranslate"><span class="pre">detail::downcast_impl</span></code> checks if a downcasting
 target is registered for the specific base class. If yes, it returns the registered type,
 otherwise it works like a regular identity type trait returning a provided base class:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">detail</span> <span class="p">{</span>
@@ -303,7 +309,7 @@ otherwise it works like a regular identity type trait returning a provided base 
   <span class="k">concept</span> <span class="n">has_downcast_guide</span> <span class="o">=</span> <span class="k">requires</span><span class="p">(</span><span class="n">T</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span> <span class="n">downcast_guide</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="p">};</span>
 
   <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-  <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">downcast_target_impl</span><span class="p">()</span>
+  <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">downcast_impl</span><span class="p">()</span>
   <span class="p">{</span>
     <span class="k">if</span> <span class="k">constexpr</span><span class="p">(</span><span class="n">has_downcast_guide</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span>
       <span class="k">return</span> <span class="k">decltype</span><span class="p">(</span><span class="n">downcast_guide</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">declval</span><span class="o">&lt;</span><span class="n">downcast_base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">()))();</span>

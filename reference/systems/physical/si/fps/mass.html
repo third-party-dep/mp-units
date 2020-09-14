@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mass &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Power" href="power.html" />
+    <link rel="prev" title="Length" href="length.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../core.html">Core Library</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../systems.html">Systems</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../generic.html">Generic</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../physical.html">Physical</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../dimensions_and_concepts.html">Dimensions and Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../si.html">SI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../si_cgs.html">CGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../si_international.html">International</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../si_us.html">US</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../si_imperial.html">Imperial</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../si_fps.html">FPS</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="acceleration.html">Acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="area.html">Area</a></li>
+<li class="toctree-l4"><a class="reference internal" href="density.html">Density</a></li>
+<li class="toctree-l4"><a class="reference internal" href="energy.html">Energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="force.html">Force</a></li>
+<li class="toctree-l4"><a class="reference internal" href="length.html">Length</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Mass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pressure.html">Pressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="speed.html">Speed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="volume.html">Volume</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../si_iau.html">IAU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../si_typographic.html">Typographic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../natural.html">Natural</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data.html">Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../systems.html">Systems</a> &raquo;</li>
+        
+          <li><a href="../../../physical.html">Physical</a> &raquo;</li>
+        
+          <li><a href="../../si_fps.html">FPS</a> &raquo;</li>
+        
+      <li>Mass</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/reference/systems/physical/si/fps/mass.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mass">
+<h1>Mass<a class="headerlink" href="#mass" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp type">
+<dt id="_CPPv45units">
+<span id="_CPPv35units"></span><span id="_CPPv25units"></span><span id="units"></span><span class="target" id="namespaceunits"></span><em class="property">namespace </em><code class="sig-name descname">units</code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units8physicalE">
+<span id="_CPPv3N5units8physicalE"></span><span id="_CPPv2N5units8physicalE"></span><span id="units::physical"></span><span class="target" id="namespaceunits_1_1physical"></span><em class="property">namespace </em><code class="sig-name descname">physical</code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units8physical2siE">
+<span id="_CPPv3N5units8physical2siE"></span><span id="_CPPv2N5units8physical2siE"></span><span id="units::physical::si"></span><span class="target" id="namespaceunits_1_1physical_1_1si"></span><em class="property">namespace </em><code class="sig-name descname">si</code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units8physical2si3fpsE">
+<span id="_CPPv3N5units8physical2si3fpsE"></span><span id="_CPPv2N5units8physical2si3fpsE"></span><span id="units::physical::si::fps"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps"></span><em class="property">namespace </em><code class="sig-name descname">fps</code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv4I_4Unit_14ScalableNumberEN5units8physical2si3fps4massE">
+<span id="_CPPv3I_4Unit_14ScalableNumberEN5units8physical2si3fps4massE"></span><span id="_CPPv2I_4Unit_14ScalableNumberEN5units8physical2si3fps4massE"></span>template&lt;<a class="reference internal" href="../../../../core/concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>, <a class="reference internal" href="../../../../core/concepts.html#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber">ScalableNumber</a> <code class="sig-name descname">Rep</code> = double&gt;<br /><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1a8f4b7281c1db7b772061371a15eb52f7"></span><em class="property">using </em><code class="sig-name descname">mass</code> = <a class="reference internal" href="../../../../core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units8quantityE" title="units::quantity">quantity</a>&lt;<a class="reference internal" href="#_CPPv4N5units8physical2si3fps8dim_massE" title="units::physical::si::fps::dim_mass">dim_mass</a>, <a class="reference internal" href="#_CPPv4I_4Unit_14ScalableNumberEN5units8physical2si3fps4massE" title="units::physical::si::fps::mass::U">U</a>, <a class="reference internal" href="#_CPPv4I_4Unit_14ScalableNumberEN5units8physical2si3fps4massE" title="units::physical::si::fps::mass::Rep">Rep</a>&gt;<a class="headerlink" href="#_CPPv4I_4Unit_14ScalableNumberEN5units8physical2si3fps4massE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_grEy">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_grEy"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_grEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ac7687fb6478f290eb53ca8a857208af6"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_gr</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_grEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_grEe">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_grEe"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_grEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a9c6202bb0dac4764f723521c382516fd"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_gr</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_grEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_drEy">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_drEy"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_drEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ac5a94394374186b9380eb92fcf975ba5"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_dr</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_drEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_drEe">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_drEe"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_drEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a697bff66e95fa1355a271eeee80bcf13"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_dr</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_drEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_ozEy">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_ozEy"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_ozEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a04227c49332d721246480836ccf4d1d0"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_oz</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_ozEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_ozEe">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_ozEe"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_ozEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a6c40e2b550d7651b5441c196913d13b8"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_oz</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_ozEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_lbEy">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_lbEy"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_lbEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ac0e1c37420ff13015af86a569969fa32"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lb</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_lbEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_lbEe">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_lbEe"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_lbEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ae2d8691d273bd77e0a0f8e95b8ea988b"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lb</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_lbEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_stEy">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_stEy"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_stEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1aecced4bf9a63354ee75c842c55ce4066"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_st</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_stEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_stEe">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_stEe"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_stEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a9c1d548f22f6f9fb0477db5a0950de64"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_st</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_stEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_qrEy">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_qrEy"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_qrEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a2de4484c40ebc55ab21d5dbafbe004a3"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_qr</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_qrEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli5_q_qrEe">
+<span id="_CPPv3N5units8physical2si3fpsli5_q_qrEe"></span><span id="_CPPv2N5units8physical2si3fpsli5_q_qrEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1aa8aad3e9ad0c38b248ec7ba662f3d902"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_qr</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli5_q_qrEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli6_q_cwtEy">
+<span id="_CPPv3N5units8physical2si3fpsli6_q_cwtEy"></span><span id="_CPPv2N5units8physical2si3fpsli6_q_cwtEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ae25e05110cc6feaa5d2748a5b9001ada"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_cwt</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli6_q_cwtEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli6_q_cwtEe">
+<span id="_CPPv3N5units8physical2si3fpsli6_q_cwtEe"></span><span id="_CPPv2N5units8physical2si3fpsli6_q_cwtEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a1cfa56de9b357b82f56a3ec53b066ea8"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_cwt</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli6_q_cwtEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli7_q_stonEy">
+<span id="_CPPv3N5units8physical2si3fpsli7_q_stonEy"></span><span id="_CPPv2N5units8physical2si3fpsli7_q_stonEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a51e718be59e045de48aa866f36d4f045"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_ston</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli7_q_stonEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli7_q_stonEe">
+<span id="_CPPv3N5units8physical2si3fpsli7_q_stonEe"></span><span id="_CPPv2N5units8physical2si3fpsli7_q_stonEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a3108517b2fe6f1b4bac72e146cff3044"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_ston</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli7_q_stonEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli7_q_ltonEy">
+<span id="_CPPv3N5units8physical2si3fpsli7_q_ltonEy"></span><span id="_CPPv2N5units8physical2si3fpsli7_q_ltonEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a9305e08f6cf4a9e51fbec1e35d988720"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lton</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli7_q_ltonEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fpsli7_q_ltonEe">
+<span id="_CPPv3N5units8physical2si3fpsli7_q_ltonEe"></span><span id="_CPPv2N5units8physical2si3fpsli7_q_ltonEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1afd71e80b56580f0d8714b53a02efbe93"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lton</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fpsli7_q_ltonEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv4N5units8physical2si3fps8dim_massE">
+<span id="_CPPv3N5units8physical2si3fps8dim_massE"></span><span id="_CPPv2N5units8physical2si3fps8dim_massE"></span><span id="units::physical::si::fps::dim_mass"></span><span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1dim__mass"></span><em class="property">struct </em><code class="sig-name descname">dim_mass</code> : <em class="property">public</em> <a class="reference internal" href="../typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../typographic/length.html#_CPPv4N5units8physicalE" title="units::physical">physical</a>::<a class="reference internal" href="../../dimensions_and_concepts.html#_CPPv4I_4UnitEN5units8physical8dim_massE" title="units::physical::dim_mass">dim_mass</a>&lt;pound&gt;<a class="headerlink" href="#_CPPv4N5units8physical2si3fps8dim_massE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units8physical2si3fps4dramE">
+<span id="_CPPv3N5units8physical2si3fps4dramE"></span><span id="_CPPv2N5units8physical2si3fps4dramE"></span><span id="units::physical::si::fps::dram"></span><span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1dram"></span><em class="property">struct </em><code class="sig-name descname">dram</code> : <em class="property">public</em> <a class="reference internal" href="../typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit">named_scaled_unit</a>&lt;<a class="reference internal" href="#_CPPv4N5units8physical2si3fps4dramE" title="units::physical::si::fps::dram">dram</a>, &quot;dr&quot;, <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix">no_prefix</a>, <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a>(1, 256), pound&gt;<a class="headerlink" href="#_CPPv4N5units8physical2si3fps4dramE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units8physical2si3fps5grainE">
+<span id="_CPPv3N5units8physical2si3fps5grainE"></span><span id="_CPPv2N5units8physical2si3fps5grainE"></span><span id="units::physical::si::fps::grain"></span><span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1grain"></span><em class="property">struct </em><code class="sig-name descname">grain</code> : <em class="property">public</em> <a class="reference internal" href="../typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit">named_scaled_unit</a>&lt;<a class="reference internal" href="#_CPPv4N5units8physical2si3fps5grainE" title="units::physical::si::fps::grain">grain</a>, &quot;gr&quot;, <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix">no_prefix</a>, <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a>(1, 7000), pound&gt;<a class="headerlink" href="#_CPPv4N5units8physical2si3fps5grainE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units8physical2si3fps13hundredweightE">
+<span id="_CPPv3N5units8physical2si3fps13hundredweightE"></span><span id="_CPPv2N5units8physical2si3fps13hundredweightE"></span><span id="units::physical::si::fps::hundredweight"></span><span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1hundredweight"></span><em class="property">struct </em><code class="sig-name descname">hundredweight</code> : <em class="property">public</em> <a class="reference internal" href="../typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit">named_scaled_unit</a>&lt;<a class="reference internal" href="#_CPPv4N5units8physical2si3fps13hundredweightE" title="units::physical::si::fps::hundredweight">hundredweight</a>, &quot;cwt&quot;, <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix">no_prefix</a>, <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a>(112, 1), pound&gt;<a class="headerlink" href="#_CPPv4N5units8physical2si3fps13hundredweightE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units8physical2si3fps5ounceE">
+<span id="_CPPv3N5units8physical2si3fps5ounceE"></span><span id="_CPPv2N5units8physical2si3fps5ounceE"></span><span id="units::physical::si::fps::ounce"></span><span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1ounce"></span><em class="property">struct </em><code class="sig-name descname">ounce</code> : <em class="property">public</em> <a class="reference internal" href="../typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit">named_scaled_unit</a>&lt;<a class="reference internal" href="#_CPPv4N5units8physical2si3fps5ounceE" title="units::physical::si::fps::ounce">ounce</a>, &quot;oz&quot;, <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix">no_prefix</a>, <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a>(1, 16), pound&gt;<a class="headerlink" href="#_CPPv4N5units8physical2si3fps5ounceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt>
+<span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1pound"></span><code class="sig-name descname">pound : public units::named_scaled_unit&lt; pound, &quot;lb&quot;, no_prefix, ratio(45 '359 '237, 100 '000 '000), si::kilogram &gt;</code></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units8physical2si3fps7quarterE">
+<span id="_CPPv3N5units8physical2si3fps7quarterE"></span><span id="_CPPv2N5units8physical2si3fps7quarterE"></span><span id="units::physical::si::fps::quarter"></span><span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1quarter"></span><em class="property">struct </em><code class="sig-name descname">quarter</code> : <em class="property">public</em> <a class="reference internal" href="../typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit">named_scaled_unit</a>&lt;<a class="reference internal" href="#_CPPv4N5units8physical2si3fps7quarterE" title="units::physical::si::fps::quarter">quarter</a>, &quot;qr&quot;, <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix">no_prefix</a>, <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a>(28, 1), pound&gt;<a class="headerlink" href="#_CPPv4N5units8physical2si3fps7quarterE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt>
+<span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1short__ton"></span><code class="sig-name descname">short_ton : public units::named_scaled_unit&lt; short_ton, &quot;ton (short)&quot;, no_prefix, ratio(2 '000, 1), pound &gt;{};struct long_ton :named_scaled_unit&lt; long_ton, &quot;ton (long)&quot;, no_prefix, ratio(2 '240, 1), pound &gt;</code></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units8physical2si3fps5stoneE">
+<span id="_CPPv3N5units8physical2si3fps5stoneE"></span><span id="_CPPv2N5units8physical2si3fps5stoneE"></span><span id="units::physical::si::fps::stone"></span><span class="target" id="structunits_1_1physical_1_1si_1_1fps_1_1stone"></span><em class="property">struct </em><code class="sig-name descname">stone</code> : <em class="property">public</em> <a class="reference internal" href="../typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit">named_scaled_unit</a>&lt;<a class="reference internal" href="#_CPPv4N5units8physical2si3fps5stoneE" title="units::physical::si::fps::stone">stone</a>, &quot;st&quot;, <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix">no_prefix</a>, <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a>(14, 1), pound&gt;<a class="headerlink" href="#_CPPv4N5units8physical2si3fps5stoneE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;mass.h&gt;</em></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units8physical2si3fps8literalsE">
+<span id="_CPPv3N5units8physical2si3fps8literalsE"></span><span id="_CPPv2N5units8physical2si3fps8literalsE"></span><span id="units::physical::si::fps::literals"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals"></span><em class="property">namespace </em><code class="sig-name descname">literals</code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_grEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_grEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_grEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ac7687fb6478f290eb53ca8a857208af6"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_gr</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_grEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_grEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_grEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_grEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a9c6202bb0dac4764f723521c382516fd"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_gr</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_grEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_drEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_drEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_drEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ac5a94394374186b9380eb92fcf975ba5"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_dr</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_drEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_drEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_drEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_drEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a697bff66e95fa1355a271eeee80bcf13"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_dr</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_drEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_ozEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_ozEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_ozEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a04227c49332d721246480836ccf4d1d0"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_oz</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_ozEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_ozEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_ozEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_ozEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a6c40e2b550d7651b5441c196913d13b8"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_oz</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_ozEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_lbEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_lbEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_lbEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ac0e1c37420ff13015af86a569969fa32"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lb</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_lbEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_lbEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_lbEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_lbEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ae2d8691d273bd77e0a0f8e95b8ea988b"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lb</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_lbEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_stEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_stEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_stEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1aecced4bf9a63354ee75c842c55ce4066"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_st</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_stEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_stEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_stEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_stEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a9c1d548f22f6f9fb0477db5a0950de64"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_st</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_stEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_qrEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_qrEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_qrEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a2de4484c40ebc55ab21d5dbafbe004a3"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_qr</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_qrEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli5_q_qrEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli5_q_qrEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli5_q_qrEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1aa8aad3e9ad0c38b248ec7ba662f3d902"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_qr</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli5_q_qrEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli6_q_cwtEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli6_q_cwtEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli6_q_cwtEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1ae25e05110cc6feaa5d2748a5b9001ada"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_cwt</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli6_q_cwtEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli6_q_cwtEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli6_q_cwtEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli6_q_cwtEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a1cfa56de9b357b82f56a3ec53b066ea8"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_cwt</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli6_q_cwtEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli7_q_stonEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli7_q_stonEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli7_q_stonEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a51e718be59e045de48aa866f36d4f045"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_ston</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli7_q_stonEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli7_q_stonEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli7_q_stonEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli7_q_stonEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a3108517b2fe6f1b4bac72e146cff3044"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_ston</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli7_q_stonEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli7_q_ltonEy">
+<span id="_CPPv3N5units8physical2si3fps8literalsli7_q_ltonEy"></span><span id="_CPPv2N5units8physical2si3fps8literalsli7_q_ltonEy"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1a9305e08f6cf4a9e51fbec1e35d988720"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lton</code><span class="sig-paren">(</span>unsigned long long <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli7_q_ltonEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units8physical2si3fps8literalsli7_q_ltonEe">
+<span id="_CPPv3N5units8physical2si3fps8literalsli7_q_ltonEe"></span><span id="_CPPv2N5units8physical2si3fps8literalsli7_q_ltonEe"></span><span class="target" id="namespaceunits_1_1physical_1_1si_1_1fps_1_1literals_1afd71e80b56580f0d8714b53a02efbe93"></span><em class="property">constexpr</em> auto <code class="sig-name descname">operator&quot;&quot;_q_lton</code><span class="sig-paren">(</span>long double <em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units8physical2si3fps8literalsli7_q_ltonEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="power.html" class="btn btn-neutral float-right" title="Power" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="length.html" class="btn btn-neutral float-left" title="Length" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

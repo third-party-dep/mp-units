@@ -113,6 +113,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -188,15 +194,15 @@
             
   <div class="section" id="working-with-unknown-dimensions-and-their-units">
 <h1>Working with Unknown Dimensions and Their Units<a class="headerlink" href="#working-with-unknown-dimensions-and-their-units" title="Permalink to this headline">¶</a></h1>
-<p>From time to time the user of this library will face an <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code> and
-<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_coherent_unit</span></code> types. This chapters describes their purpose and usage in
+<p>From time to time the user of this library will face an <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a> and
+<a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4N5units21unknown_coherent_unitE" title="units::unknown_coherent_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_coherent_unit</span></code></a> types. This chapters describes their purpose and usage in
 detail.</p>
 <div class="section" id="what-is-an-unknown-dimension">
 <h2>What is an unknown dimension?<a class="headerlink" href="#what-is-an-unknown-dimension" title="Permalink to this headline">¶</a></h2>
-<p>As we learned in the <a class="reference internal" href="../framework/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter, in most cases the result of multiplying
+<p>As we learned in the <a class="reference internal" href="../reference/systems/physical/natural/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter, in most cases the result of multiplying
 or dividing two quantities of specific dimensions is a quantity of yet another dimension.</p>
 <p>If such a resulting dimension is predefined by the user (and a proper header file with its
-definition is included in the current translation unit) <a class="reference internal" href="../design/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>
+definition is included in the current translation unit) <a class="reference internal" href="../reference/core/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>
 will determine its type. The same applies to the resulting unit. For example:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/si.h&gt;</span><span class="cp"></span>
 </span>
@@ -210,8 +216,8 @@ will determine its type. The same applies to the resulting unit. For example:</p
 </span></pre></div>
 </div>
 <p>However, if the resulting dimension is not predefined by the user, the library framework
-will create an instance of an <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code>. The coherent unit of such an unknown
-dimension is an <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_coherent_unit</span></code>. Let’s see what happens with our example when
+will create an instance of an <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a>. The coherent unit of such an unknown
+dimension is an <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4N5units21unknown_coherent_unitE" title="units::unknown_coherent_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_coherent_unit</span></code></a>. Let’s see what happens with our example when
 instead including the header with all <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> definitions we will just provide base
 dimensions used in the division operation:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/base/length.h&gt;</span><span class="cp"></span>
@@ -235,7 +241,7 @@ with all the definitions for the current system (e.g. <em>units/physical/si/si.h
 <div class="section" id="operations-on-unknown-dimensions-and-their-units">
 <h2>Operations On Unknown Dimensions And Their Units<a class="headerlink" href="#operations-on-unknown-dimensions-and-their-units" title="Permalink to this headline">¶</a></h2>
 <p>For some cases we can eliminate the need to predefine a specific dimension and just use
-the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code> instead. Let’s play with the previous example a bit:</p>
+the <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a> instead. Let’s play with the previous example a bit:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">72</span><span class="p">);</span>
 </pre></div>
 </div>

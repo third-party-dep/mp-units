@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Concepts &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Types" href="types.html" />
+    <link rel="prev" title="Core Library" href="../core.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../core.html">Core Library</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization_points.html">Customization Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downcasting.html">The Downcasting Facility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../core.html">Core Library</a> &raquo;</li>
+        
+      <li>Concepts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/reference/core/concepts.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="concepts">
+<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All names defined in this chapter reside in the <a class="reference internal" href="../systems/physical/si/typographic/length.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace unless
+specified otherwise.</p>
+</div>
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units12PrefixFamilyE">
+<span id="_CPPv3I0EN5units12PrefixFamilyE"></span><span id="_CPPv2I0EN5units12PrefixFamilyE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">PrefixFamily</code><a class="headerlink" href="#_CPPv4I0EN5units12PrefixFamilyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching a prefix family. Satisfied by all types derived from <a class="reference internal" href="types/prefixes.html#_CPPv4N5units13prefix_familyE" title="units::prefix_family"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">prefix_family</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units6PrefixE">
+<span id="_CPPv3I0EN5units6PrefixE"></span><span id="_CPPv2I0EN5units6PrefixE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Prefix</code><a class="headerlink" href="#_CPPv4I0EN5units6PrefixE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching a symbol prefix. Satisfied by all instantiations of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">prefix</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I_5ratioEN5units9UnitRatioE">
+<span id="_CPPv3I_5ratioEN5units9UnitRatioE"></span><span id="_CPPv2I_5ratioEN5units9UnitRatioE"></span>template&lt;<a class="reference internal" href="types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio">ratio</a> <code class="sig-name descname">R</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">UnitRatio</code><a class="headerlink" href="#_CPPv4I_5ratioEN5units9UnitRatioE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Satisfied by all ratio values for which <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I_5ratioEN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">.</span><span class="pre">num</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I_5ratioEN5units9UnitRatioE" title="units::UnitRatio::R"><span class="pre">R</span></a><span class="pre">.</span><span class="pre">den</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units13BaseDimensionE">
+<span id="_CPPv3I0EN5units13BaseDimensionE"></span><span id="_CPPv2I0EN5units13BaseDimensionE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">BaseDimension</code><a class="headerlink" href="#_CPPv4I0EN5units13BaseDimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all base dimensions in the library. Satisfied by all dimension types
+derived from the instantiation of <a class="reference internal" href="types/dimensions.html#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="units::base_dimension"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">base_dimension</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units8ExponentE">
+<span id="_CPPv3I0EN5units8ExponentE"></span><span id="_CPPv2I0EN5units8ExponentE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Exponent</code><a class="headerlink" href="#_CPPv4I0EN5units8ExponentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching dimension’s exponents. Satisfied by all instantiations of <a class="reference internal" href="types/dimensions.html#_CPPv4I_9Dimension_NSt8intmax_tE_NSt8intmax_tEEN5units8exponentE" title="units::exponent"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">exponent</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units16DerivedDimensionE">
+<span id="_CPPv3I0EN5units16DerivedDimensionE"></span><span id="_CPPv2I0EN5units16DerivedDimensionE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">DerivedDimension</code><a class="headerlink" href="#_CPPv4I0EN5units16DerivedDimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all derived dimensions in the library. Satisfied by all dimension
+types derived from the instantiation of <code class="docutils literal notranslate"><span class="pre">detail::derived_dimension_base</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units9DimensionE">
+<span id="_CPPv3I0EN5units9DimensionE"></span><span id="_CPPv2I0EN5units9DimensionE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Dimension</code><a class="headerlink" href="#_CPPv4I0EN5units9DimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all dimensions in the library. Satisfied by all dimension types for
+which either <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units13BaseDimensionE" title="units::BaseDimension"><span class="pre">BaseDimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units16DerivedDimensionE" title="units::DerivedDimension"><span class="pre">DerivedDimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units4UnitE">
+<span id="_CPPv3I0EN5units4UnitE"></span><span id="_CPPv2I0EN5units4UnitE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Unit</code><a class="headerlink" href="#_CPPv4I0EN5units4UnitE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all unit types in the library. Satisfied by all unit types derived
+from the instantiation of <a class="reference internal" href="types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">scaled_unit</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I00EN5units6UnitOfE">
+<span id="_CPPv3I00EN5units6UnitOfE"></span><span id="_CPPv2I00EN5units6UnitOfE"></span>template&lt;typename <code class="sig-name descname">U</code>, typename <code class="sig-name descname">D</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">UnitOf</code><a class="headerlink" href="#_CPPv4I00EN5units6UnitOfE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching only units of a specified dimension. Satisfied by all unit types that
+satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units4UnitE" title="units::Unit"><span class="pre">Unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::U"><span class="pre">U</span></a><span class="pre">&gt;</span></code>, <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><span class="pre">Dimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::D"><span class="pre">D</span></a><span class="pre">&gt;</span></code>, and for which <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf::U"><span class="pre">U</span></a><span class="pre">::</span><span class="pre">reference</span></code> and
+<code class="docutils literal notranslate"><span class="pre">dimension_unit&lt;D&gt;::reference</span></code> denote the same unit type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> – Type to verify against concept constraints.</p></li>
+<li><p><strong>D</strong> – Dimension type to use for verification.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units8QuantityE">
+<span id="_CPPv3I0EN5units8QuantityE"></span><span id="_CPPv2I0EN5units8QuantityE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">Quantity</code><a class="headerlink" href="#_CPPv4I0EN5units8QuantityE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all quantities in the library. Satisfied by all instantiations of <a class="reference internal" href="types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units15WrappedQuantityE">
+<span id="_CPPv3I0EN5units15WrappedQuantityE"></span><span id="_CPPv2I0EN5units15WrappedQuantityE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">WrappedQuantity</code><a class="headerlink" href="#_CPPv4I0EN5units15WrappedQuantityE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching types that wrap quantity objects. Satisfied by all wrapper types that
+satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><span class="pre">Quantity</span></a><span class="pre">&lt;</span><em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4I0EN5units15WrappedQuantityE" title="units::WrappedQuantity::T"><span class="pre">T</span></a><span class="pre">::</span><span class="pre">value_type</span><span class="pre">&gt;</span></code> recursively
+(i.e. <code class="docutils literal notranslate"><span class="pre">std::optional&lt;si::length&lt;si::metre&gt;&gt;</span></code>).</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units14ScalableNumberE">
+<span id="_CPPv3I0EN5units14ScalableNumberE"></span><span id="_CPPv2I0EN5units14ScalableNumberE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">ScalableNumber</code><a class="headerlink" href="#_CPPv4I0EN5units14ScalableNumberE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching non-Quantity types. Satisfied by types that match
+<code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">(</span><span class="pre">!</span><a class="reference internal" href="#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><span class="pre">Quantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a><span class="pre">&gt;</span><span class="pre">)</span> <span class="pre">&amp;&amp;</span> <span class="pre">(</span><span class="pre">!</span><a class="reference internal" href="#_CPPv4I0EN5units15WrappedQuantityE" title="units::WrappedQuantity"><span class="pre">WrappedQuantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a><span class="pre">&gt;</span><span class="pre">)</span> <span class="pre">&amp;&amp;</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">regular</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a><span class="pre">&gt;</span></code> and satisfy one of the
+following:</p>
+<ul class="simple">
+<li><p>if type <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a></code> is constructible from <code class="docutils literal notranslate"><span class="pre">std::int64_t</span></code> (which is the type that stores
+the elements of <a class="reference internal" href="types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ratio</span></code></a>), <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a> <span class="pre">*</span> <a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a></code> and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a> <span class="pre">/</span> <a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a></code> must be valid,</p></li>
+<li><p>otherwise, <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a> <span class="pre">*</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span></code>, <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <span class="pre">*</span> <a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a></code>, and <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber::T"><span class="pre">T</span></a> <span class="pre">/</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span></code>
+must be valid.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0EN5units13QuantityPointE">
+<span id="_CPPv3I0EN5units13QuantityPointE"></span><span id="_CPPv2I0EN5units13QuantityPointE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">QuantityPoint</code><a class="headerlink" href="#_CPPv4I0EN5units13QuantityPointE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all quantity points in the library. Satisfied by all instantiations of
+<a class="reference internal" href="types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_point</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0IDpE0EN5units12DimensionOfTE">
+<span id="_CPPv3I0IDpE0EN5units12DimensionOfTE"></span><span id="_CPPv2I0IDpE0EN5units12DimensionOfTE"></span>template&lt;typename <code class="sig-name descname">Dim</code>, template&lt;typename...&gt; typename <code class="sig-name descname">DimTemplate</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">DimensionOfT</code><a class="headerlink" href="#_CPPv4I0IDpE0EN5units12DimensionOfTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all dimensions being the instantiations derived from the provided dimension
+class template.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I0IDpE0EN5units11QuantityOfTE">
+<span id="_CPPv3I0IDpE0EN5units11QuantityOfTE"></span><span id="_CPPv2I0IDpE0EN5units11QuantityOfTE"></span>template&lt;typename <code class="sig-name descname">Q</code>, template&lt;typename...&gt; typename <code class="sig-name descname">DimTemplate</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">QuantityOfT</code><a class="headerlink" href="#_CPPv4I0IDpE0EN5units11QuantityOfTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all quantities with a dimension being the instantiation derived from
+the provided dimension class template.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt id="_CPPv4I00EN5units10QuantityOfE">
+<span id="_CPPv3I00EN5units10QuantityOfE"></span><span id="_CPPv2I00EN5units10QuantityOfE"></span>template&lt;typename <code class="sig-name descname">T</code>, typename <code class="sig-name descname">Dim</code>&gt;<br /><em class="property">concept </em><code class="sig-name descname">QuantityOf</code><a class="headerlink" href="#_CPPv4I00EN5units10QuantityOfE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A concept matching all quantities with a dimension being the instantiation derived from
+the provided dimension type.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="types.html" class="btn btn-neutral float-right" title="Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../core.html" class="btn btn-neutral float-left" title="Core Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

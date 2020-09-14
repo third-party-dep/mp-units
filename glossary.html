@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Index" href="genindex.html" />
-    <link rel="prev" title="FAQ" href="faq.html" /> 
+    <link rel="prev" title="Random" href="reference/random.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,6 +99,12 @@
 <li class="toctree-l1"><a class="reference internal" href="design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/random.html">Random</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul class="current">
@@ -220,22 +226,22 @@ the Imperial System, etc.</p></li>
 </ul>
 </dd>
 <dt id="term-base-quantity">base quantity</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-quantity"><span class="xref std std-term">Quantity</span></a> in a conventionally chosen subset of a given <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>, where
-no <a class="reference internal" href="#term-quantity"><span class="xref std std-term">quantity</span></a> in the subset can be expressed in terms of the other <a class="reference internal" href="#term-quantity"><span class="xref std std-term">quantities</span></a>
-within that subset.</p></li>
+<li><p><a class="reference internal" href="#term-quantity"><span class="xref std std-term">Quantity</span></a> in a conventionally chosen subset of a given <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>,
+where no <a class="reference internal" href="#term-quantity"><span class="xref std std-term">quantity</span></a> in the subset can be expressed in terms of the other
+<a class="reference internal" href="#term-quantity"><span class="xref std std-term">quantities</span></a> within that subset.</p></li>
 <li><p>Base quantities are referred to as being mutually independent since a base quantity
 cannot be expressed as a product of powers of the other base quantities.</p></li>
 </ul>
 </dd>
 <dt id="term-derived-quantity">derived quantity</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-quantity"><span class="xref std std-term">Quantity</span></a>, in a <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>, defined in terms of the base quantities of
-that system.</p></li>
+<li><p><a class="reference internal" href="#term-quantity"><span class="xref std std-term">Quantity</span></a>, in a <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>, defined in terms of the base
+quantities of that system.</p></li>
 </ul>
 </dd>
 <dt id="term-International-System-of-Quantities">International System of Quantities</dt><dt id="term-ISQ">ISQ</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">System of quantities</span></a> based on the seven <a class="reference internal" href="#term-base-quantity"><span class="xref std std-term">base quantities</span></a>:
-length, mass, time, electric current, thermodynamic temperature, amount of substance,
-and luminous intensity.</p></li>
+<li><p><a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">System of quantities</span></a> based on the seven
+<a class="reference internal" href="#term-base-quantity"><span class="xref std std-term">base quantities</span></a>: length, mass, time, electric current, thermodynamic
+temperature, amount of substance, and luminous intensity.</p></li>
 <li><p>The International System of Units (SI) is based on the ISQ.</p></li>
 </ul>
 </dd>
@@ -310,9 +316,9 @@ and candela.</p></li>
 </ul>
 </dd>
 <dt id="term-coherent-derived-unit">coherent derived unit</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-derived-unit"><span class="xref std std-term">Derived unit</span></a> that, for a given <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a> and for a chosen set of
-<a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base units</span></a>, is a product of powers of <a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base units</span></a> with no
-other proportionality factor than one.</p></li>
+<li><p><a class="reference internal" href="#term-derived-unit"><span class="xref std std-term">Derived unit</span></a> that, for a given <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a> and for a chosen
+set of <a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base units</span></a>, is a product of powers of <a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base units</span></a> with
+no other proportionality factor than one.</p></li>
 <li><p>A power of a <a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base unit</span></a> is the <a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base unit</span></a> raised to an exponent.</p></li>
 <li><p>Coherence can be determined only with respect to a particular <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>
 and a given set of <a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base units</span></a>. That is, if the metre and the second are
@@ -326,23 +332,24 @@ their multiples and submultiples, defined in accordance with given rules, for a 
 </ul>
 </dd>
 <dt id="term-coherent-system-of-units">coherent system of units</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-system-of-units"><span class="xref std std-term">System of units</span></a>, based on a given <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>, in which the measurement
-unit for each <a class="reference internal" href="#term-derived-quantity"><span class="xref std std-term">derived quantity</span></a> is a <a class="reference internal" href="#term-coherent-derived-unit"><span class="xref std std-term">coherent derived unit</span></a>.</p></li>
+<li><p><a class="reference internal" href="#term-system-of-units"><span class="xref std std-term">System of units</span></a>, based on a given <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a>, in which
+the measurement unit for each <a class="reference internal" href="#term-derived-quantity"><span class="xref std std-term">derived quantity</span></a> is a <a class="reference internal" href="#term-coherent-derived-unit"><span class="xref std std-term">coherent derived unit</span></a>.</p></li>
 <li><p>A <a class="reference internal" href="#term-system-of-units"><span class="xref std std-term">system of units</span></a> can be coherent only with respect to a <a class="reference internal" href="#term-system-of-quantities"><span class="xref std std-term">system of quantities</span></a> and
 the adopted <a class="reference internal" href="#term-base-unit"><span class="xref std std-term">base units</span></a>.</p></li>
 </ul>
 </dd>
 <dt id="term-off-system-measurement-unit">off-system measurement unit</dt><dt id="term-off-system-unit">off-system unit</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-measurement-unit"><span class="xref std std-term">Measurement unit</span></a> that does not belong to a given <a class="reference internal" href="#term-system-of-units"><span class="xref std std-term">system of units</span></a>. For example, the
-electronvolt (<span class="math notranslate nohighlight">\(≈ 1,602 18 × 10^{–19} J\)</span>) is an off-system measurement unit of energy with
-respect to the <a class="reference internal" href="#term-SI"><span class="xref std std-term">SI</span></a> or day, hour, minute are off-system measurement units of time with
-respect to the <a class="reference internal" href="#term-SI"><span class="xref std std-term">SI</span></a>.</p></li>
+<li><p><a class="reference internal" href="#term-measurement-unit"><span class="xref std std-term">Measurement unit</span></a> that does not belong to a given <a class="reference internal" href="#term-system-of-units"><span class="xref std std-term">system of units</span></a>.
+For example, the electronvolt (<span class="math notranslate nohighlight">\(≈ 1,602 18 × 10^{–19} J\)</span>) is an off-system measurement
+unit of energy with respect to the <a class="reference internal" href="#term-SI"><span class="xref std std-term">SI</span></a> or day, hour, minute are off-system measurement
+units of time with respect to the <a class="reference internal" href="#term-SI"><span class="xref std std-term">SI</span></a>.</p></li>
 </ul>
 </dd>
 <dt id="term-International-System-of-Units">International System of Units</dt><dt id="term-SI">SI</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-system-of-units"><span class="xref std std-term">System of units</span></a>, based on the <a class="reference internal" href="#term-International-System-of-Quantities"><span class="xref std std-term">International System of Quantities</span></a>, their names and
-symbols, including a series of prefixes and their names and symbols, together with rules
-for their use, adopted by the General Conference on Weights and Measures (CGPM)</p></li>
+<li><p><a class="reference internal" href="#term-system-of-units"><span class="xref std std-term">System of units</span></a>, based on the <a class="reference internal" href="#term-International-System-of-Quantities"><span class="xref std std-term">International System of Quantities</span></a>,
+their names and symbols, including a series of prefixes and their names and symbols,
+together with rules for their use, adopted by the General Conference on Weights and
+Measures (CGPM)</p></li>
 </ul>
 </dd>
 <dt id="term-quantity-value">quantity value</dt><dt id="term-value-of-a-quantity">value of a quantity</dt><dt id="term-value">value</dt><dd><ul class="simple">
@@ -381,7 +388,7 @@ dimension’s unit symbol is being printed in the text output</p></li>
 </dd>
 <dt id="term-scalable-number">scalable number</dt><dd><ul class="simple">
 <li><p>Not a <a class="reference internal" href="#term-quantity"><span class="xref std std-term">quantity</span></a></p></li>
-<li><p>Can be passed as a representation type to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">units::quantity</span></code> type or be used as a factor
+<li><p>Can be passed as a representation type to the <a class="reference internal" href="reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">units::quantity</span></code></a> type or be used as a factor
 while multiplying or dividing a <a class="reference internal" href="#term-quantity"><span class="xref std std-term">quantity</span></a>.</p></li>
 </ul>
 </dd>
@@ -411,7 +418,7 @@ nominal properties are outside the scope of ISO 80000-1:2009.</p>
         <a href="genindex.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="faq.html" class="btn btn-neutral float-left" title="FAQ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="reference/random.html" class="btn btn-neutral float-left" title="Random" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

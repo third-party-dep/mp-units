@@ -116,6 +116,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -195,14 +201,14 @@
 <ul class="simple">
 <li><p>different units for length, time, and velocity,</p></li>
 <li><p>quantities text output formatting,</p></li>
-<li><p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code> to mark “absolute” values like <code class="docutils literal notranslate"><span class="pre">altitude</span></code> (as opposed to <code class="docutils literal notranslate"><span class="pre">height</span></code>),</p></li>
+<li><p><a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> to mark “absolute” values like <code class="docutils literal notranslate"><span class="pre">altitude</span></code> (as opposed to <code class="docutils literal notranslate"><span class="pre">height</span></code>),</p></li>
 <li><p>a simple <code class="docutils literal notranslate"><span class="pre">vector</span></code> class to show how to handle 3D space for aviation needs and how to build abstractions
-on top of a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code> concept.</p></li>
+on top of a <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a> concept.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">vector</span></code> class template provides a strong type that divides quantities and quantity points to the ones
 on a horizontal (X, Y) plane and vertical (Z) axis. Its purpose is to make different kinds of quantity
-(i.e. length) separated strong types (i.e. distance, height). Additionally, it wraps both a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code>
-and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code> types which means that we can define a <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">altitude</span></code> respectively
+(i.e. length) separated strong types (i.e. distance, height). Additionally, it wraps both a <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a>
+and <a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> types which means that we can define a <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">altitude</span></code> respectively
 as different strong types. Some of its function are defined only for quantities (additional operators)
 and some for quantity points (additional constructor).</p>
 <div class="literal-block-wrapper docutils container" id="id1">

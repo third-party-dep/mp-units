@@ -109,7 +109,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cmake-options">CMake Options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">DOWNCAST_MODE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-downcast-mode">UNITS_DOWNCAST_MODE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generate-docs">GENERATE_DOCS</a></li>
 </ul>
 </li>
@@ -133,6 +133,12 @@
 <li class="toctree-l1"><a class="reference internal" href="design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/random.html">Random</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
@@ -322,7 +328,7 @@ It also runs unit tests during Conan build.</p>
 <h4>downcast_mode<a class="headerlink" href="#downcast-mode" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">off</span></code>/<code class="docutils literal notranslate"><span class="pre">on</span></code>/<code class="docutils literal notranslate"><span class="pre">auto</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">on</span></code></p>
-<p>Specifies how <a class="reference internal" href="design/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a> works:</p>
+<p>Specifies how <a class="reference internal" href="reference/core/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a> works:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">off</span></code> - no downcasting at all</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">on</span></code> - downcasting always forced -&gt; compile-time errors in case of duplicated definitions</p></li>
@@ -332,11 +338,11 @@ It also runs unit tests during Conan build.</p>
 </div>
 <div class="section" id="cmake-options">
 <h3>CMake Options<a class="headerlink" href="#cmake-options" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id1">
-<h4>DOWNCAST_MODE<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="units-downcast-mode">
+<h4>UNITS_DOWNCAST_MODE<a class="headerlink" href="#units-downcast-mode" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code>/<code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">AUTO</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
-<p>Equivalent to <a href="#id5"><span class="problematic" id="id6">`downcast`_</span></a>.</p>
+<p>Equivalent to <a class="reference internal" href="#downcast-mode">downcast_mode</a>.</p>
 </div>
 <div class="section" id="generate-docs">
 <h4>GENERATE_DOCS<a class="headerlink" href="#generate-docs" title="Permalink to this headline">¶</a></h4>
@@ -393,8 +399,8 @@ project’s top-level directory and add <strong>mp-units</strong> as a dependenc
 For example the simplest file may look as follows:</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[requires]</span>
 <span class="na">mp-units/0.6.0</span>
 
@@ -467,8 +473,8 @@ differences:</p>
 <li><p>In your Conan configuration file provide package identifier of the <code class="docutils literal notranslate"><span class="pre">mpusz/testing</span></code> stream:</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[requires]</span>
 <span class="na">mp-units/0.7.0@mpusz/testing</span>
 
@@ -506,8 +512,8 @@ follows:</p>
 <li><p>Specify <code class="docutils literal notranslate"><span class="pre">cmake</span></code> generator in your Conan configuration file:</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[requires]</span>
 <span class="na">mp-units/0.6.0</span>
 
@@ -551,6 +557,7 @@ in <strong>mp-units</strong> repository, you should:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add linear-algebra https://api.bintray.com/conan/twonington/public-conan
 git clone https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
+sudo apt-get -qq update <span class="o">&amp;&amp;</span> sudo apt-get install -y libtinfo5 graphviz
 mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
 cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release

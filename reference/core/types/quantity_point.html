@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quantity Point &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Dimensions" href="dimensions.html" />
+    <link rel="prev" title="Quantity" href="quantity.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../core.html">Core Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../types.html">Types</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="quantity.html">Quantity</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Quantity Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="units.html">Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prefixes.html">Prefixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customization_points.html">Customization Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../downcasting.html">The Downcasting Facility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../core.html">Core Library</a> &raquo;</li>
+        
+          <li><a href="../types.html">Types</a> &raquo;</li>
+        
+      <li>Quantity Point</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/reference/core/types/quantity_point.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quantity-point">
+<h1>Quantity Point<a class="headerlink" href="#quantity-point" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE">
+<span id="_CPPv3I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE"></span><span id="_CPPv2I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE"></span>template&lt;<a class="reference internal" href="../concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension">Dimension</a> <code class="sig-name descname">D</code>, <a class="reference internal" href="../concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf">UnitOf</a>&lt;<a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point::D">D</a>&gt; <code class="sig-name descname">U</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units14ScalableNumberE" title="units::ScalableNumber">ScalableNumber</a> <code class="sig-name descname">Rep</code> = double&gt;<br /><span class="target" id="classunits_1_1quantity__point"></span><em class="property">class </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/typographic/length.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">quantity_point</code><a class="headerlink" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A quantity point. </p>
+<p>An absolute quantity with respect to zero (which represents some origin).</p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code>: a dimension of the quantity point (can be either a BaseDimension or a DerivedDimension) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: a measurement unit of the quantity point </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rep</span></code>: a type to be used to represent values of a quantity point </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N5units14quantity_point13quantity_typeE">
+<span id="_CPPv3N5units14quantity_point13quantity_typeE"></span><span id="_CPPv2N5units14quantity_point13quantity_typeE"></span><span class="target" id="classunits_1_1quantity__point_1ac7fcddff186e0ab737f8b9f4fee34087"></span><em class="property">using </em><code class="sig-name descname">quantity_type</code> = <a class="reference internal" href="quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units8quantityE" title="units::quantity">quantity</a>&lt;<a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point::D">D</a>, <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point::U">U</a>, <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point::Rep">Rep</a>&gt;<a class="headerlink" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units14quantity_point9dimensionE">
+<span id="_CPPv3N5units14quantity_point9dimensionE"></span><span id="_CPPv2N5units14quantity_point9dimensionE"></span><span class="target" id="classunits_1_1quantity__point_1acf81dd2b39e0b911b8e4fbc8fe510da8"></span><em class="property">using </em><code class="sig-name descname">dimension</code> = <em class="property">typename</em> <a class="reference internal" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="units::quantity_point::quantity_type">quantity_type</a>::dimension<a class="headerlink" href="#_CPPv4N5units14quantity_point9dimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units14quantity_point4unitE">
+<span id="_CPPv3N5units14quantity_point4unitE"></span><span id="_CPPv2N5units14quantity_point4unitE"></span><span class="target" id="classunits_1_1quantity__point_1add36d6440ae98a2a4ef254abaa609e3d"></span><em class="property">using </em><code class="sig-name descname">unit</code> = <em class="property">typename</em> <a class="reference internal" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="units::quantity_point::quantity_type">quantity_type</a>::unit<a class="headerlink" href="#_CPPv4N5units14quantity_point4unitE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units14quantity_point3repE">
+<span id="_CPPv3N5units14quantity_point3repE"></span><span id="_CPPv2N5units14quantity_point3repE"></span><span class="target" id="classunits_1_1quantity__point_1ab908b6540e736b6f0cad3e4c69b159ff"></span><em class="property">using </em><code class="sig-name descname">rep</code> = <em class="property">typename</em> <a class="reference internal" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="units::quantity_point::quantity_type">quantity_type</a>::rep<a class="headerlink" href="#_CPPv4N5units14quantity_point3repE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units14quantity_point6q_typeE">
+<span id="_CPPv3N5units14quantity_point6q_typeE"></span><span id="_CPPv2N5units14quantity_point6q_typeE"></span><span class="target" id="classunits_1_1quantity__point_1af05957c3dee8cb593556b22fd076190e"></span><em class="property">using </em><code class="sig-name descname">q_type</code> = decltype(q)<a class="headerlink" href="#_CPPv4N5units14quantity_point6q_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1af05957c3dee8cb593556b22fd076190e"></span><em class="property">using </em><code class="sig-name descname">q_type</code> = decltype(q)<br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units14quantity_point14quantity_pointEv">
+<span id="_CPPv3N5units14quantity_point14quantity_pointEv"></span><span id="_CPPv2N5units14quantity_point14quantity_pointEv"></span><span id="units::quantity_point::quantity_point"></span><span class="target" id="classunits_1_1quantity__point_1a7e2fd441afa6d97fe308ccff6c601afe"></span><code class="sig-name descname">quantity_point</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units14quantity_point14quantity_pointEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units14quantity_point14quantity_pointERK14quantity_point">
+<span id="_CPPv3N5units14quantity_point14quantity_pointERK14quantity_point"></span><span id="_CPPv2N5units14quantity_point14quantity_pointERK14quantity_point"></span><span id="units::quantity_point::quantity_point__quantity_pointCR"></span><span class="target" id="classunits_1_1quantity__point_1a2506c0b54dbba13da9e6d83e0f4d0e0b"></span><code class="sig-name descname">quantity_point</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N5units14quantity_point14quantity_pointERK14quantity_point" title="units::quantity_point::quantity_point">quantity_point</a>&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units14quantity_point14quantity_pointERK14quantity_point" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units14quantity_point14quantity_pointERR14quantity_point">
+<span id="_CPPv3N5units14quantity_point14quantity_pointERR14quantity_point"></span><span id="_CPPv2N5units14quantity_point14quantity_pointERR14quantity_point"></span><span id="units::quantity_point::quantity_point__quantity_pointRR"></span><span class="target" id="classunits_1_1quantity__point_1accbbd59ba88b00a5d7717d5ead2102fa"></span><code class="sig-name descname">quantity_point</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5units14quantity_point14quantity_pointERR14quantity_point" title="units::quantity_point::quantity_point">quantity_point</a>&amp;&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units14quantity_point14quantity_pointERR14quantity_point" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a64a06162acae79e0ce2e6b3e02f30d2a"></span><code class="sig-name descname">template&lt;Quantity Q&gt; requires constexpr std::is_convertible_v&lt; Q, quantity_type &gt; quantity_point (const Q &amp;q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a442e854d2126dc0d3b8eeada74fdf3f9"></span><code class="sig-name descname">template&lt;QuantityPoint QP2&gt; requires constexpr std::is_convertible_v&lt; typename QP2::quantity_type, quantity_type &gt; quantity_point (const QP2 &amp;qp)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units14quantity_pointaSERK14quantity_point">
+<span id="_CPPv3N5units14quantity_pointaSERK14quantity_point"></span><span id="_CPPv2N5units14quantity_pointaSERK14quantity_point"></span><span id="units::quantity_point::assign-operator__quantity_pointCR"></span><span class="target" id="classunits_1_1quantity__point_1a2c2f120e3815d26e4cee243d66e90fdd"></span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point">quantity_point</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point">quantity_point</a>&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units14quantity_pointaSERK14quantity_point" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units14quantity_pointaSERR14quantity_point">
+<span id="_CPPv3N5units14quantity_pointaSERR14quantity_point"></span><span id="_CPPv2N5units14quantity_pointaSERR14quantity_point"></span><span id="units::quantity_point::assign-operator__quantity_pointRR"></span><span class="target" id="classunits_1_1quantity__point_1a803711b1ccb3375e73863a9199541ed2"></span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point">quantity_point</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point">quantity_point</a>&amp;&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units14quantity_pointaSERR14quantity_point" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5units14quantity_point8relativeEv">
+<span id="_CPPv3NK5units14quantity_point8relativeEv"></span><span id="_CPPv2NK5units14quantity_point8relativeEv"></span><span id="units::quantity_point::relativeCCE"></span><span class="target" id="classunits_1_1quantity__point_1af70f58acd158fc088017fab2a6b6add9"></span><em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="units::quantity_point::quantity_type">quantity_type</a> <code class="sig-name descname">relative</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4NK5units14quantity_point8relativeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1afad3552c843ac5e112f3d992988f4663"></span><code class="sig-name descname">constexpr quantity_point &amp; operator++ () requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1af99039d571855acd8a1e70b733839da6"></span><code class="sig-name descname">constexpr quantity_point operator++ (int) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a66aca11280ca28004816c398164b6ca5"></span><code class="sig-name descname">constexpr quantity_point &amp; operator-- () requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a588f864e06003dd7ff66ae65903f4bb5"></span><code class="sig-name descname">constexpr quantity_point operator-- (int) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1aa5009d2efd0511593dd805bc6683280a"></span><code class="sig-name descname">constexpr quantity_point &amp; operator+= (const quantity_type &amp;q) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a15ccdc0d18bf2582ca3321ea2e27a2cd"></span><code class="sig-name descname">constexpr quantity_point &amp; operator-= (const quantity_type &amp;q) requires requires(quantity_type q1</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a27f85656c8d103500256f6ba06978a4b"></span><code class="sig-name descname">return quantity_point (q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a27f85656c8d103500256f6ba06978a4b"></span><code class="sig-name descname">return quantity_point (q)</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1ac784487c74dfea9b438431ca5169671f"></span><code class="sig-name descname">return * this  {    ++q_</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1aaeb2f3a9170ec3a720a959245cda6b3d"></span><code class="sig-name descname">constexpr quantity_point quantity_type q2   = { q1 -= q2</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1af5d9a28ca0bffcfcd19c986acf3e8d85"></span><code class="sig-name descname">constexpr quantity_point min () noexcept requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a01fd30d310d3c12a427eeb16d69b6abb"></span><code class="sig-name descname">constexpr quantity_point max () noexcept requires requires</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Friends</p>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a6e27e2f6a0ba06553ca7df5c23b92ae8"></span><code class="sig-name descname">template&lt;Quantity Q&gt; constexpr friend QuantityPoint auto operator+ (const quantity_point &amp;lhs, const Q &amp;rhs) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a816b2e9a88321f5d7579494391915c02"></span><code class="sig-name descname">template&lt;Quantity Q&gt; constexpr friend QuantityPoint auto operator+ (const Q &amp;lhs, const quantity_point &amp;rhs) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a770629e0c663672221c08a00b40572c5"></span><code class="sig-name descname">template&lt;Quantity Q&gt; constexpr friend QuantityPoint auto operator- (const quantity_point &amp;lhs, const Q &amp;rhs) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a95b1da71179b8850267873fc8995a52c"></span><code class="sig-name descname">template&lt;QuantityPoint QP&gt; constexpr friend Quantity auto operator- (const quantity_point &amp;lhs, const QP &amp;rhs) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1af4d3ebf0edaf7f21a89a108be66ff2ac"></span><code class="sig-name descname">template&lt;QuantityPoint QP&gt; requires std::three_way_comparable_with&lt; quantity_type, typename QP::quantity_type &gt; constexpr friend auto operator (const quantity_point &amp;lhs, const QP &amp;rhs)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP">
+template&lt;<a class="reference internal" href="../concepts.html#_CPPv4I0EN5units13QuantityPointE" title="units::QuantityPoint">QuantityPoint</a> <code class="sig-name descname">QP</code>&gt;<br />requires std::equality_comparable_with&lt;<a class="reference internal" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="units::quantity_point::quantity_type">quantity_type</a>, <em class="property">typename</em> <a class="reference internal" href="#_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP" title="units::quantity_point::operator==::QP">QP</a>::quantity_type&gt;<br /><span class="target" id="classunits_1_1quantity__point_1a19d334f7c6c7f250c7ae44120817cb96"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14ScalableNumberEN5units14quantity_pointE" title="units::quantity_point">quantity_point</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP" title="units::quantity_point::operator==::QP">QP</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dimensions.html" class="btn btn-neutral float-right" title="Dimensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quantity.html" class="btn btn-neutral float-left" title="Quantity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
