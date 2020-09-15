@@ -180,7 +180,13 @@
   <div class="section" id="release-notes">
 <h1>Release notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p><strong>0.7.0 WIP</strong></p></li>
+<li><p><strong>0.7.0 WIP</strong></p>
+<ul class="simple">
+<li><p>perf: preconditions check do not influence the runtime performance of a Release build</p></li>
+<li><p>perf: <code class="docutils literal notranslate"><span class="pre">quantity_cast()</span></code> generates less assembly instructions</p></li>
+<li><p>perf: temporary string creation removed from <code class="docutils literal notranslate"><span class="pre">quantity::op&lt;&lt;()</span></code></p></li>
+</ul>
+</li>
 <li><p><strong>0.6.0 September 13, 2020</strong></p>
 <ul class="simple">
 <li><p>(!) gcc-9 is no longer supported (at least gcc-10 is required)</p></li>
