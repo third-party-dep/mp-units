@@ -557,7 +557,6 @@ in <strong>mp-units</strong> repository, you should:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add linear-algebra https://api.bintray.com/conan/twonington/public-conan
 git clone https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
-sudo apt-get -qq update <span class="o">&amp;&amp;</span> sudo apt-get install -y libtinfo5 graphviz
 mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
 cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
