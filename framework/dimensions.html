@@ -237,8 +237,8 @@ dimension, than we will end up with just a scalable number type:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="k">auto</span> <span class="n">dur1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_q_s</span><span class="p">;</span>
 <span class="n">Time</span> <span class="k">auto</span> <span class="n">dur2</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_q_s</span><span class="p">;</span>
 <span class="n">Frequency</span> <span class="k">auto</span> <span class="n">fr1</span> <span class="o">=</span> <span class="mi">5</span><span class="n">_q_Hz</span><span class="p">;</span>
-<span class="hll"><span class="n">ScalableNumber</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">/</span> <span class="n">dur2</span><span class="p">;</span>    <span class="c1">// 5</span>
-</span><span class="hll"><span class="n">ScalableNumber</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// 50</span>
+<span class="hll"><span class="n">QuantityValue</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">/</span> <span class="n">dur2</span><span class="p">;</span>    <span class="c1">// 5</span>
+</span><span class="hll"><span class="n">QuantityValue</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// 50</span>
 </span></pre></div>
 </div>
 <p>Quantity points have a more restricted set of operations.
