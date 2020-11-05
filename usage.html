@@ -559,13 +559,17 @@ git clone https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <
 pip3 install -r docs/requirements.txt
 mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
-cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+conan build ..
+</pre></div>
+</div>
+<p>The above will download and install all of the dependencies needed for the development of the library,
+build all of the source code and documentation, and run unit tests. Instead of the last <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">build</span> <span class="pre">..</span></code> step you can
+also do the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
 cmake --build .
 ctest
 </pre></div>
 </div>
-<p>The above will download and install all of the dependencies needed for the development of the library,
-build all of the source code and documentation, and run unit tests.</p>
 </div>
 <div class="section" id="packaging">
 <h2>Packaging<a class="headerlink" href="#packaging" title="Permalink to this headline">¶</a></h2>
