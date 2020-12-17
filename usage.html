@@ -373,7 +373,7 @@ to make the code compile without issues.</p>
 defined by the library. To do so you should use <em>CMakeLists.txt</em> file from the <em>./src</em> directory:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">&lt;path_to_units_folder&gt;/src</span><span class="p">)</span>
 <span class="c"># ...</span>
-<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">mp-units::mp-units</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">mp::units</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition important">
@@ -423,7 +423,7 @@ with <code class="docutils literal notranslate"><span class="pre">find_package</
 <li><p>Link your CMake targets with <strong>mp-units</strong>:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">mp-units::mp-units</span><span class="p">)</span>
+<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">mp::units</span><span class="p">)</span>
 <span class="nb">target_compile_features</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">cxx_std_20</span><span class="p">)</span>
 </pre></div>
 </div>
