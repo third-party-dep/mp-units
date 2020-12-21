@@ -184,15 +184,23 @@
 <ul class="simple">
 <li><p>(!) refactor: <code class="docutils literal notranslate"><span class="pre">ScalableNumber</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">QuantityValue</span></code></p></li>
 <li><p>refactor: basic concepts, <code class="docutils literal notranslate"><span class="pre">quantity</span></code> and <code class="docutils literal notranslate"><span class="pre">quantity_cast</span></code> refactored</p></li>
+<li><p>refactor: <code class="docutils literal notranslate"><span class="pre">abs()</span></code> definition refactored to be more explicit about the return type</p></li>
 <li><p>feat: interoperability with <code class="docutils literal notranslate"><span class="pre">std::chrono::duration</span></code> and other units libraries</p></li>
 <li><p>feat: CTAD for dimensionless quantity added</p></li>
 <li><p>feat: value initialization for quantity value removed (left with a default initialization)</p></li>
 <li><p>perf: preconditions check do not influence the runtime performance of a Release build</p></li>
 <li><p>perf: <code class="docutils literal notranslate"><span class="pre">quantity_cast()</span></code> generates less assembly instructions</p></li>
 <li><p>perf: temporary string creation removed from <code class="docutils literal notranslate"><span class="pre">quantity::op&lt;&lt;()</span></code></p></li>
+<li><p>(!) fix: <code class="docutils literal notranslate"><span class="pre">exp()</span></code> has sense only for dimensionless quantities</p></li>
 <li><p>fix: <code class="docutils literal notranslate"><span class="pre">quantity_cast()</span></code> fixed to work correctly with representation types not convertible from <code class="docutils literal notranslate"><span class="pre">std::intmax_t</span></code></p></li>
 <li><p>fix: ambiguous case for empty type list resolved</p></li>
+<li><p>(!) build: The library should now be linked as <code class="docutils literal notranslate"><span class="pre">mp::units</span></code> in the CMake’s <code class="docutils literal notranslate"><span class="pre">target_link_libraries()</span></code></p></li>
+<li><p>(!) build: <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> CMake option renamed to <code class="docutils literal notranslate"><span class="pre">UNITS_BUILD_DOCS</span></code></p></li>
+<li><p>(!) build: <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">cmake_paths</span></code> has to be manually provided for <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">install</span></code> command (workaround for a Conan bug)</p></li>
 <li><p>build: doxygen updated to 1.8.20</p></li>
+<li><p>build: Conan generator switched to <code class="docutils literal notranslate"><span class="pre">cmake_find_package_multi</span></code></p></li>
+<li><p>build: Conan CMakeToolchain support added</p></li>
+<li><p>build: CMake scripts cleanup</p></li>
 <li><p>ci: CI switched from Travis CI to GitHub Actions</p></li>
 </ul>
 </li>

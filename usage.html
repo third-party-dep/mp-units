@@ -106,11 +106,12 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#conan-options">Conan Options</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#downcast-mode">downcast_mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-docs">build_docs</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cmake-options">CMake Options</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#units-downcast-mode">UNITS_DOWNCAST_MODE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build-docs">BUILD_DOCS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-build-docs">UNITS_BUILD_DOCS</a></li>
 </ul>
 </li>
 </ul>
@@ -120,7 +121,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#copy-cmake">Copy + CMake</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#conan-cmake-release">Conan + CMake (release)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#conan-cmake-live-at-head">Conan + CMake (Live At Head)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cmake-conan-generator"><code class="docutils literal notranslate"><span class="pre">cmake</span></code> Conan generator</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#contributing-or-just-building-all-the-tests-examples-and-documentation">Contributing (or just building all the tests, examples, and documentation)</a></li>
@@ -335,6 +335,13 @@ It also runs unit tests during Conan build.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">automatic</span></code> - downcasting automatically enabled if no collisions are present</p></li>
 </ul>
 </div>
+<div class="section" id="build-docs">
+<h4>build_docs<a class="headerlink" href="#build-docs" title="Permalink to this headline">¶</a></h4>
+<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>If enabled, Conan installs the documentation generation dependencies (i.e. doxygen).
+Additionally, enables project documentation generation when the project is being built by Conan.</p>
+</div>
 </div>
 <div class="section" id="cmake-options">
 <h3>CMake Options<a class="headerlink" href="#cmake-options" title="Permalink to this headline">¶</a></h3>
@@ -344,8 +351,8 @@ It also runs unit tests during Conan build.</p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
 <p>Equivalent to <a class="reference internal" href="#downcast-mode">downcast_mode</a>.</p>
 </div>
-<div class="section" id="build-docs">
-<h4>BUILD_DOCS<a class="headerlink" href="#build-docs" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="units-build-docs">
+<h4>UNITS_BUILD_DOCS<a class="headerlink" href="#units-build-docs" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
 <p>Enables project documentation generation.</p>
@@ -378,8 +385,8 @@ defined by the library. To do so you should use <em>CMakeLists.txt</em> file fro
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>You are still on your own to make sure all the dependencies are installed and their header
-files can be located during the build.</p>
+<p>You are still on your own to make sure all the dependencies are installed and their header and CMake
+configuration files can be located during the build.</p>
 </div>
 </div>
 <div class="section" id="conan-cmake-release">
@@ -405,7 +412,7 @@ For example the simplest file may look as follows:</p></li>
 <span class="na">mp-units/0.6.0</span>
 
 <span class="k">[generators]</span>
-<span class="na">cmake_find_package</span>
+<span class="na">cmake_find_package_multi</span>
 </pre></div>
 </div>
 </div>
@@ -479,7 +486,7 @@ differences:</p>
 <span class="na">mp-units/0.7.0@mpusz/testing</span>
 
 <span class="k">[generators]</span>
-<span class="na">cmake_find_package</span>
+<span class="na">cmake_find_package_multi</span>
 </pre></div>
 </div>
 </div>
@@ -496,49 +503,8 @@ differences:</p>
 <blockquote>
 <div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -b<span class="o">=</span>outdated -u
-cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
-cmake --build .
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="cmake-conan-generator">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake</span></code> Conan generator<a class="headerlink" href="#cmake-conan-generator" title="Permalink to this headline">¶</a></h3>
-<p>Above procedures suggested using <code class="docutils literal notranslate"><span class="pre">cmake_find_package</span></code> Conan generator which should be good
-enough to handle simple dependencies and configurations. If your project setup is complex you
-may prefer to use <code class="docutils literal notranslate"><span class="pre">cmake</span></code> generator. In such a case the above procedures should be updated as
-follows:</p>
-<ol class="arabic simple">
-<li><p>Specify <code class="docutils literal notranslate"><span class="pre">cmake</span></code> generator in your Conan configuration file:</p></li>
-</ol>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[requires]</span>
-<span class="na">mp-units/0.6.0</span>
-
-<span class="k">[generators]</span>
-<span class="na">cmake</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>Import Conan dependencies definitions to the beginning of your top-level <em>CMakeLists.txt</em>
-file in your project:</p></li>
-</ol>
-<blockquote>
-<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="o">${</span><span class="nv">CMAKE_BINARY_DIR</span><span class="o">}</span><span class="s">/conanbuildinfo.cmake</span><span class="p">)</span>
-<span class="nb">conan_basic_setup</span><span class="p">(</span><span class="s">TARGETS</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p><code class="docutils literal notranslate"><span class="pre">find_package(mp-units)</span></code> is not needed anymore.</p></li>
-<li><p>Link your CMake targets with <code class="docutils literal notranslate"><span class="pre">CONAN_PKG::mp-units</span></code>:</p></li>
-</ol>
-<blockquote>
-<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">&lt;your_target&gt;</span> <span class="s">PUBLIC|PRIVATE|INTERFACE</span> <span class="s">CONAN_PKG::mp-units</span><span class="p">)</span>
+cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake
+cmake --build . --config Release
 </pre></div>
 </div>
 </div></blockquote>
@@ -563,10 +529,13 @@ conan build ..
 </pre></div>
 </div>
 <p>The above will download and install all of the dependencies needed for the development of the library,
-build all of the source code and documentation, and run unit tests. Instead of the last <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">build</span> <span class="pre">..</span></code> step you can
-also do the following:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
-cmake --build .
+build all of the source code and documentation, and run unit tests.</p>
+<p>If you prefer to build the project via CMake rather then Conan, then you should add <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">cmake_paths</span></code> generator
+to <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">install</span></code> and replace the last <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">build</span> <span class="pre">..</span></code> step with the CMake build:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+conan install .. -g cmake_paths -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
+cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake
+cmake --build . --config Release
 ctest
 </pre></div>
 </div>
