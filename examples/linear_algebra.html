@@ -532,17 +532,22 @@
 331
 332
 333
-334</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/derived/speed.h&gt;</span><span class="cp"></span>
+334
+335
+336
+337
+338</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/derived/speed.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/derived/force.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/derived/energy.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;linear_algebra.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="p">{</span>
+<span class="k">namespace</span> <span class="n">STD_LA</span> <span class="p">{</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">ET</span><span class="p">,</span> <span class="k">class</span> <span class="nc">OT</span><span class="o">&gt;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ET</span><span class="p">,</span> <span class="n">OT</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ET</span><span class="p">,</span> <span class="n">OT</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|&quot;</span><span class="p">;</span>
   <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0U</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
@@ -553,7 +558,7 @@
 <span class="p">}</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">ET</span><span class="p">,</span> <span class="k">class</span> <span class="nc">OT</span><span class="o">&gt;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">matrix</span><span class="o">&lt;</span><span class="n">ET</span><span class="p">,</span> <span class="n">OT</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">matrix</span><span class="o">&lt;</span><span class="n">ET</span><span class="p">,</span> <span class="n">OT</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0U</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|&quot;</span><span class="p">;</span>
@@ -565,6 +570,9 @@
   <span class="k">return</span> <span class="n">os</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="p">}</span>  <span class="c1">// namespace STD_LA</span>
+
+<span class="k">namespace</span> <span class="p">{</span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
@@ -857,7 +865,7 @@
   <span class="n">quantity_of_matrix_divide_by_scalar</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="p">}</span>
+<span class="p">}</span>  <span class="c1">// namespace</span>
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
