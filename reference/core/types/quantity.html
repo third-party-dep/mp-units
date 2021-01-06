@@ -315,12 +315,12 @@
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1a7d61298d53e468e0b6bb1ac7001a406c"></span><code class="sig-name descname">constexpr quantity &amp; operator*= (const rep &amp;rhs) requires requires(rep a</code></dt>
+<span class="target" id="classunits_1_1quantity_1ad8dd0b93021fa2faab64bf95bb45ecd0"></span><code class="sig-name descname">template&lt;typename Rep2&gt; constexpr quantity &amp; operator*= (const Rep2 &amp;rhs) requires requires(rep a</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1a998ca1f825d92ccb34d159bfd795ea20"></span><code class="sig-name descname">constexpr quantity &amp; operator/= (const rep &amp;rhs) requires requires(rep a</code></dt>
+<span class="target" id="classunits_1_1quantity_1a5d65204bce30931fd76f5150e275eb5e"></span><code class="sig-name descname">template&lt;typename Rep2&gt; constexpr quantity &amp; operator/= (const Rep2 &amp;rhs) requires requires(rep a</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -373,7 +373,12 @@
 
 <dl class="cpp var">
 <dt>
-<span class="target" id="classunits_1_1quantity_1ae1bda32e125bb6d40a32e52cbcffe3a8"></span><code class="sig-name descname">constexpr quantity const rep b   = { { a *= b } -&gt; std::same_as&lt;rep&amp;&gt;</code></dt>
+<span class="target" id="classunits_1_1quantity_1a2f7d65e3274cf645e6b9db29d7d9f5e6"></span><code class="sig-name descname">constexpr quantity const Rep2 b   = { { a *= b } -&gt; std::same_as&lt;rep&amp;&gt;</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt>
+<span class="target" id="classunits_1_1quantity_1ae1bda32e125bb6d40a32e52cbcffe3a8"></span><code class="sig-name descname">constexpr quantity const rep b   = { { a %= b } -&gt; std::same_as&lt;rep&amp;&gt;</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
