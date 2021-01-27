@@ -358,32 +358,32 @@
 <p class="breathe-sectiondef-title rubric">Friends</p>
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__point_1a6e27e2f6a0ba06553ca7df5c23b92ae8"></span><code class="sig-name descname">template&lt;Quantity Q&gt; constexpr friend QuantityPoint auto operator+ (const quantity_point &amp;lhs, const Q &amp;rhs) requires requires</code></dt>
+<span class="target" id="classunits_1_1quantity__point_1a6e27e2f6a0ba06553ca7df5c23b92ae8"></span><code class="sig-name descname">template&lt;Quantity Q&gt; friend constexpr friend QuantityPoint auto operator+ (const quantity_point &amp;lhs, const Q &amp;rhs) requires requires</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__point_1a816b2e9a88321f5d7579494391915c02"></span><code class="sig-name descname">template&lt;Quantity Q&gt; constexpr friend QuantityPoint auto operator+ (const Q &amp;lhs, const quantity_point &amp;rhs) requires requires</code></dt>
+<span class="target" id="classunits_1_1quantity__point_1a816b2e9a88321f5d7579494391915c02"></span><code class="sig-name descname">template&lt;Quantity Q&gt; friend constexpr friend QuantityPoint auto operator+ (const Q &amp;lhs, const quantity_point &amp;rhs) requires requires</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__point_1a770629e0c663672221c08a00b40572c5"></span><code class="sig-name descname">template&lt;Quantity Q&gt; constexpr friend QuantityPoint auto operator- (const quantity_point &amp;lhs, const Q &amp;rhs) requires requires</code></dt>
+<span class="target" id="classunits_1_1quantity__point_1a770629e0c663672221c08a00b40572c5"></span><code class="sig-name descname">template&lt;Quantity Q&gt; friend constexpr friend QuantityPoint auto operator- (const quantity_point &amp;lhs, const Q &amp;rhs) requires requires</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__point_1a95b1da71179b8850267873fc8995a52c"></span><code class="sig-name descname">template&lt;QuantityPoint QP&gt; constexpr friend Quantity auto operator- (const quantity_point &amp;lhs, const QP &amp;rhs) requires requires</code></dt>
+<span class="target" id="classunits_1_1quantity__point_1a95b1da71179b8850267873fc8995a52c"></span><code class="sig-name descname">template&lt;QuantityPoint QP&gt; friend constexpr friend Quantity auto operator- (const quantity_point &amp;lhs, const QP &amp;rhs) requires requires</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__point_1a2eea48ab5f1c8291fc86fbf797fe3174"></span><code class="sig-name descname">template&lt;QuantityPoint QP&gt; requires std::three_way_comparable_with&lt; quantity_type, typename QP::quantity_type &gt; constexpr friend auto operator&lt;=&gt; (const quantity_point &amp;lhs, const QP &amp;rhs)</code></dt>
+<span class="target" id="classunits_1_1quantity__point_1a2eea48ab5f1c8291fc86fbf797fe3174"></span><code class="sig-name descname">template&lt;QuantityPoint QP&gt; friend requires std::three_way_comparable_with&lt; quantity_type, typename QP::quantity_type &gt; constexpr friend auto operator&lt;=&gt; (const quantity_point &amp;lhs, const QP &amp;rhs)</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP">
-template&lt;<a class="reference internal" href="../concepts.html#_CPPv4I0EN5units13QuantityPointE" title="units::QuantityPoint">QuantityPoint</a> <code class="sig-name descname">QP</code>&gt;<br />requires std::equality_comparable_with&lt;<a class="reference internal" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="units::quantity_point::quantity_type">quantity_type</a>, <em class="property">typename</em> <a class="reference internal" href="#_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP" title="units::quantity_point::operator==::QP">QP</a>::quantity_type&gt;<br /><span class="target" id="classunits_1_1quantity__point_1a19d334f7c6c7f250c7ae44120817cb96"></span><em class="property">friend</em> <em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="units::quantity_point">quantity_point</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP" title="units::quantity_point::operator==::QP">QP</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_13QuantityPointEIQNSt24equality_comparable_withI13quantity_typeN2QP13quantity_typeEEEEN5units14quantity_pointeqEbRK14quantity_pointRK2QP" title="Permalink to this definition">¶</a><br /></dt>
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a19d334f7c6c7f250c7ae44120817cb96"></span><code class="sig-name descname">template&lt;QuantityPoint QP&gt; friend requires std::equality_comparable_with&lt; quantity_type, typename QP::quantity_type &gt; constexpr friend bool operator== (const quantity_point &amp;lhs, const QP &amp;rhs)</code></dt>
 <dd></dd></dl>
 
 </div>

@@ -529,10 +529,9 @@ conan build ..
 </div>
 <p>The above will download and install all of the dependencies needed for the development of the library,
 build all of the source code and documentation, and run unit tests.</p>
-<p>If you prefer to build the project via CMake rather then Conan, then you should add <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">cmake_paths</span></code> generator
-to <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">install</span></code> and replace the last <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">build</span> <span class="pre">..</span></code> step with the CMake build:</p>
+<p>If you prefer to build the project via CMake rather then Conan, then you should replace the last <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">build</span> <span class="pre">..</span></code>
+step with the CMake build:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
-conan install .. -g cmake_paths -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
 cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake
 cmake --build . --config Release
 ctest
