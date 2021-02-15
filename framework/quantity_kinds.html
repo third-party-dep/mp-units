@@ -37,7 +37,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dimensions" href="dimensions.html" />
+    <link rel="prev" title="Quantity Points" href="quantity_points.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,11 +89,28 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../framework.html">Framework Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic_concepts.html">Basic Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantities.html">Quantities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantity_points.html">Quantity Points</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Quantity Kinds</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kind-creation">Kind creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#construction">Construction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#differences-to-quantity">Differences to quantity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quantity-point-kind">Quantity point kind</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="units.html">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Quantity Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversions_and_casting.html">Conversions and Casting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_output.html">Text Output</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../use_cases.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
@@ -155,6 +174,8 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="../framework.html">Framework Basics</a> &raquo;</li>
+        
       <li>Quantity Kinds</li>
     
     
@@ -180,10 +201,10 @@
 It is represented in the library with a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind</span></code> class template.</p>
 <div class="section" id="kind-creation">
 <span id="quantity-point-construction"></span><h2>Kind creation<a class="headerlink" href="#kind-creation" title="Permalink to this headline">¶</a></h2>
-<p>We need a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">kind</span></code> to represent the more specific usage of a quantity.</p>
-<blockquote>
-<div><p>struct radius : kind&lt;radius, si::dim_length&gt; {};</p>
-</div></blockquote>
+<p>We need a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">kind</span></code> to represent the more specific usage of a quantity:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">radius</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">radius</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
+</pre></div>
+</div>
 <p>Quantities of kind <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">radius</span></code> represent a radius.
 They are clearly distinct from more generic usages of length quantities.</p>
 </div>
@@ -210,16 +231,18 @@ This is why the code below using
 <div class="section" id="differences-to-quantity">
 <h2>Differences to quantity<a class="headerlink" href="#differences-to-quantity" title="Permalink to this headline">¶</a></h2>
 <p>Unlike <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a>, the library provides:</p>
-<ul>
-<li><p>no kinds, such as <code class="docutils literal notranslate"><span class="pre">radius</span></code> or <code class="docutils literal notranslate"><span class="pre">width</span></code>, therefore
-* no UDLs or unit constants,
-* no kind-specific concepts, such as <code class="docutils literal notranslate"><span class="pre">Radius</span></code>,</p>
-<blockquote>
-<div><p>(there’s the generic <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">QuantityKind</span></code> and kind-specifiable <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">QuantityKindOf</span></code>),</p>
-</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>no kinds, such as <code class="docutils literal notranslate"><span class="pre">radius</span></code> or <code class="docutils literal notranslate"><span class="pre">width</span></code>, therefore</dt><dd><ul>
+<li><p>no UDLs or unit constants,</p></li>
+<li><p>no kind-specific concepts, such as <code class="docutils literal notranslate"><span class="pre">Radius</span></code>,
+(there’s the generic <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">QuantityKind</span></code> and kind-specifiable <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">QuantityKindOf</span></code>),</p></li>
+</ul>
+</dd>
+</dl>
 </li>
 <li><p>a slightly different set of operations on quantity kinds
-(see the <a class="reference internal" href="../reference/systems/physical/natural/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter)</p></li>
+(see the <a class="reference internal" href="../reference/systems/physical/natural/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter).</p></li>
 </ul>
 </div>
 <div class="section" id="quantity-point-kind">
@@ -227,19 +250,17 @@ This is why the code below using
 <p>A quantity point kind is the analogous of a quantity point for quantity kinds.
 (see the <a class="reference internal" href="quantity_points.html#quantity-points"><span class="std std-ref">Quantity Points</span></a> chapter).</p>
 <p>They are represented in the library with a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind</span></code> class template.</p>
-<p>First, we need a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">point_kind</span></code> for a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">kind</span></code>.</p>
-<blockquote>
-<div><p>struct width : kind&lt;width, si::dim_length&gt; {};
-struct x_coordinate : point_kind&lt;x_coordinate, width&gt; {};</p>
-</div></blockquote>
-<p>Now x coordinates can be constructed:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>quantity_point_kind&lt;x_coordinate, si::metre, int&gt; auto x_pos(123 * m);</dt><dd><p>// <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">QuantityPointKindOf</span></code> with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">x_pos.relative</span></code>
-// equal to <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind&lt;width,</span> <span class="pre">si::metre,</span> <span class="pre">int&gt;(123</span> <span class="pre">*</span> <span class="pre">m)</span></code></p>
-</dd>
-</dl>
-</div></blockquote>
+<p>First, we need a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">point_kind</span></code> for a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">kind</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">width</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">width</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">x_coordinate</span> <span class="p">:</span> <span class="n">point_kind</span><span class="o">&lt;</span><span class="n">x_coordinate</span><span class="p">,</span> <span class="n">width</span><span class="o">&gt;</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>Now <code class="docutils literal notranslate"><span class="pre">x</span></code> coordinates can be constructed:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">quantity_point_kind</span><span class="o">&lt;</span><span class="n">x_coordinate</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="k">auto</span> <span class="n">x_pos</span><span class="p">(</span><span class="mi">123</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span>
+<span class="c1">// `QuantityPointKindOf&lt;x_coordinate&gt;` with `x_pos.relative()`</span>
+<span class="c1">// equal to `quantity_kind&lt;width, si::metre, int&gt;(123 * m)`</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -248,6 +269,15 @@ struct x_coordinate : point_kind&lt;x_coordinate, width&gt; {};</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dimensions.html" class="btn btn-neutral float-right" title="Dimensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quantity_points.html" class="btn btn-neutral float-left" title="Quantity Points" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
