@@ -232,14 +232,29 @@ probably will always end up in a quantity of a yet another dimension:</p>
 </div>
 <p>However, please note that there is an exception from the above rule.
 In case we divide the same dimensions, or multiply by the inverted
-dimension, than we will end up with just a scalable number type:</p>
+dimension, than we will end up with just a dimensionless quantity:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="k">auto</span> <span class="n">dur1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_q_s</span><span class="p">;</span>
 <span class="n">Time</span> <span class="k">auto</span> <span class="n">dur2</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_q_s</span><span class="p">;</span>
 <span class="n">Frequency</span> <span class="k">auto</span> <span class="n">fr1</span> <span class="o">=</span> <span class="mi">5</span><span class="n">_q_Hz</span><span class="p">;</span>
-<span class="hll"><span class="n">QuantityValue</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">/</span> <span class="n">dur2</span><span class="p">;</span>    <span class="c1">// 5</span>
-</span><span class="hll"><span class="n">QuantityValue</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// 50</span>
+<span class="hll"><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">/</span> <span class="n">dur2</span><span class="p">;</span>    <span class="c1">// quantity(5)</span>
+</span><span class="hll"><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// quantity(50)</span>
 </span></pre></div>
 </div>
+<p>Quantity kinds behave the same as quantities for addition, substraction, and
+multiplication with, and division by a <a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a>.</p>
+<p>Multiplication and divison with a quantity
+(but not a quantity kind) is allowed.
+The result is a quantity kind with the appropiate dimension
+and related to the original quantity kind.</p>
+<blockquote>
+<div><p>struct height : kind&lt;height, dim_length&gt; {};
+struct rate_of_climb : derived_kind&lt;rate_of_climb, height, dim_speed&gt; {};</p>
+<p>quantity_kind h(height{}, 100 * m);
+quantity_point_kind rate = h / (25 * s);</p>
+<blockquote>
+<div><p>// <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind&lt;rate_of_climb,</span> <span class="pre">si::metre_per_second,</span> <span class="pre">int&gt;(4</span> <span class="pre">*</span> <span class="pre">m</span> <span class="pre">/</span> <span class="pre">s)</span></code></p>
+</div></blockquote>
+</div></blockquote>
 <p>Quantity points have a more restricted set of operations.
 Quantity points can’t be added together,
 but can be added to or subtracted from quantities.
@@ -268,6 +283,8 @@ The result is a relative quantity of the same dimension:</p>
 </span></pre></div>
 </div>
 <p>That’s it! You can’t multiply nor divide quantity points with anything else.</p>
+<p>The same restrictions of a quantity point with respect to its quantity
+apply to a quantity point kind with respect to its quantity kind.</p>
 </div>
 <div class="section" id="base-dimensions">
 <h2>Base Dimensions<a class="headerlink" href="#base-dimensions" title="Permalink to this headline">¶</a></h2>

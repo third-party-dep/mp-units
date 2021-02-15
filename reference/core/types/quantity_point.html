@@ -200,7 +200,7 @@
 <h1>Quantity Point<a class="headerlink" href="#quantity-point" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp class">
 <dt id="_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE">
-<span id="_CPPv3I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE"></span><span id="_CPPv2I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE"></span>template&lt;<a class="reference internal" href="../concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension">Dimension</a> <code class="sig-name descname">D</code>, <a class="reference internal" href="../concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf">UnitOf</a>&lt;<a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="units::quantity_point::D">D</a>&gt; <code class="sig-name descname">U</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units13QuantityValueE" title="units::QuantityValue">QuantityValue</a> <code class="sig-name descname">Rep</code> = double&gt;<br /><span class="target" id="classunits_1_1quantity__point"></span><em class="property">class </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/time.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">quantity_point</code><a class="headerlink" href="#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE"></span><span id="_CPPv2I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE"></span>template&lt;<a class="reference internal" href="../concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension">Dimension</a> <code class="sig-name descname">D</code>, <a class="reference internal" href="../concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf">UnitOf</a>&lt;<a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="units::quantity_point::D">D</a>&gt; <code class="sig-name descname">U</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units13QuantityValueE" title="units::QuantityValue">QuantityValue</a> <code class="sig-name descname">Rep</code> = double&gt;<br /><span class="target" id="classunits_1_1quantity__point"></span><em class="property">class </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/volume.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">quantity_point</code><a class="headerlink" href="#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A quantity point. </p>
 <p>An absolute quantity with respect to zero (which represents some origin).</p>
 <p><dl class="simple">
@@ -264,7 +264,17 @@
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__point_1a64a06162acae79e0ce2e6b3e02f30d2a"></span><code class="sig-name descname">template&lt;Quantity Q&gt; requires constexpr std::is_convertible_v&lt; Q, quantity_type &gt; quantity_point (const Q &amp;q)</code></dt>
+<span class="target" id="classunits_1_1quantity__point_1aa6c9cb932586b90d07cf7f75770a4255"></span><code class="sig-name descname">template&lt;safe_convertible_to_&lt; rep &gt; Value&gt; requires is_same_v&lt; dimension, dim_one &gt; &amp;&amp;constexpr std::is_constructible_v&lt; quantity_type, Value &gt; quantity_point (const Value &amp;v)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units14quantity_point14quantity_pointERK13quantity_type">
+<span id="_CPPv3N5units14quantity_point14quantity_pointERK13quantity_type"></span><span id="_CPPv2N5units14quantity_point14quantity_pointERK13quantity_type"></span><span id="units::quantity_point::quantity_point__quantity_typeCRCE"></span><span class="target" id="classunits_1_1quantity__point_1a60556bba155c302a37c2a39f2637de3f"></span><em class="property">constexpr</em> <code class="sig-name descname">quantity_point</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N5units14quantity_point13quantity_typeE" title="units::quantity_point::quantity_type">quantity_type</a> &amp;<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units14quantity_point14quantity_pointERK13quantity_type" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__point_1a9b7fda20edce0ee73f25f715e9ba8148"></span><code class="sig-name descname">template&lt;QuantityLike Q&gt; requires constexpr std::is_constructible_v&lt; quantity_type, Q &gt; quantity_point (const Q &amp;q)</code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">

@@ -251,7 +251,8 @@ ratio:</p>
 <div class="section" id="explicit">
 <h2>Explicit<a class="headerlink" href="#explicit" title="Permalink to this headline">¶</a></h2>
 <p>Explicit conversions are available with
-the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code> function templates.
+the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code>,
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind_cast</span></code>, and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind_cast</span></code> function templates.
 They are especially useful to force a truncating conversion across quantities of the same
 dimension for integral representation types and ratios that may cause precision loss:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="n">km</span> <span class="o">+</span> <span class="mi">1</span><span class="n">m</span><span class="p">);</span>    <span class="c1">// OK</span>
@@ -294,6 +295,12 @@ or a specific target <a class="reference internal" href="../reference/core/types
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Point: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_point_cast</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity_point</span><span class="p">{</span><span class="mi">0</span><span class="n">_q_m</span><span class="p">})</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>For a single explicit template argument,
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind_cast</span></code> is a superset of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind_cast</span></code>,
+which is also a superset of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>.
+For the (dimension, unit) pair of explicit arguments case of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>,
+<code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind_cast</span></code> and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind_cast</span></code>
+accept a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PointKind</span></code> and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Kind</span></code> instead of a <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a>, respectively.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>For more information on conversion and casting and on how to extend the above “integral”
@@ -309,14 +316,14 @@ is somehow special but still obey most of the rules defined for quantities. Howe
 represent numbers it would be highly uncomfortable to every time type:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_q_km</span><span class="p">;</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="mi">3</span><span class="n">_q_km</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>or:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">fill_time_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">box</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">box</span><span class="p">.</span><span class="n">fill_level</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">)</span> <span class="o">-</span>
-                             <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
+                             <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This is why it was decided to allow the <code class="docutils literal notranslate"><span class="pre">dimensionless&lt;one&gt;</span></code> quantity of any
@@ -368,7 +375,7 @@ code will not compile:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_m</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>or use a mathematical wrapper function from <a class="reference internal" href="../reference/systems/physical/si/time.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace:</p>
+<p>or use a mathematical wrapper function from <a class="reference internal" href="../reference/systems/physical/si/volume.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">units</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_m</span><span class="p">);</span>
 </pre></div>
 </div>
