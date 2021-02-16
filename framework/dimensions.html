@@ -99,7 +99,13 @@
 <li class="toctree-l2"><a class="reference internal" href="quantity_points.html">Quantity Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quantity_kinds.html">Quantity Kinds</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Dimensions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#operations">Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arithmetics">Arithmetics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantities">Quantities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantity-kinds">Quantity Kinds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantity-points">Quantity Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantity-point-kinds">Quantity Point Kinds</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#base-dimensions">Base Dimensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#derived-dimensions">Derived Dimensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#obtaining-a-unit-of-the-dimension">Obtaining a Unit of the Dimension</a></li>
@@ -201,8 +207,10 @@
 <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a>. Now it is time to learn much more about this subject.
 Length, time, speed, area, energy are only a few examples of physical
 dimensions.</p>
-<div class="section" id="operations">
-<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arithmetics">
+<h2>Arithmetics<a class="headerlink" href="#arithmetics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="quantities">
+<h3>Quantities<a class="headerlink" href="#quantities" title="Permalink to this headline">¶</a></h3>
 <p>Quantities of the same dimension can be easily added or subtracted with
 each other and the result will always be a quantity of the same dimension:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_q_m</span><span class="p">;</span>
@@ -241,24 +249,28 @@ dimension, than we will end up with just a dimensionless quantity:</p>
 </span><span class="hll"><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// quantity(50)</span>
 </span></pre></div>
 </div>
-<p>Quantity kinds behave the same as quantities for addition, substraction, and
-multiplication with, and division by a <a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a>.</p>
-<p>Multiplication and divison with a quantity
-(but not a quantity kind) is allowed.
-The result is a quantity kind with the appropiate dimension
-and related to the original quantity kind.</p>
-<blockquote>
-<div><p>struct height : kind&lt;height, dim_length&gt; {};
-struct rate_of_climb : derived_kind&lt;rate_of_climb, height, dim_speed&gt; {};</p>
-<p>quantity_kind h(height{}, 100 * m);
-quantity_point_kind rate = h / (25 * s);</p>
-<blockquote>
-<div><p>// <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind&lt;rate_of_climb,</span> <span class="pre">si::metre_per_second,</span> <span class="pre">int&gt;(4</span> <span class="pre">*</span> <span class="pre">m</span> <span class="pre">/</span> <span class="pre">s)</span></code></p>
-</div></blockquote>
-</div></blockquote>
+</div>
+<div class="section" id="quantity-kinds">
+<h3>Quantity Kinds<a class="headerlink" href="#quantity-kinds" title="Permalink to this headline">¶</a></h3>
+<p>Quantity kinds behave the same as quantities for addition and subtraction.
+The same behavior is also provided for multiplication with, and division by
+a <a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a>.</p>
+<p>Multiplication and division with a quantity (but not a quantity kind) is allowed.
+The result is a quantity kind with the appropriate dimension
+and related to the original quantity kind:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">height</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">height</span><span class="p">,</span> <span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">rate_of_climb</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">dim_speed</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="n">quantity_kind</span> <span class="nf">h</span><span class="p">(</span><span class="n">height</span><span class="p">{},</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span>
+<span class="hll"><span class="n">quantity_point_kind</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">h</span> <span class="o">/</span> <span class="p">(</span><span class="mi">25</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
+</span><span class="hll">  <span class="c1">// quantity_point_kind&lt;rate_of_climb, si::metre_per_second, int&gt;(4 * m / s)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="quantity-points">
+<h3>Quantity Points<a class="headerlink" href="#quantity-points" title="Permalink to this headline">¶</a></h3>
 <p>Quantity points have a more restricted set of operations.
-Quantity points can’t be added together,
-but can be added to or subtracted from quantities.
+Quantity can be added to or subtracted from a quantity point.
 The result will always be a quantity point of the same dimension:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_q_m</span><span class="p">;</span>
 <span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_m</span><span class="p">;</span>
@@ -267,15 +279,6 @@ The result will always be a quantity point of the same dimension:</p>
 </span><span class="hll"><span class="n">QuantityPoint</span> <span class="k">auto</span> <span class="n">res3</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">-</span> <span class="n">dist2</span><span class="p">;</span>
 </span></pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can’t subtract a quantity from a quantity point:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_q_m</span><span class="p">;</span>
-<span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_m</span><span class="p">;</span>
-<span class="hll"><span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">-</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>  <span class="c1">// ERROR</span>
-</span></pre></div>
-</div>
-</div>
 <p>We can also subtract two quantity points.
 The result is a relative quantity of the same dimension:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_q_m</span><span class="p">;</span>
@@ -283,9 +286,28 @@ The result is a relative quantity of the same dimension:</p>
 <span class="hll"><span class="n">Length</span> <span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">-</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>
 </span></pre></div>
 </div>
-<p>That’s it! You can’t multiply nor divide quantity points with anything else.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is not allowed to:</p>
+<ul class="simple">
+<li><p>add quantity points</p></li>
+<li><p>subtract a quantity point from a quantity:</p></li>
+<li><p>multiply nor divide quantity points with anything else.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_q_m</span><span class="p">;</span>
+<span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_q_m</span><span class="p">;</span>
+<span class="hll"><span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">+</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>  <span class="c1">// ERROR</span>
+</span><span class="hll"><span class="k">auto</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">-</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>                  <span class="c1">// ERROR</span>
+</span><span class="hll"><span class="k">auto</span> <span class="n">res3</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">/</span> <span class="mi">2</span><span class="n">_q_s</span><span class="p">;</span>                  <span class="c1">// ERROR</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="quantity-point-kinds">
+<h3>Quantity Point Kinds<a class="headerlink" href="#quantity-point-kinds" title="Permalink to this headline">¶</a></h3>
 <p>The same restrictions of a quantity point with respect to its quantity
 apply to a quantity point kind with respect to its quantity kind.</p>
+</div>
 </div>
 <div class="section" id="base-dimensions">
 <h2>Base Dimensions<a class="headerlink" href="#base-dimensions" title="Permalink to this headline">¶</a></h2>
@@ -349,7 +371,8 @@ an dimension’s unnamed unit symbol is being printed in the text output.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>More information on how the <a class="reference internal" href="../glossary.html#term-recipe"><span class="xref std std-term">recipe</span></a> affect the printed symbol
-of unnamed unit can be found in the <a class="reference internal" href="units.html#derived-unnamed-units"><span class="std std-ref">Derived Unnamed Units</span></a> chapter.</p>
+of unnamed unit can be found in the <a class="reference internal" href="units.html#derived-unnamed-units"><span class="std std-ref">Derived Unnamed Units</span></a>
+chapter.</p>
 </div>
 <p>It is important to mention here that beside text output the order and
 the number of elements in the <a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a> definition does not
@@ -373,7 +396,8 @@ analysis in the library to work as expected.</p>
 child class inherited from the instantiation of this <a class="reference internal" href="../reference/core/types/dimensions.html#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_dimension</span></code></a>
 class template. This is called a
 <abbr title="Curiously Recurring Template Parameter">CRTP</abbr> Idiom and is used
-in many places in this library to provide <a class="reference internal" href="../reference/core/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>.
+in many places in this library to provide
+<a class="reference internal" href="../design/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>.
 Hopefully if <a class="reference internal" href="../references.html#p0847" id="id1"><span>[P0847]</span></a> will land in C++23 the additional CRTP-related
 template parameter will be removed from this definition.</p>
 </div>

@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quantity Kind &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Quantity Point Kind" href="quantity_point_kind.html" />
+    <link rel="prev" title="Kinds" href="kind.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../core.html">Core Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../types.html">Types</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="quantity.html">Quantity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantity_point.html">Quantity Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kind.html">Kinds</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Quantity Kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantity_point_kind.html">Quantity Point Kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="units.html">Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prefixes.html">Prefixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="representation.html">Representation Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metafunctions.html">Metafunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customization_points.html">Customization Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../downcasting.html">The Downcasting Facility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../core.html">Core Library</a> &raquo;</li>
+        
+          <li><a href="../types.html">Types</a> &raquo;</li>
+        
+      <li>Quantity Kind</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/reference/core/types/quantity_kind.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quantity-kind">
+<h1>Quantity Kind<a class="headerlink" href="#quantity-kind" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE">
+<span id="_CPPv3I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE"></span><span id="_CPPv2I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE"></span>template&lt;<a class="reference internal" href="../concepts.html#_CPPv4I0EN5units4KindE" title="units::Kind">Kind</a> <code class="sig-name descname">K</code>, <a class="reference internal" href="../concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf">UnitOf</a>&lt;<em class="property">typename</em> <a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind::K">K</a>::dimension&gt; <code class="sig-name descname">U</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units13QuantityValueE" title="units::QuantityValue">QuantityValue</a> <code class="sig-name descname">Rep</code> = double&gt;<br /><span class="target" id="classunits_1_1quantity__kind"></span><em class="property">class </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/typographic/length.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">quantity_kind</code><a class="headerlink" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A quantity kind. </p>
+<p>A quantity with more specific usage as determined by its kind. See <a class="reference external" href="https://jcgm.bipm.org/vim/en/1.2.html">https://jcgm.bipm.org/vim/en/1.2.html</a> and NOTE 1 at <a class="reference external" href="https://jcgm.bipm.org/vim/en/1.1.html">https://jcgm.bipm.org/vim/en/1.1.html</a>.</p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">K</span></code>: the kind of quantity </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: the measurement unit of the quantity kind </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rep</span></code>: the type to be used to represent values of the quantity kind </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N5units13quantity_kind9kind_typeE">
+<span id="_CPPv3N5units13quantity_kind9kind_typeE"></span><span id="_CPPv2N5units13quantity_kind9kind_typeE"></span><span class="target" id="classunits_1_1quantity__kind_1a2a9a0a50c93cc3b0872055184ecf549a"></span><em class="property">using </em><code class="sig-name descname">kind_type</code> = <a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind::K">K</a><a class="headerlink" href="#_CPPv4N5units13quantity_kind9kind_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units13quantity_kind13quantity_typeE">
+<span id="_CPPv3N5units13quantity_kind13quantity_typeE"></span><span id="_CPPv2N5units13quantity_kind13quantity_typeE"></span><span class="target" id="classunits_1_1quantity__kind_1ad92ff6cd4e0e07880b3fba4c6b713e68"></span><em class="property">using </em><code class="sig-name descname">quantity_type</code> = <a class="reference internal" href="quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity">quantity</a>&lt;<em class="property">typename</em> <a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind::K">K</a>::dimension, <a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind::U">U</a>, <a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind::Rep">Rep</a>&gt;<a class="headerlink" href="#_CPPv4N5units13quantity_kind13quantity_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units13quantity_kind9dimensionE">
+<span id="_CPPv3N5units13quantity_kind9dimensionE"></span><span id="_CPPv2N5units13quantity_kind9dimensionE"></span><span class="target" id="classunits_1_1quantity__kind_1a1b874d9bbb3618d5b497e3cdd6fced52"></span><em class="property">using </em><code class="sig-name descname">dimension</code> = <em class="property">typename</em> <a class="reference internal" href="#_CPPv4N5units13quantity_kind13quantity_typeE" title="units::quantity_kind::quantity_type">quantity_type</a>::dimension<a class="headerlink" href="#_CPPv4N5units13quantity_kind9dimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units13quantity_kind4unitE">
+<span id="_CPPv3N5units13quantity_kind4unitE"></span><span id="_CPPv2N5units13quantity_kind4unitE"></span><span class="target" id="classunits_1_1quantity__kind_1ad9dd2fbf947f80cd782975667eceb562"></span><em class="property">using </em><code class="sig-name descname">unit</code> = <em class="property">typename</em> <a class="reference internal" href="#_CPPv4N5units13quantity_kind13quantity_typeE" title="units::quantity_kind::quantity_type">quantity_type</a>::unit<a class="headerlink" href="#_CPPv4N5units13quantity_kind4unitE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units13quantity_kind3repE">
+<span id="_CPPv3N5units13quantity_kind3repE"></span><span id="_CPPv2N5units13quantity_kind3repE"></span><span class="target" id="classunits_1_1quantity__kind_1a04b9d613bd54a3cd8a6f2aab8909c888"></span><em class="property">using </em><code class="sig-name descname">rep</code> = <em class="property">typename</em> <a class="reference internal" href="#_CPPv4N5units13quantity_kind13quantity_typeE" title="units::quantity_kind::quantity_type">quantity_type</a>::rep<a class="headerlink" href="#_CPPv4N5units13quantity_kind3repE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units13quantity_kind13quantity_kindEv">
+<span id="_CPPv3N5units13quantity_kind13quantity_kindEv"></span><span id="_CPPv2N5units13quantity_kind13quantity_kindEv"></span><span id="units::quantity_kind::quantity_kind"></span><span class="target" id="classunits_1_1quantity__kind_1af7bafcce564be77d934df55f5cdc5364"></span><code class="sig-name descname">quantity_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units13quantity_kind13quantity_kindEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units13quantity_kind13quantity_kindERK13quantity_kind">
+<span id="_CPPv3N5units13quantity_kind13quantity_kindERK13quantity_kind"></span><span id="_CPPv2N5units13quantity_kind13quantity_kindERK13quantity_kind"></span><span id="units::quantity_kind::quantity_kind__quantity_kindCR"></span><span class="target" id="classunits_1_1quantity__kind_1a1321cd33d3bf16c3fcddfcef9db5ba93"></span><code class="sig-name descname">quantity_kind</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N5units13quantity_kind13quantity_kindERK13quantity_kind" title="units::quantity_kind::quantity_kind">quantity_kind</a>&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units13quantity_kind13quantity_kindERK13quantity_kind" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units13quantity_kind13quantity_kindERR13quantity_kind">
+<span id="_CPPv3N5units13quantity_kind13quantity_kindERR13quantity_kind"></span><span id="_CPPv2N5units13quantity_kind13quantity_kindERR13quantity_kind"></span><span id="units::quantity_kind::quantity_kind__quantity_kindRR"></span><span class="target" id="classunits_1_1quantity__kind_1a33b1a288ab27a0ade31643b2f46f9295"></span><code class="sig-name descname">quantity_kind</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5units13quantity_kind13quantity_kindERR13quantity_kind" title="units::quantity_kind::quantity_kind">quantity_kind</a>&amp;&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units13quantity_kind13quantity_kindERR13quantity_kind" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1aef743ffdfbdb18511de3a9a6c60dd666"></span><code class="sig-name descname">template&lt;safe_convertible_to_&lt; rep &gt; Value&gt; requires is_same_v&lt; dimension, dim_one &gt; &amp;&amp;constexpr std::is_constructible_v&lt; quantity_type, Value &gt; quantity_kind (const Value &amp;v)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1ae2d7d21df02f3d9c15eb95f667eb0aa4"></span><code class="sig-name descname">template&lt;typename Q&gt;  requires (Quantity&lt; Q &gt;||QuantityLike&lt; Q &gt;) &amp;&amp;std</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a74146487b1769d819fe0f4d005acc52d"></span><code class="sig-name descname">template&lt;QuantityKindEquivalentTo&lt; quantity_kind &gt; QK2&gt; requires constexpr std::is_convertible_v&lt; typename QK2::quantity_type, quantity_type &gt; explicit (false) quantity_kind(const QK2 &amp;qk)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units13quantity_kindaSERK13quantity_kind">
+<span id="_CPPv3N5units13quantity_kindaSERK13quantity_kind"></span><span id="_CPPv2N5units13quantity_kindaSERK13quantity_kind"></span><span id="units::quantity_kind::assign-operator__quantity_kindCR"></span><span class="target" id="classunits_1_1quantity__kind_1abc40ce2ed9042cfe28b0949d4e32592b"></span><a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind">quantity_kind</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind">quantity_kind</a>&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units13quantity_kindaSERK13quantity_kind" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units13quantity_kindaSERR13quantity_kind">
+<span id="_CPPv3N5units13quantity_kindaSERR13quantity_kind"></span><span id="_CPPv2N5units13quantity_kindaSERR13quantity_kind"></span><span id="units::quantity_kind::assign-operator__quantity_kindRR"></span><span class="target" id="classunits_1_1quantity__kind_1ac4c59c4a8df4d9f3e9710ce579bb7ed1"></span><a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind">quantity_kind</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind">quantity_kind</a>&amp;&amp;<span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N5units13quantity_kindaSERR13quantity_kind" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5units13quantity_kind6commonEv">
+<span id="_CPPv3NK5units13quantity_kind6commonEv"></span><span id="_CPPv2NK5units13quantity_kind6commonEv"></span><span id="units::quantity_kind::commonCCE"></span><span class="target" id="classunits_1_1quantity__kind_1a5b293958607993c6ce09eaf01f51558f"></span><em class="property">constexpr</em> <a class="reference internal" href="#_CPPv4N5units13quantity_kind13quantity_typeE" title="units::quantity_kind::quantity_type">quantity_type</a> <code class="sig-name descname">common</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4NK5units13quantity_kind6commonEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1aff5bb0d3764b766b3272ff67440b7e3c"></span><code class="sig-name descname">constexpr quantity_kind operator+ () const requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a4e4b09f491f9bdf5701b2b482582c5e9"></span><code class="sig-name descname">constexpr QuantityKind auto operator- () const requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a6b56875c2b5b95097d3d3b5d4a668c36"></span><code class="sig-name descname">constexpr quantity_kind &amp; operator++ () requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a4d4e8ffeb1ffb3dcab62a919af197818"></span><code class="sig-name descname">constexpr quantity_kind operator++ (int) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1ab24429ee0203d36fd216ef84e79b4983"></span><code class="sig-name descname">constexpr quantity_kind &amp; operator-- () requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1ac474a5c7476af827636057652e471b1f"></span><code class="sig-name descname">constexpr quantity_kind operator-- (int) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a36d980ad3e0afb6d2105a141d4fad695"></span><code class="sig-name descname">constexpr quantity_kind &amp; operator+= (const quantity_kind &amp;qk) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a9752f736ba412e8546b53a42be85808a"></span><code class="sig-name descname">constexpr quantity_kind &amp; operator-= (const quantity_kind &amp;qk) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a3f163c13812d9a3ed792e0859bf3634c"></span><code class="sig-name descname">template&lt;typename Rep2&gt; constexpr quantity_kind &amp; operator*= (const Rep2 &amp;rhs) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a244e7b04f8de6c5df1a26ee9f2ac6fbe"></span><code class="sig-name descname">template&lt;typename Rep2&gt; constexpr quantity_kind &amp; operator/= (const Rep2 &amp;rhs) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1acd191cc78ac86b9d655e0cdbec3841e9"></span><code class="sig-name descname">constexpr quantity_kind &amp; operator%= (const rep &amp;rhs) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a47f5982b3eac7c5afac984984f584b34"></span><code class="sig-name descname">constexpr quantity_kind &amp; operator%= (const quantity_kind &amp;qk) requires requires(quantity_type q)</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a018dfb93aad811cea628bf8d8727a0fe"></span><code class="sig-name descname">return * this  {    ++q_</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1aee11a146ee986e4539d3e49e7fb66b18"></span><code class="sig-name descname">constexpr quantity_kind zero () noexcept requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a9204ee8807a5b033e49e11fa2e86419b"></span><code class="sig-name descname">constexpr quantity_kind one () noexcept requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a96baedc62bcb6533dc09be5a79a52989"></span><code class="sig-name descname">constexpr quantity_kind min () noexcept requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a2648d68132414121f3bcb0062592eb36"></span><code class="sig-name descname">constexpr quantity_kind max () noexcept requires requires</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Friends</p>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a44555cb9b4b3729b79d278ab8322d8cb"></span><code class="sig-name descname">friend constexpr friend quantity_kind operator+ (const quantity_kind &amp;lhs, const quantity_kind &amp;rhs) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a830069afa9d1aecddca48b12649a8a79"></span><code class="sig-name descname">friend constexpr friend quantity_kind operator- (const quantity_kind &amp;lhs, const quantity_kind &amp;rhs) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a16ca205b0aae3b2dd15780611cf138c0"></span><code class="sig-name descname">template&lt;QuantityValue Value&gt; friend constexpr friend QuantityKind auto operator* (const quantity_kind &amp;qk, const Value &amp;v) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a80b47e72db364a873f2c1fa295887025"></span><code class="sig-name descname">template&lt;QuantityValue Value&gt; friend constexpr friend QuantityKind auto operator* (const Value &amp;v, const quantity_kind &amp;qk) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1ad0fc687196ccaf950f52759e80d16bf3"></span><code class="sig-name descname">template&lt;QuantityValue Value&gt; friend constexpr friend QuantityKind auto operator/ (const quantity_kind &amp;qk, const Value &amp;v) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1af45689d19bf2b03bfa76709c7da8bfac"></span><code class="sig-name descname">template&lt;QuantityValue Value&gt; friend constexpr friend QuantityKind auto operator/ (const Value &amp;v, const quantity_kind &amp;qk) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a9cf3b49e171662a03dee61ebb0dc9da4"></span><code class="sig-name descname">template&lt;QuantityValue Value&gt; friend constexpr friend QuantityKind auto operator% (const quantity_kind &amp;qk, const Value &amp;v) requires requires</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1ae1e89d15a90df4baf9bf89a8e72b7293"></span><code class="sig-name descname">friend constexpr friend quantity_kind operator% (const quantity_kind &amp;lhs, const quantity_kind &amp;rhs) requires requires</code></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="quantity_point_kind.html" class="btn btn-neutral float-right" title="Quantity Point Kind" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kind.html" class="btn btn-neutral float-left" title="Kinds" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -251,8 +251,7 @@ ratio:</p>
 </div>
 <div class="section" id="explicit">
 <h2>Explicit<a class="headerlink" href="#explicit" title="Permalink to this headline">¶</a></h2>
-<p>Explicit conversions are available with
-the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code>,
+<p>Explicit conversions are available with the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code>,
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind_cast</span></code>, and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind_cast</span></code> function templates.
 They are especially useful to force a truncating conversion across quantities of the same
 dimension for integral representation types and ratios that may cause precision loss:</p>
@@ -262,9 +261,9 @@ dimension for integral representation types and ratios that may cause precision 
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>Explicit casts are also really useful when working with legacy interfaces. More
-information on this subject can be found in <a class="reference internal" href="../use_cases/legacy_interfaces.html#working-with-legacy-interfaces"><span class="std std-ref">Working with Legacy Interfaces</span></a>
-chapter.</p>
+<p>Explicit casts are also really useful when working with legacy interfaces.
+More information on this subject can be found in the
+<a class="reference internal" href="../use_cases/legacy_interfaces.html#working-with-legacy-interfaces"><span class="std std-ref">Working with Legacy Interfaces</span></a> chapter.</p>
 </div>
 <div class="section" id="quantity-cast-overloads">
 <h3>Quantity Cast Overloads<a class="headerlink" href="#quantity-cast-overloads" title="Permalink to this headline">¶</a></h3>
@@ -301,20 +300,21 @@ or a specific target <a class="reference internal" href="../reference/core/types
 which is also a superset of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>.
 For the (dimension, unit) pair of explicit arguments case of <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>,
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind_cast</span></code> and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind_cast</span></code>
-accept a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PointKind</span></code> and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Kind</span></code> instead of a <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a>, respectively.</p>
+accept a <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units9PointKindE" title="units::PointKind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PointKind</span></code></a> and <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units4KindE" title="units::Kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Kind</span></code></a> instead of a <a class="reference internal" href="../reference/core/concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Dimension</span></code></a>, respectively.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>For more information on conversion and casting and on how to extend the above “integral”
-vs “floating-point” logic please refer to the <a class="reference internal" href="../use_cases/custom_representation_types.html#using-custom-representation-types"><span class="std std-ref">Using Custom Representation Types</span></a>
-chapter.</p>
+<p>For more information on conversion and casting and on how to extend the above
+“integral” vs “floating-point” logic please refer to the
+<a class="reference internal" href="../use_cases/custom_representation_types.html#using-custom-representation-types"><span class="std std-ref">Using Custom Representation Types</span></a> chapter.</p>
 </div>
 </div>
 </div>
 <div class="section" id="implicit-conversions-of-dimensionless-quantities">
 <h2>Implicit conversions of dimensionless quantities<a class="headerlink" href="#implicit-conversions-of-dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
-<p>As noted in the <a class="reference internal" href="quantities.html#dimensionless-quantities"><span class="std std-ref">Dimensionless Quantities</span></a> chapter, <a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a>
-is somehow special but still obey most of the rules defined for quantities. However, as they
-represent numbers it would be highly uncomfortable to every time type:</p>
+<p>As noted in the <a class="reference internal" href="quantities.html#dimensionless-quantities"><span class="std std-ref">Dimensionless Quantities</span></a> chapter,
+<a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a> is somehow special but still obey most of the rules defined
+for quantities. However, as they represent numbers it would be highly uncomfortable to every
+time type:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_q_km</span><span class="p">;</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="mi">3</span><span class="n">_q_km</span><span class="p">;</span>
 <span class="k">if</span><span class="p">(</span><span class="n">d1</span> <span class="o">/</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
@@ -376,7 +376,7 @@ code will not compile:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_m</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>or use a mathematical wrapper function from <a class="reference internal" href="../reference/systems/physical/si/volume.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace:</p>
+<p>or use a mathematical wrapper function from <a class="reference internal" href="../reference/systems/physical/si/typographic/length.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">units</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_m</span><span class="p">);</span>
 </pre></div>
 </div>

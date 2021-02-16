@@ -198,11 +198,13 @@
 detail.</p>
 <div class="section" id="what-is-an-unknown-dimension">
 <h2>What is an unknown dimension?<a class="headerlink" href="#what-is-an-unknown-dimension" title="Permalink to this headline">¶</a></h2>
-<p>As we learned in the <a class="reference internal" href="../reference/systems/physical/natural/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter, in most cases the result of multiplying
-or dividing two quantities of specific dimensions is a quantity of yet another dimension.</p>
+<p>As we learned in the <a class="reference internal" href="../framework/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter, in most cases the result
+of multiplying or dividing two quantities of specific dimensions is a quantity of yet another
+dimension.</p>
 <p>If such a resulting dimension is predefined by the user (and a proper header file with its
-definition is included in the current translation unit) <a class="reference internal" href="../reference/core/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a>
-will determine its type. The same applies to the resulting unit. For example:</p>
+definition is included in the current translation unit)
+<a class="reference internal" href="../design/downcasting.html#the-downcasting-facility"><span class="std std-ref">The Downcasting Facility</span></a> will determine its type.
+The same applies to the resulting unit. For example:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/si.h&gt;</span><span class="cp"></span>
 </span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>

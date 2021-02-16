@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Units" href="units.html" />
-    <link rel="prev" title="Quantity Point" href="quantity_point.html" /> 
+    <link rel="prev" title="Quantity Point Kind" href="quantity_point_kind.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,6 +106,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../types.html">Types</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="quantity.html">Quantity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quantity_point.html">Quantity Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kind.html">Kinds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantity_kind.html">Quantity Kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantity_point_kind.html">Quantity Point Kind</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Dimensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="units.html">Units</a></li>
 <li class="toctree-l3"><a class="reference internal" href="prefixes.html">Prefixes</a></li>
@@ -200,7 +203,7 @@
 <h1>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp struct">
 <dt id="_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE">
-<span id="_CPPv3I_18basic_fixed_string_4UnitEN5units14base_dimensionE"></span><span id="_CPPv2I_18basic_fixed_string_4UnitEN5units14base_dimensionE"></span>template&lt;<a class="reference internal" href="utilities/basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a> <code class="sig-name descname">Symbol</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>&gt;<br /><span class="target" id="structunits_1_1base__dimension"></span><em class="property">struct </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/volume.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">base_dimension</code><a class="headerlink" href="#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I_18basic_fixed_string_4UnitEN5units14base_dimensionE"></span><span id="_CPPv2I_18basic_fixed_string_4UnitEN5units14base_dimensionE"></span>template&lt;<a class="reference internal" href="utilities/basic_fixed_string.html#_CPPv4I0_NSt6size_tEEN5units18basic_fixed_stringE" title="units::basic_fixed_string">basic_fixed_string</a> <code class="sig-name descname">Symbol</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>&gt;<br /><span class="target" id="structunits_1_1base__dimension"></span><em class="property">struct </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/typographic/length.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">base_dimension</code><a class="headerlink" href="#_CPPv4I_18basic_fixed_string_4UnitEN5units14base_dimensionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A dimension of a base quantity. </p>
 <p>Base quantity is a quantity in a conventionally chosen subset of a given system of quantities, where no quantity in the subset can be expressed in terms of the other quantities within that subset. They are referred to as being mutually independent since a base quantity cannot be expressed as a product of powers of the other base quantities.</p>
 <p>Base unit is a measurement unit that is adopted by convention for a base quantity in a specific system of units.</p>
@@ -250,7 +253,7 @@
 
 <dl class="cpp struct">
 <dt id="_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE">
-<span id="_CPPv3I0_4Unit_Dp8ExponentEN5units17derived_dimensionE"></span><span id="_CPPv2I0_4Unit_Dp8ExponentEN5units17derived_dimensionE"></span>template&lt;typename <code class="sig-name descname">Child</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units8ExponentE" title="units::Exponent">Exponent</a>... <code class="sig-name descname">Es</code>&gt;<br /><span class="target" id="structunits_1_1derived__dimension"></span><em class="property">struct </em><code class="sig-name descname">derived_dimension</code> : <em class="property">public</em> <a class="reference internal" href="../../systems/physical/si/volume.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../downcasting.html#_CPPv4I0_12Downcastable_13downcast_modeEN5units17downcast_dispatchE" title="units::downcast_dispatch">downcast_dispatch</a>&lt;<a class="reference internal" href="#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension::Child">Child</a>, detail::make_dimension&lt;<a class="reference internal" href="#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension::Es">Es</a>...&gt;&gt;<a class="headerlink" href="#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I0_4Unit_Dp8ExponentEN5units17derived_dimensionE"></span><span id="_CPPv2I0_4Unit_Dp8ExponentEN5units17derived_dimensionE"></span>template&lt;typename <code class="sig-name descname">Child</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units4UnitE" title="units::Unit">Unit</a> <code class="sig-name descname">U</code>, <a class="reference internal" href="../concepts.html#_CPPv4I0EN5units8ExponentE" title="units::Exponent">Exponent</a>... <code class="sig-name descname">Es</code>&gt;<br /><span class="target" id="structunits_1_1derived__dimension"></span><em class="property">struct </em><code class="sig-name descname">derived_dimension</code> : <em class="property">public</em> <a class="reference internal" href="../../systems/physical/si/typographic/length.html#_CPPv45units" title="units">units</a>::<a class="reference internal" href="../downcasting.html#_CPPv4I0_12Downcastable_13downcast_modeEN5units17downcast_dispatchE" title="units::downcast_dispatch">downcast_dispatch</a>&lt;<a class="reference internal" href="#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension::Child">Child</a>, detail::make_dimension&lt;<a class="reference internal" href="#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension::Es">Es</a>...&gt;&gt;<a class="headerlink" href="#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The list of exponents of dimensions (both base and derived) provided by the user. </p>
 <p>This is the user’s interface to create derived dimensions. Exponents list can contain powers of factors of both base and derived dimensions. This is called a “recipe” of the dimension and among others is used to print unnamed coherent units of this dimension.</p>
 <p>Coherent unit is a unit that, for a given system of quantities and for a chosen set of base units, is a product of powers of base units with no other proportionality factor than one.</p>
@@ -280,7 +283,7 @@
         <a href="units.html" class="btn btn-neutral float-right" title="Units" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quantity_point.html" class="btn btn-neutral float-left" title="Quantity Point" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="quantity_point_kind.html" class="btn btn-neutral float-left" title="Quantity Point Kind" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
