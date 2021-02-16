@@ -341,7 +341,7 @@
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__kind_1acd191cc78ac86b9d655e0cdbec3841e9"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">rep</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires</span> <span class="pre">requires(quantity_type</span> <span class="pre">q)</span></code></dt>
+<span class="target" id="classunits_1_1quantity__kind_1acd7e4605e9090afcd705c527e6623b43"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Rep2&gt;</span> <span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">Rep2</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!Quantity&lt;</span> <span class="pre">Rep2</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;requires(quantity_type</span> <span class="pre">q</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -355,6 +355,11 @@
 <dl class="cpp var">
 <dt>
 <span class="target" id="classunits_1_1quantity__kind_1a018dfb93aad811cea628bf8d8727a0fe"></span><code class="sig-name descname"><span class="pre">return</span> <span class="pre">*</span> <span class="pre">this</span>&#160; <span class="pre">{</span>&#160;&#160;&#160; <span class="pre">++q_</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a89347bb7c184f36e0e6185dccda35cad"></span><code class="sig-name descname"><span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">const</span> <span class="pre">Rep2</span> <span class="pre">r</span>&#160;&#160; <span class="pre">=</span> <span class="pre">{</span> <span class="pre">q</span> <span class="pre">%=</span> <span class="pre">r</span></code></dt>
 <dd></dd></dl>
 
 </div>
@@ -385,16 +390,6 @@
 <p class="breathe-sectiondef-title rubric">Friends</p>
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity__kind_1a44555cb9b4b3729b79d278ab8322d8cb"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">quantity_kind</span> <span class="pre">operator+</span> <span class="pre">(const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires</span> <span class="pre">requires</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="classunits_1_1quantity__kind_1a830069afa9d1aecddca48b12649a8a79"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">quantity_kind</span> <span class="pre">operator-</span> <span class="pre">(const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires</span> <span class="pre">requires</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
 <span class="target" id="classunits_1_1quantity__kind_1a16ca205b0aae3b2dd15780611cf138c0"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Value&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">QuantityKind</span> <span class="pre">auto</span> <span class="pre">operator*</span> <span class="pre">(const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;qk,</span> <span class="pre">const</span> <span class="pre">Value</span> <span class="pre">&amp;v)</span> <span class="pre">requires</span> <span class="pre">requires</span></code></dt>
 <dd></dd></dl>
 
@@ -416,11 +411,6 @@
 <dl class="cpp function">
 <dt>
 <span class="target" id="classunits_1_1quantity__kind_1a9cf3b49e171662a03dee61ebb0dc9da4"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Value&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">QuantityKind</span> <span class="pre">auto</span> <span class="pre">operator%</span> <span class="pre">(const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;qk,</span> <span class="pre">const</span> <span class="pre">Value</span> <span class="pre">&amp;v)</span> <span class="pre">requires</span> <span class="pre">requires</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="classunits_1_1quantity__kind_1ae1e89d15a90df4baf9bf89a8e72b7293"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">quantity_kind</span> <span class="pre">operator%</span> <span class="pre">(const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires</span> <span class="pre">requires</span></code></dt>
 <dd></dd></dl>
 
 </div>

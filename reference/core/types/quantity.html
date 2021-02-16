@@ -228,7 +228,7 @@
 
 <dl class="cpp type">
 <dt id="_CPPv4N5units8quantity3repE">
-<span id="_CPPv3N5units8quantity3repE"></span><span id="_CPPv2N5units8quantity3repE"></span><span id="units::quantity::rep"></span><span class="target" id="classunits_1_1quantity_1af6b6b0b24f5c3e71aa757ad7a2bfbf44"></span><em class="property"><span class="pre">typedef</span> </em><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity::Rep"><span class="pre">Rep</span></a> <code class="sig-name descname"><span class="pre">rep</span></code><a class="headerlink" href="#_CPPv4N5units8quantity3repE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5units8quantity3repE"></span><span id="_CPPv2N5units8quantity3repE"></span><span class="target" id="classunits_1_1quantity_1a6d0d03a149664d0e12b1bb9ba29c16d6"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">rep</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity::Rep"><span class="pre">Rep</span></a><a class="headerlink" href="#_CPPv4N5units8quantity3repE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -281,7 +281,12 @@
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1ae7c569f23b2dd6953d546eebbf8134da"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">quantity</span> <span class="pre">operator+</span> <span class="pre">()</span> <span class="pre">const</span> <span class="pre">requires</span> <span class="pre">requires(rep</span> <span class="pre">v)</span></code></dt>
+<span class="target" id="classunits_1_1quantity_1aebf4cbd02d72ad71dc430facbdb79dbb"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator+</span> <span class="pre">()</span> <span class="pre">const</span> <span class="pre">requires</span> <span class="pre">requires(rep</span> <span class="pre">v)</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity_1ad62a7cf6a196e97a1b7ef399afc66665"></span><code class="sig-name descname"><span class="pre">return</span> <span class="pre">ret</span> <span class="pre">(+count())</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -336,7 +341,7 @@
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1a0d105646caa0c8258de37445e4474bbe"></span><code class="sig-name descname"><span class="pre">constexpr</span> <span class="pre">quantity</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">rep</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!floating_point_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;requires(rep</span> <span class="pre">a</span></code></dt>
+<span class="target" id="classunits_1_1quantity_1ae1702876f8ee1d322901486a07810e39"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Rep2&gt;</span> <span class="pre">constexpr</span> <span class="pre">quantity</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">Rep2</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!floating_point_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;(!floating_point_&lt;</span> <span class="pre">Rep2</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;requires(rep</span> <span class="pre">a</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -389,16 +394,6 @@
 
 <dl class="cpp var">
 <dt>
-<span class="target" id="classunits_1_1quantity_1ae1bda32e125bb6d40a32e52cbcffe3a8"></span><code class="sig-name descname"><span class="pre">constexpr</span> <span class="pre">quantity</span> <span class="pre">const</span> <span class="pre">rep</span> <span class="pre">b</span>&#160;&#160; <span class="pre">=</span> <span class="pre">{</span> <span class="pre">{</span> <span class="pre">a</span> <span class="pre">%=</span> <span class="pre">b</span> <span class="pre">}</span> <span class="pre">-&gt;</span> <span class="pre">std::same_as&lt;rep&amp;&gt;</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt>
-<span class="target" id="classunits_1_1quantity_1af6b6b0b24f5c3e71aa757ad7a2bfbf44"></span><code class="sig-name descname"><span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">quantity</span> <span class="pre">rep</span>&#160; <span class="pre">{</span>&#160;&#160;&#160; <span class="pre">return</span> <span class="pre">quantity(lhs.count()</span> <span class="pre">+</span> <span class="pre">rhs.count())</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt>
 <span class="target" id="classunits_1_1quantity_1af03e9ee6e5d92449fb0e95ca538ff473"></span><code class="sig-name descname"><span class="pre">rep</span></code></dt>
 <dd></dd></dl>
 
@@ -430,12 +425,22 @@
 <p class="breathe-sectiondef-title rubric">Friends</p>
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1a06812e50cb412f4e9d4e45607b2bf941"></span><code class="sig-name descname"><span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">quantity</span> <span class="pre">operator+</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires</span> <span class="pre">invoke_result_convertible_to_&lt;</span> <span class="pre">rep</span></code></dt>
+<span class="target" id="classunits_1_1quantity_1a0ed2e727a51bf0ede650fdf1b80c205f"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator+</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">Value</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!Quantity&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;is_same_v&lt;</span> <span class="pre">unit</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1ac2a6c382be750079a9a5eb1a7dab8e38"></span><code class="sig-name descname"><span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">quantity</span> <span class="pre">operator-</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires</span> <span class="pre">invoke_result_convertible_to_&lt;</span> <span class="pre">rep</span></code></dt>
+<span class="target" id="classunits_1_1quantity_1a2bc64668b10bff04972cd8c9222a5ae2"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator+</span> <span class="pre">(const</span> <span class="pre">Value</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!Quantity&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;is_same_v&lt;</span> <span class="pre">unit</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity_1a2615452f42a223c9255e4cae2ad38659"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator-</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">Value</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!Quantity&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;is_same_v&lt;</span> <span class="pre">unit</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity_1a11a4438259349d09b9cf9c9493c7d3c4"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator-</span> <span class="pre">(const</span> <span class="pre">Value</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!Quantity&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;is_same_v&lt;</span> <span class="pre">unit</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -465,7 +470,7 @@
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1a2e1b028a2457b06bc1589f48dfbe0beb"></span><code class="sig-name descname"><span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">quantity</span> <span class="pre">operator%</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!floating_point_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;invoke_result_convertible_to_&lt;</span> <span class="pre">rep</span></code></dt>
+<span class="target" id="classunits_1_1quantity_1ad8ea88e3b2abdfc3f1b5b0558c9d8196"></span><code class="sig-name descname"><span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator%</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!floating_point_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;is_same_v&lt;</span> <span class="pre">unit</span></code></dt>
 <dd></dd></dl>
 
 </div>
