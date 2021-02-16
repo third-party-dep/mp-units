@@ -31,7 +31,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -189,7 +188,7 @@
 <h1>Customization Points<a class="headerlink" href="#customization-points" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp var">
 <dt id="_CPPv4I0EN5units23treat_as_floating_pointE">
-<span id="_CPPv3I0EN5units23treat_as_floating_pointE"></span><span id="_CPPv2I0EN5units23treat_as_floating_pointE"></span>template&lt;typename <code class="sig-name descname">Rep</code>&gt;<br /><span class="target" id="namespaceunits_1aba8923df9fbe5e817ed29eb486369f29"></span><em class="property">constexpr</em> bool <code class="sig-prename descclassname"><a class="reference internal" href="../systems/physical/si/typographic/length.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">treat_as_floating_point</code> = std::is_floating_point_v&lt;<a class="reference internal" href="#_CPPv4I0EN5units23treat_as_floating_pointE" title="units::treat_as_floating_point::Rep">Rep</a>&gt;<a class="headerlink" href="#_CPPv4I0EN5units23treat_as_floating_pointE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I0EN5units23treat_as_floating_pointE"></span><span id="_CPPv2I0EN5units23treat_as_floating_pointE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Rep</span></code><span class="pre">&gt;</span><br /><span class="target" id="namespaceunits_1aba8923df9fbe5e817ed29eb486369f29"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">bool</span> <code class="sig-prename descclassname"><a class="reference internal" href="../systems/physical/si/typographic/length.html#_CPPv45units" title="units"><span class="pre">units</span></a><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">treat_as_floating_point</span></code> <span class="pre">=</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">is_floating_point_v</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN5units23treat_as_floating_pointE" title="units::treat_as_floating_point::Rep"><span class="pre">Rep</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4I0EN5units23treat_as_floating_pointE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Specifies if a value of a type should be treated as a floating-point value. </p>
 <p>This type trait should be specialized for a custom representation type to specify that values fo this type should be treated by the library as a floating-point ones which will enable implicit conversions between quantities.</p>
 <p><dl class="simple">
@@ -203,7 +202,7 @@
 
 <dl class="cpp struct">
 <dt id="_CPPv4I0EN5units15quantity_valuesE">
-<span id="_CPPv3I0EN5units15quantity_valuesE"></span><span id="_CPPv2I0EN5units15quantity_valuesE"></span>template&lt;typename <code class="sig-name descname">Rep</code>&gt;<br /><span class="target" id="structunits_1_1quantity__values"></span><em class="property">struct </em><code class="sig-name descname">quantity_values</code><a class="headerlink" href="#_CPPv4I0EN5units15quantity_valuesE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I0EN5units15quantity_valuesE"></span><span id="_CPPv2I0EN5units15quantity_valuesE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Rep</span></code><span class="pre">&gt;</span><br /><span class="target" id="structunits_1_1quantity__values"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">quantity_values</span></code><a class="headerlink" href="#_CPPv4I0EN5units15quantity_valuesE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A type trait that defines zero, one, min, and max for a representation type. </p>
 <p>The zero, one, min, and max member functions in <a class="reference internal" href="types/quantity.html#classunits_1_1quantity"><span class="std std-ref">units::quantity</span></a> forward their work to these methods. This type can be specialized if the representation Rep requires a specific implementation to return these quantity objects.</p>
 <p><dl class="simple">
@@ -217,7 +216,7 @@
 
 <dl class="cpp struct">
 <dt id="_CPPv4I0EN5units20quantity_like_traitsE">
-<span id="_CPPv3I0EN5units20quantity_like_traitsE"></span><span id="_CPPv2I0EN5units20quantity_like_traitsE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="structunits_1_1quantity__like__traits"></span><em class="property">struct </em><code class="sig-name descname">quantity_like_traits</code><a class="headerlink" href="#_CPPv4I0EN5units20quantity_like_traitsE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I0EN5units20quantity_like_traitsE"></span><span id="_CPPv2I0EN5units20quantity_like_traitsE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="structunits_1_1quantity__like__traits"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">quantity_like_traits</span></code><a class="headerlink" href="#_CPPv4I0EN5units20quantity_like_traitsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Provides support for external quantity-like types. </p>
 <p>The type trait should provide the following nested type aliases: <code class="docutils literal notranslate"><span class="pre">dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">unit</span></code>, <code class="docutils literal notranslate"><span class="pre">rep</span></code>, and a static member function <code class="docutils literal notranslate"><span class="pre">count(T)</span></code> that will return the raw value of the quantity.</p>
 <p>Usage example can be found in <code class="docutils literal notranslate"><span class="pre">units/chrono.h</span></code> header file.</p>

@@ -31,7 +31,6 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -106,7 +105,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../types.html">Types</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="quantity.html">Quantity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quantity_point.html">Quantity Point</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kind.html">Kinds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kinds.html">Kinds</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quantity_kind.html">Quantity Kind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quantity_point_kind.html">Quantity Point Kind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
@@ -203,7 +202,7 @@
 <h1>Representation Types<a class="headerlink" href="#representation-types" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp struct">
 <dt id="_CPPv4N5units7one_repE">
-<span id="_CPPv3N5units7one_repE"></span><span id="_CPPv2N5units7one_repE"></span><span id="units::one_rep"></span><span class="target" id="structunits_1_1one__rep"></span><em class="property">struct </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/typographic/length.html#_CPPv45units" title="units">units</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">one_rep</code><a class="headerlink" href="#_CPPv4N5units7one_repE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5units7one_repE"></span><span id="_CPPv2N5units7one_repE"></span><span id="units::one_rep"></span><span class="target" id="structunits_1_1one__rep"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/physical/si/typographic/length.html#_CPPv45units" title="units"><span class="pre">units</span></a><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">one_rep</span></code><a class="headerlink" href="#_CPPv4N5units7one_repE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A representation type to be used for unit constants. </p>
 <p>This representation type is intended to be used in the unit constants definition:</p>
 <p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">unit_constants</span> <span class="p">{</span>
@@ -234,22 +233,22 @@
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4I_13QuantityValueENK5units7one_repcv3RepEv">
-<span id="_CPPv3I_13QuantityValueENK5units7one_repcv3RepEv"></span><span id="_CPPv2I_13QuantityValueENK5units7one_repcv3RepEv"></span>template&lt;<a class="reference internal" href="../concepts.html#_CPPv4I0EN5units13QuantityValueE" title="units::QuantityValue">QuantityValue</a> <code class="sig-name descname">Rep</code>&gt;<br /><span class="target" id="structunits_1_1one__rep_1a825d68425753502bfadc1959d8e4202a"></span><em class="property">constexpr</em> <code class="sig-name descname">operator Rep</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4I_13QuantityValueENK5units7one_repcv3RepEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I_13QuantityValueENK5units7one_repcv3RepEv"></span><span id="_CPPv2I_13QuantityValueENK5units7one_repcv3RepEv"></span><span class="pre">template&lt;</span><a class="reference internal" href="../concepts.html#_CPPv4I0EN5units13QuantityValueE" title="units::QuantityValue"><span class="pre">QuantityValue</span></a> <code class="sig-name descname"><span class="pre">Rep</span></code><span class="pre">&gt;</span><br /><span class="target" id="structunits_1_1one__rep_1a825d68425753502bfadc1959d8e4202a"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <code class="sig-name descname"><span class="pre">operator</span> <span class="pre">Rep</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4I_13QuantityValueENK5units7one_repcv3RepEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK5units7one_repeqERK7one_rep">
-<span id="_CPPv3NK5units7one_repeqERK7one_rep"></span><span id="_CPPv2NK5units7one_repeqERK7one_rep"></span><span id="units::one_rep::eq-operator__one_repCRC"></span><span class="target" id="structunits_1_1one__rep_1a7fbd6c275887de87a39b76a73ba2f2a8"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N5units7one_repE" title="units::one_rep">one_rep</a>&amp;<span class="sig-paren">)</span> <em class="property">const</em> = default<a class="headerlink" href="#_CPPv4NK5units7one_repeqERK7one_rep" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK5units7one_repeqERK7one_rep"></span><span id="_CPPv2NK5units7one_repeqERK7one_rep"></span><span id="units::one_rep::eq-operator__one_repCRC"></span><span class="target" id="structunits_1_1one__rep_1a7fbd6c275887de87a39b76a73ba2f2a8"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">operator==</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&amp;</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4NK5units7one_repeqERK7one_rep" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="structunits_1_1one__rep_1a2df0f88ba16bb9c9de91d0de72106887"></span><code class="sig-name descname">auto operator&lt;=&gt; (const one_rep &amp;) const =default</code></dt>
+<span class="target" id="structunits_1_1one__rep_1a2df0f88ba16bb9c9de91d0de72106887"></span><code class="sig-name descname"><span class="pre">auto</span> <span class="pre">operator&lt;=&gt;</span> <span class="pre">(const</span> <span class="pre">one_rep</span> <span class="pre">&amp;)</span> <span class="pre">const</span> <span class="pre">=default</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK5units7one_repeqERK15invalid_one_rep">
-<span id="_CPPv3NK5units7one_repeqERK15invalid_one_rep"></span><span id="_CPPv2NK5units7one_repeqERK15invalid_one_rep"></span><span id="units::one_rep::eq-operator__invalid_one_repCRCCE"></span><span class="target" id="structunits_1_1one__rep_1a0a9efa52d62d4ac5afba3f8f8792e6cb"></span><em class="property">constexpr</em> bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> invalid_one_rep&amp;<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5units7one_repeqERK15invalid_one_rep" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK5units7one_repeqERK15invalid_one_rep"></span><span id="_CPPv2NK5units7one_repeqERK15invalid_one_rep"></span><span id="units::one_rep::eq-operator__invalid_one_repCRCCE"></span><span class="target" id="structunits_1_1one__rep_1a0a9efa52d62d4ac5afba3f8f8792e6cb"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">operator==</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">invalid_one_rep</span><span class="pre">&amp;</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK5units7one_repeqERK15invalid_one_rep" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -257,32 +256,32 @@
 <p class="breathe-sectiondef-title rubric">Friends</p>
 <dl class="cpp function">
 <dt>
-<span class="target" id="structunits_1_1one__rep_1ae7cc7c45026a3f429cc12565b8e52945"></span><code class="sig-name descname">friend constexpr friend one_rep operator* (one_rep, one_rep)</code></dt>
+<span class="target" id="structunits_1_1one__rep_1ae7cc7c45026a3f429cc12565b8e52945"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">one_rep</span> <span class="pre">operator*</span> <span class="pre">(one_rep,</span> <span class="pre">one_rep)</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="structunits_1_1one__rep_1acecb2c6f3b6145e32dd64378eff4cc51"></span><code class="sig-name descname">friend constexpr friend one_rep operator/ (one_rep, one_rep)</code></dt>
+<span class="target" id="structunits_1_1one__rep_1acecb2c6f3b6145e32dd64378eff4cc51"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">one_rep</span> <span class="pre">operator/</span> <span class="pre">(one_rep,</span> <span class="pre">one_rep)</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="structunits_1_1one__rep_1a5f540e8e1946dd6431b019b163092e90"></span><code class="sig-name descname">template&lt;QuantityValue Rep&gt; friend constexpr friend Rep operator* (const Rep &amp;lhs, one_rep)</code></dt>
+<span class="target" id="structunits_1_1one__rep_1a5f540e8e1946dd6431b019b163092e90"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator*</span> <span class="pre">(const</span> <span class="pre">Rep</span> <span class="pre">&amp;lhs,</span> <span class="pre">one_rep)</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="structunits_1_1one__rep_1a608b07320a05e7e7491094029d20ba24"></span><code class="sig-name descname">template&lt;QuantityValue Rep&gt; friend constexpr friend Rep operator/ (const Rep &amp;lhs, one_rep)</code></dt>
+<span class="target" id="structunits_1_1one__rep_1a608b07320a05e7e7491094029d20ba24"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator/</span> <span class="pre">(const</span> <span class="pre">Rep</span> <span class="pre">&amp;lhs,</span> <span class="pre">one_rep)</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="structunits_1_1one__rep_1afa134304d39d0d6aff6f4d879faa930b"></span><code class="sig-name descname">template&lt;QuantityValue Rep&gt; friend constexpr friend Rep operator* (one_rep, const Rep &amp;)=delete</code></dt>
+<span class="target" id="structunits_1_1one__rep_1afa134304d39d0d6aff6f4d879faa930b"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator*</span> <span class="pre">(one_rep,</span> <span class="pre">const</span> <span class="pre">Rep</span> <span class="pre">&amp;)=delete</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="structunits_1_1one__rep_1a3c7d2cd77364022632f746d292f46a89"></span><code class="sig-name descname">template&lt;QuantityValue Rep&gt; friend constexpr friend Rep operator/ (one_rep, const Rep &amp;)=delete</code></dt>
+<span class="target" id="structunits_1_1one__rep_1a3c7d2cd77364022632f746d292f46a89"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator/</span> <span class="pre">(one_rep,</span> <span class="pre">const</span> <span class="pre">Rep</span> <span class="pre">&amp;)=delete</span></code></dt>
 <dd></dd></dl>
 
 </div>

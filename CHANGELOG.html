@@ -31,7 +31,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -190,19 +189,22 @@
 <li><p>feat: unit constants support added (thanks <a class="reference external" href="https://github.com/johelegp">&#64;johelegp</a>)</p></li>
 <li><p>feat: interoperability with <code class="docutils literal notranslate"><span class="pre">std::chrono::duration</span></code> and other units libraries</p></li>
 <li><p>feat: CTAD for dimensionless quantity added</p></li>
-<li><p>feat: value initialization for quantity value removed (left with a default initialization)</p></li>
 <li><p>perf: preconditions check do not influence the runtime performance of a Release build</p></li>
 <li><p>perf: <code class="docutils literal notranslate"><span class="pre">quantity_cast()</span></code> generates less assembly instructions</p></li>
 <li><p>perf: temporary string creation removed from <code class="docutils literal notranslate"><span class="pre">quantity::op&lt;&lt;()</span></code></p></li>
+<li><p>perf: value initialization for quantity value removed (left with a default initialization)</p></li>
+<li><p>perf: limited the <code class="docutils literal notranslate"><span class="pre">equivalent</span></code> trait usage</p></li>
 <li><p>perf: limited the C++ Standard Library headers usage</p></li>
 <li><p>(!) fix: <code class="docutils literal notranslate"><span class="pre">exp()</span></code> has sense only for dimensionless quantities</p></li>
 <li><p>(!) fix: <code class="docutils literal notranslate"><span class="pre">dim_torque</span></code> now properly divides by an angle (instead of multiply) + default unit name change</p></li>
+<li><p>fix: quantity’s operators fixed to behave like the underlying types do</p></li>
 <li><p>fix: <code class="docutils literal notranslate"><span class="pre">quantity_cast()</span></code> fixed to work correctly with representation types not convertible from <code class="docutils literal notranslate"><span class="pre">std::intmax_t</span></code></p></li>
 <li><p>fix: ambiguous case for empty type list resolved</p></li>
 <li><p>(!) build: <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> CMake option renamed to <code class="docutils literal notranslate"><span class="pre">UNITS_BUILD_DOCS</span></code></p></li>
 <li><p>build: doxygen updated to 1.8.20</p></li>
 <li><p>build: catch2 updated to 2.13.4</p></li>
 <li><p>build: fmt updated to 7.1.3</p></li>
+<li><p>build: ms-gsl replaced with gsl-lite</p></li>
 <li><p>build: Conan generator switched to <code class="docutils literal notranslate"><span class="pre">cmake_find_package_multi</span></code></p></li>
 <li><p>build: Conan CMakeToolchain support added</p></li>
 <li><p>build: CMake scripts cleanup</p></li>
