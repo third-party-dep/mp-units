@@ -229,6 +229,21 @@
 </p>
 </dd></dl>
 
+<dl class="cpp struct">
+<dt id="_CPPv4I0EN5units26quantity_point_like_traitsE">
+<span id="_CPPv3I0EN5units26quantity_point_like_traitsE"></span><span id="_CPPv2I0EN5units26quantity_point_like_traitsE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="structunits_1_1quantity__point__like__traits"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">quantity_point_like_traits</span></code><a class="headerlink" href="#_CPPv4I0EN5units26quantity_point_like_traitsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides support for external quantity point-like types. </p>
+<p>The type trait should provide the following nested type aliases: <code class="docutils literal notranslate"><span class="pre">dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">unit</span></code>, <code class="docutils literal notranslate"><span class="pre">rep</span></code>, and a static member function <code class="docutils literal notranslate"><span class="pre">relative(T)</span></code> that will return the quantity-like value of the quantity point.</p>
+<p>Usage example can be found in <code class="docutils literal notranslate"><span class="pre">units/chrono.h</span></code> header file.</p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: the type to provide support for </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
 </div>
 
 
