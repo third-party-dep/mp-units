@@ -312,8 +312,8 @@ They are defined using a special <a class="reference internal" href="../referenc
 <h3>UDLs vs Unit Constants<a class="headerlink" href="#udls-vs-unit-constants" title="Permalink to this headline">¶</a></h3>
 <p>UDLs are helpful but they also have some disadvantages compared to Unit Constants:</p>
 <ol class="arabic">
-<li><dl>
-<dt>UDLs are only for compile-time known values and do not work for runtime variables</dt><dd><ul>
+<li><p>UDLs are only for compile-time known values and do not work for runtime variables</p>
+<ul>
 <li><p>UDLs:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">120</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">;</span>
@@ -329,13 +329,12 @@ They are defined using a special <a class="reference internal" href="../referenc
 </div>
 </li>
 </ul>
-<p>Constants treat both cases in a unified way. It is also worth to notice that we work mostly with runtime variables
-and compile-time known values mostly appear only in physical constants and unit tests.</p>
-</dd>
-</dl>
+<p>Constants treat both cases in a unified way. It is also worth to notice that we work
+mostly with runtime variables and compile-time known values mostly appear only in physical
+constants and unit tests.</p>
 </li>
-<li><dl>
-<dt>UDLs cannot be disambiguated with a namespace name</dt><dd><ul>
+<li><p>UDLs cannot be disambiguated with a namespace name</p>
+<ul>
 <li><p>UDLs:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
@@ -353,11 +352,10 @@ and compile-time known values mostly appear only in physical constants and unit 
 </div>
 </li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl>
-<dt>Poor control over the representation types as UDLs return only <code class="docutils literal notranslate"><span class="pre">std::int64_t</span></code> or <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code></dt><dd><ul>
+<li><p>Poor control over the representation types as UDLs return only <code class="docutils literal notranslate"><span class="pre">std::int64_t</span></code> or
+<code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code></p>
+<ul>
 <li><p>UDLs:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mf">123.</span><span class="n">_q_km</span><span class="p">;</span>   <span class="c1">// si::length&lt;si::kilometre, long double&gt;</span>
@@ -378,31 +376,29 @@ and compile-time known values mostly appear only in physical constants and unit 
 </div>
 </li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt>UDLs are verbose to define and standardize</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>UDLs:</dt><dd><ul>
+<li><p>UDLs are verbose to define and standardize</p>
+<ul class="simple">
+<li><p>UDLs:</p>
+<ul>
 <li><p>for each unit an integral and a floating-point UDL have to be defined</p></li>
 <li><p>have to be provided for unnamed derived units (i.e. <code class="docutils literal notranslate"><span class="pre">_q_km_per_h</span></code>)</p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt>Unit Constants:</dt><dd><ul>
+<li><p>Unit Constants:</p>
+<ul>
 <li><p>one constant per unit</p></li>
 <li><p>unnamed derived units constructed from base constants (i.e. <code class="docutils literal notranslate"><span class="pre">km</span> <span class="pre">/</span> <span class="pre">h</span></code>)</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 </ul>
-</dd>
-</dl>
 </li>
+<li><p>Typical UDL definition for quantities when compiled with a <code class="docutils literal notranslate"><span class="pre">-Wsign-conversion</span></code>
+flag results in a compilation warning. This warning could be silenced with a
+<code class="docutils literal notranslate"><span class="pre">static_cast&lt;std::int64_t&gt;(value)</span></code> in every UDL, but in a such case other safety
+and security issues could be silently introduced.
+Unit Constants, on the opposite, always use the exact representation type provided
+by the user so there is no chance for a truncating conversion on a quantity construction.</p></li>
 </ol>
 <p>The only issue we are aware of with Unit Constants is a potential problem of specifying
 a quantity in denominator:</p>
