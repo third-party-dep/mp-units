@@ -297,7 +297,7 @@ perform the actual downcasting operation a dedicated alias template is provided:
 <span class="k">using</span> <span class="n">downcast</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">downcast_impl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">());</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../reference/core/downcasting.html#_CPPv4I_12DowncastableEN5units8downcastE" title="units::downcast"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast</span></code></a> is used to obtain the target type of the downcasting operation registered for a
+<p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">downcast</span></code> is used to obtain the target type of the downcasting operation registered for a
 given instantiation in a base type. <code class="docutils literal notranslate"><span class="pre">detail::downcast_impl</span></code> checks if a downcasting
 target is registered for the specific base class. If yes, it returns the registered type,
 otherwise it works like a regular identity type trait returning a provided base class:</p>
