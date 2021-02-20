@@ -349,12 +349,32 @@
 <span class="target" id="classunits_1_1quantity__kind_1a47f5982b3eac7c5afac984984f584b34"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;qk)</span> <span class="pre">requires</span> <span class="pre">requires(quantity_type</span> <span class="pre">q)</span></code></dt>
 <dd></dd></dl>
 
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1ac81e18572bfdd4c944149dd5042c76b7"></span><code class="sig-name descname"><span class="pre">return</span> <span class="pre">detail::make_quantity_kind</span> <span class="pre">(qk.common()/v)</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1aa7e0560cb96608ee9744032f197a0717"></span><code class="sig-name descname"><span class="pre">return</span> <span class="pre">detail::downcasted_kind</span> <span class="pre">(v/qk.common())</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1abc54f4be02b5461dced5223e79bd9850"></span><code class="sig-name descname"><span class="pre">return</span> <span class="pre">detail::make_quantity_kind</span> <span class="pre">(qk.common()</span> <span class="pre">%</span> <span class="pre">v)</span></code></dt>
+<dd></dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Members</p>
 <dl class="cpp var">
 <dt>
 <span class="target" id="classunits_1_1quantity__kind_1a018dfb93aad811cea628bf8d8727a0fe"></span><code class="sig-name descname"><span class="pre">return</span> <span class="pre">*</span> <span class="pre">this</span>&#160; <span class="pre">{</span>&#160;&#160;&#160; <span class="pre">++q_</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt>
+<span class="target" id="classunits_1_1quantity__kind_1a8002cc2806e33c8c42519bd92c6f9b31"></span><code class="sig-name descname"><span class="pre">q_</span>&#160;&#160; <span class="pre">=</span> <span class="pre">rhs</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">

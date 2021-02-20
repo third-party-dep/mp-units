@@ -374,6 +374,11 @@
 <span class="target" id="classunits_1_1quantity_1ac53a2c538f7bf322e794da30566fc75d"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span>&#160; <span class="pre">requires</span> <span class="pre">(!Quantity&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;(!floating_point_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;(!floating_point_&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;invoke_result_convertible_to_&lt;</span> <span class="pre">rep</span></code></dt>
 <dd></dd></dl>
 
+<dl class="cpp function">
+<dt>
+<span class="target" id="classunits_1_1quantity_1a253e6ac857c4c0310ed7bb8ff857ffa3"></span><code class="sig-name descname"><span class="pre">return</span> <span class="pre">units::quantity</span> <span class="pre">(lhs.count()</span> <span class="pre">%</span> <span class="pre">rhs.count())</span></code></dt>
+<dd></dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Members</p>
@@ -390,6 +395,11 @@
 <dl class="cpp var">
 <dt>
 <span class="target" id="classunits_1_1quantity_1a2f7d65e3274cf645e6b9db29d7d9f5e6"></span><code class="sig-name descname"><span class="pre">constexpr</span> <span class="pre">quantity</span> <span class="pre">const</span> <span class="pre">Rep2</span> <span class="pre">b</span>&#160;&#160; <span class="pre">=</span> <span class="pre">{</span> <span class="pre">{</span> <span class="pre">a</span> <span class="pre">*=</span> <span class="pre">b</span> <span class="pre">}</span> <span class="pre">-&gt;</span> <span class="pre">std::same_as&lt;rep&amp;&gt;</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt>
+<span class="target" id="classunits_1_1quantity_1a8c7ca17cea02ab9704c2d2c076b63940"></span><code class="sig-name descname"><span class="pre">value_</span>&#160;&#160; <span class="pre">=</span> <span class="pre">rhs</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
