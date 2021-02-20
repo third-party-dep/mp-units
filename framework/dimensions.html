@@ -251,18 +251,34 @@ dimension, than we will end up with just a dimensionless quantity:</p>
 </div>
 <div class="section" id="quantity-kinds">
 <h3>Quantity Kinds<a class="headerlink" href="#quantity-kinds" title="Permalink to this headline">¶</a></h3>
-<p>Quantity kinds behave the same as quantities for addition and subtraction.
-The same behavior is also provided for multiplication with, and division by
-a <a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a>.</p>
-<p>Multiplication and division with a quantity (but not a quantity kind) is allowed.
-The result is a quantity kind with the appropriate dimension
-and related to the original quantity kind:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">height</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">height</span><span class="p">,</span> <span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">rate_of_climb</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">dim_speed</span><span class="o">&gt;</span> <span class="p">{};</span>
+<p>Quantity kinds behave the same as quantities for all operations,
+except that the quantity types in the operators’ declarations
+are quantity kind types instead.
+Additionally, for the dimensional analysis operators,
+you can use a quantity argument instead of a quantity kind.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">height_kind</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">height_kind</span><span class="p">,</span> <span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">rate_of_climb_kind</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb_kind</span><span class="p">,</span> <span class="n">height_kind</span><span class="p">,</span> <span class="n">dim_speed</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-<span class="n">quantity_kind</span> <span class="nf">h</span><span class="p">(</span><span class="n">height</span><span class="p">{},</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span>
-<span class="hll"><span class="n">quantity_point_kind</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">h</span> <span class="o">/</span> <span class="p">(</span><span class="mi">25</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
-</span><span class="hll">  <span class="c1">// quantity_point_kind&lt;rate_of_climb, si::metre_per_second, int&gt;(4 * m / s)</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">height</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">height_kind</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">rate_of_climb</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb_kind</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="n">height</span> <span class="n">h</span><span class="p">{</span><span class="mi">100</span> <span class="o">*</span> <span class="n">m</span><span class="p">};</span>
+<span class="hll"><span class="n">rate_of_climb</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">h</span> <span class="o">/</span> <span class="p">(</span><span class="mi">25</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
+</span><span class="hll">  <span class="c1">// quantity_kind&lt;rate_of_climb_kind, si::metre_per_second, int&gt;(4 * m / s)</span>
+</span></pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">width_kind</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">width_kind</span><span class="p">,</span> <span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">horizontal_area_kind</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">horizontal_area_kind</span><span class="p">,</span> <span class="n">width_kind</span><span class="p">,</span> <span class="n">dim_area</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">width</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">width_kind</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">Unit</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">horizontal_area</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">horizontal_area_kind</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="n">width</span> <span class="n">w</span><span class="p">{</span><span class="mi">5</span> <span class="o">*</span> <span class="n">m</span><span class="p">};</span>
+<span class="hll"><span class="n">horizontal_area</span> <span class="n">area1</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">w</span><span class="p">;</span>
+</span><span class="hll">  <span class="c1">// quantity_kind&lt;horizontal_area_kind, si::metre_per_second, int&gt;(25 * m * m)</span>
+</span><span class="hll"><span class="n">width</span> <span class="n">w2</span> <span class="o">=</span> <span class="n">area1</span> <span class="o">/</span> <span class="n">w</span><span class="p">;</span> <span class="c1">// quantity_kind&lt;width_kind, si::metre, int&gt;(5 * m)</span>
+</span><span class="hll"><span class="k">auto</span> <span class="n">q1</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">w</span><span class="p">;</span> <span class="c1">// Dimensionless quantity kinds related to width</span>
+</span><span class="hll"><span class="k">auto</span> <span class="n">q2</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span> <span class="c1">// with .common() equal to quantity{1}</span>
 </span></pre></div>
 </div>
 </div>
