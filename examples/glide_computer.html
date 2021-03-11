@@ -197,23 +197,17 @@
 <h1>glide_computer<a class="headerlink" href="#glide-computer" title="Permalink to this headline">¶</a></h1>
 <p>This example presents the usage of:</p>
 <ul class="simple">
-<li><p>different kinds for length, time, and velocity,</p></li>
-<li><p>quantities text output formatting,</p></li>
+<li><p><a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> to mark “absolute” quantities like <code class="docutils literal notranslate"><span class="pre">timestamp</span></code></p></li>
+<li><p><a class="reference internal" href="../reference/core/types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_13QuantityValueEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a> to mark “absolute” kinds of quantities like <code class="docutils literal notranslate"><span class="pre">altitude</span></code> (as opposed to <code class="docutils literal notranslate"><span class="pre">height</span></code>),</p></li>
+<li><p>different kinds for length, time, and speed,</p></li>
 <li><p>the use of quantity kinds to show how to handle 3D space for aviation needs,</p></li>
-<li><p><a class="reference internal" href="../reference/core/types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_13QuantityValueEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a> to mark “absolute” values like <code class="docutils literal notranslate"><span class="pre">altitude</span></code> (as opposed to <code class="docutils literal notranslate"><span class="pre">height</span></code>).</p></li>
+<li><p>unit constants to initialize the database</p></li>
+<li><p>quantities text output formatting,</p></li>
+<li><p>cooperation with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">std::chrono</span></code>.</p></li>
 </ul>
-<p>The use of <a class="reference internal" href="../reference/core/types/quantity_kind.html#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind</span></code></a> and <a class="reference internal" href="../reference/core/types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_13QuantityValueEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a> provide strong typing
-that divide quantities and quantity points to the ones on a horizontal (X, Y) plane and vertical (Z) axis.
-Their purpose is to make different kinds of quantity
-(i.e. length) separate strong types (i.e. distance, height).
-Additionally, separating a quantity from its quantity point
-means that we can define a <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">altitude</span></code> as different strong types.
-A quantity point provides a more restricted interface meant for absolute calculations.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
+<div class="code-block-caption"><span class="caption-text">glide_computer.h</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
@@ -227,43 +221,51 @@ A quantity point provides a more restricted interface meant for absolute calcula
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;geographic.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/math.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/international/base/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/derived/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/international/base/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity_point_kind.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;compare&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">QuantityKind</span> <span class="n">QK</span><span class="o">&gt;</span>
-<span class="k">struct</span> <span class="n">fmt</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">QK</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">formatter</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">QK</span><span class="o">::</span><span class="n">quantity_type</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">FormatContext</span><span class="o">&gt;</span>
-  <span class="k">auto</span> <span class="n">format</span><span class="p">(</span><span class="k">const</span> <span class="n">QK</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">,</span> <span class="n">FormatContext</span><span class="o">&amp;</span> <span class="n">ctx</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="n">formatter</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">QK</span><span class="o">::</span><span class="n">quantity_type</span><span class="o">&gt;::</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">common</span><span class="p">(),</span> <span class="n">ctx</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">};</span>
+<span class="c1">// An example of a really simplified tactical glide computer</span>
+<span class="c1">// Simplifications:</span>
+<span class="c1">// - glider 100% clean and with full factory performance (brand new painting)</span>
+<span class="c1">// - no influence of the ballast (pilot weight, water, etc) to glider performance</span>
+<span class="c1">// - only one point on a glider polar curve</span>
+<span class="c1">// - no influence of bank angle (during circling) on a glider performance</span>
+<span class="c1">// - no wind</span>
+<span class="c1">// - constant thermals strength</span>
+<span class="c1">// - thermals exactly where and when we need them ;-)</span>
+<span class="c1">// - no airspaces</span>
+<span class="c1">// - ground level changes linearly between waypoints</span>
+<span class="c1">// - no ground obstacles (i.e. mountains) to pass</span>
+<span class="c1">// - flight path exactly on a shortest possible line to destination</span>
 </pre></div>
 </td></tr></table></div>
 </div>
-<p>The next part of the example defines strong types used by the glide calculator engine. For example
-we have 3 <a class="reference internal" href="../glossary.html#term-kind"><span class="xref std std-term">kinds of quantities</span></a> for a quantity of length:</p>
+<p>The use of <a class="reference internal" href="../reference/core/types/quantity_kind.html#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind</span></code></a> and <a class="reference internal" href="../reference/core/types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_13QuantityValueEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a> provides strong typing
+that divide quantities and quantity points to the ones on a horizontal (X, Y) plane and vertical (Z) axis.
+Their purpose is to make different kinds of quantity
+(i.e. length) separate strong types (i.e. distance, height).
+Additionally, separating a quantity from its quantity point
+means that we can define a <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">altitude</span></code> as different strong types.
+A quantity point provides a more restricted interface meant for absolute calculations.</p>
+<p>The glide calculator engine also take benefits from different <a class="reference internal" href="../glossary.html#term-kind"><span class="xref std std-term">kinds of quantities</span></a>.
+For example we have 3 for a quantity of length:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code> - a relative horizontal distance between 2 points on Earth</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">height</span></code> - a relative altitude difference between 2 points in the air</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">altitude</span></code> - an absolute altitude value measured form the mean sea level (AMSL).</p></li>
 </ul>
-<p>For the last case a custom text output is provided both for C++ output streams and the text formatting
-facility.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
+<div class="code-block-caption"><span class="caption-text">glide_computer.h</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
@@ -295,64 +297,62 @@ facility.</p>
 <span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// custom types</span>
-<span class="k">namespace</span> <span class="p">{</span>
-
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
 
-<span class="k">struct</span> <span class="nl">horizontal_vector</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">horizontal_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">vertical_vector</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">vertical_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">vertical_point</span> <span class="p">:</span> <span class="n">point_kind</span><span class="o">&lt;</span><span class="n">vertical_point</span><span class="p">,</span> <span class="n">vertical_vector</span><span class="o">&gt;</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">velocity_vector</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">velocity_vector</span><span class="p">,</span> <span class="n">horizontal_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="o">&gt;</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">rate_of_climb_vector</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb_vector</span><span class="p">,</span> <span class="n">vertical_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="o">&gt;</span> <span class="p">{};</span>
-
-<span class="k">using</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">horizontal_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">height</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">vertical_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">altitude</span> <span class="o">=</span> <span class="n">quantity_point_kind</span><span class="o">&lt;</span><span class="n">vertical_point</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">using</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">using</span> <span class="n">velocity</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">velocity_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre_per_hour</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">rate_of_climb</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb_vector</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">CharT</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Traits</span><span class="o">&gt;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="n">Traits</span><span class="o">&gt;&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="n">Traits</span><span class="o">&gt;&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">altitude</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">a</span><span class="p">.</span><span class="n">relative</span><span class="p">().</span><span class="n">common</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; AMSL&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">}</span> <span class="c1">// namespace</span>
-
-<span class="k">template</span><span class="o">&lt;&gt;</span>
-<span class="k">struct</span> <span class="n">fmt</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">altitude</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">formatter</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
-  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">FormatContext</span><span class="o">&gt;</span>
-  <span class="k">auto</span> <span class="n">format</span><span class="p">(</span><span class="n">altitude</span> <span class="n">a</span><span class="p">,</span> <span class="n">FormatContext</span><span class="o">&amp;</span> <span class="n">ctx</span><span class="p">)</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">QuantityKind</span> <span class="n">QK</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">fmt</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">QK</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">formatter</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">QK</span><span class="o">::</span><span class="n">quantity_type</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">FormatContext</span><span class="o">&gt;</span>
+  <span class="k">auto</span> <span class="n">format</span><span class="p">(</span><span class="k">const</span> <span class="n">QK</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">,</span> <span class="n">FormatContext</span><span class="o">&amp;</span> <span class="n">ctx</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">formatter</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;::</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">relative</span><span class="p">().</span><span class="n">common</span><span class="p">(),</span> <span class="n">ctx</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nf">format_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">.</span><span class="n">out</span><span class="p">(),</span> <span class="s">&quot; AMSL&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">formatter</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">QK</span><span class="o">::</span><span class="n">quantity_type</span><span class="o">&gt;::</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">common</span><span class="p">(),</span> <span class="n">ctx</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">};</span>
+
+<span class="k">namespace</span> <span class="n">glide_computer</span> <span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityKind</span> <span class="n">QK1</span><span class="p">,</span> <span class="n">QuantityKind</span> <span class="n">QK2</span><span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="n">Dimensionless</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">QK1</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">QK2</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+  <span class="k">requires</span><span class="p">(</span><span class="o">!</span><span class="n">units</span><span class="o">::</span><span class="n">QuantityKindRelatedTo</span><span class="o">&lt;</span><span class="n">QK1</span><span class="p">,</span> <span class="n">QK2</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">common</span><span class="p">();}</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">common</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// kinds</span>
+<span class="k">using</span> <span class="n">horizontal_kind</span> <span class="o">=</span> <span class="n">geographic</span><span class="o">::</span><span class="n">horizontal_kind</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nl">vertical_kind</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">vertical_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">vertical_point_kind</span> <span class="p">:</span> <span class="n">point_kind</span><span class="o">&lt;</span><span class="n">vertical_point_kind</span><span class="p">,</span> <span class="n">vertical_kind</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">velocity_kind</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">velocity_kind</span><span class="p">,</span> <span class="n">horizontal_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">rate_of_climb_kind</span> <span class="p">:</span> <span class="n">derived_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb_kind</span><span class="p">,</span> <span class="n">vertical_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="c1">// https://en.wikipedia.org/wiki/Flight_planning#Units_of_measurement</span>
+<span class="c1">// length</span>
+<span class="k">using</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">horizontal_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">height</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">vertical_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">altitude</span> <span class="o">=</span> <span class="n">quantity_point_kind</span><span class="o">&lt;</span><span class="n">vertical_point_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// time</span>
+<span class="k">using</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// speed</span>
+<span class="k">using</span> <span class="n">velocity</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">velocity_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre_per_hour</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">rate_of_climb</span> <span class="o">=</span> <span class="n">quantity_kind</span><span class="o">&lt;</span><span class="n">rate_of_climb_kind</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
 </div>
-<p>The engine of this simple glide computer works on quantities of the SI units with a floating-point
-representation. The user can pass any unit valid for a given quantity and the library will automatically
-convert it to the one required by the engine interface.</p>
-<p>The glide calculator estimates the number of flight phases (towing, circling, gliding, final glide) needed
-to finish a task and the duration needed to finish it while flying a selected glider in the specific weather
-conditions.</p>
+<p>Next a custom text output is provided both for C++ output streams and the text formatting facility.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
+<div class="code-block-caption"><span class="caption-text">glide_computer.h</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 88</span>
 <span class="normal"> 89</span>
 <span class="normal"> 90</span>
 <span class="normal"> 91</span>
@@ -369,9 +369,35 @@ conditions.</p>
 <span class="normal">102</span>
 <span class="normal">103</span>
 <span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
+<span class="normal">105</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// text output</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">CharT</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Traits</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="n">Traits</span><span class="o">&gt;&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="n">Traits</span><span class="o">&gt;&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">altitude</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">a</span><span class="p">.</span><span class="n">relative</span><span class="p">().</span><span class="n">common</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; AMSL&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">}</span>  <span class="c1">// namespace glide_computer</span>
+
+<span class="k">template</span><span class="o">&lt;&gt;</span>
+<span class="k">struct</span> <span class="n">fmt</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">glide_computer</span><span class="o">::</span><span class="n">altitude</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">formatter</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">FormatContext</span><span class="o">&gt;</span>
+  <span class="k">auto</span> <span class="n">format</span><span class="p">(</span><span class="n">glide_computer</span><span class="o">::</span><span class="n">altitude</span> <span class="n">a</span><span class="p">,</span> <span class="n">FormatContext</span><span class="o">&amp;</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">formatter</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;::</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">relative</span><span class="p">().</span><span class="n">common</span><span class="p">(),</span> <span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nf">format_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">.</span><span class="n">out</span><span class="p">(),</span> <span class="s">&quot; AMSL&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>The engine of this simple glide computer works on quantities of the SI units with a floating-point
+representation. The user can pass any unit valid for a given quantity and the library will automatically
+convert it to the one required by the engine interface.</p>
+<p>The glide calculator takes task created as a list of waypoints, glider performance data, weather conditions,
+safety constraints, and a towing height.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">glide_computer.h</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">107</span>
 <span class="normal">108</span>
 <span class="normal">109</span>
 <span class="normal">110</span>
@@ -475,248 +501,10 @@ conditions.</p>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span>
-<span class="normal">293</span>
-<span class="normal">294</span>
-<span class="normal">295</span>
-<span class="normal">296</span>
-<span class="normal">297</span>
-<span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
-<span class="normal">304</span>
-<span class="normal">305</span>
-<span class="normal">306</span>
-<span class="normal">307</span>
-<span class="normal">308</span>
-<span class="normal">309</span>
-<span class="normal">310</span>
-<span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span>
-<span class="normal">317</span>
-<span class="normal">318</span>
-<span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span>
-<span class="normal">326</span>
-<span class="normal">327</span>
-<span class="normal">328</span>
-<span class="normal">329</span>
-<span class="normal">330</span>
-<span class="normal">331</span>
-<span class="normal">332</span>
-<span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
-<span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span>
-<span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span>
-<span class="normal">366</span>
-<span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
-<span class="normal">379</span>
-<span class="normal">380</span>
-<span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span>
-<span class="normal">385</span>
-<span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span>
-<span class="normal">393</span>
-<span class="normal">394</span>
-<span class="normal">395</span>
-<span class="normal">396</span>
-<span class="normal">397</span>
-<span class="normal">398</span>
-<span class="normal">399</span>
-<span class="normal">400</span>
-<span class="normal">401</span>
-<span class="normal">402</span>
-<span class="normal">403</span>
-<span class="normal">404</span>
-<span class="normal">405</span>
-<span class="normal">406</span>
-<span class="normal">407</span>
-<span class="normal">408</span>
-<span class="normal">409</span>
-<span class="normal">410</span>
-<span class="normal">411</span>
-<span class="normal">412</span>
-<span class="normal">413</span>
-<span class="normal">414</span>
-<span class="normal">415</span>
-<span class="normal">416</span>
-<span class="normal">417</span>
-<span class="normal">418</span>
-<span class="normal">419</span>
-<span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
-<span class="normal">424</span>
-<span class="normal">425</span>
-<span class="normal">426</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// An example of a really simplified tactical glide computer</span>
-<span class="c1">// Simplifications:</span>
-<span class="c1">// - glider 100% clean and with full factory performance (brand new painting)</span>
-<span class="c1">// - no influence of the ballast (pilot weight, water, etc) to glider performance</span>
-<span class="c1">// - only one point on a glider polar curve</span>
-<span class="c1">// - no influence of bank angle (during circling) on a glider performance</span>
-<span class="c1">// - no wind</span>
-<span class="c1">// - constant thermals strength</span>
-<span class="c1">// - thermals exactly where and when we need them ;-)</span>
-<span class="c1">// - no airspaces</span>
-<span class="c1">// - Earth is flat</span>
-<span class="c1">// - ground level changes linearly between airports</span>
-<span class="c1">// - no ground obstacles (i.e. mountains) to pass</span>
-<span class="c1">// - flight path exactly on a shortest possible line to destination</span>
+<span class="normal">211</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// definition of glide computer databases and utilities</span>
+<span class="k">namespace</span> <span class="n">glide_computer</span> <span class="p">{</span>
 
-<span class="c1">// gliders database</span>
-<span class="k">namespace</span> <span class="p">{</span>
-
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityKind</span> <span class="n">QK1</span><span class="p">,</span> <span class="n">QuantityKind</span> <span class="n">QK2</span><span class="o">&gt;</span>
-<span class="k">constexpr</span> <span class="n">Dimensionless</span> <span class="k">auto</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">QK1</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">QK2</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-  <span class="k">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">units</span><span class="o">::</span><span class="n">QuantityKindRelatedTo</span><span class="o">&lt;</span><span class="n">QK1</span><span class="p">,</span> <span class="n">QK2</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="k">requires</span> <span class="p">{</span> <span class="n">lhs</span><span class="p">.</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">common</span><span class="p">();</span> <span class="p">}</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span> <span class="n">rhs</span><span class="p">.</span><span class="n">common</span><span class="p">();</span>
-<span class="p">}</span>
 
 <span class="k">struct</span> <span class="n">glider</span> <span class="p">{</span>
   <span class="k">struct</span> <span class="n">polar_point</span> <span class="p">{</span>
@@ -728,20 +516,294 @@ conditions.</p>
   <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">polar_point</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="n">polar</span><span class="p">;</span>
 <span class="p">};</span>
 
+<span class="k">constexpr</span> <span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">glide_ratio</span><span class="p">(</span><span class="k">const</span> <span class="n">glider</span><span class="o">::</span><span class="n">polar_point</span><span class="o">&amp;</span> <span class="n">polar</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">polar</span><span class="p">.</span><span class="n">v</span> <span class="o">/</span> <span class="o">-</span><span class="n">polar</span><span class="p">.</span><span class="n">climb</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">weather</span> <span class="p">{</span>
+  <span class="n">height</span> <span class="n">cloud_base</span><span class="p">;</span>
+  <span class="n">rate_of_climb</span> <span class="n">thermal_strength</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">waypoint</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+  <span class="n">geographic</span><span class="o">::</span><span class="n">position</span> <span class="n">pos</span><span class="p">;</span>
+  <span class="n">altitude</span> <span class="n">alt</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">task</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="k">using</span> <span class="n">waypoints</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">waypoint</span><span class="o">&gt;</span><span class="p">;</span>
+
+  <span class="k">class</span> <span class="nc">leg</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="n">waypoint</span><span class="o">*</span> <span class="n">begin_</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">waypoint</span><span class="o">*</span> <span class="n">end_</span><span class="p">;</span>
+    <span class="n">distance</span> <span class="n">length_</span> <span class="o">=</span> <span class="n">geographic</span><span class="o">::</span><span class="n">spherical_distance</span><span class="p">(</span><span class="n">begin</span><span class="p">().</span><span class="n">pos</span><span class="p">,</span> <span class="n">end</span><span class="p">().</span><span class="n">pos</span><span class="p">);</span>
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">leg</span><span class="p">(</span><span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="k">noexcept</span><span class="o">:</span> <span class="n">begin_</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">),</span> <span class="n">end_</span><span class="p">(</span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">constexpr</span> <span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">begin</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">begin_</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">constexpr</span> <span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">end</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">end_</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">constexpr</span> <span class="k">const</span> <span class="n">distance</span> <span class="n">get_length</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">length_</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">};</span>
+  <span class="k">using</span> <span class="n">legs</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">leg</span><span class="o">&gt;</span><span class="p">;</span>
+
+  <span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">input_range</span> <span class="n">R</span><span class="o">&gt;</span>
+    <span class="k">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range_value_t</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">waypoint</span><span class="o">&gt;</span>
+  <span class="k">explicit</span> <span class="n">task</span><span class="p">(</span><span class="k">const</span> <span class="n">R</span><span class="o">&amp;</span> <span class="n">r</span><span class="p">)</span> <span class="o">:</span> <span class="n">waypoints_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="p">{}</span>
+
+  <span class="n">task</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="n">waypoint</span><span class="o">&gt;</span> <span class="n">wpts</span><span class="p">)</span> <span class="o">:</span> <span class="n">waypoints_</span><span class="p">(</span><span class="n">wpts</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="k">const</span> <span class="n">waypoints</span><span class="o">&amp;</span> <span class="n">get_waypoints</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">waypoints_</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">const</span> <span class="n">legs</span><span class="o">&amp;</span> <span class="n">get_legs</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">legs_</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">get_start</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">waypoints_</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="p">}</span>
+  <span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">get_finish</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">waypoints_</span><span class="p">.</span><span class="n">back</span><span class="p">();</span> <span class="p">}</span>
+
+  <span class="n">distance</span> <span class="n">get_length</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">length_</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="n">distance</span> <span class="n">get_leg_dist_offset</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">leg_index</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">leg_index</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">distance</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">km</span><span class="p">)</span> <span class="o">:</span> <span class="n">leg_total_distances_</span><span class="p">[</span><span class="n">leg_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="p">}</span>
+  <span class="kt">size_t</span> <span class="n">get_leg_index</span><span class="p">(</span><span class="n">distance</span> <span class="n">dist</span><span class="p">)</span> <span class="k">const</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">distance</span><span class="p">(</span><span class="n">leg_total_distances_</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">leg_total_distances_</span><span class="p">,</span> <span class="n">dist</span><span class="p">)));</span>
+  <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="n">waypoints</span> <span class="n">waypoints_</span><span class="p">;</span>
+  <span class="n">legs</span> <span class="n">legs_</span> <span class="o">=</span> <span class="n">make_legs</span><span class="p">(</span><span class="n">waypoints_</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">distance</span><span class="o">&gt;</span> <span class="n">leg_total_distances_</span> <span class="o">=</span> <span class="n">make_leg_total_distances</span><span class="p">(</span><span class="n">legs_</span><span class="p">);</span>
+  <span class="n">distance</span> <span class="n">length_</span> <span class="o">=</span> <span class="n">leg_total_distances_</span><span class="p">.</span><span class="n">back</span><span class="p">();</span>
+
+  <span class="k">static</span> <span class="n">legs</span> <span class="nf">make_legs</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">::</span><span class="n">waypoints</span><span class="o">&amp;</span> <span class="n">wpts</span><span class="p">);</span>
+  <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">distance</span><span class="o">&gt;</span> <span class="n">make_leg_total_distances</span><span class="p">(</span><span class="k">const</span> <span class="n">legs</span><span class="o">&amp;</span> <span class="n">legs</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">safety</span> <span class="p">{</span>
+  <span class="n">height</span> <span class="n">min_agl_height</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">aircraft_tow</span> <span class="p">{</span>
+  <span class="n">height</span> <span class="n">height_agl</span><span class="p">;</span>
+  <span class="n">rate_of_climb</span> <span class="n">performance</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">flight_point</span> <span class="p">{</span>
+  <span class="n">timestamp</span> <span class="n">ts</span><span class="p">;</span>
+  <span class="n">altitude</span> <span class="n">alt</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">leg_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">distance</span> <span class="n">dist</span><span class="p">{</span><span class="mi">0</span> <span class="o">*</span> <span class="n">km</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="n">altitude</span> <span class="nf">terrain_level_alt</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">);</span>
+
+<span class="k">constexpr</span> <span class="n">height</span> <span class="nf">agl</span><span class="p">(</span><span class="n">altitude</span> <span class="n">glider_alt</span><span class="p">,</span> <span class="n">altitude</span> <span class="n">terrain_level</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">glider_alt</span> <span class="o">-</span> <span class="n">terrain_level</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="kr">inline</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span> <span class="n">length_3d</span><span class="p">(</span><span class="n">distance</span> <span class="n">dist</span><span class="p">,</span> <span class="n">height</span> <span class="n">h</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// TODO support for hypot(q, q)</span>
+  <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">dist</span><span class="p">.</span><span class="n">common</span><span class="p">())</span> <span class="o">+</span> <span class="n">pow</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">common</span><span class="p">()));</span>
+<span class="p">}</span>
+
+<span class="n">distance</span> <span class="n">glide_distance</span><span class="p">(</span><span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="n">altitude</span> <span class="n">ground_alt</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">estimate</span><span class="p">(</span><span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">weather</span><span class="o">&amp;</span> <span class="n">w</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">aircraft_tow</span><span class="o">&amp;</span> <span class="n">at</span><span class="p">);</span>
+
+<span class="p">}</span>  <span class="c1">// namespace glide_computer</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">glide_computer_example.cpp</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;glide_computer.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/chrono.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="p">{</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">glide_computer</span><span class="p">;</span>
+
 <span class="k">auto</span> <span class="nf">get_gliders</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span> <span class="n">gliders</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-30 Pirat&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">83</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7389</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
-    <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-51 Junior&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">80</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6349</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
-    <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-48 Jantar Std 3&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">110</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77355</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
-    <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-56 Diana&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">110</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.63657</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}}</span>
-  <span class="p">};</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span> <span class="n">gliders</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-30 Pirat&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">83</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7389</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
+      <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-51 Junior&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">80</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6349</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
+      <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-48 Jantar Std 3&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">110</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77355</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
+      <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-56 Diana&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">110</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.63657</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}}};</span>
   <span class="k">return</span> <span class="n">gliders</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">constexpr</span> <span class="n">Dimensionless</span> <span class="k">auto</span> <span class="nf">glide_ratio</span><span class="p">(</span><span class="k">const</span> <span class="n">glider</span><span class="o">::</span><span class="n">polar_point</span><span class="o">&amp;</span> <span class="n">polar</span><span class="p">)</span>
+<span class="k">auto</span> <span class="nf">get_weather_conditions</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">return</span> <span class="n">polar</span><span class="p">.</span><span class="n">v</span> <span class="o">/</span> <span class="o">-</span><span class="n">polar</span><span class="p">.</span><span class="n">climb</span><span class="p">;</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span> <span class="n">weather_conditions</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Good&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">1900</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">4.3</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}),</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Medium&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">1550</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">2.8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}),</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Bad&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">850</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">1.8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)})};</span>
+  <span class="k">return</span> <span class="n">weather_conditions</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">auto</span> <span class="nf">get_waypoints</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">geographic</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span> <span class="n">waypoints</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">waypoint</span><span class="p">{</span><span class="s">&quot;EPPR&quot;</span><span class="p">,</span> <span class="p">{</span><span class="mf">54.24772</span><span class="n">_N</span><span class="p">,</span> <span class="mf">18.6745</span><span class="n">_E</span><span class="p">},</span> <span class="n">altitude</span><span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="n">ft</span><span class="p">)},</span>    <span class="c1">// N54°14&#39;51.8&quot; E18°40&#39;28.2&quot;</span>
+      <span class="n">waypoint</span><span class="p">{</span><span class="s">&quot;EPGI&quot;</span><span class="p">,</span> <span class="p">{</span><span class="mf">53.52442</span><span class="n">_N</span><span class="p">,</span> <span class="mf">18.84947</span><span class="n">_E</span><span class="p">},</span> <span class="n">altitude</span><span class="p">(</span><span class="mi">115</span> <span class="o">*</span> <span class="n">ft</span><span class="p">)}</span>   <span class="c1">// N53°31&#39;27.9&quot; E18°50&#39;58.1&quot;</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="n">waypoints</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">forward_range</span> <span class="n">R</span><span class="o">&gt;</span>
@@ -750,33 +812,13 @@ conditions.</p>
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Gliders:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;========</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">g</span> <span class="p">:</span> <span class="n">gliders</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">g</span> <span class="p">:</span> <span class="n">gliders</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Name: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">g</span><span class="p">.</span><span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Polar:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">p</span> <span class="p">:</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">)</span>
-      <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;  * {:%.4Q %q} @ {:%.1Q %q} -&gt; {:.1f}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">climb</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">v</span><span class="p">,</span> <span class="n">glide_ratio</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">p</span> <span class="p">:</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;  * {:%.4Q %q} @ {:%.1Q %q} -&gt; {:%.1Q %q}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">climb</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">v</span><span class="p">,</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="n">glide_ratio</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">])));</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">}</span> <span class="c1">// namespace</span>
-
-<span class="c1">// weather conditions</span>
-<span class="k">namespace</span> <span class="p">{</span>
-
-<span class="k">struct</span> <span class="n">weather</span> <span class="p">{</span>
-  <span class="n">height</span> <span class="n">cloud_base</span><span class="p">;</span>
-  <span class="n">rate_of_climb</span> <span class="n">thermal_strength</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">auto</span> <span class="nf">get_weather_conditions</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span> <span class="n">weather_conditions</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Good&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">1900</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">4.3</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Medium&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">1550</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">2.8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Bad&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">850</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">1.8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)})</span>
-  <span class="p">};</span>
-  <span class="k">return</span> <span class="n">weather_conditions</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">forward_range</span> <span class="n">R</span><span class="o">&gt;</span>
@@ -785,51 +827,42 @@ conditions.</p>
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Weather:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;========</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">conditions</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Kind:              &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">conditions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">w</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Cloud base:        &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.0Q %q}&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">cloud_base</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; AGL</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Thermals strength: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">thermal_strength</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;  * Cloud base:        &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.0Q %q}&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">cloud_base</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; AGL</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;  * Thermals strength: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">thermal_strength</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="p">}</span> <span class="c1">// namespace</span>
-
-<span class="c1">// task</span>
-<span class="k">namespace</span> <span class="p">{</span>
-
-<span class="k">struct</span> <span class="n">waypoint</span> <span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-  <span class="n">altitude</span> <span class="n">alt</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="n">task</span> <span class="p">{</span>
-  <span class="n">waypoint</span> <span class="n">start</span><span class="p">;</span>
-  <span class="n">waypoint</span> <span class="n">finish</span><span class="p">;</span>
-  <span class="n">distance</span> <span class="n">dist</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">forward_range</span> <span class="n">R</span><span class="o">&gt;</span>
+  <span class="k">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range_value_t</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">waypoint</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">R</span><span class="o">&amp;</span> <span class="n">waypoints</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Task:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;=====</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Start:    &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span><span class="p">.</span><span class="n">start</span><span class="p">.</span><span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; (&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">start</span><span class="p">.</span><span class="n">alt</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Finish:   &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span><span class="p">.</span><span class="n">finish</span><span class="p">.</span><span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; (&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">finish</span><span class="p">.</span><span class="n">alt</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">dist</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Waypoints:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;==========</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">w</span> <span class="p">:</span> <span class="n">waypoints</span><span class="p">)</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;- {}: {} {}, {:%.1Q %q}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">w</span><span class="p">.</span><span class="n">alt</span><span class="p">);</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">}</span> <span class="c1">// namespace</span>
+<span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Task:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;=====</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-<span class="c1">// safety params</span>
-<span class="k">namespace</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Start: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span><span class="p">.</span><span class="n">get_start</span><span class="p">().</span><span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Finish: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span><span class="p">.</span><span class="n">get_finish</span><span class="p">().</span><span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Length:  &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">get_length</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
-<span class="k">struct</span> <span class="n">safety</span> <span class="p">{</span>
-  <span class="n">height</span> <span class="n">min_agl_height</span><span class="p">;</span>
-<span class="p">};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Legs: &quot;</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">l</span> <span class="p">:</span> <span class="n">t</span><span class="p">.</span><span class="n">get_legs</span><span class="p">())</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;  * {} -&gt; {} ({:%.1Q %q})</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">begin</span><span class="p">().</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">end</span><span class="p">().</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">get_length</span><span class="p">());</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span>
+<span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Safety:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;=======</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
@@ -837,206 +870,347 @@ conditions.</p>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">}</span> <span class="c1">// namespace</span>
-
-<span class="c1">// tow parameters</span>
-<span class="k">namespace</span> <span class="p">{</span>
-
-<span class="k">struct</span> <span class="n">aircraft_tow</span> <span class="p">{</span>
-  <span class="n">height</span> <span class="n">height_agl</span><span class="p">;</span>
-  <span class="n">rate_of_climb</span> <span class="n">performance</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="n">aircraft_tow</span><span class="o">&amp;</span> <span class="n">tow</span><span class="p">)</span>
+<span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">aircraft_tow</span><span class="o">&amp;</span> <span class="n">tow</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Tow:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;====</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; - Type:        aircraft</span><span class="se">\n</span><span class="s">&quot;</span> <span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; - Height:      &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.0Q %q}&quot;</span><span class="p">,</span> <span class="n">tow</span><span class="p">.</span><span class="n">height_agl</span><span class="p">)</span> <span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; - Performance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">tow</span><span class="p">.</span><span class="n">performance</span><span class="p">)</span> <span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Type:        aircraft</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Height:      &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.0Q %q}&quot;</span><span class="p">,</span> <span class="n">tow</span><span class="p">.</span><span class="n">height_agl</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;- Performance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:%.1Q %q}&quot;</span><span class="p">,</span> <span class="n">tow</span><span class="p">.</span><span class="n">performance</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">}</span> <span class="c1">// namespace</span>
-
-<span class="c1">// tactical flight computer basics</span>
-<span class="k">namespace</span> <span class="p">{</span>
-
-<span class="k">struct</span> <span class="n">flight_point</span> <span class="p">{</span>
-  <span class="n">duration</span> <span class="n">dur</span><span class="p">;</span>
-  <span class="n">distance</span> <span class="n">dist</span><span class="p">;</span>
-  <span class="n">altitude</span> <span class="n">alt</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">constexpr</span> <span class="n">altitude</span> <span class="nf">terrain_level_alt</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="n">distance</span> <span class="n">dist</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="n">height</span> <span class="n">alt_diff</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">finish</span><span class="p">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">t</span><span class="p">.</span><span class="n">start</span><span class="p">.</span><span class="n">alt</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">t</span><span class="p">.</span><span class="n">start</span><span class="p">.</span><span class="n">alt</span> <span class="o">+</span> <span class="n">alt_diff</span> <span class="o">*</span> <span class="p">(</span><span class="n">dist</span> <span class="o">/</span> <span class="n">t</span><span class="p">.</span><span class="n">dist</span><span class="p">).</span><span class="n">common</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="k">constexpr</span> <span class="n">height</span> <span class="nf">agl</span><span class="p">(</span><span class="n">altitude</span> <span class="n">glider_alt</span><span class="p">,</span> <span class="n">altitude</span> <span class="n">terrain_level</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">glider_alt</span> <span class="o">-</span> <span class="n">terrain_level</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">flight_point</span> <span class="nf">takeoff</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_point</span><span class="p">{{},</span> <span class="p">{},</span> <span class="n">t</span><span class="p">.</span><span class="n">start</span><span class="p">.</span><span class="n">alt</span><span class="p">};</span>
-  <span class="k">return</span> <span class="n">new_point</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span> <span class="n">phase_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">new_point</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;| {:&lt;12} | {:&gt;9%.1Q %q} (Total: {:&gt;9%.1Q %q}) | {:&gt;8%.1Q %q} (Total: {:&gt;8%.1Q %q}) | {:&gt;7%.0Q %q} ({:&gt;6%.0Q %q}) |</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
-    <span class="n">phase_name</span><span class="p">,</span>
-    <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">minute</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new_point</span><span class="p">.</span><span class="n">dur</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">dur</span><span class="p">),</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">minute</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new_point</span><span class="p">.</span><span class="n">dur</span><span class="p">),</span>
-    <span class="n">new_point</span><span class="p">.</span><span class="n">dist</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">,</span> <span class="n">new_point</span><span class="p">.</span><span class="n">dist</span><span class="p">,</span>
-    <span class="n">new_point</span><span class="p">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span><span class="p">,</span> <span class="n">new_point</span><span class="p">.</span><span class="n">alt</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">flight_point</span> <span class="nf">tow</span><span class="p">(</span><span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">aircraft_tow</span><span class="o">&amp;</span> <span class="n">at</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">at</span><span class="p">.</span><span class="n">height_agl</span> <span class="o">/</span> <span class="n">at</span><span class="p">.</span><span class="n">performance</span><span class="p">).</span><span class="n">common</span><span class="p">();</span>
-  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_point</span><span class="p">{</span><span class="n">point</span><span class="p">.</span><span class="n">dur</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span> <span class="o">+</span> <span class="n">at</span><span class="p">.</span><span class="n">height_agl</span><span class="p">};</span>
-
-  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Tow&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">new_point</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">new_point</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">flight_point</span> <span class="nf">circle</span><span class="p">(</span><span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">weather</span><span class="o">&amp;</span> <span class="n">w</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="n">height</span><span class="o">&amp;</span> <span class="n">height_to_gain</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="n">height</span> <span class="n">h_agl</span> <span class="o">=</span> <span class="n">agl</span><span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">alt</span><span class="p">,</span> <span class="n">terrain_level_alt</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">));</span>
-  <span class="k">const</span> <span class="n">height</span> <span class="n">circle_height</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">w</span><span class="p">.</span><span class="n">cloud_base</span> <span class="o">-</span> <span class="n">h_agl</span><span class="p">,</span> <span class="n">height_to_gain</span><span class="p">);</span>
-  <span class="k">const</span> <span class="n">rate_of_climb</span> <span class="n">circling_rate</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">thermal_strength</span> <span class="o">+</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">climb</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">circle_height</span> <span class="o">/</span> <span class="n">circling_rate</span><span class="p">).</span><span class="n">common</span><span class="p">();</span>
-  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_point</span><span class="p">{</span><span class="n">point</span><span class="p">.</span><span class="n">dur</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span> <span class="o">+</span> <span class="n">circle_height</span><span class="p">};</span>
-
-  <span class="n">height_to_gain</span> <span class="o">-=</span> <span class="n">circle_height</span><span class="p">;</span>
-
-  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Circle&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">new_point</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">new_point</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Returns `x` of the intersection of a glide line and a terrain line.</span>
-<span class="c1">// y = -x / glide_ratio + point.alt;</span>
-<span class="c1">// y = (finish_alt - ground_alt) / dist_to_finish * x + ground_alt + min_agl_height;</span>
-<span class="k">constexpr</span> <span class="n">distance</span> <span class="nf">glide_distance</span><span class="p">(</span><span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="n">altitude</span> <span class="n">ground_alt</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">dist_to_finish</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">dist</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">distance</span><span class="p">((</span><span class="n">ground_alt</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="n">min_agl_height</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span><span class="p">).</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span> <span class="p">((</span><span class="n">ground_alt</span> <span class="o">-</span> <span class="n">t</span><span class="p">.</span><span class="n">finish</span><span class="p">.</span><span class="n">alt</span><span class="p">)</span> <span class="o">/</span> <span class="n">dist_to_finish</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">glide_ratio</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">])));</span>
-<span class="p">}</span>
-
-<span class="kr">inline</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="o">&gt;</span> <span class="n">length_3d</span><span class="p">(</span><span class="n">distance</span> <span class="n">dist</span><span class="p">,</span> <span class="n">height</span> <span class="n">h</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">dist</span><span class="p">.</span><span class="n">common</span><span class="p">())</span> <span class="o">+</span> <span class="n">pow</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">common</span><span class="p">()));</span>
-<span class="p">}</span>
-
-<span class="n">flight_point</span> <span class="n">glide</span><span class="p">(</span><span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">ground_alt</span> <span class="o">=</span> <span class="n">terrain_level_alt</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">);</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">glide_distance</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">ground_alt</span><span class="p">);</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">ground_alt</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="n">min_agl_height</span><span class="p">;</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">l3d</span> <span class="o">=</span> <span class="n">length_3d</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">alt</span><span class="p">);</span>
-  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="n">l3d</span> <span class="o">/</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">v</span><span class="p">.</span><span class="n">common</span><span class="p">();</span>
-  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_point</span><span class="p">{</span><span class="n">point</span><span class="p">.</span><span class="n">dur</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span> <span class="o">+</span> <span class="n">dist</span><span class="p">,</span> <span class="n">terrain_level_alt</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span> <span class="o">+</span> <span class="n">dist</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="n">min_agl_height</span><span class="p">};</span>
-
-  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Glide&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">new_point</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">new_point</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">flight_point</span> <span class="n">final_glide</span><span class="p">(</span><span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">dist</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">;</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">l3d</span> <span class="o">=</span> <span class="n">length_3d</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">t</span><span class="p">.</span><span class="n">finish</span><span class="p">.</span><span class="n">alt</span><span class="p">);</span>
-  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="n">l3d</span> <span class="o">/</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">v</span><span class="p">.</span><span class="n">common</span><span class="p">();</span>
-  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_point</span><span class="p">{</span><span class="n">point</span><span class="p">.</span><span class="n">dur</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span> <span class="o">+</span> <span class="n">dist</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">finish</span><span class="p">.</span><span class="n">alt</span><span class="p">};</span>
-
-  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Final Glide&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">new_point</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">new_point</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="n">estimate</span><span class="p">(</span><span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">weather</span><span class="o">&amp;</span> <span class="n">w</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">aircraft_tow</span><span class="o">&amp;</span> <span class="n">at</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="c1">// ready to takeoff</span>
-  <span class="n">flight_point</span> <span class="n">point</span> <span class="o">=</span> <span class="n">takeoff</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
-
-  <span class="c1">// estimate aircraft towing</span>
-  <span class="n">point</span> <span class="o">=</span> <span class="n">tow</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">at</span><span class="p">);</span>
-
-  <span class="c1">// estimate the altitude needed to reach the finish line from this place</span>
-  <span class="k">const</span> <span class="n">altitude</span> <span class="n">final_glide_alt</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">finish</span><span class="p">.</span><span class="n">alt</span> <span class="o">+</span> <span class="n">height</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">dist</span><span class="p">.</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span> <span class="n">glide_ratio</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
-
-  <span class="c1">// how much height we still need to gain in the thermalls to reach the destination?</span>
-  <span class="n">height</span> <span class="n">height_to_gain</span> <span class="o">=</span> <span class="n">final_glide_alt</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span><span class="p">;</span>
-
-  <span class="k">do</span> <span class="p">{</span>
-    <span class="c1">// glide to the next thermall</span>
-    <span class="n">point</span> <span class="o">=</span> <span class="n">glide</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
-
-    <span class="c1">// circle in a thermall to gain height</span>
-    <span class="n">point</span> <span class="o">=</span> <span class="n">circle</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">height_to_gain</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">while</span><span class="p">(</span><span class="n">height_to_gain</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">m</span><span class="p">));</span>
-
-  <span class="c1">// final glide</span>
-  <span class="n">point</span> <span class="o">=</span> <span class="n">final_glide</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="p">}</span> <span class="c1">// namespace</span>
-
-<span class="c1">// example</span>
-<span class="k">namespace</span> <span class="p">{</span>
-
 <span class="kt">void</span> <span class="n">example</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">gliders</span> <span class="o">=</span> <span class="n">get_gliders</span><span class="p">();</span>
-  <span class="n">print</span><span class="p">(</span><span class="n">gliders</span><span class="p">);</span>
-
-  <span class="k">const</span> <span class="k">auto</span> <span class="n">weather_conditions</span> <span class="o">=</span> <span class="n">get_weather_conditions</span><span class="p">();</span>
-  <span class="n">print</span><span class="p">(</span><span class="n">weather_conditions</span><span class="p">);</span>
-
-  <span class="k">const</span> <span class="n">task</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">waypoint</span><span class="p">{</span><span class="s">&quot;EPPR&quot;</span><span class="p">,</span> <span class="n">altitude</span><span class="p">(</span><span class="mi">16</span><span class="n">_q_ft</span><span class="p">)},</span>
-    <span class="n">waypoint</span><span class="p">{</span><span class="s">&quot;EPGI&quot;</span><span class="p">,</span> <span class="n">altitude</span><span class="p">(</span><span class="mi">115</span><span class="n">_q_ft</span><span class="p">)},</span>
-    <span class="n">distance</span><span class="p">(</span><span class="mf">81.7</span><span class="n">_q_km</span><span class="p">)</span>
-  <span class="p">};</span>
-  <span class="n">print</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
-
   <span class="k">const</span> <span class="n">safety</span> <span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">300</span> <span class="o">*</span> <span class="n">m</span><span class="p">)};</span>
-  <span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">gliders</span> <span class="o">=</span> <span class="n">get_gliders</span><span class="p">();</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">waypoints</span> <span class="o">=</span> <span class="n">get_waypoints</span><span class="p">();</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">weather_conditions</span> <span class="o">=</span> <span class="n">get_weather_conditions</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">task</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span><span class="n">waypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">waypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">waypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">]};</span>
   <span class="k">const</span> <span class="n">aircraft_tow</span> <span class="n">tow</span> <span class="o">=</span> <span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">400</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">1.6</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="o">::</span><span class="n">s</span><span class="p">)};</span>
+  <span class="c1">// TODO use C++20 date library when available</span>
+  <span class="c1">// set `start_time` to 11:00 am today</span>
+  <span class="k">const</span> <span class="n">timestamp</span> <span class="nf">start_time</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">());</span>
+
+  <span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">gliders</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">waypoints</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">weather_conditions</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
   <span class="n">print</span><span class="p">(</span><span class="n">tow</span><span class="p">);</span>
 
-  <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">g</span> <span class="p">:</span> <span class="n">gliders</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">weather_conditions</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">g</span> <span class="p">:</span> <span class="n">gliders</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">weather_conditions</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">txt</span> <span class="o">=</span> <span class="s">&quot;Scenario: Glider = &quot;</span> <span class="o">+</span> <span class="n">g</span><span class="p">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;, Weather = &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
       <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">txt</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
       <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{0:=^{1}}</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-      <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;| {:&lt;12} | {:^28} | {:^26} | {:^21} |</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;Flight phase&quot;</span><span class="p">,</span> <span class="s">&quot;Duration&quot;</span><span class="p">,</span> <span class="s">&quot;Distance&quot;</span><span class="p">,</span> <span class="s">&quot;Height&quot;</span><span class="p">);</span>
-      <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;|{0:-^14}|{0:-^30}|{0:-^28}|{0:-^23}|</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
 
-      <span class="n">estimate</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">tow</span><span class="p">);</span>
+      <span class="n">estimate</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">tow</span><span class="p">);</span>
 
       <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="p">}</span> <span class="c1">// namespace</span>
+<span class="p">}</span>  <span class="c1">// namespace</span>
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="n">example</span><span class="p">();</span>
-  <span class="p">}</span>
-  <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Unhandled std exception caught: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Unhandled unknown exception caught</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Having all of that it estimates the number of flight phases (towing, circling, gliding, final glide)
+needed to finish a task. As an output it provides the duration needed to finish the task while
+flying a selected glider in the specific weather conditions.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">glide_computer.cpp</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;glide_computer.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">glide_computer</span> <span class="p">{</span>
+
+<span class="n">task</span><span class="o">::</span><span class="n">legs</span> <span class="n">task</span><span class="o">::</span><span class="n">make_legs</span><span class="p">(</span><span class="k">const</span> <span class="n">waypoints</span><span class="o">&amp;</span> <span class="n">wpts</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">task</span><span class="o">::</span><span class="n">legs</span> <span class="n">res</span><span class="p">;</span>
+  <span class="n">res</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">wpts</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">to_leg</span> <span class="o">=</span> <span class="p">[](</span><span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">w1</span><span class="p">,</span> <span class="k">const</span> <span class="n">waypoint</span><span class="o">&amp;</span> <span class="n">w2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">task</span><span class="o">::</span><span class="n">leg</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">);</span> <span class="p">};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">wpts</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">prev</span><span class="p">(</span><span class="n">wpts</span><span class="p">.</span><span class="n">cend</span><span class="p">()),</span> <span class="n">next</span><span class="p">(</span><span class="n">wpts</span><span class="p">.</span><span class="n">cbegin</span><span class="p">()),</span> <span class="n">wpts</span><span class="p">.</span><span class="n">cend</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">to_leg</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">distance</span><span class="o">&gt;</span> <span class="n">task</span><span class="o">::</span><span class="n">make_leg_total_distances</span><span class="p">(</span><span class="k">const</span> <span class="n">legs</span><span class="o">&amp;</span> <span class="n">legs</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">distance</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">;</span>
+  <span class="n">res</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">legs</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+  <span class="k">auto</span> <span class="n">to_length</span> <span class="o">=</span> <span class="p">[](</span><span class="k">const</span> <span class="n">leg</span><span class="o">&amp;</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">l</span><span class="p">.</span><span class="n">get_length</span><span class="p">();</span> <span class="p">};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">transform_inclusive_scan</span><span class="p">(</span><span class="n">legs</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">legs</span><span class="p">.</span><span class="n">cend</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">plus</span><span class="p">(),</span> <span class="n">to_length</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">altitude</span> <span class="n">terrain_level_alt</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">task</span><span class="o">::</span><span class="n">leg</span><span class="o">&amp;</span> <span class="n">l</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">get_legs</span><span class="p">()[</span><span class="n">pos</span><span class="p">.</span><span class="n">leg_idx</span><span class="p">];</span>
+  <span class="k">const</span> <span class="n">height</span> <span class="n">alt_diff</span> <span class="o">=</span> <span class="n">l</span><span class="p">.</span><span class="n">end</span><span class="p">().</span><span class="n">alt</span> <span class="o">-</span> <span class="n">l</span><span class="p">.</span><span class="n">begin</span><span class="p">().</span><span class="n">alt</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">l</span><span class="p">.</span><span class="n">begin</span><span class="p">().</span><span class="n">alt</span> <span class="o">+</span> <span class="n">alt_diff</span> <span class="o">*</span> <span class="p">((</span><span class="n">pos</span><span class="p">.</span><span class="n">dist</span> <span class="o">-</span> <span class="n">t</span><span class="p">.</span><span class="n">get_leg_dist_offset</span><span class="p">(</span><span class="n">pos</span><span class="p">.</span><span class="n">leg_idx</span><span class="p">))</span> <span class="o">/</span> <span class="n">l</span><span class="p">.</span><span class="n">get_length</span><span class="p">()).</span><span class="n">common</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Returns `x` of the intersection of a glide line and a terrain line.</span>
+<span class="c1">// y = -x / glide_ratio + pos.alt;</span>
+<span class="c1">// y = (finish_alt - ground_alt) / dist_to_finish * x + ground_alt + min_agl_height;</span>
+<span class="n">distance</span> <span class="n">glide_distance</span><span class="p">(</span><span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="n">altitude</span> <span class="n">ground_alt</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">dist_to_finish</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">get_length</span><span class="p">()</span> <span class="o">-</span> <span class="n">pos</span><span class="p">.</span><span class="n">dist</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nf">distance</span><span class="p">((</span><span class="n">ground_alt</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="n">min_agl_height</span> <span class="o">-</span> <span class="n">pos</span><span class="p">.</span><span class="n">alt</span><span class="p">).</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span>
+                  <span class="p">((</span><span class="n">ground_alt</span> <span class="o">-</span> <span class="n">t</span><span class="p">.</span><span class="n">get_finish</span><span class="p">().</span><span class="n">alt</span><span class="p">)</span> <span class="o">/</span> <span class="n">dist_to_finish</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">glide_ratio</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">])));</span>
+<span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">namespace</span> <span class="p">{</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">glide_computer</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span> <span class="n">phase_name</span><span class="p">,</span> <span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">glide_computer</span><span class="o">::</span><span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">glide_computer</span><span class="o">::</span><span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">new_point</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span>
+      <span class="s">&quot;| {:&lt;12} | {:&gt;9%.1Q %q} (Total: {:&gt;9%.1Q %q}) | {:&gt;8%.1Q %q} (Total: {:&gt;8%.1Q %q}) | {:&gt;7%.0Q %q} ({:&gt;6%.0Q %q}) |</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="n">phase_name</span><span class="p">,</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">minute</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new_point</span><span class="p">.</span><span class="n">ts</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">ts</span><span class="p">),</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">minute</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new_point</span><span class="p">.</span><span class="n">ts</span> <span class="o">-</span> <span class="n">start_ts</span><span class="p">),</span>
+      <span class="n">new_point</span><span class="p">.</span><span class="n">dist</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">dist</span><span class="p">,</span> <span class="n">new_point</span><span class="p">.</span><span class="n">dist</span><span class="p">,</span> <span class="n">new_point</span><span class="p">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">alt</span><span class="p">,</span> <span class="n">new_point</span><span class="p">.</span><span class="n">alt</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">flight_point</span> <span class="nf">takeoff</span><span class="p">(</span><span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">get_start</span><span class="p">().</span><span class="n">alt</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">flight_point</span> <span class="nf">tow</span><span class="p">(</span><span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">aircraft_tow</span><span class="o">&amp;</span> <span class="n">at</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">at</span><span class="p">.</span><span class="n">height_agl</span> <span class="o">/</span> <span class="n">at</span><span class="p">.</span><span class="n">performance</span><span class="p">).</span><span class="n">common</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_pos</span><span class="p">{</span><span class="n">pos</span><span class="p">.</span><span class="n">ts</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">alt</span> <span class="o">+</span> <span class="n">at</span><span class="p">.</span><span class="n">height_agl</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">leg_idx</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">dist</span><span class="p">};</span>
+
+  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Tow&quot;</span><span class="p">,</span> <span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">new_pos</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">new_pos</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">flight_point</span> <span class="nf">circle</span><span class="p">(</span><span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">weather</span><span class="o">&amp;</span> <span class="n">w</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="n">height</span><span class="o">&amp;</span> <span class="n">height_to_gain</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">height</span> <span class="n">h_agl</span> <span class="o">=</span> <span class="n">agl</span><span class="p">(</span><span class="n">pos</span><span class="p">.</span><span class="n">alt</span><span class="p">,</span> <span class="n">terrain_level_alt</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pos</span><span class="p">));</span>
+  <span class="k">const</span> <span class="n">height</span> <span class="n">circling_height</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">w</span><span class="p">.</span><span class="n">cloud_base</span> <span class="o">-</span> <span class="n">h_agl</span><span class="p">,</span> <span class="n">height_to_gain</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">rate_of_climb</span> <span class="n">circling_rate</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">thermal_strength</span> <span class="o">+</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">climb</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">circling_height</span> <span class="o">/</span> <span class="n">circling_rate</span><span class="p">).</span><span class="n">common</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_pos</span><span class="p">{</span><span class="n">pos</span><span class="p">.</span><span class="n">ts</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">alt</span> <span class="o">+</span> <span class="n">circling_height</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">leg_idx</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">dist</span><span class="p">};</span>
+
+  <span class="n">height_to_gain</span> <span class="o">-=</span> <span class="n">circling_height</span><span class="p">;</span>
+
+  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Circle&quot;</span><span class="p">,</span> <span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">new_pos</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">new_pos</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">flight_point</span> <span class="nf">glide</span><span class="p">(</span><span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">ground_alt</span> <span class="o">=</span> <span class="n">terrain_level_alt</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">glide_distance</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">ground_alt</span><span class="p">);</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">new_distance</span> <span class="o">=</span> <span class="n">pos</span><span class="p">.</span><span class="n">dist</span> <span class="o">+</span> <span class="n">dist</span><span class="p">;</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">ground_alt</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="n">min_agl_height</span><span class="p">;</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">l3d</span> <span class="o">=</span> <span class="n">length_3d</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">alt</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="n">l3d</span> <span class="o">/</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">v</span><span class="p">.</span><span class="n">common</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_pos</span><span class="p">{</span><span class="n">pos</span><span class="p">.</span><span class="n">ts</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">terrain_level_alt</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="n">min_agl_height</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">get_leg_index</span><span class="p">(</span><span class="n">new_distance</span><span class="p">),</span> <span class="n">new_distance</span><span class="p">};</span>
+
+  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Glide&quot;</span><span class="p">,</span> <span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">new_pos</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">new_pos</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">flight_point</span> <span class="nf">final_glide</span><span class="p">(</span><span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">get_length</span><span class="p">()</span> <span class="o">-</span> <span class="n">pos</span><span class="p">.</span><span class="n">dist</span><span class="p">;</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">l3d</span> <span class="o">=</span> <span class="n">length_3d</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">t</span><span class="p">.</span><span class="n">get_finish</span><span class="p">().</span><span class="n">alt</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">duration</span> <span class="n">d</span> <span class="o">=</span> <span class="n">l3d</span> <span class="o">/</span> <span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">v</span><span class="p">.</span><span class="n">common</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">flight_point</span> <span class="n">new_pos</span><span class="p">{</span><span class="n">pos</span><span class="p">.</span><span class="n">ts</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">get_finish</span><span class="p">().</span><span class="n">alt</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">get_legs</span><span class="p">().</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pos</span><span class="p">.</span><span class="n">dist</span> <span class="o">+</span> <span class="n">dist</span><span class="p">};</span>
+
+  <span class="n">print</span><span class="p">(</span><span class="s">&quot;Final Glide&quot;</span><span class="p">,</span> <span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">new_pos</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">new_pos</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">}</span>  <span class="c1">// namespace</span>
+
+<span class="k">namespace</span> <span class="n">glide_computer</span> <span class="p">{</span>
+
+<span class="kt">void</span> <span class="n">estimate</span><span class="p">(</span><span class="n">timestamp</span> <span class="n">start_ts</span><span class="p">,</span> <span class="k">const</span> <span class="n">glider</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="n">weather</span><span class="o">&amp;</span> <span class="n">w</span><span class="p">,</span> <span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">safety</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">aircraft_tow</span><span class="o">&amp;</span> <span class="n">at</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;| {:&lt;12} | {:^28} | {:^26} | {:^21} |</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;Flight phase&quot;</span><span class="p">,</span> <span class="s">&quot;Duration&quot;</span><span class="p">,</span> <span class="s">&quot;Distance&quot;</span><span class="p">,</span> <span class="s">&quot;Height&quot;</span><span class="p">);</span>
+  <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;|{0:-^14}|{0:-^30}|{0:-^28}|{0:-^23}|</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+
+  <span class="c1">// ready to takeoff</span>
+  <span class="n">flight_point</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">takeoff</span><span class="p">(</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+
+  <span class="c1">// estimate aircraft towing</span>
+  <span class="n">pos</span> <span class="o">=</span> <span class="n">tow</span><span class="p">(</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">at</span><span class="p">);</span>
+
+  <span class="c1">// estimate the altitude needed to reach the finish line from this place</span>
+  <span class="k">const</span> <span class="n">altitude</span> <span class="n">final_glide_alt</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">get_finish</span><span class="p">().</span><span class="n">alt</span> <span class="o">+</span> <span class="n">height</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">get_length</span><span class="p">().</span><span class="n">common</span><span class="p">()</span> <span class="o">/</span> <span class="n">glide_ratio</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">polar</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+
+  <span class="c1">// how much height we still need to gain in the thermalls to reach the destination?</span>
+  <span class="n">height</span> <span class="n">height_to_gain</span> <span class="o">=</span> <span class="n">final_glide_alt</span> <span class="o">-</span> <span class="n">pos</span><span class="p">.</span><span class="n">alt</span><span class="p">;</span>
+
+  <span class="k">do</span> <span class="p">{</span>
+    <span class="c1">// glide to the next thermall</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">glide</span><span class="p">(</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+
+    <span class="c1">// circle in a thermall to gain height</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">circle</span><span class="p">(</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">height_to_gain</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">height_to_gain</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">m</span><span class="p">));</span>
+
+  <span class="c1">// final glide</span>
+  <span class="n">pos</span> <span class="o">=</span> <span class="n">final_glide</span><span class="p">(</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">}</span>  <span class="c1">// namespace glide_computer</span>
 </pre></div>
 </td></tr></table></div>
 </div>
