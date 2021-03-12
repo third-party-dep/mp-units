@@ -499,12 +499,8 @@ safety constraints, and a towing height.</p>
 <span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// definition of glide computer databases and utilities</span>
+<span class="normal">209</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// definition of glide computer databases and utilities</span>
 <span class="k">namespace</span> <span class="n">glide_computer</span> <span class="p">{</span>
-
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
 
 <span class="k">struct</span> <span class="n">glider</span> <span class="p">{</span>
   <span class="k">struct</span> <span class="n">polar_point</span> <span class="p">{</span>
@@ -559,7 +555,7 @@ safety constraints, and a towing height.</p>
 
   <span class="n">distance</span> <span class="n">get_length</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">length_</span><span class="p">;</span> <span class="p">}</span>
 
-  <span class="n">distance</span> <span class="n">get_leg_dist_offset</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">leg_index</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">leg_index</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">distance</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">km</span><span class="p">)</span> <span class="o">:</span> <span class="n">leg_total_distances_</span><span class="p">[</span><span class="n">leg_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="p">}</span>
+  <span class="n">distance</span> <span class="n">get_leg_dist_offset</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">leg_index</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">leg_index</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">distance</span><span class="p">{}</span> <span class="o">:</span> <span class="n">leg_total_distances_</span><span class="p">[</span><span class="n">leg_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="p">}</span>
   <span class="kt">size_t</span> <span class="n">get_leg_index</span><span class="p">(</span><span class="n">distance</span> <span class="n">dist</span><span class="p">)</span> <span class="k">const</span>
   <span class="p">{</span>
     <span class="k">return</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">distance</span><span class="p">(</span><span class="n">leg_total_distances_</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">leg_total_distances_</span><span class="p">,</span> <span class="n">dist</span><span class="p">)));</span>
@@ -588,7 +584,7 @@ safety constraints, and a towing height.</p>
   <span class="n">timestamp</span> <span class="n">ts</span><span class="p">;</span>
   <span class="n">altitude</span> <span class="n">alt</span><span class="p">;</span>
   <span class="kt">size_t</span> <span class="n">leg_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="n">distance</span> <span class="n">dist</span><span class="p">{</span><span class="mi">0</span> <span class="o">*</span> <span class="n">km</span><span class="p">};</span>
+  <span class="n">distance</span> <span class="n">dist</span><span class="p">{};</span>
 <span class="p">};</span>
 
 <span class="n">altitude</span> <span class="nf">terrain_level_alt</span><span class="p">(</span><span class="k">const</span> <span class="n">task</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">flight_point</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">);</span>
@@ -767,7 +763,11 @@ safety constraints, and a towing height.</p>
 <span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
-<span class="normal">179</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;glide_computer.h&quot;</span><span class="cp"></span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;glide_computer.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/chrono.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -778,6 +778,7 @@ safety constraints, and a towing height.</p>
 
 <span class="k">auto</span> <span class="nf">get_gliders</span><span class="p">()</span>
 <span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
   <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span> <span class="n">gliders</span> <span class="o">=</span> <span class="p">{</span>
       <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-30 Pirat&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">83</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7389</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
       <span class="n">glider</span><span class="p">{</span><span class="s">&quot;SZD-51 Junior&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">velocity</span><span class="p">(</span><span class="mi">80</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6349</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}},</span>
@@ -788,6 +789,7 @@ safety constraints, and a towing height.</p>
 
 <span class="k">auto</span> <span class="nf">get_weather_conditions</span><span class="p">()</span>
 <span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
   <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span> <span class="n">weather_conditions</span> <span class="o">=</span> <span class="p">{</span>
       <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Good&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">1900</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">4.3</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}),</span>
       <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">(</span><span class="s">&quot;Medium&quot;</span><span class="p">,</span> <span class="n">weather</span><span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">1550</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">2.8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)}),</span>
@@ -882,17 +884,19 @@ safety constraints, and a towing height.</p>
 
 <span class="kt">void</span> <span class="n">example</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">const</span> <span class="n">safety</span> <span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">300</span> <span class="o">*</span> <span class="n">m</span><span class="p">)};</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="n">safety</span> <span class="n">sfty</span> <span class="o">=</span> <span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">300</span> <span class="o">*</span> <span class="n">m</span><span class="p">)};</span>
   <span class="k">const</span> <span class="k">auto</span> <span class="n">gliders</span> <span class="o">=</span> <span class="n">get_gliders</span><span class="p">();</span>
   <span class="k">const</span> <span class="k">auto</span> <span class="n">waypoints</span> <span class="o">=</span> <span class="n">get_waypoints</span><span class="p">();</span>
   <span class="k">const</span> <span class="k">auto</span> <span class="n">weather_conditions</span> <span class="o">=</span> <span class="n">get_weather_conditions</span><span class="p">();</span>
   <span class="k">const</span> <span class="n">task</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span><span class="n">waypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">waypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">waypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">]};</span>
-  <span class="k">const</span> <span class="n">aircraft_tow</span> <span class="n">tow</span> <span class="o">=</span> <span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">400</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">1.6</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="o">::</span><span class="n">s</span><span class="p">)};</span>
+  <span class="k">const</span> <span class="n">aircraft_tow</span> <span class="n">tow</span> <span class="o">=</span> <span class="p">{</span><span class="n">height</span><span class="p">(</span><span class="mi">400</span> <span class="o">*</span> <span class="n">m</span><span class="p">),</span> <span class="n">rate_of_climb</span><span class="p">(</span><span class="mf">1.6</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)};</span>
   <span class="c1">// TODO use C++20 date library when available</span>
   <span class="c1">// set `start_time` to 11:00 am today</span>
   <span class="k">const</span> <span class="n">timestamp</span> <span class="nf">start_time</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">());</span>
 
-  <span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">sfty</span><span class="p">);</span>
   <span class="n">print</span><span class="p">(</span><span class="n">gliders</span><span class="p">);</span>
   <span class="n">print</span><span class="p">(</span><span class="n">waypoints</span><span class="p">);</span>
   <span class="n">print</span><span class="p">(</span><span class="n">weather_conditions</span><span class="p">);</span>
@@ -905,7 +909,7 @@ safety constraints, and a towing height.</p>
       <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">txt</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
       <span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{0:=^{1}}</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 
-      <span class="n">estimate</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">tow</span><span class="p">);</span>
+      <span class="n">estimate</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">sfty</span><span class="p">,</span> <span class="n">tow</span><span class="p">);</span>
 
       <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="p">}</span>
@@ -1204,7 +1208,7 @@ flying a selected glider in the specific weather conditions.</p>
 
     <span class="c1">// circle in a thermall to gain height</span>
     <span class="n">pos</span> <span class="o">=</span> <span class="n">circle</span><span class="p">(</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">height_to_gain</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">height_to_gain</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">m</span><span class="p">));</span>
+  <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">height_to_gain</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">{});</span>
 
   <span class="c1">// final glide</span>
   <span class="n">pos</span> <span class="o">=</span> <span class="n">final_glide</span><span class="p">(</span><span class="n">start_ts</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
