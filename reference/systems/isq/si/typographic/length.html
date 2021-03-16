@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Length &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Length</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/reference/systems/isq/si/typographic/length.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="length">
+<h1>Length<a class="headerlink" href="#length" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp type">
+<dt id="_CPPv45units">
+<span id="_CPPv35units"></span><span id="_CPPv25units"></span><span id="units"></span><span class="target" id="namespaceunits"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">units</span></code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units3isqE">
+<span id="_CPPv3N5units3isqE"></span><span id="_CPPv2N5units3isqE"></span><span id="units::isq"></span><span class="target" id="namespaceunits_1_1isq"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">isq</span></code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units3isq2siE">
+<span id="_CPPv3N5units3isq2siE"></span><span id="_CPPv2N5units3isq2siE"></span><span id="units::isq::si"></span><span class="target" id="namespaceunits_1_1isq_1_1si"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">si</span></code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units3isq2si11typographicE">
+<span id="_CPPv3N5units3isq2si11typographicE"></span><span id="_CPPv2N5units3isq2si11typographicE"></span><span id="units::isq::si::typographic"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">typographic</span></code><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli12_q_pica_compEy">
+<span id="_CPPv3N5units3isq2si11typographicli12_q_pica_compEy"></span><span id="_CPPv2N5units3isq2si11typographicli12_q_pica_compEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a26a83ff635a346dac8402211daeee820"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_comp</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli12_q_pica_compEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli12_q_pica_compEe">
+<span id="_CPPv3N5units3isq2si11typographicli12_q_pica_compEe"></span><span id="_CPPv2N5units3isq2si11typographicli12_q_pica_compEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1aff9259f186d8fb1fd24e568286205abc"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_comp</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli12_q_pica_compEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli11_q_pica_prnEy">
+<span id="_CPPv3N5units3isq2si11typographicli11_q_pica_prnEy"></span><span id="_CPPv2N5units3isq2si11typographicli11_q_pica_prnEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a52e47a4f256944fb9cc936a10d070ffd"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_prn</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli11_q_pica_prnEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli11_q_pica_prnEe">
+<span id="_CPPv3N5units3isq2si11typographicli11_q_pica_prnEe"></span><span id="_CPPv2N5units3isq2si11typographicli11_q_pica_prnEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a567578b40b696a2a27b96f11f243d264"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_prn</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli11_q_pica_prnEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli13_q_point_compEy">
+<span id="_CPPv3N5units3isq2si11typographicli13_q_point_compEy"></span><span id="_CPPv2N5units3isq2si11typographicli13_q_point_compEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1aef744940adb27797f58f53c6229aa7cf"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_comp</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli13_q_point_compEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli13_q_point_compEe">
+<span id="_CPPv3N5units3isq2si11typographicli13_q_point_compEe"></span><span id="_CPPv2N5units3isq2si11typographicli13_q_point_compEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1ae6ccc8e972cbd3e608284e2744bcec8d"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_comp</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli13_q_point_compEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli12_q_point_prnEy">
+<span id="_CPPv3N5units3isq2si11typographicli12_q_point_prnEy"></span><span id="_CPPv2N5units3isq2si11typographicli12_q_point_prnEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a9789c6a8add52563d94f12682d74ee33"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_prn</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli12_q_point_prnEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographicli12_q_point_prnEe">
+<span id="_CPPv3N5units3isq2si11typographicli12_q_point_prnEe"></span><span id="_CPPv2N5units3isq2si11typographicli12_q_point_prnEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a9471349a0ec5cf8cfa7c0b3b5e1c7e41"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_prn</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographicli12_q_point_prnEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si11typographic9pica_compE">
+<span id="_CPPv3N5units3isq2si11typographic9pica_compE"></span><span id="_CPPv2N5units3isq2si11typographic9pica_compE"></span><span id="units::isq::si::typographic::pica_comp"></span><span class="target" id="structunits_1_1isq_1_1si_1_1typographic_1_1pica__comp"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pica_comp</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><span class="pre">named_scaled_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic9pica_compE" title="units::isq::si::typographic::pica_comp"><span class="pre">pica_comp</span></a><span class="pre">,</span> <span class="pre">&quot;pica(comp)&quot;</span><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix"><span class="pre">no_prefix</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio"><span class="pre">ratio</span></a><span class="pre">(</span><span class="pre">4233333</span><span class="pre">,</span> <span class="pre">1000000</span><span class="pre">,</span> <span class="pre">-</span><span class="pre">3</span><span class="pre">)</span><span class="pre">,</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../length.html#_CPPv4N5units3isq2si5metreE" title="units::isq::si::metre"><span class="pre">metre</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic9pica_compE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;length.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si11typographic8pica_prnE">
+<span id="_CPPv3N5units3isq2si11typographic8pica_prnE"></span><span id="_CPPv2N5units3isq2si11typographic8pica_prnE"></span><span id="units::isq::si::typographic::pica_prn"></span><span class="target" id="structunits_1_1isq_1_1si_1_1typographic_1_1pica__prn"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pica_prn</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><span class="pre">named_scaled_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic8pica_prnE" title="units::isq::si::typographic::pica_prn"><span class="pre">pica_prn</span></a><span class="pre">,</span> <span class="pre">&quot;pica(prn)&quot;</span><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix"><span class="pre">no_prefix</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio"><span class="pre">ratio</span></a><span class="pre">(</span><span class="pre">2108759</span><span class="pre">,</span> <span class="pre">500000</span><span class="pre">,</span> <span class="pre">-</span><span class="pre">3</span><span class="pre">)</span><span class="pre">,</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../length.html#_CPPv4N5units3isq2si5metreE" title="units::isq::si::metre"><span class="pre">metre</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8pica_prnE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;length.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si11typographic10point_compE">
+<span id="_CPPv3N5units3isq2si11typographic10point_compE"></span><span id="_CPPv2N5units3isq2si11typographic10point_compE"></span><span id="units::isq::si::typographic::point_comp"></span><span class="target" id="structunits_1_1isq_1_1si_1_1typographic_1_1point__comp"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">point_comp</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><span class="pre">named_scaled_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic10point_compE" title="units::isq::si::typographic::point_comp"><span class="pre">point_comp</span></a><span class="pre">,</span> <span class="pre">&quot;point(comp)&quot;</span><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix"><span class="pre">no_prefix</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio"><span class="pre">ratio</span></a><span class="pre">(</span><span class="pre">1763889</span><span class="pre">,</span> <span class="pre">500000</span><span class="pre">,</span> <span class="pre">-</span><span class="pre">4</span><span class="pre">)</span><span class="pre">,</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../length.html#_CPPv4N5units3isq2si5metreE" title="units::isq::si::metre"><span class="pre">metre</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic10point_compE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;length.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si11typographic9point_prnE">
+<span id="_CPPv3N5units3isq2si11typographic9point_prnE"></span><span id="_CPPv2N5units3isq2si11typographic9point_prnE"></span><span id="units::isq::si::typographic::point_prn"></span><span class="target" id="structunits_1_1isq_1_1si_1_1typographic_1_1point__prn"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">point_prn</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamily_5ratio_4UnitEN5units17named_scaled_unitE" title="units::named_scaled_unit"><span class="pre">named_scaled_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic9point_prnE" title="units::isq::si::typographic::point_prn"><span class="pre">point_prn</span></a><span class="pre">,</span> <span class="pre">&quot;point(prn)&quot;</span><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/prefixes.html#_CPPv4N5units9no_prefixE" title="units::no_prefix"><span class="pre">no_prefix</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio"><span class="pre">ratio</span></a><span class="pre">(</span><span class="pre">1757299</span><span class="pre">,</span> <span class="pre">500000</span><span class="pre">,</span> <span class="pre">-</span><span class="pre">4</span><span class="pre">)</span><span class="pre">,</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../length.html#_CPPv4N5units3isq2si5metreE" title="units::isq::si::metre"><span class="pre">metre</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic9point_prnE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;length.h&gt;</em></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsE">
+<span id="_CPPv3N5units3isq2si11typographic8literalsE"></span><span id="_CPPv2N5units3isq2si11typographic8literalsE"></span><span id="units::isq::si::typographic::literals"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">literals</span></code><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli12_q_pica_compEy">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli12_q_pica_compEy"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli12_q_pica_compEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a26a83ff635a346dac8402211daeee820"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_comp</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli12_q_pica_compEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli12_q_pica_compEe">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli12_q_pica_compEe"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli12_q_pica_compEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1aff9259f186d8fb1fd24e568286205abc"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_comp</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli12_q_pica_compEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli11_q_pica_prnEy">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli11_q_pica_prnEy"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli11_q_pica_prnEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a52e47a4f256944fb9cc936a10d070ffd"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_prn</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli11_q_pica_prnEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli11_q_pica_prnEe">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli11_q_pica_prnEe"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli11_q_pica_prnEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a567578b40b696a2a27b96f11f243d264"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pica_prn</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli11_q_pica_prnEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli13_q_point_compEy">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli13_q_point_compEy"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli13_q_point_compEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1aef744940adb27797f58f53c6229aa7cf"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_comp</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli13_q_point_compEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli13_q_point_compEe">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli13_q_point_compEe"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli13_q_point_compEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1ae6ccc8e972cbd3e608284e2744bcec8d"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_comp</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli13_q_point_compEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli12_q_point_prnEy">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli12_q_point_prnEy"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli12_q_point_prnEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a9789c6a8add52563d94f12682d74ee33"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_prn</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli12_q_point_prnEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si11typographic8literalsli12_q_point_prnEe">
+<span id="_CPPv3N5units3isq2si11typographic8literalsli12_q_point_prnEe"></span><span id="_CPPv2N5units3isq2si11typographic8literalsli12_q_point_prnEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1literals_1a9471349a0ec5cf8cfa7c0b3b5e1c7e41"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_point_prn</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic8literalsli12_q_point_prnEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units3isq2si11typographic14unit_constantsE">
+<span id="_CPPv3N5units3isq2si11typographic14unit_constantsE"></span><span id="_CPPv2N5units3isq2si11typographic14unit_constantsE"></span><span id="units::isq::si::typographic::unit_constants"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1unit__constants"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">unit_constants</span></code><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic14unit_constantsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Variables</p>
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si11typographic14unit_constants9pica_compE">
+<span id="_CPPv3N5units3isq2si11typographic14unit_constants9pica_compE"></span><span id="_CPPv2N5units3isq2si11typographic14unit_constants9pica_compE"></span><span id="units::isq::si::typographic::unit_constants::pica_comp__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1unit__constants_1a74a2c7390ea2adefc55ad8ffb1966294"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">pica_comp</span></code> <span class="pre">=</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographicE" title="units::isq::si::typographic"><span class="pre">typographic</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic9pica_compE" title="units::isq::si::typographic::pica_comp"><span class="pre">pica_comp</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic14unit_constants9pica_compE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si11typographic14unit_constants8pica_prnE">
+<span id="_CPPv3N5units3isq2si11typographic14unit_constants8pica_prnE"></span><span id="_CPPv2N5units3isq2si11typographic14unit_constants8pica_prnE"></span><span id="units::isq::si::typographic::unit_constants::pica_prn__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1unit__constants_1a8dd34d4cd13890e8439fff09cde7706a"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">pica_prn</span></code> <span class="pre">=</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographicE" title="units::isq::si::typographic"><span class="pre">typographic</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic8pica_prnE" title="units::isq::si::typographic::pica_prn"><span class="pre">pica_prn</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic14unit_constants8pica_prnE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si11typographic14unit_constants10point_compE">
+<span id="_CPPv3N5units3isq2si11typographic14unit_constants10point_compE"></span><span id="_CPPv2N5units3isq2si11typographic14unit_constants10point_compE"></span><span id="units::isq::si::typographic::unit_constants::point_comp__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1unit__constants_1a44588bb67b71cd952819f08919676d84"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">point_comp</span></code> <span class="pre">=</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographicE" title="units::isq::si::typographic"><span class="pre">typographic</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic10point_compE" title="units::isq::si::typographic::point_comp"><span class="pre">point_comp</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic14unit_constants10point_compE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si11typographic14unit_constants9point_prnE">
+<span id="_CPPv3N5units3isq2si11typographic14unit_constants9point_prnE"></span><span id="_CPPv2N5units3isq2si11typographic14unit_constants9point_prnE"></span><span id="units::isq::si::typographic::unit_constants::point_prn__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1typographic_1_1unit__constants_1a2017ca7c21de849da8846b72899eda12"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">point_prn</span></code> <span class="pre">=</span> <a class="reference internal" href="../time.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><span class="pre">length</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographicE" title="units::isq::si::typographic"><span class="pre">typographic</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N5units3isq2si11typographic9point_prnE" title="units::isq::si::typographic::point_prn"><span class="pre">point_prn</span></a><span class="pre">,</span> <a class="reference internal" href="../../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si11typographic14unit_constants9point_prnE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

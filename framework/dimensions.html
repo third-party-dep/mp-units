@@ -341,7 +341,7 @@ provided. For example the SI base dimension of length can be defined as:</p>
 </pre></div>
 </div>
 <p>In the above code sample <code class="docutils literal notranslate"><span class="pre">&quot;L&quot;</span></code> is an base dimension’s unique identifier
-and <a class="reference internal" href="../reference/systems/physical/si/length.html#_CPPv4N5units8physical2si5metreE" title="units::physical::si::metre"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">physical::si::metre</span></code></a> is a <a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">base unit</span></a> of this base dimension. We can
+and <a class="reference internal" href="../reference/systems/isq/si/length.html#_CPPv4N5units3isq2si5metreE" title="units::isq::si::metre"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">isq::si::metre</span></code></a> is a <a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">base unit</span></a> of this base dimension. We can
 obtain those back easily with:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">::</span><span class="n">symbol</span> <span class="o">==</span> <span class="s">&quot;L&quot;</span><span class="p">);</span>
 <span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">::</span><span class="n">base_unit</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">);</span>
@@ -374,8 +374,8 @@ and time base quantity with exponent <code class="docutils literal notranslate">
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the above code sample <a class="reference internal" href="../reference/systems/physical/si/area.html#_CPPv4N5units8physical2si12square_metreE" title="units::physical::si::square_metre"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">physical::si::square_metre</span></code></a> and
-<a class="reference internal" href="../reference/systems/physical/si/speed.html#_CPPv4N5units8physical2si16metre_per_secondE" title="units::physical::si::metre_per_second"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">physical::si::metre_per_second</span></code></a> are the
+<p>In the above code sample <a class="reference internal" href="../reference/systems/isq/si/area.html#_CPPv4N5units3isq2si12square_metreE" title="units::isq::si::square_metre"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">isq::si::square_metre</span></code></a> and
+<a class="reference internal" href="../reference/systems/isq/si/speed.html#_CPPv4N5units3isq2si16metre_per_secondE" title="units::isq::si::metre_per_second"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">isq::si::metre_per_second</span></code></a> are the
 <a class="reference internal" href="../glossary.html#term-coherent-derived-unit"><span class="xref std std-term">coherent derived units</span></a> of those derived dimensions.</p>
 <p>Coherent unit argument is followed by the list of exponents that form this
 derived dimension. This list is called a <a class="reference internal" href="../glossary.html#term-recipe"><span class="xref std std-term">recipe</span></a> of this derived

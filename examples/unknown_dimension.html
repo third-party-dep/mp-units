@@ -243,22 +243,22 @@
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
-<span class="normal">47</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
+<span class="normal">47</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="k">namespace</span> <span class="p">{</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">Length</span> <span class="n">D</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">Time</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">Speed</span> <span class="k">auto</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">D</span> <span class="n">d</span><span class="p">,</span> <span class="n">T</span> <span class="n">t</span><span class="p">)</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">Length</span> <span class="n">D</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">Time</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">Speed</span> <span class="k">auto</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">D</span> <span class="n">d</span><span class="p">,</span> <span class="n">T</span> <span class="n">t</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="n">example</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 
   <span class="n">Length</span> <span class="k">auto</span> <span class="n">d1</span> <span class="o">=</span> <span class="mi">123</span><span class="n">_q_m</span><span class="p">;</span>
   <span class="n">Time</span> <span class="k">auto</span> <span class="n">t1</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_q_s</span><span class="p">;</span>

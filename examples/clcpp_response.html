@@ -331,15 +331,15 @@
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/area.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/iau/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/imperial/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/international/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/time.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/typographic/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/us/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/volume.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/area.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/iau/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/imperial/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/international/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/typographic/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/us/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/volume.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
@@ -349,11 +349,11 @@
 
 <span class="kt">void</span> <span class="nf">simple_quantities</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="p">;</span>
 
   <span class="k">using</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">;</span>
-  <span class="k">using</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">second</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">second</span><span class="o">&gt;</span><span class="p">;</span>
 
   <span class="k">constexpr</span> <span class="n">distance</span> <span class="n">km</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_km</span><span class="p">;</span>
   <span class="k">constexpr</span> <span class="n">distance</span> <span class="n">miles</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_mi</span><span class="p">;</span>
@@ -373,9 +373,9 @@
 
 <span class="kt">void</span> <span class="nf">quantities_with_typed_units</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="p">;</span>
 
   <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="o">&gt;</span> <span class="n">km</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_km</span><span class="p">;</span>
   <span class="k">constexpr</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">mile</span><span class="o">&gt;</span> <span class="n">miles</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">_q_mi</span><span class="p">;</span>
@@ -421,7 +421,7 @@
 
 <span class="kt">void</span> <span class="nf">calcs_comparison</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">A distinct unit for each type is efficient and accurate</span><span class="se">\n</span><span class="s">&quot;</span>
                <span class="s">&quot;when adding two values of the same very big</span><span class="se">\n</span><span class="s">&quot;</span>

@@ -1,0 +1,899 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Capacitance &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Capacitance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/reference/systems/isq/si/capacitance.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="capacitance">
+<h1>Capacitance<a class="headerlink" href="#capacitance" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp type">
+<dt id="_CPPv45units">
+<span id="_CPPv35units"></span><span id="_CPPv25units"></span><span id="units"></span><span class="target" id="namespaceunits"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">units</span></code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units3isqE">
+<span id="_CPPv3N5units3isqE"></span><span id="_CPPv2N5units3isqE"></span><span id="units::isq"></span><span class="target" id="namespaceunits_1_1isq"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">isq</span></code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units3isq2siE">
+<span id="_CPPv3N5units3isq2siE"></span><span id="_CPPv2N5units3isq2siE"></span><span id="units::isq::si"></span><span class="target" id="namespaceunits_1_1isq_1_1si"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">si</span></code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE">
+<span id="_CPPv3I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE"></span><span id="_CPPv2I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE"></span><span class="pre">template&lt;</span><a class="reference internal" href="../../../core/concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf"><span class="pre">UnitOf</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si15dim_capacitanceE" title="units::isq::si::dim_capacitance"><span class="pre">dim_capacitance</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">U</span></code><span class="pre">,</span> <a class="reference internal" href="../../../core/concepts.html#_CPPv4I0EN5units13QuantityValueE" title="units::QuantityValue"><span class="pre">QuantityValue</span></a> <code class="sig-name descname"><span class="pre">Rep</span></code> <span class="pre">=</span> <span class="pre">double</span><span class="pre">&gt;</span><br /><span class="target" id="namespaceunits_1_1isq_1_1si_1aa9323848e0cfe3ac947e5a376a1cf9f3"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">capacitance</span></code> <span class="pre">=</span> <a class="reference internal" href="../../../core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity"><span class="pre">quantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si15dim_capacitanceE" title="units::isq::si::dim_capacitance"><span class="pre">dim_capacitance</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance::U"><span class="pre">U</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance::Rep"><span class="pre">Rep</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili4_q_FEy">
+<span id="_CPPv3N5units3isq2sili4_q_FEy"></span><span id="_CPPv2N5units3isq2sili4_q_FEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ae7e4e6642e7855eb629a67191ec4ebfe"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_F</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili4_q_FEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili4_q_FEe">
+<span id="_CPPv3N5units3isq2sili4_q_FEe"></span><span id="_CPPv2N5units3isq2sili4_q_FEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a9a449f8e5dc7fea2667084d89a1cc481"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_F</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili4_q_FEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_yFEy">
+<span id="_CPPv3N5units3isq2sili5_q_yFEy"></span><span id="_CPPv2N5units3isq2sili5_q_yFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a7aec463efead506a66c2ee1644416c3f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_yF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_yFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_yFEe">
+<span id="_CPPv3N5units3isq2sili5_q_yFEe"></span><span id="_CPPv2N5units3isq2sili5_q_yFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a28d0f9c44c36c375b7b0c7a2cfc76ed9"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_yF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_yFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_zFEy">
+<span id="_CPPv3N5units3isq2sili5_q_zFEy"></span><span id="_CPPv2N5units3isq2sili5_q_zFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a815cfcd9553d306d222227bc5e38a694"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_zF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_zFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_zFEe">
+<span id="_CPPv3N5units3isq2sili5_q_zFEe"></span><span id="_CPPv2N5units3isq2sili5_q_zFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a4294d1d863a746763842f91a47489c48"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_zF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_zFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_aFEy">
+<span id="_CPPv3N5units3isq2sili5_q_aFEy"></span><span id="_CPPv2N5units3isq2sili5_q_aFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a85bff66de3322079e7e529bb9abc1dd0"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_aF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_aFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_aFEe">
+<span id="_CPPv3N5units3isq2sili5_q_aFEe"></span><span id="_CPPv2N5units3isq2sili5_q_aFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a1ad842b8ff482f93c0179f0d713e4e6d"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_aF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_aFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_fFEy">
+<span id="_CPPv3N5units3isq2sili5_q_fFEy"></span><span id="_CPPv2N5units3isq2sili5_q_fFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ad341eaff831097b5dd07cf1b041ec751"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_fF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_fFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_fFEe">
+<span id="_CPPv3N5units3isq2sili5_q_fFEe"></span><span id="_CPPv2N5units3isq2sili5_q_fFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1abd1c7688817ebce896a8c9d7cf3f16b8"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_fF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_fFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_pFEy">
+<span id="_CPPv3N5units3isq2sili5_q_pFEy"></span><span id="_CPPv2N5units3isq2sili5_q_pFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a601a144399bb6f64661954c2f7c39ede"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_pFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_pFEe">
+<span id="_CPPv3N5units3isq2sili5_q_pFEe"></span><span id="_CPPv2N5units3isq2sili5_q_pFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a13e6064fb0f7802d4172a81594495aa2"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_pFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_nFEy">
+<span id="_CPPv3N5units3isq2sili5_q_nFEy"></span><span id="_CPPv2N5units3isq2sili5_q_nFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ae5a8f8c58ea64ea7bcb5abe6f2248ecd"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_nF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_nFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_nFEe">
+<span id="_CPPv3N5units3isq2sili5_q_nFEe"></span><span id="_CPPv2N5units3isq2sili5_q_nFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a16a9d758634e6ed1f43ce8d531cd40d6"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_nF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_nFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_uFEy">
+<span id="_CPPv3N5units3isq2sili5_q_uFEy"></span><span id="_CPPv2N5units3isq2sili5_q_uFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a5faa4b59dcbd1031e0291ac6e838203c"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_uF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_uFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_uFEe">
+<span id="_CPPv3N5units3isq2sili5_q_uFEe"></span><span id="_CPPv2N5units3isq2sili5_q_uFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a704d366f4a2f5a0dbb71fb0116bab5d1"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_uF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_uFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_mFEy">
+<span id="_CPPv3N5units3isq2sili5_q_mFEy"></span><span id="_CPPv2N5units3isq2sili5_q_mFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ad9dcb86573cf257029510710313998db"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_mF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_mFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_mFEe">
+<span id="_CPPv3N5units3isq2sili5_q_mFEe"></span><span id="_CPPv2N5units3isq2sili5_q_mFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a9a0a59c7880b0c32912157d9f06cc6b7"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_mF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_mFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_cFEy">
+<span id="_CPPv3N5units3isq2sili5_q_cFEy"></span><span id="_CPPv2N5units3isq2sili5_q_cFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a9f91fe0961972f60e045f0ce901edbe1"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_cF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_cFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_cFEe">
+<span id="_CPPv3N5units3isq2sili5_q_cFEe"></span><span id="_CPPv2N5units3isq2sili5_q_cFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ac2b3bae5310a6e87632cb21e05efe1c7"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_cF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_cFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_dFEy">
+<span id="_CPPv3N5units3isq2sili5_q_dFEy"></span><span id="_CPPv2N5units3isq2sili5_q_dFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ab41fa4f0c5acdd2e85f2639cc6207538"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_dF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_dFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_dFEe">
+<span id="_CPPv3N5units3isq2sili5_q_dFEe"></span><span id="_CPPv2N5units3isq2sili5_q_dFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a25fa5650db5eba7ff9891c3871270f08"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_dF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_dFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili6_q_daFEy">
+<span id="_CPPv3N5units3isq2sili6_q_daFEy"></span><span id="_CPPv2N5units3isq2sili6_q_daFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a52234dd9bf7674db70ec2533bae406a4"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_daF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili6_q_daFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili6_q_daFEe">
+<span id="_CPPv3N5units3isq2sili6_q_daFEe"></span><span id="_CPPv2N5units3isq2sili6_q_daFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a7b8c0a27e53641f53d34b99f8b68cd13"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_daF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili6_q_daFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_hFEy">
+<span id="_CPPv3N5units3isq2sili5_q_hFEy"></span><span id="_CPPv2N5units3isq2sili5_q_hFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1af06c74b78614c06201ef72cc9ae57b34"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_hF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_hFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_hFEe">
+<span id="_CPPv3N5units3isq2sili5_q_hFEe"></span><span id="_CPPv2N5units3isq2sili5_q_hFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a8279900c02d7254e857684ae44d347dc"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_hF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_hFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_kFEy">
+<span id="_CPPv3N5units3isq2sili5_q_kFEy"></span><span id="_CPPv2N5units3isq2sili5_q_kFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a7a8349b576d63e407a9ffb2be10625fb"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_kF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_kFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_kFEe">
+<span id="_CPPv3N5units3isq2sili5_q_kFEe"></span><span id="_CPPv2N5units3isq2sili5_q_kFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a5d3ee22ca9d0c359c549ede564c875fe"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_kF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_kFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_MFEy">
+<span id="_CPPv3N5units3isq2sili5_q_MFEy"></span><span id="_CPPv2N5units3isq2sili5_q_MFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a06e536c2a70c4fed73690f8e68862fc4"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_MF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_MFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_MFEe">
+<span id="_CPPv3N5units3isq2sili5_q_MFEe"></span><span id="_CPPv2N5units3isq2sili5_q_MFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1acb267e97879938e3a1439243181b4850"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_MF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_MFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_GFEy">
+<span id="_CPPv3N5units3isq2sili5_q_GFEy"></span><span id="_CPPv2N5units3isq2sili5_q_GFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a4497527e07a1d38a830ec8453dee4d9b"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_GF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_GFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_GFEe">
+<span id="_CPPv3N5units3isq2sili5_q_GFEe"></span><span id="_CPPv2N5units3isq2sili5_q_GFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a626f1e59dd864dee530ef48b67af8f84"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_GF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_GFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_TFEy">
+<span id="_CPPv3N5units3isq2sili5_q_TFEy"></span><span id="_CPPv2N5units3isq2sili5_q_TFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a39376ee23f2db7bccecdd96cda7dcdbb"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_TF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_TFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_TFEe">
+<span id="_CPPv3N5units3isq2sili5_q_TFEe"></span><span id="_CPPv2N5units3isq2sili5_q_TFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ab97bad404a25f9ccd6f872f46d27e7e9"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_TF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_TFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_PFEy">
+<span id="_CPPv3N5units3isq2sili5_q_PFEy"></span><span id="_CPPv2N5units3isq2sili5_q_PFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1adc6ac7bd3a32cac4c82b6a5a165a6298"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_PF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_PFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_PFEe">
+<span id="_CPPv3N5units3isq2sili5_q_PFEe"></span><span id="_CPPv2N5units3isq2sili5_q_PFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a990aa0cc8af0a2a1fd60ebdb1b687ba4"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_PF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_PFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_EFEy">
+<span id="_CPPv3N5units3isq2sili5_q_EFEy"></span><span id="_CPPv2N5units3isq2sili5_q_EFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a5f915a89f4a29cba05a2b2e92b552a25"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_EF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_EFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_EFEe">
+<span id="_CPPv3N5units3isq2sili5_q_EFEe"></span><span id="_CPPv2N5units3isq2sili5_q_EFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ae972908499bcd8feac32997dfe85b673"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_EF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_EFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_ZFEy">
+<span id="_CPPv3N5units3isq2sili5_q_ZFEy"></span><span id="_CPPv2N5units3isq2sili5_q_ZFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a83581b2e6cba69ae53c0971372e0a8a6"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_ZF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_ZFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_ZFEe">
+<span id="_CPPv3N5units3isq2sili5_q_ZFEe"></span><span id="_CPPv2N5units3isq2sili5_q_ZFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a05238efb3d99a3919f3f93a798c4bac2"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_ZF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_ZFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_YFEy">
+<span id="_CPPv3N5units3isq2sili5_q_YFEy"></span><span id="_CPPv2N5units3isq2sili5_q_YFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ab574197f54436cee414e70f61f3cfb09"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_YF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_YFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2sili5_q_YFEe">
+<span id="_CPPv3N5units3isq2sili5_q_YFEe"></span><span id="_CPPv2N5units3isq2sili5_q_YFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a8094e169757af79423a91422393cd96f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_YF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2sili5_q_YFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9attofaradE">
+<span id="_CPPv3N5units3isq2si9attofaradE"></span><span id="_CPPv2N5units3isq2si9attofaradE"></span><span id="units::isq::si::attofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1attofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">attofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9attofaradE" title="units::isq::si::attofarad"><span class="pre">attofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4attoE" title="units::isq::si::atto"><span class="pre">atto</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9attofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10centifaradE">
+<span id="_CPPv3N5units3isq2si10centifaradE"></span><span id="_CPPv2N5units3isq2si10centifaradE"></span><span id="units::isq::si::centifarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1centifarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">centifarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10centifaradE" title="units::isq::si::centifarad"><span class="pre">centifarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5centiE" title="units::isq::si::centi"><span class="pre">centi</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10centifaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9decafaradE">
+<span id="_CPPv3N5units3isq2si9decafaradE"></span><span id="_CPPv2N5units3isq2si9decafaradE"></span><span id="units::isq::si::decafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1decafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">decafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9decafaradE" title="units::isq::si::decafarad"><span class="pre">decafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4decaE" title="units::isq::si::deca"><span class="pre">deca</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9decafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9decifaradE">
+<span id="_CPPv3N5units3isq2si9decifaradE"></span><span id="_CPPv2N5units3isq2si9decifaradE"></span><span id="units::isq::si::decifarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1decifarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">decifarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9decifaradE" title="units::isq::si::decifarad"><span class="pre">decifarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4deciE" title="units::isq::si::deci"><span class="pre">deci</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9decifaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si15dim_capacitanceE">
+<span id="_CPPv3N5units3isq2si15dim_capacitanceE"></span><span id="_CPPv2N5units3isq2si15dim_capacitanceE"></span><span id="units::isq::si::dim_capacitance"></span><span class="target" id="structunits_1_1isq_1_1si_1_1dim__capacitance"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dim_capacitance</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="time.html#_CPPv4N5units3isqE" title="units::isq"><span class="pre">isq</span></a><span class="pre">::</span><span class="pre">dim_capacitance</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si15dim_capacitanceE" title="units::isq::si::dim_capacitance"><span class="pre">dim_capacitance</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">,</span> <a class="reference internal" href="electric_charge.html#_CPPv4N5units3isq2si19dim_electric_chargeE" title="units::isq::si::dim_electric_charge"><span class="pre">dim_electric_charge</span></a><span class="pre">,</span> <a class="reference internal" href="voltage.html#_CPPv4N5units3isq2si11dim_voltageE" title="units::isq::si::dim_voltage"><span class="pre">dim_voltage</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si15dim_capacitanceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si8exafaradE">
+<span id="_CPPv3N5units3isq2si8exafaradE"></span><span id="_CPPv2N5units3isq2si8exafaradE"></span><span id="units::isq::si::exafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1exafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">exafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si8exafaradE" title="units::isq::si::exafarad"><span class="pre">exafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si3exaE" title="units::isq::si::exa"><span class="pre">exa</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si8exafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si5faradE">
+<span id="_CPPv3N5units3isq2si5faradE"></span><span id="_CPPv2N5units3isq2si5faradE"></span><span id="units::isq::si::farad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1farad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">farad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_17basic_symbol_text_12PrefixFamilyEN5units10named_unitE" title="units::named_unit"><span class="pre">named_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">,</span> <span class="pre">&quot;F&quot;</span><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si6prefixE" title="units::isq::si::prefix"><span class="pre">prefix</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si5faradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10femtofaradE">
+<span id="_CPPv3N5units3isq2si10femtofaradE"></span><span id="_CPPv2N5units3isq2si10femtofaradE"></span><span id="units::isq::si::femtofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1femtofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">femtofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10femtofaradE" title="units::isq::si::femtofarad"><span class="pre">femtofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5femtoE" title="units::isq::si::femto"><span class="pre">femto</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10femtofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9gigafaradE">
+<span id="_CPPv3N5units3isq2si9gigafaradE"></span><span id="_CPPv2N5units3isq2si9gigafaradE"></span><span id="units::isq::si::gigafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1gigafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">gigafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9gigafaradE" title="units::isq::si::gigafarad"><span class="pre">gigafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4gigaE" title="units::isq::si::giga"><span class="pre">giga</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9gigafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10hectofaradE">
+<span id="_CPPv3N5units3isq2si10hectofaradE"></span><span id="_CPPv2N5units3isq2si10hectofaradE"></span><span id="units::isq::si::hectofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1hectofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">hectofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10hectofaradE" title="units::isq::si::hectofarad"><span class="pre">hectofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5hectoE" title="units::isq::si::hecto"><span class="pre">hecto</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10hectofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9kilofaradE">
+<span id="_CPPv3N5units3isq2si9kilofaradE"></span><span id="_CPPv2N5units3isq2si9kilofaradE"></span><span id="units::isq::si::kilofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1kilofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">kilofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9kilofaradE" title="units::isq::si::kilofarad"><span class="pre">kilofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4kiloE" title="units::isq::si::kilo"><span class="pre">kilo</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9kilofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9megafaradE">
+<span id="_CPPv3N5units3isq2si9megafaradE"></span><span id="_CPPv2N5units3isq2si9megafaradE"></span><span id="units::isq::si::megafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1megafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">megafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9megafaradE" title="units::isq::si::megafarad"><span class="pre">megafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4megaE" title="units::isq::si::mega"><span class="pre">mega</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9megafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10microfaradE">
+<span id="_CPPv3N5units3isq2si10microfaradE"></span><span id="_CPPv2N5units3isq2si10microfaradE"></span><span id="units::isq::si::microfarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1microfarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">microfarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10microfaradE" title="units::isq::si::microfarad"><span class="pre">microfarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5microE" title="units::isq::si::micro"><span class="pre">micro</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10microfaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10millifaradE">
+<span id="_CPPv3N5units3isq2si10millifaradE"></span><span id="_CPPv2N5units3isq2si10millifaradE"></span><span id="units::isq::si::millifarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1millifarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">millifarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10millifaradE" title="units::isq::si::millifarad"><span class="pre">millifarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5milliE" title="units::isq::si::milli"><span class="pre">milli</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10millifaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9nanofaradE">
+<span id="_CPPv3N5units3isq2si9nanofaradE"></span><span id="_CPPv2N5units3isq2si9nanofaradE"></span><span id="units::isq::si::nanofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1nanofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">nanofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9nanofaradE" title="units::isq::si::nanofarad"><span class="pre">nanofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4nanoE" title="units::isq::si::nano"><span class="pre">nano</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9nanofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9petafaradE">
+<span id="_CPPv3N5units3isq2si9petafaradE"></span><span id="_CPPv2N5units3isq2si9petafaradE"></span><span id="units::isq::si::petafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1petafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">petafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9petafaradE" title="units::isq::si::petafarad"><span class="pre">petafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4petaE" title="units::isq::si::peta"><span class="pre">peta</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9petafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9picofaradE">
+<span id="_CPPv3N5units3isq2si9picofaradE"></span><span id="_CPPv2N5units3isq2si9picofaradE"></span><span id="units::isq::si::picofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1picofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">picofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9picofaradE" title="units::isq::si::picofarad"><span class="pre">picofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4picoE" title="units::isq::si::pico"><span class="pre">pico</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9picofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si9terafaradE">
+<span id="_CPPv3N5units3isq2si9terafaradE"></span><span id="_CPPv2N5units3isq2si9terafaradE"></span><span id="units::isq::si::terafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1terafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">terafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9terafaradE" title="units::isq::si::terafarad"><span class="pre">terafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si4teraE" title="units::isq::si::tera"><span class="pre">tera</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si9terafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10yoctofaradE">
+<span id="_CPPv3N5units3isq2si10yoctofaradE"></span><span id="_CPPv2N5units3isq2si10yoctofaradE"></span><span id="units::isq::si::yoctofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1yoctofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">yoctofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10yoctofaradE" title="units::isq::si::yoctofarad"><span class="pre">yoctofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5yoctoE" title="units::isq::si::yocto"><span class="pre">yocto</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10yoctofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10yottafaradE">
+<span id="_CPPv3N5units3isq2si10yottafaradE"></span><span id="_CPPv2N5units3isq2si10yottafaradE"></span><span id="units::isq::si::yottafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1yottafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">yottafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10yottafaradE" title="units::isq::si::yottafarad"><span class="pre">yottafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5yottaE" title="units::isq::si::yotta"><span class="pre">yotta</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10yottafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10zeptofaradE">
+<span id="_CPPv3N5units3isq2si10zeptofaradE"></span><span id="_CPPv2N5units3isq2si10zeptofaradE"></span><span id="units::isq::si::zeptofarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1zeptofarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">zeptofarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10zeptofaradE" title="units::isq::si::zeptofarad"><span class="pre">zeptofarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5zeptoE" title="units::isq::si::zepto"><span class="pre">zepto</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10zeptofaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq2si10zettafaradE">
+<span id="_CPPv3N5units3isq2si10zettafaradE"></span><span id="_CPPv2N5units3isq2si10zettafaradE"></span><span id="units::isq::si::zettafarad"></span><span class="target" id="structunits_1_1isq_1_1si_1_1zettafarad"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">zettafarad</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="time.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_6Prefix_4UnitEN5units13prefixed_unitE" title="units::prefixed_unit"><span class="pre">prefixed_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10zettafaradE" title="units::isq::si::zettafarad"><span class="pre">zettafarad</span></a><span class="pre">,</span> <a class="reference internal" href="prefixes.html#_CPPv4N5units3isq2si5zettaE" title="units::isq::si::zetta"><span class="pre">zetta</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq2si10zettafaradE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;capacitance.h&gt;</em></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units3isq2si8literalsE">
+<span id="_CPPv3N5units3isq2si8literalsE"></span><span id="_CPPv2N5units3isq2si8literalsE"></span><span id="units::isq::si::literals"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">literals</span></code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli4_q_FEy">
+<span id="_CPPv3N5units3isq2si8literalsli4_q_FEy"></span><span id="_CPPv2N5units3isq2si8literalsli4_q_FEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ae7e4e6642e7855eb629a67191ec4ebfe"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_F</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli4_q_FEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli4_q_FEe">
+<span id="_CPPv3N5units3isq2si8literalsli4_q_FEe"></span><span id="_CPPv2N5units3isq2si8literalsli4_q_FEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a9a449f8e5dc7fea2667084d89a1cc481"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_F</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli4_q_FEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_yFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_yFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_yFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a7aec463efead506a66c2ee1644416c3f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_yF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_yFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_yFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_yFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_yFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a28d0f9c44c36c375b7b0c7a2cfc76ed9"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_yF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_yFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_zFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_zFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_zFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a815cfcd9553d306d222227bc5e38a694"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_zF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_zFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_zFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_zFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_zFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a4294d1d863a746763842f91a47489c48"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_zF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_zFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_aFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_aFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_aFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a85bff66de3322079e7e529bb9abc1dd0"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_aF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_aFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_aFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_aFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_aFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a1ad842b8ff482f93c0179f0d713e4e6d"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_aF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_aFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_fFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_fFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_fFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ad341eaff831097b5dd07cf1b041ec751"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_fF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_fFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_fFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_fFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_fFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1abd1c7688817ebce896a8c9d7cf3f16b8"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_fF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_fFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_pFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_pFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_pFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a601a144399bb6f64661954c2f7c39ede"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_pFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_pFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_pFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_pFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a13e6064fb0f7802d4172a81594495aa2"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_pF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_pFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_nFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_nFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_nFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ae5a8f8c58ea64ea7bcb5abe6f2248ecd"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_nF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_nFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_nFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_nFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_nFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a16a9d758634e6ed1f43ce8d531cd40d6"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_nF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_nFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_uFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_uFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_uFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a5faa4b59dcbd1031e0291ac6e838203c"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_uF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_uFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_uFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_uFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_uFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a704d366f4a2f5a0dbb71fb0116bab5d1"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_uF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_uFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_mFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_mFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_mFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ad9dcb86573cf257029510710313998db"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_mF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_mFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_mFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_mFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_mFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a9a0a59c7880b0c32912157d9f06cc6b7"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_mF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_mFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_cFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_cFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_cFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a9f91fe0961972f60e045f0ce901edbe1"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_cF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_cFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_cFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_cFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_cFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ac2b3bae5310a6e87632cb21e05efe1c7"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_cF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_cFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_dFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_dFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_dFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ab41fa4f0c5acdd2e85f2639cc6207538"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_dF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_dFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_dFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_dFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_dFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a25fa5650db5eba7ff9891c3871270f08"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_dF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_dFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli6_q_daFEy">
+<span id="_CPPv3N5units3isq2si8literalsli6_q_daFEy"></span><span id="_CPPv2N5units3isq2si8literalsli6_q_daFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a52234dd9bf7674db70ec2533bae406a4"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_daF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli6_q_daFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli6_q_daFEe">
+<span id="_CPPv3N5units3isq2si8literalsli6_q_daFEe"></span><span id="_CPPv2N5units3isq2si8literalsli6_q_daFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a7b8c0a27e53641f53d34b99f8b68cd13"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_daF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli6_q_daFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_hFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_hFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_hFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1af06c74b78614c06201ef72cc9ae57b34"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_hF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_hFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_hFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_hFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_hFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a8279900c02d7254e857684ae44d347dc"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_hF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_hFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_kFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_kFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_kFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a7a8349b576d63e407a9ffb2be10625fb"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_kF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_kFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_kFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_kFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_kFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a5d3ee22ca9d0c359c549ede564c875fe"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_kF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_kFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_MFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_MFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_MFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a06e536c2a70c4fed73690f8e68862fc4"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_MF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_MFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_MFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_MFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_MFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1acb267e97879938e3a1439243181b4850"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_MF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_MFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_GFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_GFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_GFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a4497527e07a1d38a830ec8453dee4d9b"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_GF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_GFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_GFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_GFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_GFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a626f1e59dd864dee530ef48b67af8f84"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_GF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_GFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_TFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_TFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_TFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a39376ee23f2db7bccecdd96cda7dcdbb"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_TF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_TFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_TFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_TFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_TFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ab97bad404a25f9ccd6f872f46d27e7e9"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_TF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_TFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_PFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_PFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_PFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1adc6ac7bd3a32cac4c82b6a5a165a6298"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_PF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_PFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_PFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_PFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_PFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a990aa0cc8af0a2a1fd60ebdb1b687ba4"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_PF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_PFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_EFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_EFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_EFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a5f915a89f4a29cba05a2b2e92b552a25"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_EF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_EFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_EFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_EFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_EFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ae972908499bcd8feac32997dfe85b673"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_EF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_EFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_ZFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_ZFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_ZFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a83581b2e6cba69ae53c0971372e0a8a6"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_ZF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_ZFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_ZFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_ZFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_ZFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a05238efb3d99a3919f3f93a798c4bac2"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_ZF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_ZFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_YFEy">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_YFEy"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_YFEy"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1ab574197f54436cee414e70f61f3cfb09"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_YF</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_YFEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq2si8literalsli5_q_YFEe">
+<span id="_CPPv3N5units3isq2si8literalsli5_q_YFEe"></span><span id="_CPPv2N5units3isq2si8literalsli5_q_YFEe"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1literals_1a8094e169757af79423a91422393cd96f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_YF</span></code><span class="sig-paren">(</span><span class="pre">long</span> <span class="pre">double</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq2si8literalsli5_q_YFEe" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units3isq2si14unit_constantsE">
+<span id="_CPPv3N5units3isq2si14unit_constantsE"></span><span id="_CPPv2N5units3isq2si14unit_constantsE"></span><span id="units::isq::si::unit_constants"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">unit_constants</span></code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Variables</p>
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants1FE">
+<span id="_CPPv3N5units3isq2si14unit_constants1FE"></span><span id="_CPPv2N5units3isq2si14unit_constants1FE"></span><span id="units::isq::si::unit_constants::F__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a32f33a11b5e4b5323d1bffd42342487a"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">F</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si5faradE" title="units::isq::si::farad"><span class="pre">farad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants1FE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2yFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2yFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2yFE"></span><span id="units::isq::si::unit_constants::yF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1adc08f2a1953f9fac81e506ba5bf69f18"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">yF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10yoctofaradE" title="units::isq::si::yoctofarad"><span class="pre">yoctofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2yFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2zFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2zFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2zFE"></span><span id="units::isq::si::unit_constants::zF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a83700cd0142f049fe1b560537ded383b"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">zF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10zeptofaradE" title="units::isq::si::zeptofarad"><span class="pre">zeptofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2zFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2aFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2aFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2aFE"></span><span id="units::isq::si::unit_constants::aF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1ab11ccecd85d3a3d54c3c75d26fd2f188"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">aF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9attofaradE" title="units::isq::si::attofarad"><span class="pre">attofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2aFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2fFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2fFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2fFE"></span><span id="units::isq::si::unit_constants::fF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a1b59b0e19d71abcf66e0137904b5c52e"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">fF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10femtofaradE" title="units::isq::si::femtofarad"><span class="pre">femtofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2fFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2pFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2pFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2pFE"></span><span id="units::isq::si::unit_constants::pF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1ad3790dc1d712d7933ac27912a10e4c33"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">pF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9picofaradE" title="units::isq::si::picofarad"><span class="pre">picofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2pFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2nFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2nFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2nFE"></span><span id="units::isq::si::unit_constants::nF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a09f3f301182a4614403628c7812a616e"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">nF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9nanofaradE" title="units::isq::si::nanofarad"><span class="pre">nanofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2nFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2uFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2uFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2uFE"></span><span id="units::isq::si::unit_constants::uF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1ad563bc92defadfd3d83290f582457686"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">uF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10microfaradE" title="units::isq::si::microfarad"><span class="pre">microfarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2uFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2mFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2mFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2mFE"></span><span id="units::isq::si::unit_constants::mF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a8c7ddd6a15130251ff58ba9ab45c058f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">mF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10millifaradE" title="units::isq::si::millifarad"><span class="pre">millifarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2mFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2cFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2cFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2cFE"></span><span id="units::isq::si::unit_constants::cF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1ade09579bb1726126d273d22e486ce3cf"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">cF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10centifaradE" title="units::isq::si::centifarad"><span class="pre">centifarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2cFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2dFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2dFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2dFE"></span><span id="units::isq::si::unit_constants::dF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a705d93ded1f39c7f810f305ec1145ef7"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">dF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9decifaradE" title="units::isq::si::decifarad"><span class="pre">decifarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2dFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants3daFE">
+<span id="_CPPv3N5units3isq2si14unit_constants3daFE"></span><span id="_CPPv2N5units3isq2si14unit_constants3daFE"></span><span id="units::isq::si::unit_constants::daF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a71ef3bb66250e50ccaee37f7ec756adb"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">daF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9decafaradE" title="units::isq::si::decafarad"><span class="pre">decafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants3daFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2hFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2hFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2hFE"></span><span id="units::isq::si::unit_constants::hF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1afe606e26c60e4e8857caddd0ad20b2c8"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">hF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10hectofaradE" title="units::isq::si::hectofarad"><span class="pre">hectofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2hFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2kFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2kFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2kFE"></span><span id="units::isq::si::unit_constants::kF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1ae68e93c912adca4366c3b1e8b07ce7ac"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">kF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9kilofaradE" title="units::isq::si::kilofarad"><span class="pre">kilofarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2kFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2MFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2MFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2MFE"></span><span id="units::isq::si::unit_constants::MF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a2d40ee2689e688c6adace44a319f68b8"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">MF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9megafaradE" title="units::isq::si::megafarad"><span class="pre">megafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2MFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2GFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2GFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2GFE"></span><span id="units::isq::si::unit_constants::GF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a7b66ae81ee13ccd01559eccae8d70d17"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">GF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9gigafaradE" title="units::isq::si::gigafarad"><span class="pre">gigafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2GFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2TFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2TFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2TFE"></span><span id="units::isq::si::unit_constants::TF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a91f25dc58a093ab02bf55b7fbf726242"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">TF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9terafaradE" title="units::isq::si::terafarad"><span class="pre">terafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2TFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2PFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2PFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2PFE"></span><span id="units::isq::si::unit_constants::PF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1acf8032c32478b72ef2cb32ea6303d698"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">PF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si9petafaradE" title="units::isq::si::petafarad"><span class="pre">petafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2PFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2EFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2EFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2EFE"></span><span id="units::isq::si::unit_constants::EF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1a44268917757e9420c2739e95fa4cf124"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">EF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si8exafaradE" title="units::isq::si::exafarad"><span class="pre">exafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2EFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2ZFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2ZFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2ZFE"></span><span id="units::isq::si::unit_constants::ZF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1ae26a8ddd66fd1edbe878354a9725a2e1"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">ZF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10zettafaradE" title="units::isq::si::zettafarad"><span class="pre">zettafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2ZFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N5units3isq2si14unit_constants2YFE">
+<span id="_CPPv3N5units3isq2si14unit_constants2YFE"></span><span id="_CPPv2N5units3isq2si14unit_constants2YFE"></span><span id="units::isq::si::unit_constants::YF__auto"></span><span class="target" id="namespaceunits_1_1isq_1_1si_1_1unit__constants_1aac08ed4614081f0b9fe4073df75fc602"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">YF</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI15dim_capacitanceE_13QuantityValueEN5units3isq2si11capacitanceE" title="units::isq::si::capacitance"><span class="pre">capacitance</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq2si10yottafaradE" title="units::isq::si::yottafarad"><span class="pre">yottafarad</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/representation.html#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&gt;</span><span class="pre">{</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N5units3isq2si14unit_constants2YFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

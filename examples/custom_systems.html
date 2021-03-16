@@ -284,7 +284,7 @@
 <span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/prefixes.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/prefixes.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
@@ -303,8 +303,8 @@
 
 <span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
-<span class="k">struct</span> <span class="nl">metre</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">metre</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">kilometre</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">kilo</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">metre</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">metre</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">kilometre</span> <span class="p">:</span> <span class="n">prefixed_unit</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">kilo</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 

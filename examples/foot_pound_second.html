@@ -277,21 +277,21 @@
 <span class="normal">78</span>
 <span class="normal">79</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/concepts.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/fps/density.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/fps/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/fps/mass.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/fps/power.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/fps/speed.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/fps/volume.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/length.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/mass.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/power.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/volume.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/density.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/mass.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/power.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/volume.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/mass.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/power.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/volume.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
 
 
 <span class="c1">// Some basic specs for the warship   </span>
@@ -319,7 +319,7 @@
 <span class="c1">// Print the ship details in the units as defined in the Ship struct, in other si::imperial units, and in SI</span>
 <span class="kt">void</span> <span class="n">print_details</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span> <span class="n">description</span><span class="p">,</span> <span class="k">const</span> <span class="n">Ship</span><span class="o">&amp;</span> <span class="n">ship</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
   <span class="k">const</span> <span class="k">auto</span> <span class="n">waterDensity</span> <span class="o">=</span> <span class="mf">62.4</span><span class="n">_q_lb_per_ft3</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">);</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;length&quot;</span><span class="p">,</span>    <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">length</span><span class="p">))</span>
@@ -336,8 +336,8 @@
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
   
   <span class="c1">// KMS Bismark, using the units the Germans would use, taken from Wiki</span>
   <span class="k">auto</span> <span class="n">bismark</span> <span class="o">=</span> <span class="n">Ship</span><span class="p">{.</span><span class="n">length</span><span class="p">{</span><span class="mf">251.</span><span class="n">_q_m</span><span class="p">},</span> <span class="p">.</span><span class="n">draft</span><span class="p">{</span><span class="mf">9.3</span><span class="n">_q_m</span><span class="p">},</span> <span class="p">.</span><span class="n">beam</span><span class="p">{</span><span class="mi">36</span><span class="n">_q_m</span><span class="p">},</span> <span class="p">.</span><span class="n">speed</span><span class="p">{</span><span class="mi">56</span><span class="n">_q_km_per_h</span><span class="p">},</span> <span class="p">.</span><span class="n">mass</span><span class="p">{</span><span class="mi">50&#39;300</span><span class="n">_q_t</span><span class="p">},</span> <span class="p">.</span><span class="n">mainGuns</span><span class="p">{</span><span class="mi">380</span><span class="n">_q_mm</span><span class="p">},</span> <span class="p">.</span><span class="n">shellMass</span><span class="p">{</span><span class="mi">800</span><span class="n">_q_kg</span><span class="p">},</span> <span class="p">.</span><span class="n">shellSpeed</span><span class="p">{</span><span class="mf">820.</span><span class="n">_q_m_per_s</span><span class="p">},</span> <span class="p">.</span><span class="n">power</span><span class="p">{</span><span class="mf">110.45</span><span class="n">_q_kW</span><span class="p">}};</span>

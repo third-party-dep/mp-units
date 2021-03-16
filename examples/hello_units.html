@@ -234,12 +234,12 @@
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/international/speed.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/physical/si/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/international/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
 
 <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="nf">avg_speed</span><span class="p">(</span><span class="n">Length</span> <span class="k">auto</span> <span class="n">d</span><span class="p">,</span> <span class="n">Time</span> <span class="k">auto</span> <span class="n">t</span><span class="p">)</span>
 <span class="p">{</span>
@@ -248,8 +248,8 @@
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">physical</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
 
   <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">110</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">;</span>
   <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">);</span>
