@@ -416,7 +416,8 @@ For example the simplest file may look as follows:</p></li>
 <span class="na">mp-units/0.6.0</span>
 
 <span class="k">[generators]</span>
-<span class="na">cmake_find_package_multi</span>
+<span class="na">CMakeToolchain</span>
+<span class="na">CMakeDeps</span>
 </pre></div>
 </div>
 </div>
@@ -426,7 +427,7 @@ For example the simplest file may look as follows:</p></li>
 with <code class="docutils literal notranslate"><span class="pre">find_package</span></code>:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">mp-units</span><span class="p">)</span>
+<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">mp-units</span> <span class="s">CONFIG</span> <span class="s">REQUIRED</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -443,7 +444,7 @@ with <code class="docutils literal notranslate"><span class="pre">find_package</
 <p>Unfortunately, packages distributed via Conan-Center cannot force the minimum version
 of the C++ language used for your build process. This is why it is important to specify
 it in <a class="reference external" href="ConanQuickIntro">Conan profile file</a> and with <code class="docutils literal notranslate"><span class="pre">target_compile_features</span></code> command
-for each CMake target in your project.</p>
+for each CMake target directly linking with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">mp-units::mp-units</span></code> in your project.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
@@ -452,7 +453,7 @@ for each CMake target in your project.</p>
 <blockquote>
 <div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -b<span class="o">=</span>missing
-cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+cmake .. -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake
 cmake --build .
 </pre></div>
 </div>
