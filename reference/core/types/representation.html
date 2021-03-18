@@ -200,101 +200,10 @@
             
   <div class="section" id="representation-types">
 <h1>Representation Types<a class="headerlink" href="#representation-types" title="Permalink to this headline">¶</a></h1>
-<dl class="cpp struct">
-<dt id="_CPPv4N5units7one_repE">
-<span id="_CPPv3N5units7one_repE"></span><span id="_CPPv2N5units7one_repE"></span><span id="units::one_rep"></span><span class="target" id="structunits_1_1one__rep"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/isq/si/time.html#_CPPv45units" title="units"><span class="pre">units</span></a><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">one_rep</span></code><a class="headerlink" href="#_CPPv4N5units7one_repE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A representation type to be used for unit constants. </p>
-<p>This representation type is intended to be used in the unit constants definition:</p>
-<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">unit_constants</span> <span class="p">{</span>
-
-<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">m</span> <span class="o">=</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">metre</span><span class="p">,</span> <span class="n">one_rep</span><span class="o">&gt;</span><span class="p">{};</span>
-<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">km</span> <span class="o">=</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">kilometre</span><span class="p">,</span> <span class="n">one_rep</span><span class="o">&gt;</span><span class="p">{};</span>
-
-<span class="p">}</span>
-</pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “units::one_rep” in doxygen xml output for project “mp-units” from directory: /home/runner/work/units/units/build/docs/doxygen/xml</p>
 </div>
-</p>
-<p>Unit constants simplify quantity creation:</p>
-<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
-
-<span class="k">auto</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">123</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
-<span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">70</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">;</span>
-</pre></div>
-</div>
-</p>
-<p>Also, it is allowed to define custom unit constants from existing ones:</p>
-<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="k">auto</span> <span class="n">Nm</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
-<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">mph</span> <span class="o">=</span> <span class="n">mi</span> <span class="o">/</span> <span class="n">h</span><span class="p">;</span>
-</pre></div>
-</div>
-</p>
-<p><code class="docutils literal notranslate"><span class="pre">km</span> <span class="pre">*</span> <span class="pre">3</span></code> or <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">/</span> <span class="pre">4</span></code> syntax is not allowed for quantity creation. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1a8034a48b598685257a5b3c55bcbaaf7e"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">&amp;&amp;!Quantity&lt;</span> <span class="pre">Rep</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;!QuantityLike&lt;</span> <span class="pre">Rep</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;constexpr</span> <span class="pre">!wrapped_quantity_&lt;</span> <span class="pre">Rep</span> <span class="pre">&gt;</span> <span class="pre">operator</span> <span class="pre">Rep</span> <span class="pre">()</span> <span class="pre">const</span> <span class="pre">noexcept</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK5units7one_repeqERK7one_rep">
-<span id="_CPPv3NK5units7one_repeqERK7one_rep"></span><span id="_CPPv2NK5units7one_repeqERK7one_rep"></span><span id="units::one_rep::eq-operator__one_repCRC"></span><span class="target" id="structunits_1_1one__rep_1a7fbd6c275887de87a39b76a73ba2f2a8"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">operator==</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N5units7one_repE" title="units::one_rep"><span class="pre">one_rep</span></a><span class="pre">&amp;</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4NK5units7one_repeqERK7one_rep" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1a2df0f88ba16bb9c9de91d0de72106887"></span><code class="sig-name descname"><span class="pre">auto</span> <span class="pre">operator&lt;=&gt;</span> <span class="pre">(const</span> <span class="pre">one_rep</span> <span class="pre">&amp;)</span> <span class="pre">const</span> <span class="pre">=default</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK5units7one_repeqERK15invalid_one_rep">
-<span id="_CPPv3NK5units7one_repeqERK15invalid_one_rep"></span><span id="_CPPv2NK5units7one_repeqERK15invalid_one_rep"></span><span id="units::one_rep::eq-operator__invalid_one_repCRCCE"></span><span class="target" id="structunits_1_1one__rep_1a0a9efa52d62d4ac5afba3f8f8792e6cb"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">operator==</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">invalid_one_rep</span><span class="pre">&amp;</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK5units7one_repeqERK15invalid_one_rep" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Members</p>
-<dl class="cpp var">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1a9a1f98a8cea47e82513aec46b9e7f05c"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Rep&gt;</span> <span class="pre">requires</span> <span class="pre">requires</span>&#160;&#160; <span class="pre">=</span> <span class="pre">{</span> <span class="pre">quantity_values&lt;Rep&gt;::one()</span></code></dt>
-<dd></dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Friends</p>
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1ae7cc7c45026a3f429cc12565b8e52945"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">one_rep</span> <span class="pre">operator*</span> <span class="pre">(one_rep,</span> <span class="pre">one_rep)</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1acecb2c6f3b6145e32dd64378eff4cc51"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">one_rep</span> <span class="pre">operator/</span> <span class="pre">(one_rep,</span> <span class="pre">one_rep)</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1a5f540e8e1946dd6431b019b163092e90"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator*</span> <span class="pre">(const</span> <span class="pre">Rep</span> <span class="pre">&amp;lhs,</span> <span class="pre">one_rep)</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1a608b07320a05e7e7491094029d20ba24"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator/</span> <span class="pre">(const</span> <span class="pre">Rep</span> <span class="pre">&amp;lhs,</span> <span class="pre">one_rep)</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1afa134304d39d0d6aff6f4d879faa930b"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator*</span> <span class="pre">(one_rep,</span> <span class="pre">const</span> <span class="pre">Rep</span> <span class="pre">&amp;)=delete</span></code></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt>
-<span class="target" id="structunits_1_1one__rep_1a3c7d2cd77364022632f746d292f46a89"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Rep</span> <span class="pre">operator/</span> <span class="pre">(one_rep,</span> <span class="pre">const</span> <span class="pre">Rep</span> <span class="pre">&amp;)=delete</span></code></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
 </div>
 
 
