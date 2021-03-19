@@ -243,7 +243,7 @@ with all the definitions for the current system (e.g. <em>units/isq/si/si.h</em>
 <h2>Operations On Unknown Dimensions And Their Units<a class="headerlink" href="#operations-on-unknown-dimensions-and-their-units" title="Permalink to this headline">¶</a></h2>
 <p>For some cases we can eliminate the need to predefine a specific dimension and just use
 the <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a> instead. Let’s play with the previous example a bit:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">72</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">number</span><span class="p">()</span> <span class="o">==</span> <span class="mi">72</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>As we can see the value stored in this quantity can be easily obtained and contains a

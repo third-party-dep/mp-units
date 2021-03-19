@@ -372,7 +372,7 @@ code will not compile:</p>
 </pre></div>
 </div>
 <p>To make it compile fine we have to either explicitly get the value stored in the quantity:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_m</span><span class="p">).</span><span class="n">count</span><span class="p">());</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="n">_q_m</span> <span class="o">/</span> <span class="mi">5</span><span class="n">_q_m</span><span class="p">).</span><span class="n">number</span><span class="p">());</span>
 </pre></div>
 </div>
 <p>or use a mathematical wrapper function from <a class="reference internal" href="../reference/systems/isq/si/time.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace:</p>
@@ -382,7 +382,7 @@ code will not compile:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Always remember to explicitly cast the quantity to the destination unit with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> before
-calling <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity5countEv" title="units::quantity::count"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::count()</span></code></a>!</p>
+calling <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity6numberEv" title="units::quantity::number"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::number()</span></code></a>!</p>
 </div>
 </div>
 </div>
