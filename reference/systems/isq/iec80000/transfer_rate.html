@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Transfer Rate &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="CGS" href="../si_cgs.html" />
+    <link rel="prev" title="Traffic Intensity" href="traffic_intensity.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../core.html">Core Library</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../systems.html">Systems</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../generic.html">Generic</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../isq.html">International System of Quantities (ISQ)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../dimensions_and_concepts.html">Dimensions and Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../si.html">International System of Units (SI)</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../iec80000.html">IEC 80000</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="binary_prefixes.html">Binary Prefixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modulation_rate.html">Modulation Rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="storage_capacity.html">Sotrage Capacity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="traffic_intensity.html">Traffic Intensity</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Transfer Rate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../si_cgs.html">CGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../si_international.html">International</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../si_us.html">US</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../si_imperial.html">Imperial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../si_fps.html">FPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../si_iau.html">IAU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../si_typographic.html">Typographic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../natural.html">Natural</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../systems.html">Systems</a> &raquo;</li>
+        
+          <li><a href="../../isq.html">International System of Quantities (ISQ)</a> &raquo;</li>
+        
+          <li><a href="../iec80000.html">IEC 80000</a> &raquo;</li>
+        
+      <li>Transfer Rate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/reference/systems/isq/iec80000/transfer_rate.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="transfer-rate">
+<h1>Transfer Rate<a class="headerlink" href="#transfer-rate" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp type">
+<dt id="_CPPv45units">
+<span id="_CPPv35units"></span><span id="_CPPv25units"></span><span id="units"></span><span class="target" id="namespaceunits"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">units</span></code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units3isqE">
+<span id="_CPPv3N5units3isqE"></span><span id="_CPPv2N5units3isqE"></span><span id="units::isq"></span><span class="target" id="namespaceunits_1_1isq"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">isq</span></code><br /></dt>
+<dd><dl class="cpp type">
+<dt id="_CPPv4N5units3isq8iec80000E">
+<span id="_CPPv3N5units3isq8iec80000E"></span><span id="_CPPv2N5units3isq8iec80000E"></span><span id="units::isq::iec80000"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">iec80000</span></code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv4I_6UnitOfI17dim_transfer_rateE_14RepresentationEN5units3isq8iec8000013transfer_rateE">
+<span id="_CPPv3I_6UnitOfI17dim_transfer_rateE_14RepresentationEN5units3isq8iec8000013transfer_rateE"></span><span id="_CPPv2I_6UnitOfI17dim_transfer_rateE_14RepresentationEN5units3isq8iec8000013transfer_rateE"></span><span class="pre">template&lt;</span><a class="reference internal" href="../../../core/concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf"><span class="pre">UnitOf</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">U</span></code><span class="pre">,</span> <a class="reference internal" href="../../../core/concepts.html#_CPPv4I0EN5units14RepresentationE" title="units::Representation"><span class="pre">Representation</span></a> <code class="sig-name descname"><span class="pre">Rep</span></code> <span class="pre">=</span> <span class="pre">double</span><span class="pre">&gt;</span><br /><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1aa911e6f7051cb7b1f2407bc9a729201e"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">transfer_rate</span></code> <span class="pre">=</span> <a class="reference internal" href="../../../core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><span class="pre">quantity</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI17dim_transfer_rateE_14RepresentationEN5units3isq8iec8000013transfer_rateE" title="units::isq::iec80000::transfer_rate::U"><span class="pre">U</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I_6UnitOfI17dim_transfer_rateE_14RepresentationEN5units3isq8iec8000013transfer_rateE" title="units::isq::iec80000::transfer_rate::Rep"><span class="pre">Rep</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4I_6UnitOfI17dim_transfer_rateE_14RepresentationEN5units3isq8iec8000013transfer_rateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li10_q_B_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li10_q_B_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li10_q_B_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a725fe3eb5124d22c4c117c67af59750f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_B_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li10_q_B_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_kB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_kB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_kB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1afcf0fb6fb15e1b1b558122b7c77c0cd8"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_kB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_kB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_MB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_MB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_MB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1aece6feb47160b942c373be296c6379ca"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_MB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_MB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_GB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_GB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_GB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a8f68585eac6b3669173ee26bd7ffb59e"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_GB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_GB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_TB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_TB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_TB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1ac0e175257ee7fb4f90790d1f27c897e3"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_TB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_TB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_PB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_PB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_PB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a770fa33dc72ac0f06feefedc9fd18a8f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_PB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_PB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_EB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_EB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_EB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a3fc9aefe5b5538a886212e62fe715a68"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_EB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_EB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_ZB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_ZB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_ZB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a7865edeec7dff8ce5c516f59ced4feb3"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_ZB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_ZB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec80000li11_q_YB_per_sEy">
+<span id="_CPPv3N5units3isq8iec80000li11_q_YB_per_sEy"></span><span id="_CPPv2N5units3isq8iec80000li11_q_YB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a8b8c88584626c8885666e1fe6ceae508"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_YB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec80000li11_q_YB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Variables</p>
+<dl class="cpp var">
+<dt>
+<span class="target" id="namespaceunits_1_1isq_1_1iec80000_1a3a8fbd2e56b1af2e0af3bf1527f67cd5"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">T&gt;</span> <span class="pre">concept</span> <span class="pre">TransferRate</span>&#160;&#160; <span class="pre">=</span> <span class="pre">QuantityOf&lt;T,</span> <span class="pre">dim_transfer_rate&gt;</span></code></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000015byte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000015byte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000015byte_per_secondE"></span><span id="units::isq::iec80000::byte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1byte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">byte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0EN5units4unitE" title="units::unit"><span class="pre">unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000015byte_per_secondE" title="units::isq::iec80000::byte_per_second"><span class="pre">byte_per_second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000015byte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000017dim_transfer_rateE">
+<span id="_CPPv3N5units3isq8iec8000017dim_transfer_rateE"></span><span id="_CPPv2N5units3isq8iec8000017dim_transfer_rateE"></span><span id="units::isq::iec80000::dim_transfer_rate"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1dim__transfer__rate"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dim_transfer_rate</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/dimensions.html#_CPPv4I0_4Unit_Dp8ExponentEN5units17derived_dimensionE" title="units::derived_dimension"><span class="pre">derived_dimension</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000015byte_per_secondE" title="units::isq::iec80000::byte_per_second"><span class="pre">byte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="../../../core/types/dimensions.html#_CPPv4I_9Dimension_NSt8intmax_tE_NSt8intmax_tEEN5units8exponentE" title="units::exponent"><span class="pre">exponent</span></a><span class="pre">&lt;</span><a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec8000020dim_storage_capacityE" title="units::isq::iec80000::dim_storage_capacity"><span class="pre">dim_storage_capacity</span></a><span class="pre">,</span> <span class="pre">1</span><span class="pre">&gt;</span><span class="pre">,</span> <a class="reference internal" href="../../../core/types/dimensions.html#_CPPv4I_9Dimension_NSt8intmax_tE_NSt8intmax_tEEN5units8exponentE" title="units::exponent"><span class="pre">exponent</span></a><span class="pre">&lt;</span><a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si8dim_timeE" title="units::isq::si::dim_time"><span class="pre">dim_time</span></a><span class="pre">,</span> <span class="pre">-</span><span class="pre">1</span><span class="pre">&gt;</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000018exabyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000018exabyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000018exabyte_per_secondE"></span><span id="units::isq::iec80000::exabyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1exabyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">exabyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000018exabyte_per_secondE" title="units::isq::iec80000::exabyte_per_second"><span class="pre">exabyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800007exabyteE" title="units::isq::iec80000::exabyte"><span class="pre">exabyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000018exabyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000019gigabyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000019gigabyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000019gigabyte_per_secondE"></span><span id="units::isq::iec80000::gigabyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1gigabyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">gigabyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000019gigabyte_per_secondE" title="units::isq::iec80000::gigabyte_per_second"><span class="pre">gigabyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800008gigabyteE" title="units::isq::iec80000::gigabyte"><span class="pre">gigabyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000019gigabyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000019kilobyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000019kilobyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000019kilobyte_per_secondE"></span><span id="units::isq::iec80000::kilobyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1kilobyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">kilobyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000019kilobyte_per_secondE" title="units::isq::iec80000::kilobyte_per_second"><span class="pre">kilobyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800008kilobyteE" title="units::isq::iec80000::kilobyte"><span class="pre">kilobyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000019kilobyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000019megabyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000019megabyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000019megabyte_per_secondE"></span><span id="units::isq::iec80000::megabyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1megabyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">megabyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000019megabyte_per_secondE" title="units::isq::iec80000::megabyte_per_second"><span class="pre">megabyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800008megabyteE" title="units::isq::iec80000::megabyte"><span class="pre">megabyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000019megabyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000019petabyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000019petabyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000019petabyte_per_secondE"></span><span id="units::isq::iec80000::petabyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1petabyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">petabyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000019petabyte_per_secondE" title="units::isq::iec80000::petabyte_per_second"><span class="pre">petabyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800008petabyteE" title="units::isq::iec80000::petabyte"><span class="pre">petabyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000019petabyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000019terabyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000019terabyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000019terabyte_per_secondE"></span><span id="units::isq::iec80000::terabyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1terabyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">terabyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000019terabyte_per_secondE" title="units::isq::iec80000::terabyte_per_second"><span class="pre">terabyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800008terabyteE" title="units::isq::iec80000::terabyte"><span class="pre">terabyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000019terabyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000020yottabyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000020yottabyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000020yottabyte_per_secondE"></span><span id="units::isq::iec80000::yottabyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1yottabyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">yottabyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000020yottabyte_per_secondE" title="units::isq::iec80000::yottabyte_per_second"><span class="pre">yottabyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800009yottabyteE" title="units::isq::iec80000::yottabyte"><span class="pre">yottabyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000020yottabyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4N5units3isq8iec8000020zettabyte_per_secondE">
+<span id="_CPPv3N5units3isq8iec8000020zettabyte_per_secondE"></span><span id="_CPPv2N5units3isq8iec8000020zettabyte_per_secondE"></span><span id="units::isq::iec80000::zettabyte_per_second"></span><span class="target" id="structunits_1_1isq_1_1iec80000_1_1zettabyte__per__second"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">zettabyte_per_second</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="../../../core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><span class="pre">deduced_unit</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N5units3isq8iec8000020zettabyte_per_secondE" title="units::isq::iec80000::zettabyte_per_second"><span class="pre">zettabyte_per_second</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4N5units3isq8iec8000017dim_transfer_rateE" title="units::isq::iec80000::dim_transfer_rate"><span class="pre">dim_transfer_rate</span></a><span class="pre">,</span> <a class="reference internal" href="storage_capacity.html#_CPPv4N5units3isq8iec800009zettabyteE" title="units::isq::iec80000::zettabyte"><span class="pre">zettabyte</span></a><span class="pre">,</span> <a class="reference internal" href="../si/thermal_conductivity.html#_CPPv4N5units3isq2siE" title="units::isq::si"><span class="pre">si</span></a><span class="pre">::</span><a class="reference internal" href="../si/time.html#_CPPv4N5units3isq2si6secondE" title="units::isq::si::second"><span class="pre">second</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N5units3isq8iec8000020zettabyte_per_secondE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;transfer_rate.h&gt;</em></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units3isq8iec800008literalsE">
+<span id="_CPPv3N5units3isq8iec800008literalsE"></span><span id="_CPPv2N5units3isq8iec800008literalsE"></span><span id="units::isq::iec80000::literals"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals"></span><em class="property"><span class="pre">namespace</span> </em><code class="sig-name descname"><span class="pre">literals</span></code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli10_q_B_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli10_q_B_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli10_q_B_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a725fe3eb5124d22c4c117c67af59750f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_B_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli10_q_B_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_kB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_kB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_kB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1afcf0fb6fb15e1b1b558122b7c77c0cd8"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_kB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_kB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_MB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_MB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_MB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1aece6feb47160b942c373be296c6379ca"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_MB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_MB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_GB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_GB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_GB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a8f68585eac6b3669173ee26bd7ffb59e"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_GB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_GB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_TB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_TB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_TB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1ac0e175257ee7fb4f90790d1f27c897e3"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_TB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_TB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_PB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_PB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_PB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a770fa33dc72ac0f06feefedc9fd18a8f"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_PB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_PB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_EB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_EB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_EB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a3fc9aefe5b5538a886212e62fe715a68"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_EB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_EB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_ZB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_ZB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_ZB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a7865edeec7dff8ce5c516f59ced4feb3"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_ZB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_ZB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5units3isq8iec800008literalsli11_q_YB_per_sEy">
+<span id="_CPPv3N5units3isq8iec800008literalsli11_q_YB_per_sEy"></span><span id="_CPPv2N5units3isq8iec800008literalsli11_q_YB_per_sEy"></span><span class="target" id="namespaceunits_1_1isq_1_1iec80000_1_1literals_1a8b8c88584626c8885666e1fe6ceae508"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">operator&quot;&quot;_q_YB_per_s</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5units3isq8iec800008literalsli11_q_YB_per_sEy" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../si_cgs.html" class="btn btn-neutral float-right" title="CGS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="traffic_intensity.html" class="btn btn-neutral float-left" title="Traffic Intensity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
