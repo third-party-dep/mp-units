@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quantity Reference &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Quantity Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/reference/core/types/reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quantity-reference">
+<h1>Quantity Reference<a class="headerlink" href="#quantity-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp struct">
+<dt id="_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE">
+<span id="_CPPv3I_9Dimension_6UnitOfI1DEEN5units9referenceE"></span><span id="_CPPv2I_9Dimension_6UnitOfI1DEEN5units9referenceE"></span><span class="pre">template&lt;</span><a class="reference internal" href="../concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><span class="pre">Dimension</span></a> <code class="sig-name descname"><span class="pre">D</span></code><span class="pre">,</span> <a class="reference internal" href="../concepts.html#_CPPv4I00EN5units6UnitOfE" title="units::UnitOf"><span class="pre">UnitOf</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE" title="units::reference::D"><span class="pre">D</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">U</span></code><span class="pre">&gt;</span><br /><span class="target" id="structunits_1_1reference"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><a class="reference internal" href="../../systems/isq/si/time.html#_CPPv45units" title="units"><span class="pre">units</span></a><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">reference</span></code><a class="headerlink" href="#_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The type for quantity references. </p>
+<p>This type is intended to be used in the quantity references definition:</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">references</span> <span class="p">{</span>
+
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">m</span> <span class="o">=</span> <span class="n">reference</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">km</span> <span class="o">=</span> <span class="n">reference</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">kilometre</span><span class="o">&gt;</span><span class="p">{};</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<p>Quantity references simplify quantity creation:</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+
+<span class="k">auto</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">123</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">70</span> <span class="o">*</span> <span class="p">(</span><span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p>Also, it is allowed to define custom quantity references from existing ones:</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="k">auto</span> <span class="n">Nm</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">mph</span> <span class="o">=</span> <span class="n">mi</span> <span class="o">/</span> <span class="n">h</span><span class="p">;</span>
+</pre></div>
+</div>
+</p>
+<p>The following syntaxes are not allowed: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">/</span> <span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">km</span> <span class="pre">*</span> <span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">/</span> <span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">70</span> <span class="pre">*</span> <span class="pre">km</span> <span class="pre">/</span> <span class="pre">h</span></code>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N5units9reference9dimensionE">
+<span id="_CPPv3N5units9reference9dimensionE"></span><span id="_CPPv2N5units9reference9dimensionE"></span><span class="target" id="structunits_1_1reference_1a578a5ed2930bccf15227a07fc4a31873"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">dimension</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE" title="units::reference::D"><span class="pre">D</span></a><a class="headerlink" href="#_CPPv4N5units9reference9dimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N5units9reference4unitE">
+<span id="_CPPv3N5units9reference4unitE"></span><span id="_CPPv2N5units9reference4unitE"></span><span class="target" id="structunits_1_1reference_1a844bbd194833fae82a3899db2b8507ba"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">unit</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE" title="units::reference::U"><span class="pre">U</span></a><a class="headerlink" href="#_CPPv4N5units9reference4unitE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Friends</p>
+<dl class="cpp function">
+<dt>
+<span class="target" id="structunits_1_1reference_1a99d65c66950e8dbb03fb60bc74fccc38"></span><code class="sig-name descname"><span class="pre">template&lt;Reference</span> <span class="pre">R2&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">reference_multiply&lt;</span> <span class="pre">reference,</span> <span class="pre">R2</span> <span class="pre">&gt;</span> <span class="pre">operator*</span> <span class="pre">(reference,</span> <span class="pre">R2)</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="structunits_1_1reference_1a7c6c6ccc4cebd5fd86e2319e2140022a"></span><code class="sig-name descname"><span class="pre">template&lt;Reference</span> <span class="pre">R2&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">reference_divide&lt;</span> <span class="pre">reference,</span> <span class="pre">R2</span> <span class="pre">&gt;</span> <span class="pre">operator/</span> <span class="pre">(reference,</span> <span class="pre">R2)</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="structunits_1_1reference_1af0587c112bf65142ae992a498696b114"></span><code class="sig-name descname"><span class="pre">template&lt;QuantityValue</span> <span class="pre">Rep&gt;</span> <span class="pre">inline</span> <span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator*</span> <span class="pre">(const</span> <span class="pre">Rep</span> <span class="pre">&amp;lhs,</span> <span class="pre">reference)</span></code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="structunits_1_1reference_1a7a41bcd1b82be7fe8e78f8d1145c5fce"></span><code class="sig-name descname"><span class="pre">friend</span> <span class="pre">friend</span> <span class="pre">void</span> <span class="pre">operator*</span> <span class="pre">(Quantity</span> <span class="pre">auto,</span> <span class="pre">reference)=delete</span></code></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -205,7 +205,7 @@
 </div>
 <div class="admonition-try-it-on-compiler-explorer admonition">
 <p class="admonition-title">Try it on Compiler Explorer</p>
-<p><a class="reference external" href="https://godbolt.org/z/YWch6d">Example #1</a></p>
+<p><a class="reference external" href="https://godbolt.org/z/shcohY">Example #1</a></p>
 </div>
 <p>This library requires some C++20 features (concepts, classes as
 <abbr title="Non-Type Template Parameter">NTTP</abbr>, …). Thanks to them the user gets a powerful
@@ -230,7 +230,7 @@ of basic library features:</p>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">unit_constants</span><span class="p">;</span>
 
-  <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">110</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">;</span>
+  <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">110</span> <span class="o">*</span> <span class="p">(</span><span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">);</span>
   <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="mi">220</span><span class="n">_q_km</span><span class="p">,</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">);</span>
   <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">mile</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">140</span><span class="p">),</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
   <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v4</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">v2</span><span class="p">);</span>
@@ -248,7 +248,7 @@ of basic library features:</p>
 </div>
 <div class="admonition-try-it-on-compiler-explorer admonition">
 <p class="admonition-title">Try it on Compiler Explorer</p>
-<p><a class="reference external" href="https://godbolt.org/z/eca49d">Example #2</a></p>
+<p><a class="reference external" href="https://godbolt.org/z/dY1dEd">Example #2</a></p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
