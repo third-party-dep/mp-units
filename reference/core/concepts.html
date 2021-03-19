@@ -262,13 +262,13 @@ satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="r
 <dl class="cpp concept">
 <dt id="_CPPv4I0EN5units8QuantityE">
 <span id="_CPPv3I0EN5units8QuantityE"></span><span id="_CPPv2I0EN5units8QuantityE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">concept</span> </em><code class="sig-name descname"><span class="pre">Quantity</span></code><a class="headerlink" href="#_CPPv4I0EN5units8QuantityE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A concept matching all quantities in the library. Satisfied by all instantiations of <a class="reference internal" href="types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity</span></code></a>.</p>
+<dd><p>A concept matching all quantities in the library. Satisfied by all instantiations of <a class="reference internal" href="types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt id="_CPPv4I0EN5units12QuantityLikeE">
 <span id="_CPPv3I0EN5units12QuantityLikeE"></span><span id="_CPPv2I0EN5units12QuantityLikeE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">concept</span> </em><code class="sig-name descname"><span class="pre">QuantityLike</span></code><a class="headerlink" href="#_CPPv4I0EN5units12QuantityLikeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A concept matching all quantity-like types other than specialization of <a class="reference internal" href="types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity</span></code></a>. Satisfied by
+<dd><p>A concept matching all quantity-like types other than specialization of <a class="reference internal" href="types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity</span></code></a>. Satisfied by
 all types for which a correct specialization of <a class="reference internal" href="customization_points.html#_CPPv4I0EN5units20quantity_like_traitsE" title="units::quantity_like_traits"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_like_traits</span></code></a> type trait is provided.</p>
 </dd></dl>
 
@@ -281,8 +281,8 @@ satisfy <code class="xref cpp cpp-expr docutils literal notranslate"><a class="r
 </dd></dl>
 
 <dl class="cpp concept">
-<dt id="_CPPv4I0EN5units13QuantityValueE">
-<span id="_CPPv3I0EN5units13QuantityValueE"></span><span id="_CPPv2I0EN5units13QuantityValueE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">concept</span> </em><code class="sig-name descname"><span class="pre">QuantityValue</span></code><a class="headerlink" href="#_CPPv4I0EN5units13QuantityValueE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4I0EN5units14RepresentationE">
+<span id="_CPPv3I0EN5units14RepresentationE"></span><span id="_CPPv2I0EN5units14RepresentationE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">concept</span> </em><code class="sig-name descname"><span class="pre">Representation</span></code><a class="headerlink" href="#_CPPv4I0EN5units14RepresentationE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A concept matching types that can be used as a <a class="reference internal" href="#_CPPv4I0EN5units8QuantityE" title="units::Quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Quantity</span></code></a> representation type. Satisfied
 by types that match <code class="docutils literal notranslate"><span class="pre">(!Quantity&lt;T&gt;)</span> <span class="pre">&amp;&amp;</span> <span class="pre">(!QuantityLike&lt;T&gt;)</span> <span class="pre">&amp;&amp;</span> <span class="pre">(!WrappedQuantity&lt;T&gt;)</span> <span class="pre">&amp;&amp;</span> <span class="pre">std::regular&lt;T&gt;</span></code>
 and satisfy one of the following:</p>
@@ -299,7 +299,7 @@ multiplication and division operators with itself and <code class="docutils lite
 <dt id="_CPPv4I0EN5units13QuantityPointE">
 <span id="_CPPv3I0EN5units13QuantityPointE"></span><span id="_CPPv2I0EN5units13QuantityPointE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">concept</span> </em><code class="sig-name descname"><span class="pre">QuantityPoint</span></code><a class="headerlink" href="#_CPPv4I0EN5units13QuantityPointE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A concept matching all quantity points in the library. Satisfied by all instantiations of
-<a class="reference internal" href="types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_point</span></code></a>.</p>
+<a class="reference internal" href="types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_point</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
@@ -320,14 +320,14 @@ multiplication and division operators with itself and <code class="docutils lite
 <dt id="_CPPv4I0EN5units12QuantityKindE">
 <span id="_CPPv3I0EN5units12QuantityKindE"></span><span id="_CPPv2I0EN5units12QuantityKindE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">concept</span> </em><code class="sig-name descname"><span class="pre">QuantityKind</span></code><a class="headerlink" href="#_CPPv4I0EN5units12QuantityKindE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A concept matching all quantity kinds in the library. Satisfied by all specializations of
-<a class="reference internal" href="types/quantity_kind.html#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_13QuantityValueEN5units13quantity_kindE" title="units::quantity_kind"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_kind</span></code></a>.</p>
+<a class="reference internal" href="types/quantity_kind.html#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_14RepresentationEN5units13quantity_kindE" title="units::quantity_kind"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_kind</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt id="_CPPv4I0EN5units17QuantityPointKindE">
 <span id="_CPPv3I0EN5units17QuantityPointKindE"></span><span id="_CPPv2I0EN5units17QuantityPointKindE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">concept</span> </em><code class="sig-name descname"><span class="pre">QuantityPointKind</span></code><a class="headerlink" href="#_CPPv4I0EN5units17QuantityPointKindE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A concept matching all quantity point kinds in the library. Satisfied by all specializations of
-<a class="reference internal" href="types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_13QuantityValueEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a>.</p>
+<a class="reference internal" href="types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_14RepresentationEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">

@@ -196,11 +196,11 @@
 <h1>Quantity Points<a class="headerlink" href="#quantity-points" title="Permalink to this headline">¶</a></h1>
 <p>A quantity point is an absolute quantity with respect to zero
 (which represents some origin) and is represented in the library with a
-<a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> class template.</p>
+<a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> class template.</p>
 <div class="section" id="construction">
 <h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h2>
-<p>To create the quantity point object from a <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> we just have to pass
-the value to the <a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> class template explicit constructor:</p>
+<p>To create the quantity point object from a <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> we just have to pass
+the value to the <a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> class template explicit constructor:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">quantity_point</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">(</span><span class="mi">123</span><span class="n">_q_km</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -219,7 +219,7 @@ This is why the code below using
 </div>
 <div class="section" id="differences-to-quantity">
 <h2>Differences To Quantity<a class="headerlink" href="#differences-to-quantity" title="Permalink to this headline">¶</a></h2>
-<p>Unlike <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a>, the library provides:</p>
+<p>Unlike <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a>, the library provides:</p>
 <ul class="simple">
 <li><p>no helper aliases for quantity points, such as <code class="docutils literal notranslate"><span class="pre">length_point</span></code>,</p></li>
 <li><p>no UDLs for quantity points,</p></li>

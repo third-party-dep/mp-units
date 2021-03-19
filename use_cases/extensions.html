@@ -309,7 +309,7 @@ coherent unit:</p>
 <span class="k">struct</span> <span class="nl">desk_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">desk_per_hour</span><span class="p">,</span> <span class="n">dim_desk_rate</span><span class="p">,</span> <span class="n">desk</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="c1">// a quantity of our dimension</span>
-<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_desk_rate</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_desk_rate</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">desk_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_desk_rate</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="c1">// a concept matching the above quantity</span>
@@ -337,7 +337,7 @@ define a new base dimension, its units, quantity helper, concept, and UDLs:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">person</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">person</span><span class="p">,</span> <span class="s">&quot;person&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
 <span class="k">struct</span> <span class="nl">dim_people</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;people&quot;</span><span class="p">,</span> <span class="n">person</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_people</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_people</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">people</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_people</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
@@ -355,7 +355,7 @@ define a new base dimension, its units, quantity helper, concept, and UDLs:</p>
 
 <span class="k">struct</span> <span class="nl">person_per_desk</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">person_per_desk</span><span class="p">,</span> <span class="n">dim_occupancy_rate</span><span class="p">,</span> <span class="n">person</span><span class="p">,</span> <span class="n">desk</span><span class="o">&gt;</span> <span class="p">{};</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_occupancy_rate</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_occupancy_rate</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">occupancy_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_occupancy_rate</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
@@ -395,7 +395,7 @@ Such units do not share their references with base units of other systems:</p>
 
 <span class="hll"><span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
 </span>
-<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">length</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="p">}</span>  <span class="c1">// namespace fps</span>
@@ -412,7 +412,7 @@ different systems:</p>
 
 <span class="hll"><span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">metre</span><span class="o">&gt;</span> <span class="p">{};</span>
 </span>
-<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">length</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="n">fps</span> <span class="p">{</span>
@@ -422,7 +422,7 @@ different systems:</p>
 
 <span class="hll"><span class="k">struct</span> <span class="nl">dim_length</span> <span class="p">:</span> <span class="n">base_dimension</span><span class="o">&lt;</span><span class="s">&quot;L&quot;</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
 </span>
-<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">UnitOf</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">length</span> <span class="o">=</span> <span class="n">quantity</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="p">}</span>  <span class="c1">// namespace fps</span>

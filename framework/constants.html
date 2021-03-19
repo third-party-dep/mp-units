@@ -191,7 +191,7 @@
   <div class="section" id="quantity-constants">
 <h1>Quantity Constants<a class="headerlink" href="#quantity-constants" title="Permalink to this headline">¶</a></h1>
 <p>In the <strong>mp-units</strong> library quantity constants are implemented as variable
-templates of <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_13QuantityValueEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> types parametrized by the quantity’s representation
+templates of <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> types parametrized by the quantity’s representation
 type.</p>
 <p>Additionally, in case of the <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> its physical constants are put in
 separate namespaces named after the official release of the <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a>
@@ -202,7 +202,7 @@ specification release).</p>
 <p>For example the speed of light constant in <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> is defined as:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">si2019</span> <span class="p">{</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">speed_of_light</span> <span class="o">=</span> <span class="n">speed</span><span class="o">&lt;</span><span class="n">metre_per_second</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">299792458</span><span class="p">);</span>
 
 <span class="p">}</span>
@@ -211,7 +211,7 @@ specification release).</p>
 <p>The same constant defined for natural units may be provided as:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">natural</span> <span class="p">{</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityValue</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Representation</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">speed_of_light</span> <span class="o">=</span> <span class="n">speed</span><span class="o">&lt;</span><span class="n">one</span><span class="p">,</span> <span class="n">Rep</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
 <span class="p">}</span>
