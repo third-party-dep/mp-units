@@ -97,6 +97,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../design.html">Design Deep Dive</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Library Directories Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quantity.html">quantity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantity_kind.html">quantity_kind</a></li>
 <li class="toctree-l2"><a class="reference internal" href="downcasting.html">The Downcasting Facility</a></li>
 </ul>
 </li>
@@ -187,9 +188,10 @@
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>units
 ├── bits
 │   └── external
-├── data
 ├── generic
-└── physical
+└── isq
+    ├── dimensions
+    ├── iec80000
     ├── natural
     └── si
         ├── cgs
@@ -228,17 +230,13 @@ proposals not related to a Physical Units library proposal.</p></li>
 (e.g. <a class="reference internal" href="../reference/systems/generic/dimensionless.html#_CPPv4I_6UnitOfI7dim_oneE_14RepresentationEN5units13dimensionlessE" title="units::dimensionless"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dimensionless</span></code></a>, <a class="reference internal" href="../reference/systems/generic/angle.html#_CPPv4I_6UnitOfI9dim_angleIEE_14RepresentationEN5units5angleE" title="units::angle"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">angle</span></code></a>).</p></li>
 </ul>
 </li>
-<li><p><em>./units/physical</em></p>
+<li><p><em>./units/isq</em></p>
 <ul>
-<li><p>Contains the definition of physical units dimensions.</p></li>
+<li><p>Contains the definition of quantity dimensions of International System of Quantities
+(<a class="reference internal" href="../glossary.html#term-ISQ"><span class="xref std std-term">ISQ</span></a>).</p></li>
 <li><p>Its subfolders provide the definitions of various
-<a class="reference internal" href="../glossary.html#term-system-of-units"><span class="xref std std-term">systems of units</span></a> with <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> being the most popular
-one.</p></li>
-</ul>
-</li>
-<li><p><em>./units/data</em></p>
-<ul>
-<li><p>Provides data information system and its dimensions (i.e. <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">data::bitrate</span></code>).</p></li>
+<a class="reference internal" href="../glossary.html#term-system-of-units"><span class="xref std std-term">systems of units</span></a> with International System of Units (<a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a>)
+being the most popular one.</p></li>
 </ul>
 </li>
 </ul>

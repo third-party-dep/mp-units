@@ -36,7 +36,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Downcasting Facility" href="downcasting.html" />
+    <link rel="prev" title="quantity" href="quantity.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,13 +88,24 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use_cases.html">Use Cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../design.html">Design Deep Dive</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="directories.html">Library Directories Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantity.html">quantity</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">quantity_kind</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kinds">Kinds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quantity-kinds">Quantity kinds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intra-kind-operations">Intra-kind operations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="downcasting.html">The Downcasting Facility</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
@@ -154,6 +167,8 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="../design.html">Design Deep Dive</a> &raquo;</li>
+        
       <li>quantity_kind</li>
     
     
@@ -179,7 +194,7 @@
 <div class="section" id="kinds">
 <h2>Kinds<a class="headerlink" href="#kinds" title="Permalink to this headline">¶</a></h2>
 <p>The first template parameter of <code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> is a <code class="docutils literal notranslate"><span class="pre">Kind</span></code>.</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>Kind``s, by themselves:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Kind</span></code> s, by themselves:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Wrap a <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, and</p></li>
@@ -200,7 +215,7 @@ allows (intermediate) results in formulas without having to name them.</p>
 <h2>Quantity kinds<a class="headerlink" href="#quantity-kinds" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> wraps a <code class="docutils literal notranslate"><span class="pre">quantity</span></code> and layers over its dimensional analysis.
 While all properties of the <code class="docutils literal notranslate"><span class="pre">quantity</span></code> apply transparently,
-results are always <a href="#id3"><span class="problematic" id="id4">``</span></a>quantity_kind``s related to the kind(s) of the argument(s).</p>
+results are always <code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> s related to the kind(s) of the argument(s).</p>
 <p>One of the arguments to the dimensional analysis operators can also be <code class="docutils literal notranslate"><span class="pre">Quantity</span></code>.</p>
 <p>The way back to <code class="docutils literal notranslate"><span class="pre">quantity</span></code> is through the <code class="docutils literal notranslate"><span class="pre">.common()</span></code> observer.</p>
 </div>
@@ -222,6 +237,15 @@ Intra-kind operations can be opted into as follows:</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="downcasting.html" class="btn btn-neutral float-right" title="The Downcasting Facility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quantity.html" class="btn btn-neutral float-left" title="quantity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
