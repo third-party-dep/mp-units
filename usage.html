@@ -109,7 +109,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cmake-options">CMake Options</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#units-downcast-mode">UNITS_DOWNCAST_MODE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-as-system-headers">UNITS_AS_SYSTEM_HEADERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#units-build-docs">UNITS_BUILD_DOCS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-iwyu">UNITS_IWYU</a></li>
 </ul>
 </li>
 </ul>
@@ -355,11 +357,24 @@ Additionally, enables project documentation generation when the project is being
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
 <p>Equivalent to <a class="reference internal" href="#downcast-mode">downcast_mode</a>.</p>
 </div>
+<div class="section" id="units-as-system-headers">
+<h4>UNITS_AS_SYSTEM_HEADERS<a class="headerlink" href="#units-as-system-headers" title="Permalink to this headline">¶</a></h4>
+<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p>Exports library as system headers.</p>
+</div>
 <div class="section" id="units-build-docs">
 <h4>UNITS_BUILD_DOCS<a class="headerlink" href="#units-build-docs" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
 <p>Enables project documentation generation.</p>
+</div>
+<div class="section" id="units-iwyu">
+<h4>UNITS_IWYU<a class="headerlink" href="#units-iwyu" title="Permalink to this headline">¶</a></h4>
+<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p>Enables include-what-you-use when compiling with a clang compiler.
+Additionally turns on <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UNITS_AS_SYSTEM_HEADERS</span></code>.</p>
 </div>
 </div>
 </div>
