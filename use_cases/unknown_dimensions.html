@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Working with Unknown Dimensions and Their Units &mdash; mp-units 0.7.0 documentation</title>
@@ -87,11 +88,10 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../use_cases.html">Use Cases</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Working with Unknown Dimensions and Their Units</a><ul>
@@ -110,15 +110,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -191,12 +192,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-unknown-dimensions-and-their-units">
+  <section id="working-with-unknown-dimensions-and-their-units">
 <h1>Working with Unknown Dimensions and Their Units<a class="headerlink" href="#working-with-unknown-dimensions-and-their-units" title="Permalink to this headline">¶</a></h1>
 <p>From time to time the user of this library will face an <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a> and
 <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4N5units21unknown_coherent_unitE" title="units::unknown_coherent_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_coherent_unit</span></code></a> types. This chapters describes their purpose and usage in
 detail.</p>
-<div class="section" id="what-is-an-unknown-dimension">
+<section id="what-is-an-unknown-dimension">
 <h2>What is an unknown dimension?<a class="headerlink" href="#what-is-an-unknown-dimension" title="Permalink to this headline">¶</a></h2>
 <p>As we learned in the <a class="reference internal" href="../framework/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter, in most cases the result
 of multiplying or dividing two quantities of specific dimensions is a quantity of yet another
@@ -208,13 +209,14 @@ The same applies to the resulting unit. For example:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/si.h&gt;</span><span class="cp"></span>
 </span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
 
-<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">;</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">dimension</span><span class="p">,</span>
-<span class="hll">                             <span class="n">dim_speed</span><span class="o">&gt;</span><span class="p">);</span>
-</span><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">unit</span><span class="p">,</span>
-<span class="hll">                             <span class="n">kilometre_per_hour</span><span class="o">&gt;</span><span class="p">);</span>
-</span></pre></div>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">);</span>
+<span class="hll"><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">dimension</span><span class="p">,</span>
+</span>                             <span class="n">dim_speed</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="hll"><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">unit</span><span class="p">,</span>
+</span>                             <span class="n">kilometre_per_hour</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
 </div>
 <p>However, if the resulting dimension is not predefined by the user, the library framework
 will create an instance of an <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a>. The coherent unit of such an unknown
@@ -225,21 +227,22 @@ dimensions used in the division operation:</p>
 </span><span class="hll"><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/time.h&gt;</span><span class="cp"></span>
 </span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
 
-<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span><span class="n">_q_km</span> <span class="o">/</span> <span class="mi">2</span><span class="n">_q_h</span><span class="p">;</span>
-<span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">dimension</span><span class="p">,</span>
-<span class="hll">                             <span class="n">unknown_dimension</span><span class="o">&lt;</span><span class="n">exponent</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">&lt;</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">);</span>
-</span><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">unit</span><span class="p">,</span>
-<span class="hll">                             <span class="n">scaled_unit</span><span class="o">&lt;</span><span class="n">ratio</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">unknown_coherent_unit</span><span class="o">&gt;&gt;</span><span class="p">);</span>
-</span></pre></div>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">144</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">);</span>
+<span class="hll"><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">dimension</span><span class="p">,</span>
+</span>                             <span class="n">unknown_dimension</span><span class="o">&lt;</span><span class="n">exponent</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">&lt;</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">);</span>
+<span class="hll"><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">::</span><span class="n">unit</span><span class="p">,</span>
+</span>                             <span class="n">scaled_unit</span><span class="o">&lt;</span><span class="n">ratio</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">unknown_coherent_unit</span><span class="o">&gt;&gt;</span><span class="p">);</span>
+</pre></div>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>To limit the possibility of an ODR violation please always include a header file
 with all the definitions for the current system (e.g. <em>units/isq/si/si.h</em>).</p>
 </div>
-</div>
-<div class="section" id="operations-on-unknown-dimensions-and-their-units">
+</section>
+<section id="operations-on-unknown-dimensions-and-their-units">
 <h2>Operations On Unknown Dimensions And Their Units<a class="headerlink" href="#operations-on-unknown-dimensions-and-their-units" title="Permalink to this headline">¶</a></h2>
 <p>For some cases we can eliminate the need to predefine a specific dimension and just use
 the <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a> instead. Let’s play with the previous example a bit:</p>
@@ -269,8 +272,8 @@ following:</p>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="temporary-results">
+</section>
+<section id="temporary-results">
 <h2>Temporary Results<a class="headerlink" href="#temporary-results" title="Permalink to this headline">¶</a></h2>
 <p>In many cases there is nothing inherently wrong with having unknown dimensions and units
 in your program. A typical example here are temporary results of a long calculation:</p>
@@ -278,10 +281,10 @@ in your program. A typical example here are temporary results of a long calculat
 <span class="p">{</span>
   <span class="n">Speed</span> <span class="k">auto</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
 
-<span class="hll">  <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">*</span> <span class="mi">200</span><span class="n">_q_km</span><span class="p">;</span>      <span class="c1">// intermediate unknown dimension</span>
+<span class="hll">  <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="n">km</span><span class="p">);</span>      <span class="c1">// intermediate unknown dimension</span>
 </span>
-<span class="hll">  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="mi">50</span><span class="n">_q_km</span><span class="p">;</span> <span class="c1">// back to known dimensions again</span>
-</span>  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">s2</span> <span class="o">*</span> <span class="mi">4</span><span class="n">_q_h</span><span class="p">;</span>
+<span class="hll">  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="n">km</span><span class="p">);</span> <span class="c1">// back to known dimensions again</span>
+</span>  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">s2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">);</span>
 
   <span class="c1">// ...</span>
 <span class="p">}</span>
@@ -290,8 +293,8 @@ in your program. A typical example here are temporary results of a long calculat
 <p>If a programmer wants to break the calculation to several lines/variables he/she does not
 have to ensure that the intermediate results are of predefined dimensions or just a clear
 science fiction :-) The final result will always be correct.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Constants &mdash; mp-units 0.7.0 documentation</title>
@@ -37,7 +38,7 @@
     
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Random" href="../../../random.html" />
+    <link rel="next" title="CGS (based on SI)" href="../si_cgs.html" />
     <link rel="prev" title="Units" href="units.html" /> 
 </head>
 
@@ -87,18 +88,18 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../framework.html">Framework Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../use_cases.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p><span class="caption-text">Reference:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../core.html">Core Library</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../systems.html">Systems</a><ul class="current">
@@ -107,26 +108,20 @@
 <li class="toctree-l3"><a class="reference internal" href="../dimensions_and_concepts.html">Dimensions and Concepts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../si.html">International System of Units (SI)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iec80000.html">IEC 80000</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../si_cgs.html">CGS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../si_international.html">International</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../si_us.html">US</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../si_imperial.html">Imperial</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../si_fps.html">FPS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../si_iau.html">IAU</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../si_typographic.html">Typographic</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../natural.html">Natural</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="units.html">Units</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Constants</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../isq.html#systems-of-units-based-on-the-si">Systems of Units based on the SI</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
@@ -203,7 +198,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="constants">
+  <section id="constants">
 <h1>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp type">
 <dt id="_CPPv45units">
@@ -218,7 +213,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
 <dl class="cpp var">
 <dt id="_CPPv4I_14RepresentationEN5units3isq7natural14speed_of_lightE">
-<span id="_CPPv3I_14RepresentationEN5units3isq7natural14speed_of_lightE"></span><span id="_CPPv2I_14RepresentationEN5units3isq7natural14speed_of_lightE"></span><span class="pre">template&lt;</span><a class="reference internal" href="../../../core/concepts.html#_CPPv4I0EN5units14RepresentationE" title="units::Representation"><span class="pre">Representation</span></a> <code class="sig-name descname"><span class="pre">Rep</span></code> <span class="pre">=</span> <span class="pre">double</span><span class="pre">&gt;</span><br /><span class="target" id="namespaceunits_1_1isq_1_1natural_1a04096b22babdba29be43a1270f2eb0e0"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">speed_of_light</span></code> <span class="pre">=</span> <span class="pre">speed</span><span class="pre">&lt;</span><a class="reference internal" href="../../generic/dimensionless.html#_CPPv4N5units3oneE" title="units::one"><span class="pre">one</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I_14RepresentationEN5units3isq7natural14speed_of_lightE" title="units::isq::natural::speed_of_light::Rep"><span class="pre">Rep</span></a><span class="pre">&gt;</span><span class="pre">(</span><span class="pre">1</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4I_14RepresentationEN5units3isq7natural14speed_of_lightE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I_14RepresentationEN5units3isq7natural14speed_of_lightE"></span><span id="_CPPv2I_14RepresentationEN5units3isq7natural14speed_of_lightE"></span><span class="pre">template&lt;</span><a class="reference internal" href="../../../core/concepts.html#_CPPv4I0EN5units14RepresentationE" title="units::Representation"><span class="pre">Representation</span></a> <code class="sig-name descname"><span class="pre">Rep</span></code> <span class="pre">=</span> <span class="pre">double</span><span class="pre">&gt;</span><br /><span class="target" id="namespaceunits_1_1isq_1_1natural_1a04096b22babdba29be43a1270f2eb0e0"></span><em class="property"><span class="pre">constexpr</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">speed_of_light</span></code> <span class="pre">=</span> <a class="reference internal" href="dimensions.html#_CPPv4I_6UnitOfI9dim_speedE_14RepresentationEN5units3isq7natural5speedE" title="units::isq::natural::speed"><span class="pre">speed</span></a><span class="pre">&lt;</span><a class="reference internal" href="../../generic/dimensionless.html#_CPPv4N5units3oneE" title="units::one"><span class="pre">one</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I_14RepresentationEN5units3isq7natural14speed_of_lightE" title="units::isq::natural::speed_of_light::Rep"><span class="pre">Rep</span></a><span class="pre">&gt;</span><span class="pre">(</span><span class="pre">1</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4I_14RepresentationEN5units3isq7natural14speed_of_lightE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -228,7 +223,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -238,7 +233,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../../random.html" class="btn btn-neutral float-right" title="Random" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../si_cgs.html" class="btn btn-neutral float-right" title="CGS (based on SI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="units.html" class="btn btn-neutral float-left" title="Units" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

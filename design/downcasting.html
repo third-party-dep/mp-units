@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>The Downcasting Facility &mdash; mp-units 0.7.0 documentation</title>
@@ -87,11 +88,10 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use_cases.html">Use Cases</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../design.html">Design Deep Dive</a><ul class="current">
@@ -106,15 +106,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -187,9 +188,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="the-downcasting-facility">
+  <section id="the-downcasting-facility">
 <h1>The Downcasting Facility<a class="headerlink" href="#the-downcasting-facility" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problem-statement">
+<section id="problem-statement">
 <h2>Problem statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
 <p>Most of the C++ libraries in the world use template aliases to provide a friendly name for a
 developer. Unfortunately, such aliases are quickly lost in a compilation process and as a
@@ -229,8 +230,8 @@ ourselves into problems. The library’s framework does not know how to switch f
 instantiation of a <code class="docutils literal notranslate"><span class="pre">derived_dimension_base</span></code> class template that was generated as a result
 of dimensional calculation to a nicely named child class assigned by the user for this
 instantiation.</p>
-</div>
-<div class="section" id="how-it-works">
+</section>
+<section id="how-it-works">
 <h2>How it works?<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
 <p>To support this <strong>mp-units</strong> library introduces a new downcasting facility implemented fully
 as a library feature. It creates 1-to-1 link between a long class template instantiation and a
@@ -319,8 +320,8 @@ otherwise it works like a regular identity type trait returning a provided base 
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

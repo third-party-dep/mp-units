@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Working with Legacy Interfaces &mdash; mp-units 0.7.0 documentation</title>
@@ -87,11 +88,10 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../framework.html">Framework Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../use_cases.html">Use Cases</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="unknown_dimensions.html">Working with Unknown Dimensions and Their Units</a></li>
@@ -105,15 +105,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -186,7 +187,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-legacy-interfaces">
+  <section id="working-with-legacy-interfaces">
 <h1>Working with Legacy Interfaces<a class="headerlink" href="#working-with-legacy-interfaces" title="Permalink to this headline">¶</a></h1>
 <p>In case we are working with a legacy/unsafe interface we may be forced to
 extract the <a class="reference internal" href="../glossary.html#term-value-of-a-quantity"><span class="xref std std-term">value of a quantity</span></a> with <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity6numberEv" title="units::quantity::number"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">quantity::number()</span></code></a>
@@ -238,7 +239,7 @@ and pass it to the library’s output:</p>
 to always use <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> to cast it to a desired unit before calling
 <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity6numberEv" title="units::quantity::number"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::number()</span></code></a> and passing the raw value to the legacy/unsafe interface.</p>
 </div>
-</div>
+</section>
 
 
            </div>

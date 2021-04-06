@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Units &mdash; mp-units 0.7.0 documentation</title>
@@ -87,11 +88,10 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../framework.html">Framework Basics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic_concepts.html">Basic Concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quantities.html">Quantities</a></li>
@@ -123,15 +123,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../use_cases.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../design.html">Design Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -204,7 +205,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="units">
+  <section id="units">
 <h1>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h1>
 <p>Each quantity has a magnitude (a numerical value). In order to be able to
 compare quantities of the same dimension a notion of a <a class="reference internal" href="../glossary.html#term-measurement-unit"><span class="xref std std-term">measurement unit</span></a>
@@ -215,7 +216,7 @@ one as a number. For example <code class="docutils literal notranslate"><span cl
 <p>Base quantities are expressed in terms of <a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">base units</span></a>
 (i.e. <code class="docutils literal notranslate"><span class="pre">m</span></code> (meter), <code class="docutils literal notranslate"><span class="pre">s</span></code> (second)), while derived quantities are expressed
 in terms of <a class="reference internal" href="../glossary.html#term-derived-unit"><span class="xref std std-term">derived units</span></a>.</p>
-<div class="section" id="base-units">
+<section id="base-units">
 <h2>Base Units<a class="headerlink" href="#base-units" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">Base units</span></a> are the units of
 <a class="reference internal" href="../glossary.html#term-base-quantity"><span class="xref std std-term">base quantities</span></a> defined for
@@ -289,11 +290,11 @@ knows how to convert <code class="docutils literal notranslate"><span class="pre
 units of the same physical dimension can be found in the
 <a class="reference internal" href="../use_cases/extensions.html#custom-systems"><span class="std std-ref">Custom Systems</span></a> chapter.</p>
 </div>
-</div>
-<div class="section" id="derived-units">
+</section>
+<section id="derived-units">
 <h2>Derived Units<a class="headerlink" href="#derived-units" title="Permalink to this headline">¶</a></h2>
 <p>Derived units can be either named or unnamed.</p>
-<div class="section" id="derived-named-units">
+<section id="derived-named-units">
 <h3>Derived Named Units<a class="headerlink" href="#derived-named-units" title="Permalink to this headline">¶</a></h3>
 <p>Derived named units have a unique symbol (i.e. <code class="docutils literal notranslate"><span class="pre">N</span></code> (newton) or <code class="docutils literal notranslate"><span class="pre">Pa</span></code>
 (pascal)) and they are defined in the same way as base units (which
@@ -305,8 +306,8 @@ always have to be a named unit):</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="derived-unnamed-units">
+</section>
+<section id="derived-unnamed-units">
 <h3>Derived Unnamed Units<a class="headerlink" href="#derived-unnamed-units" title="Permalink to this headline">¶</a></h3>
 <p>Derived unnamed units are the units where the symbol is derived from the
 base quantities symbols and the expression of the dependence of the derived
@@ -335,7 +336,7 @@ will result in a different unnamed unit symbol:</p>
 </pre></div>
 </div>
 <p>However, the easiest way to define momentum is just to use the
-<code class="docutils literal notranslate"><span class="pre">si::speed</span></code> derived dimension in the recipe:</p>
+<code class="docutils literal notranslate"><span class="pre">si::dim_speed</span></code> derived dimension in the recipe:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
                                         <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// kg ⋅ m/s</span>
@@ -356,16 +357,16 @@ of <code class="docutils literal notranslate"><span class="pre">N/m</span></code
 </div>
 <p>If we defined the above in terms of base units we would end up with
 a <code class="docutils literal notranslate"><span class="pre">kg/s²</span></code> derived unit symbol.</p>
-</div>
-</div>
-<div class="section" id="scaled-units">
+</section>
+</section>
+<section id="scaled-units">
 <h2>Scaled Units<a class="headerlink" href="#scaled-units" title="Permalink to this headline">¶</a></h2>
 <p>Until now we talked mostly about
 <a class="reference internal" href="../glossary.html#term-coherent-derived-unit"><span class="xref std std-term">coherent units</span></a> which are units used to
 define dimensions and thus, in their system of units, have proportionality
 factor/ratio equals one. However quantities of each dimension can also use
 other units of measurement to describe their magnitude (numerical value).</p>
-<div class="section" id="named-scaled-units">
+<section id="named-scaled-units">
 <h3>Named Scaled Units<a class="headerlink" href="#named-scaled-units" title="Permalink to this headline">¶</a></h3>
 <p>We are used to use minutes, hours, or days to measure quantities of time.
 Those units are the scaled versions of a time dimension’s base unit,
@@ -393,8 +394,8 @@ and define units like:</p>
 provide a reference unit for scaling. Please note that it can be a dimension’s
 base/coherent unit (like <code class="docutils literal notranslate"><span class="pre">si::second</span></code>) or any other unit (i.e. <code class="docutils literal notranslate"><span class="pre">si::minute</span></code>,
 <code class="docutils literal notranslate"><span class="pre">si::hour</span></code>) that is a scaled version of the dimension’s base/coherent unit.</p>
-</div>
-<div class="section" id="prefixed-unit">
+</section>
+<section id="prefixed-unit">
 <h3>Prefixed Unit<a class="headerlink" href="#prefixed-unit" title="Permalink to this headline">¶</a></h3>
 <p>Prefixed units are just scaled units with a standardized ratio. For example
 <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> defines prefixes based on the exponent of <code class="docutils literal notranslate"><span class="pre">10</span></code>. Here is a
@@ -459,8 +460,8 @@ units we could end up with some strange, misleading, and sometimes
 wrong definitions (“kilo square metre” seams strange and spelled
 as <code class="docutils literal notranslate"><span class="pre">km²</span></code> would be invalid).</p>
 </div>
-</div>
-<div class="section" id="deduced-units">
+</section>
+<section id="deduced-units">
 <h3>Deduced Units<a class="headerlink" href="#deduced-units" title="Permalink to this headline">¶</a></h3>
 <p>For some units determining of a correct scaling ratio may not be trivial,
 and even if done correctly, may be a pain to maintain. For a simple example
@@ -500,9 +501,9 @@ used for its definition. Based on the information stored in the recipe
 (order, type, and exponents of composite dimensions) and the ratios of units
 provided in the template parameter list after the derived dimension parameter,
 the library calculates the final ratio for this unit.</p>
-</div>
-</div>
-<div class="section" id="aliased-units">
+</section>
+</section>
+<section id="aliased-units">
 <h2>Aliased Units<a class="headerlink" href="#aliased-units" title="Permalink to this headline">¶</a></h2>
 <p>In order to make our life easier people tend to assign alternative/aliased names
 to some popular units. As an example we often use “tonne” instead of “megagram”,
@@ -525,8 +526,8 @@ class template:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="class-hierarchy">
+</section>
+<section id="class-hierarchy">
 <h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline">¶</a></h2>
 <p>All of the above class templates to produce unit types inherit from some instance
 of a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> class template:</p>
@@ -535,9 +536,9 @@ of a <a class="reference internal" href="../reference/core/types/units.html#_CPP
 and user should not instantiate it by him/her-self. However the user can sometimes
 observe this type in case an unit/dimension conversion expression will end up with an
 unknown/undefined unit type like in the below example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
 
-<span class="n">Length</span> <span class="k">auto</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">100</span><span class="n">_q_km_per_h</span> <span class="o">*</span> <span class="mi">10</span><span class="n">_q_s</span><span class="p">;</span>
+<span class="n">Length</span> <span class="k">auto</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The type of <code class="docutils literal notranslate"><span class="pre">l</span></code> above will be
@@ -550,8 +551,8 @@ type here instead.</p>
 <p>To learn more about unknown units please refer to the
 <a class="reference internal" href="../use_cases/unknown_dimensions.html#working-with-unknown-dimensions-and-their-units"><span class="std std-ref">Working with Unknown Dimensions and Their Units</span></a> chapter.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

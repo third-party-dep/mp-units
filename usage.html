@@ -4,10 +4,11 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; mp-units 0.7.0 documentation</title>
+  <title>Installation And Usage &mdash; mp-units 0.7.0 documentation</title>
   
 
   
@@ -37,8 +38,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Framework Basics" href="framework.html" />
-    <link rel="prev" title="Quick Start" href="quick_start.html" /> 
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="total_energy" href="examples/total_energy.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,11 +88,15 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design Deep Dive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation And Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#repository-structure-and-dependencies">Repository Structure and Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#obtaining-dependencies">Obtaining Dependencies</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#conan-quick-intro">Conan Quick Intro</a></li>
@@ -110,8 +115,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#cmake-options">CMake Options</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#units-downcast-mode">UNITS_DOWNCAST_MODE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#units-as-system-headers">UNITS_AS_SYSTEM_HEADERS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#units-build-docs">UNITS_BUILD_DOCS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#units-iwyu">UNITS_IWYU</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-build-docs">UNITS_BUILD_DOCS</a></li>
 </ul>
 </li>
 </ul>
@@ -128,19 +133,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#uploading-mp-units-package-to-the-conan-server">Uploading <strong>mp-units</strong> Package to the Conan Server</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="framework.html">Framework Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="use_cases.html">Use Cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Design Deep Dive</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -192,7 +193,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Usage</li>
+      <li>Installation And Usage</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -211,8 +212,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+  <section id="installation-and-usage">
+<h1>Installation And Usage<a class="headerlink" href="#installation-and-usage" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This library targets C++23/26 and extensively uses C++20 features. This is why it requires the latest C++
@@ -223,7 +224,7 @@ compilers. The following compilers (or newer) are supported:</p>
 <li><p>Visual Studio 16.9</p></li>
 </ul>
 </div>
-<div class="section" id="repository-structure-and-dependencies">
+<section id="repository-structure-and-dependencies">
 <h2>Repository Structure and Dependencies<a class="headerlink" href="#repository-structure-and-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>This repository contains three independent CMake-based projects:</p>
 <ul class="simple">
@@ -266,8 +267,8 @@ documentation systems.</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="obtaining-dependencies">
+</section>
+<section id="obtaining-dependencies">
 <h2>Obtaining Dependencies<a class="headerlink" href="#obtaining-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>This library assumes that most of the dependencies will be provided by the
 <a class="reference external" href="https://conan.io/">Conan Package Manager</a>. In case you would like to obtain required
@@ -278,7 +279,7 @@ The rest of the dependencies responsible for documentation generation are provid
 <p class="admonition-title">See also</p>
 <p>A full list of dependencies can be found in <a class="reference internal" href="#repository-structure-and-dependencies">Repository Structure and Dependencies</a>.</p>
 </div>
-<div class="section" id="conan-quick-intro">
+<section id="conan-quick-intro">
 <h3>Conan Quick Intro<a class="headerlink" href="#conan-quick-intro" title="Permalink to this headline">¶</a></h3>
 <p>In case you are not familiar with Conan, to install it (or upgrade) just do:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install -U conan
@@ -312,13 +313,13 @@ in <em>~/.conan/profiles</em> directory. An example profile can look as follows:
 via Conan command line. If you do the former, you will not need to provide <code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">compiler.cppstd=20</span></code>
 every time your run a Conan command line (as it is suggested below).</p>
 </div>
-</div>
-</div>
-<div class="section" id="build-options">
+</section>
+</section>
+<section id="build-options">
 <h2>Build Options<a class="headerlink" href="#build-options" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="environment-variables">
+<section id="environment-variables">
 <h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="conan-run-tests">
+<section id="conan-run-tests">
 <h4>CONAN_RUN_TESTS<a class="headerlink" href="#conan-run-tests" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
@@ -326,11 +327,11 @@ every time your run a Conan command line (as it is suggested below).</p>
 To support this it requires some additional Conan build dependencies described in
 <a class="reference internal" href="#repository-structure-and-dependencies">Repository Structure and Dependencies</a>.
 It also runs unit tests during Conan build.</p>
-</div>
-</div>
-<div class="section" id="conan-options">
+</section>
+</section>
+<section id="conan-options">
 <h3>Conan Options<a class="headerlink" href="#conan-options" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="downcast-mode">
+<section id="downcast-mode">
 <h4>downcast_mode<a class="headerlink" href="#downcast-mode" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">off</span></code>/<code class="docutils literal notranslate"><span class="pre">on</span></code>/<code class="docutils literal notranslate"><span class="pre">auto</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">on</span></code></p>
@@ -340,49 +341,49 @@ It also runs unit tests during Conan build.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">on</span></code> - downcasting always forced -&gt; compile-time errors in case of duplicated definitions</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">automatic</span></code> - downcasting automatically enabled if no collisions are present</p></li>
 </ul>
-</div>
-<div class="section" id="build-docs">
+</section>
+<section id="build-docs">
 <h4>build_docs<a class="headerlink" href="#build-docs" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 <p>If enabled, Conan installs the documentation generation dependencies (i.e. doxygen).
 Additionally, enables project documentation generation when the project is being built by Conan.</p>
-</div>
-</div>
-<div class="section" id="cmake-options">
+</section>
+</section>
+<section id="cmake-options">
 <h3>CMake Options<a class="headerlink" href="#cmake-options" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="units-downcast-mode">
+<section id="units-downcast-mode">
 <h4>UNITS_DOWNCAST_MODE<a class="headerlink" href="#units-downcast-mode" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code>/<code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">AUTO</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
 <p>Equivalent to <a class="reference internal" href="#downcast-mode">downcast_mode</a>.</p>
-</div>
-<div class="section" id="units-as-system-headers">
+</section>
+<section id="units-as-system-headers">
 <h4>UNITS_AS_SYSTEM_HEADERS<a class="headerlink" href="#units-as-system-headers" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p>Exports library as system headers.</p>
-</div>
-<div class="section" id="units-build-docs">
-<h4>UNITS_BUILD_DOCS<a class="headerlink" href="#units-build-docs" title="Permalink to this headline">¶</a></h4>
-<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
-<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
-<p>Enables project documentation generation.</p>
-</div>
-<div class="section" id="units-iwyu">
+</section>
+<section id="units-iwyu">
 <h4>UNITS_IWYU<a class="headerlink" href="#units-iwyu" title="Permalink to this headline">¶</a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p>Enables include-what-you-use when compiling with a clang compiler.
-Additionally turns on <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UNITS_AS_SYSTEM_HEADERS</span></code>.</p>
-</div>
-</div>
-</div>
-<div class="section" id="installation-and-reuse">
+Additionally turns on <a class="reference internal" href="#units-as-system-headers">UNITS_AS_SYSTEM_HEADERS</a>.</p>
+</section>
+<section id="units-build-docs">
+<h4>UNITS_BUILD_DOCS<a class="headerlink" href="#units-build-docs" title="Permalink to this headline">¶</a></h4>
+<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
+<p>Enables project documentation generation.</p>
+</section>
+</section>
+</section>
+<section id="installation-and-reuse">
 <h2>Installation and Reuse<a class="headerlink" href="#installation-and-reuse" title="Permalink to this headline">¶</a></h2>
 <p>There are many different ways of installing/reusing <strong>mp-units</strong> in your project. Below we mention
 only a few of many options possible.</p>
-<div class="section" id="copy">
+<section id="copy">
 <h3>Copy<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h3>
 <p>As <strong>mp-units</strong> is a C++ header-only library you can simply copy <em>src/include</em> directory to
 your source tree and use it as regular header files.</p>
@@ -392,8 +393,8 @@ your source tree and use it as regular header files.</p>
 files can be located during the build. Please also note that some compiler-specific flags are needed
 to make the code compile without issues.</p>
 </div>
-</div>
-<div class="section" id="copy-cmake">
+</section>
+<section id="copy-cmake">
 <h3>Copy + CMake<a class="headerlink" href="#copy-cmake" title="Permalink to this headline">¶</a></h3>
 <p>In case you copy the whole <strong>mp-units</strong> repository to your project’s file tree you can reuse CMake targets
 defined by the library. To do so you should use <em>CMakeLists.txt</em> file from the <em>./src</em> directory:</p>
@@ -407,8 +408,8 @@ defined by the library. To do so you should use <em>CMakeLists.txt</em> file fro
 <p>You are still on your own to make sure all the dependencies are installed and their header and CMake
 configuration files can be located during the build.</p>
 </div>
-</div>
-<div class="section" id="conan-cmake-release">
+</section>
+<section id="conan-cmake-release">
 <h3>Conan + CMake (release)<a class="headerlink" href="#conan-cmake-release" title="Permalink to this headline">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -473,8 +474,8 @@ cmake --build .
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="conan-cmake-live-at-head">
+</section>
+<section id="conan-cmake-live-at-head">
 <h3>Conan + CMake (Live At Head)<a class="headerlink" href="#conan-cmake-live-at-head" title="Permalink to this headline">¶</a></h3>
 <p>This chapter describes the procedure to Live At Head which means to use the latest version
 of <strong>mp-units</strong> all the time.</p>
@@ -492,7 +493,7 @@ differences:</p>
 <li><p>Before starting the previous procedure add <strong>mp-units</strong> remote to your Conan configuration:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add conan-mpusz https://api.bintray.com/conan/mpusz/conan-mpusz
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add conan-mpusz https://mpusz.jfrog.io/artifactory/api/conan/conan-oss
 </pre></div>
 </div>
 </div></blockquote>
@@ -515,7 +516,7 @@ differences:</p>
 <p class="admonition-title">Tip</p>
 <p>The identifiers of the latest packages can always be found in
 <a class="reference external" href="https://github.com/mpusz/units/blob/master/README.md">the project’s README file</a> or on
-<a class="reference external" href="https://bintray.com/mpusz/conan-mpusz/mp-units%3Ampusz">the project’s Bintray</a>.</p>
+<a class="reference external" href="https://mpusz.jfrog.io/ui/packages/conan:%2F%2Fmp-units">the project’s Artifactory</a>.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
@@ -529,9 +530,9 @@ cmake --build .
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="contributing-or-just-building-all-the-tests-examples-and-documentation">
+</section>
+</section>
+<section id="contributing-or-just-building-all-the-tests-examples-and-documentation">
 <h2>Contributing (or just building all the tests, examples, and documentation)<a class="headerlink" href="#contributing-or-just-building-all-the-tests-examples-and-documentation" title="Permalink to this headline">¶</a></h2>
 <p>In case you would like to build all the source code (with unit tests and examples) and documentation
 in <strong>mp-units</strong> repository, you should:</p>
@@ -559,22 +560,22 @@ cmake --build .
 ctest
 </pre></div>
 </div>
-</div>
-<div class="section" id="packaging">
+</section>
+<section id="packaging">
 <h2>Packaging<a class="headerlink" href="#packaging" title="Permalink to this headline">¶</a></h2>
 <p>To test CMake installation and Conan packaging or create a Conan package run:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan create . &lt;username&gt;/&lt;channel&gt; -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
 </pre></div>
 </div>
 <p>The above will create a Conan package and run tests provided in <em>./test_package</em> directory.</p>
-</div>
-<div class="section" id="uploading-mp-units-package-to-the-conan-server">
+</section>
+<section id="uploading-mp-units-package-to-the-conan-server">
 <h2>Uploading <strong>mp-units</strong> Package to the Conan Server<a class="headerlink" href="#uploading-mp-units-package-to-the-conan-server" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan upload -r &lt;remote-name&gt; --all mp-units/0.7.0@&lt;user&gt;/&lt;channel&gt;
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -584,10 +585,10 @@ ctest
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="framework.html" class="btn btn-neutral float-right" title="Framework Basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quick_start.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="examples/total_energy.html" class="btn btn-neutral float-left" title="total_energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
