@@ -281,7 +281,9 @@
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
-<span class="normal">84</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/generic/dimensionless.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/amount_of_substance.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/area.h&gt;</span><span class="cp"></span>
@@ -300,11 +302,11 @@
 <span class="k">namespace</span> <span class="p">{</span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">mass_references</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">volume_references</span><span class="p">;</span>
 
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">Acceleration</span> <span class="k">auto</span> <span class="n">g</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">si2019</span><span class="o">::</span><span class="n">standard_gravity</span><span class="o">&lt;&gt;</span><span class="p">;</span>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">Density</span> <span class="k">auto</span> <span class="n">air_density</span> <span class="o">=</span> <span class="mf">1.225</span> <span class="o">*</span> <span class="p">(</span><span class="n">kg</span> <span class="o">/</span> <span class="n">m3</span><span class="p">);</span>
-
 
 <span class="k">class</span> <span class="nc">Box</span> <span class="p">{</span>
   <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span> <span class="n">base_</span><span class="p">;</span>
@@ -343,6 +345,8 @@
 <span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">length_references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">time_references</span><span class="p">;</span>
 
   <span class="k">const</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">200.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">;</span>
   <span class="k">auto</span> <span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="mf">1000.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">,</span> <span class="mf">500.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>

@@ -279,11 +279,11 @@
 <span class="normal">79</span>
 <span class="normal">80</span>
 <span class="normal">81</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/natural/natural.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/constants.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/energy.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/mass.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/momentum.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/constants.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/math.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;exception&gt;</span><span class="cp"></span>
@@ -301,7 +301,7 @@
 <span class="kt">void</span> <span class="nf">si_example</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">energy_references</span><span class="p">;</span>
 
   <span class="k">constexpr</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">c</span> <span class="o">=</span> <span class="n">si2019</span><span class="o">::</span><span class="n">speed_of_light</span><span class="o">&lt;&gt;</span><span class="p">;</span>
 

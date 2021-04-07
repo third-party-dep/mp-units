@@ -576,14 +576,14 @@
 <span class="k">namespace</span> <span class="p">{</span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">length_references</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">force_references</span><span class="p">;</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">vector</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">fs_vector</span><span class="o">&lt;</span><span class="n">Rep</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Rep</span> <span class="o">=</span> <span class="kt">double</span><span class="o">&gt;</span>
 <span class="k">using</span> <span class="n">matrix</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">fs_matrix</span><span class="o">&lt;</span><span class="n">Rep</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span>
-
 
 <span class="kt">void</span> <span class="nf">vector_of_quantity_add</span><span class="p">()</span>
 <span class="p">{</span>

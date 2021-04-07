@@ -254,12 +254,18 @@ type to <code class="docutils literal notranslate"><span class="pre">double</spa
 They are defined using the <a class="reference internal" href="../reference/core/types/reference.html#_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE" title="units::reference"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">reference</span></code></a> class template:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef UNITS_REFERENCES</span>
 
-<span class="k">namespace</span> <span class="n">references</span> <span class="p">{</span>
+<span class="k">namespace</span> <span class="n">length_references</span> <span class="p">{</span>
 
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">km</span> <span class="o">=</span> <span class="n">reference</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">kilometre</span><span class="o">&gt;</span><span class="p">{};</span>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">h</span> <span class="o">=</span> <span class="n">reference</span><span class="o">&lt;</span><span class="n">dim_time</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span><span class="p">{};</span>
 
-<span class="p">}</span>
+<span class="p">}</span>  <span class="c1">// namespace length_references</span>
+
+<span class="k">namespace</span> <span class="n">references</span> <span class="p">{</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">length_references</span><span class="p">;</span>
+
+<span class="p">}</span>  <span class="c1">// namespace references</span>
 
 <span class="cp">#endif </span><span class="c1">// UNITS_REFERENCES</span>
 </pre></div>
