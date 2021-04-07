@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="capacitor_time_curve.html">capacitor_time_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clcpp_response.html">clcpp_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conversion_factor.html">conversion_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="experimental_angle.html">experimental_angle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kalman_filter-alpha_beta_filter_example2.html">kalman_filter-alpha_beta_filter_example2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="total_energy.html">total_energy</a></li>
 </ul>
@@ -283,7 +284,8 @@
 <span class="normal">83</span>
 <span class="normal">84</span>
 <span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/generic/dimensionless.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/amount_of_substance.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/area.h&gt;</span><span class="cp"></span>
@@ -345,10 +347,11 @@
 <span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">length_references</span><span class="p">;</span>
-  <span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">time_references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">length_references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">time_references</span><span class="p">;</span>
 
-  <span class="k">const</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">200.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">;</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">height</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">200.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">);</span>
   <span class="k">auto</span> <span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="mf">1000.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">,</span> <span class="mf">500.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
   <span class="n">box</span><span class="p">.</span><span class="n">set_contents_density</span><span class="p">(</span><span class="mf">1000.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">kg</span> <span class="o">/</span> <span class="n">m3</span><span class="p">));</span>
 

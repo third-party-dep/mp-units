@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="capacitor_time_curve.html">capacitor_time_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clcpp_response.html">clcpp_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conversion_factor.html">conversion_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="experimental_angle.html">experimental_angle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kalman_filter-alpha_beta_filter_example2.html">kalman_filter-alpha_beta_filter_example2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="total_energy.html">total_energy</a></li>
 </ul>
@@ -368,7 +369,11 @@
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
-<span class="normal">171</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/cgs/length.h&gt;</span><span class="cp"></span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/cgs/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/cgs/speed.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/international/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/international/speed.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
@@ -422,8 +427,8 @@
   <span class="c1">// SI (int)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">220</span> <span class="o">*</span> <span class="n">km</span><span class="p">;</span>     <span class="c1">// constructed from a reference</span>
-    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// constructed from a value</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">220</span> <span class="o">*</span> <span class="n">km</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">duration</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;SI units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -436,8 +441,8 @@
   <span class="c1">// SI (double)</span>
   <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">220.</span> <span class="o">*</span> <span class="n">km</span><span class="p">;</span> <span class="c1">// constructed from a reference</span>
-    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">220.</span> <span class="o">*</span> <span class="n">km</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">duration</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">SI units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -451,9 +456,10 @@
 
   <span class="c1">// Customary Units (int)</span>
   <span class="p">{</span>
-    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">140</span> <span class="o">*</span> <span class="n">mi</span><span class="p">;</span>     <span class="c1">// constructed from a reference</span>
-    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// constructed from a value</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time_references</span><span class="p">;</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">length_references</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">140</span> <span class="o">*</span> <span class="n">mi</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">duration</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">US Customary Units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -467,9 +473,10 @@
 
   <span class="c1">// Customary Units (double)</span>
   <span class="p">{</span>
-    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">140.</span> <span class="o">*</span> <span class="n">mi</span><span class="p">;</span> <span class="c1">// constructed from a reference</span>
-    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time_references</span><span class="p">;</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">international</span><span class="o">::</span><span class="n">length_references</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">140.</span> <span class="o">*</span> <span class="n">mi</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">duration</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">US Customary Units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -485,9 +492,10 @@
 
   <span class="c1">// CGS (int)</span>
   <span class="p">{</span>
-    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">22&#39;000&#39;000</span> <span class="o">*</span> <span class="n">cm</span><span class="p">;</span>     <span class="c1">// constructed from a reference</span>
-    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// constructed from a value</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time_references</span><span class="p">;</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">length_references</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">22&#39;000&#39;000</span> <span class="o">*</span> <span class="n">cm</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">duration</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">CGS units with &#39;int&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -504,9 +512,10 @@
 
   <span class="c1">// CGS (double)</span>
   <span class="p">{</span>
-    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
-    <span class="k">constexpr</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">22&#39;000&#39;000.</span> <span class="o">*</span> <span class="n">cm</span><span class="p">;</span> <span class="c1">// constructed from a reference</span>
-    <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">time</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">hour</span><span class="o">&gt;</span> <span class="n">duration</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>     <span class="c1">// constructed from a value</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">time_references</span><span class="p">;</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">cgs</span><span class="o">::</span><span class="n">length_references</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="mf">22&#39;000&#39;000.</span> <span class="o">*</span> <span class="n">cm</span><span class="p">;</span>
+    <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">duration</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">CGS units with &#39;double&#39; as representation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
