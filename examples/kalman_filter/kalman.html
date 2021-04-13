@@ -427,7 +427,7 @@
   <span class="n">uncertainty_type</span> <span class="n">uncertainty</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="cp">#if UNITS_COMP_CLANG == 12</span>
+<span class="cp">#if UNITS_COMP_CLANG == 12 || UNITS_COMP_MSVC</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityOrQuantityPoint</span> <span class="n">QQP</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">Quantity</span> <span class="n">U</span><span class="o">&gt;</span>
 <span class="n">estimation</span><span class="p">(</span><span class="n">state</span><span class="o">&lt;</span><span class="n">QQP</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">estimation</span><span class="o">&lt;</span><span class="n">QQP</span><span class="o">&gt;</span><span class="p">;</span>
