@@ -4,8 +4,7 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Metafunctions &mdash; mp-units 0.7.0 documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Getting Started:</span></p>
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
@@ -99,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 </ul>
-<p><span class="caption-text">Reference:</span></p>
+<p class="caption"><span class="caption-text">Reference:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../core.html">Core Library</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="concepts.html">Concepts</a></li>
@@ -112,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../random.html">Random</a></li>
 </ul>
-<p><span class="caption-text">Appendix:</span></p>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
@@ -185,23 +184,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="metafunctions">
+  <div class="section" id="metafunctions">
 <h1>Metafunctions<a class="headerlink" href="#metafunctions" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp type">
 <dt id="_CPPv4I_9DimensionEN5units14dimension_unitE">
-<span id="_CPPv3I_9DimensionEN5units14dimension_unitE"></span><span id="_CPPv2I_9DimensionEN5units14dimension_unitE"></span><span class="pre">template&lt;</span><a class="reference internal" href="concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><span class="pre">Dimension</span></a> <code class="sig-name descname"><span class="pre">D</span></code><span class="pre">&gt;</span><br /><span class="target" id="namespaceunits_1a67ad59645bfac4c2e9a9113af4a21ae1"></span><em class="property"><span class="pre">using</span> </em><code class="sig-prename descclassname"><a class="reference internal" href="../systems/isq/si/surface_tension.html#_CPPv45units" title="units"><span class="pre">units</span></a><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">dimension_unit</span></code> <span class="pre">=</span> <span class="pre">decltype(</span><span class="pre">detail</span><span class="pre">::</span><span class="pre">default_unit</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit::D"><span class="pre">D</span></a><span class="pre">&gt;</span><span class="pre">(</span><span class="pre">)</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I_9DimensionEN5units14dimension_unitE"></span><span id="_CPPv2I_9DimensionEN5units14dimension_unitE"></span><span class="pre">template&lt;</span><a class="reference internal" href="concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><span class="pre">Dimension</span></a> <code class="sig-name descname"><span class="pre">D</span></code><span class="pre">&gt;</span><br /><span class="target" id="namespaceunits_1a67ad59645bfac4c2e9a9113af4a21ae1"></span><em class="property"><span class="pre">using</span> </em><code class="sig-prename descclassname"><a class="reference internal" href="../systems/isq/si/prefixes.html#_CPPv45units" title="units"><span class="pre">units</span></a><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">dimension_unit</span></code> <span class="pre">=</span> <span class="pre">decltype(</span><span class="pre">detail</span><span class="pre">::</span><span class="pre">default_unit</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit::D"><span class="pre">D</span></a><span class="pre">&gt;</span><span class="pre">(</span><span class="pre">)</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4I_9DimensionEN5units14dimension_unitE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a ‘default’ unit of the dimension. </p>
 <p>Depending on the dimension type it returns a base unit (for base dimensions) or a coherent unit (in case of derived dimensions).</p>
-<p><dl class="simple">
-<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code>: Dimension type to get the unit from. </p></li>
-</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>D</strong> – Dimension type to get the unit from. </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
-</section>
+</div>
 
 
            </div>

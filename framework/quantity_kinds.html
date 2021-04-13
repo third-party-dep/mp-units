@@ -4,8 +4,7 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Quantity Kinds &mdash; mp-units 0.7.0 documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Getting Started:</span></p>
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
@@ -116,13 +115,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p><span class="caption-text">Reference:</span></p>
+<p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p><span class="caption-text">Appendix:</span></p>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -195,11 +194,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="quantity-kinds">
+  <div class="section" id="quantity-kinds">
 <h1>Quantity Kinds<a class="headerlink" href="#quantity-kinds" title="Permalink to this headline">¶</a></h1>
 <p>A quantity kind is a quantity of more specific usage.
 It is represented in the library with a <a class="reference internal" href="../reference/core/types/quantity_kind.html#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_14RepresentationEN5units13quantity_kindE" title="units::quantity_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind</span></code></a> class template.</p>
-<section id="kind-creation">
+<div class="section" id="kind-creation">
 <h2>Kind Creation<a class="headerlink" href="#kind-creation" title="Permalink to this headline">¶</a></h2>
 <p>We need a <a class="reference internal" href="../reference/core/types/kinds.html#_CPPv4I0_9DimensionEN5units4kindE" title="units::kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">kind</span></code></a> to represent the more specific usage of a quantity:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">radius</span> <span class="p">:</span> <span class="n">kind</span><span class="o">&lt;</span><span class="n">radius</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
@@ -207,8 +206,8 @@ It is represented in the library with a <a class="reference internal" href="../r
 </div>
 <p>Quantities of kind <code class="docutils literal notranslate"><span class="pre">radius</span></code> represent a radius.
 They are clearly distinct from more generic usages of length quantities.</p>
-</section>
-<section id="construction">
+</div>
+<div class="section" id="construction">
 <h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h2>
 <p>To create the quantity kind object from a <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> we just have to pass
 the value to the <a class="reference internal" href="../reference/core/types/quantity_kind.html#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_14RepresentationEN5units13quantity_kindE" title="units::quantity_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind</span></code></a> class template constructor:</p>
@@ -227,8 +226,8 @@ This is why the code below using
 </pre></div>
 </div>
 </div>
-</section>
-<section id="differences-to-quantity">
+</div>
+<div class="section" id="differences-to-quantity">
 <h2>Differences To Quantity<a class="headerlink" href="#differences-to-quantity" title="Permalink to this headline">¶</a></h2>
 <p>The library provides:</p>
 <ul>
@@ -244,8 +243,8 @@ This is why the code below using
 <li><p>a slightly larger set of operations on quantity kinds
 (see the <a class="reference internal" href="dimensions.html#quantity-kinds"><span class="std std-ref">Quantity Kinds</span></a> chapter).</p></li>
 </ul>
-</section>
-<section id="quantity-point-kinds">
+</div>
+<div class="section" id="quantity-point-kinds">
 <h2>Quantity Point Kinds<a class="headerlink" href="#quantity-point-kinds" title="Permalink to this headline">¶</a></h2>
 <p>A quantity point kind is the analogous of a quantity point for quantity kinds
 (see the <a class="reference internal" href="quantity_points.html#quantity-points"><span class="std std-ref">Quantity Points</span></a> chapter).</p>
@@ -265,8 +264,8 @@ This is why the code below using
 <p>Please refer to <a class="reference internal" href="../examples/glide_computer.html#glide-computer"><span class="std std-ref">glide_computer</span></a> example for more
 information on the quantity kinds usage.</p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

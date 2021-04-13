@@ -4,8 +4,7 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Dimensions &mdash; mp-units 0.7.0 documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Getting Started:</span></p>
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
@@ -122,13 +121,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p><span class="caption-text">Reference:</span></p>
+<p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p><span class="caption-text">Appendix:</span></p>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -201,15 +200,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="dimensions">
+  <div class="section" id="dimensions">
 <h1>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h1>
 <p>In the previous chapter we briefly introduced the notion of a physical
 <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a>. Now it is time to learn much more about this subject.
 Length, time, speed, area, energy are only a few examples of physical
 dimensions.</p>
-<section id="arithmetics">
+<div class="section" id="arithmetics">
 <h2>Arithmetics<a class="headerlink" href="#arithmetics" title="Permalink to this headline">¶</a></h2>
-<section id="quantities">
+<div class="section" id="quantities">
 <h3>Quantities<a class="headerlink" href="#quantities" title="Permalink to this headline">¶</a></h3>
 <p>Quantities of the same dimension can be easily added or subtracted with
 each other and the result will always be a quantity of the same dimension:</p>
@@ -249,8 +248,8 @@ dimension, than we will end up with just a dimensionless quantity:</p>
 </span><span class="hll"><span class="n">Dimensionless</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">dur1</span> <span class="o">*</span> <span class="n">fr1</span><span class="p">;</span>     <span class="c1">// quantity(50)</span>
 </span></pre></div>
 </div>
-</section>
-<section id="quantity-kinds">
+</div>
+<div class="section" id="quantity-kinds">
 <h3>Quantity Kinds<a class="headerlink" href="#quantity-kinds" title="Permalink to this headline">¶</a></h3>
 <p>Quantity kinds behave the same as quantities for all operations,
 except that the quantity types in the operators’ declarations
@@ -282,8 +281,8 @@ you can use a quantity argument instead of a quantity kind.</p>
 </span><span class="hll"><span class="k">auto</span> <span class="n">q2</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span> <span class="c1">// with .common() equal to quantity{1}</span>
 </span></pre></div>
 </div>
-</section>
-<section id="quantity-points">
+</div>
+<div class="section" id="quantity-points">
 <h3>Quantity Points<a class="headerlink" href="#quantity-points" title="Permalink to this headline">¶</a></h3>
 <p>Quantity points have a more restricted set of operations.
 Quantity can be added to or subtracted from a quantity point.
@@ -318,14 +317,14 @@ The result is a relative quantity of the same dimension:</p>
 </span></pre></div>
 </div>
 </div>
-</section>
-<section id="quantity-point-kinds">
+</div>
+<div class="section" id="quantity-point-kinds">
 <h3>Quantity Point Kinds<a class="headerlink" href="#quantity-point-kinds" title="Permalink to this headline">¶</a></h3>
 <p>The same restrictions of a quantity point with respect to its quantity
 apply to a quantity point kind with respect to its quantity kind.</p>
-</section>
-</section>
-<section id="base-dimensions">
+</div>
+</div>
+<div class="section" id="base-dimensions">
 <h2>Base Dimensions<a class="headerlink" href="#base-dimensions" title="Permalink to this headline">¶</a></h2>
 <p>The quantities of base dimensions are called
 <a class="reference internal" href="../glossary.html#term-base-quantity"><span class="xref std std-term">base quantities</span></a> which are the atomic building blocks
@@ -348,8 +347,8 @@ obtain those back easily with:</p>
 <span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">::</span><span class="n">base_unit</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">);</span>
 </pre></div>
 </div>
-</section>
-<section id="derived-dimensions">
+</div>
+<div class="section" id="derived-dimensions">
 <h2>Derived Dimensions<a class="headerlink" href="#derived-dimensions" title="Permalink to this headline">¶</a></h2>
 <p>The quantities of derived dimensions are called
 <a class="reference internal" href="../glossary.html#term-derived-quantity"><span class="xref std std-term">derived quantities</span></a> and are derived from base
@@ -417,8 +416,8 @@ in many places in this library to provide
 Hopefully if <a class="reference internal" href="../references.html#p0847" id="id1"><span>[P0847]</span></a> will land in C++23 the additional CRTP-related
 template parameter will be removed from this definition.</p>
 </div>
-</section>
-<section id="obtaining-a-unit-of-the-dimension">
+</div>
+<div class="section" id="obtaining-a-unit-of-the-dimension">
 <h2>Obtaining a Unit of the Dimension<a class="headerlink" href="#obtaining-a-unit-of-the-dimension" title="Permalink to this headline">¶</a></h2>
 <p>In order to obtain the base/coherent unit of any dimension type a
 <a class="reference internal" href="../reference/core/metafunctions.html#_CPPv4I_9DimensionEN5units14dimension_unitE" title="units::dimension_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">dimension_unit</span></code></a> helper was introduced:</p>
@@ -426,8 +425,8 @@ template parameter will be removed from this definition.</p>
 <span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">dimension_unit</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre_per_second</span><span class="o">&gt;</span><span class="p">);</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

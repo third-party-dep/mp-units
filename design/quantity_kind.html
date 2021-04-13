@@ -4,8 +4,7 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>quantity_kind &mdash; mp-units 0.7.0 documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Getting Started:</span></p>
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
@@ -110,13 +109,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p><span class="caption-text">Reference:</span></p>
+<p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p><span class="caption-text">Appendix:</span></p>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -189,10 +188,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="quantity-kind">
+  <div class="section" id="quantity-kind">
 <h1>quantity_kind<a class="headerlink" href="#quantity-kind" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> class template provides a similar interface to <code class="docutils literal notranslate"><span class="pre">quantity</span></code>.</p>
-<section id="kinds">
+<div class="section" id="kinds">
 <h2>Kinds<a class="headerlink" href="#kinds" title="Permalink to this headline">¶</a></h2>
 <p>The first template parameter of <code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> is a <code class="docutils literal notranslate"><span class="pre">Kind</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Kind</span></code> s, by themselves:</p>
@@ -211,16 +210,16 @@ can result on a quantity of kind <em>B</em>,
 Unnamed, they look like <code class="docutils literal notranslate"><span class="pre">detail::_kind_base&lt;the-entry-kind,</span> <span class="pre">some_dimension&gt;</span></code>.</p>
 <p>Unnamed kinds, like unnamed units and dimensions,
 allows (intermediate) results in formulas without having to name them.</p>
-</section>
-<section id="quantity-kinds">
+</div>
+<div class="section" id="quantity-kinds">
 <h2>Quantity kinds<a class="headerlink" href="#quantity-kinds" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> wraps a <code class="docutils literal notranslate"><span class="pre">quantity</span></code> and layers over its dimensional analysis.
 While all properties of the <code class="docutils literal notranslate"><span class="pre">quantity</span></code> apply transparently,
 results are always <code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> s related to the kind(s) of the argument(s).</p>
 <p>One of the arguments to the dimensional analysis operators can also be <code class="docutils literal notranslate"><span class="pre">Quantity</span></code>.</p>
 <p>The way back to <code class="docutils literal notranslate"><span class="pre">quantity</span></code> is through the <code class="docutils literal notranslate"><span class="pre">.common()</span></code> observer.</p>
-</section>
-<section id="intra-kind-operations">
+</div>
+<div class="section" id="intra-kind-operations">
 <h2>Intra-kind operations<a class="headerlink" href="#intra-kind-operations" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">quantity_kind</span></code> takes care of operators between related quantity kinds.
 Intra-kind operations can be opted into as follows:</p>
@@ -230,8 +229,8 @@ Intra-kind operations can be opted into as follows:</p>
 <span class="n">size2d</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="n">QuantityKindOf</span><span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span> <span class="k">auto</span><span class="p">,</span> <span class="n">QuantityKindOf</span><span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="k">auto</span><span class="p">);</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

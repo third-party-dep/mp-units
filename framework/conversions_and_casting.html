@@ -4,8 +4,7 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Conversions and Casting &mdash; mp-units 0.7.0 documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Getting Started:</span></p>
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
@@ -119,13 +118,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
-<p><span class="caption-text">Reference:</span></p>
+<p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/random.html">Random</a></li>
 </ul>
-<p><span class="caption-text">Appendix:</span></p>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
@@ -198,7 +197,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="conversions-and-casting">
+  <div class="section" id="conversions-and-casting">
 <h1>Conversions and Casting<a class="headerlink" href="#conversions-and-casting" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Programmers who are not full-time programming language geeks <strong>hate lack of
@@ -210,7 +209,7 @@ information.”</strong> That can reasonably easily be explained to non-language
 </div></blockquote>
 <p>The library tries to follow the above principle and at the same time is also consistent
 with conversions of <code class="docutils literal notranslate"><span class="pre">std::chrono::duration</span></code>.</p>
-<section id="no-conversions">
+<div class="section" id="no-conversions">
 <h2>No Conversions<a class="headerlink" href="#no-conversions" title="Permalink to this headline">¶</a></h2>
 <p>No conversions (either implicit or explicit) are available across quantities of
 different dimensions:</p>
@@ -219,8 +218,8 @@ different dimensions:</p>
 <span class="k">auto</span> <span class="n">d3</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>   <span class="c1">// Compile-time error</span>
 </pre></div>
 </div>
-</section>
-<section id="implicit">
+</div>
+<div class="section" id="implicit">
 <h2>Implicit<a class="headerlink" href="#implicit" title="Permalink to this headline">¶</a></h2>
 <p>Implicit conversions are allowed only across quantities of the same dimension:</p>
 <ul>
@@ -248,8 +247,8 @@ ratio:</p>
 </div>
 </li>
 </ul>
-</section>
-<section id="explicit">
+</div>
+<div class="section" id="explicit">
 <h2>Explicit<a class="headerlink" href="#explicit" title="Permalink to this headline">¶</a></h2>
 <p>Explicit conversions are available with the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code>,
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind_cast</span></code>, and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind_cast</span></code> function templates.
@@ -265,7 +264,7 @@ dimension for integral representation types and ratios that may cause precision 
 More information on this subject can be found in the
 <a class="reference internal" href="../use_cases/legacy_interfaces.html#working-with-legacy-interfaces"><span class="std std-ref">Working with Legacy Interfaces</span></a> chapter.</p>
 </div>
-<section id="quantity-cast-overloads">
+<div class="section" id="quantity-cast-overloads">
 <h3>Quantity Cast Overloads<a class="headerlink" href="#quantity-cast-overloads" title="Permalink to this headline">¶</a></h3>
 <p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> comes with several overloads:</p>
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -306,9 +305,9 @@ instead of a <a class="reference internal" href="../reference/core/concepts.html
 “integral” vs “floating-point” logic please refer to the
 <a class="reference internal" href="../use_cases/custom_representation_types.html#using-custom-representation-types"><span class="std std-ref">Using Custom Representation Types</span></a> chapter.</p>
 </div>
-</section>
-</section>
-<section id="implicit-conversions-of-dimensionless-quantities">
+</div>
+</div>
+<div class="section" id="implicit-conversions-of-dimensionless-quantities">
 <h2>Implicit conversions of dimensionless quantities<a class="headerlink" href="#implicit-conversions-of-dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
 <p>As noted in the <a class="reference internal" href="quantities.html#dimensionless-quantities"><span class="std std-ref">Dimensionless Quantities</span></a> chapter,
 <a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a> is somehow special but still obey most of the rules defined
@@ -375,7 +374,7 @@ code will not compile:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">one</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">m</span><span class="p">)).</span><span class="n">number</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>or use a mathematical wrapper function from <a class="reference internal" href="../reference/systems/isq/si/surface_tension.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace:</p>
+<p>or use a mathematical wrapper function from <a class="reference internal" href="../reference/systems/isq/si/prefixes.html#_CPPv45units" title="units"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units</span></code></a> namespace:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">units</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">m</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -384,8 +383,8 @@ code will not compile:</p>
 <p>Always remember to explicitly cast the quantity to the destination unit with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> before
 calling <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NK5units8quantity6numberEv" title="units::quantity::number"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::number()</span></code></a>!</p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
