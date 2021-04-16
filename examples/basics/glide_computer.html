@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>glide_computer &mdash; mp-units 0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Kalman Filter Tutorial" href="../kalman_filter.html" />
+    <link rel="prev" title="total_energy" href="total_energy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../framework.html">Framework Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Design Deep Dive</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../basics.html">Basics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hello_units.html">hello_units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clcpp_response.html">clcpp_response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="avg_speed.html">avg_speed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="box_example.html">box_example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capacitor_time_curve.html">capacitor_time_curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unknown_dimension.html">unknown_dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="foot_pound_second.html">foot_pound_second</a></li>
+<li class="toctree-l3"><a class="reference internal" href="experimental_angle.html">experimental_angle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="total_energy.html">total_energy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">glide_computer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kalman_filter.html">Kalman Filter Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom_representation.html">Custom Representation Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom_systems.html">Custom Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom_utilities.html">Custom Utilites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Installation And Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/core.html">Core Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/systems.html">Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/random.html">Random</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mp-units</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../examples.html">Examples</a> &raquo;</li>
+        
+          <li><a href="../basics.html">Basics</a> &raquo;</li>
+        
+      <li>glide_computer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/examples/basics/glide_computer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="glide-computer">
+<h1>glide_computer<a class="headerlink" href="#glide-computer" title="Permalink to this headline">¶</a></h1>
+<p>This example presents the usage of:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../reference/core/types/quantity_point.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> to mark “absolute” quantities like <code class="docutils literal notranslate"><span class="pre">timestamp</span></code></p></li>
+<li><p><a class="reference internal" href="../../reference/core/types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_14RepresentationEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a> to mark “absolute” kinds of quantities like <code class="docutils literal notranslate"><span class="pre">altitude</span></code> (as opposed to <code class="docutils literal notranslate"><span class="pre">height</span></code>),</p></li>
+<li><p>different kinds for length, time, and speed,</p></li>
+<li><p>the use of quantity kinds to show how to handle 3D space for aviation needs,</p></li>
+<li><p>unit constants to initialize the database</p></li>
+<li><p>quantities text output formatting,</p></li>
+<li><p>cooperation with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">std::chrono</span></code>.</p></li>
+</ul>
+<p>The use of <a class="reference internal" href="../../reference/core/types/quantity_kind.html#_CPPv4I_4Kind_6UnitOfIN1K9dimensionEE_14RepresentationEN5units13quantity_kindE" title="units::quantity_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind</span></code></a> and <a class="reference internal" href="../../reference/core/types/quantity_point_kind.html#_CPPv4I_9PointKind_6UnitOfIN2PK9dimensionEE_14RepresentationEN5units19quantity_point_kindE" title="units::quantity_point_kind"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind</span></code></a> provides strong typing
+that divide quantities and quantity points to the ones on a horizontal (X, Y) plane and vertical (Z) axis.
+Their purpose is to make different kinds of quantity
+(i.e. length) separate strong types (i.e. distance, height).
+Additionally, separating a quantity from its quantity point
+means that we can define a <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">altitude</span></code> as different strong types.
+A quantity point provides a more restricted interface meant for absolute calculations.</p>
+<p>The glide calculator engine also take benefits from different <a class="reference internal" href="../../glossary.html#term-kind"><span class="xref std std-term">kinds of quantities</span></a>.
+For example we have 3 for a quantity of length:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code> - a relative horizontal distance between 2 points on Earth</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">height</span></code> - a relative altitude difference between 2 points in the air</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">altitude</span></code> - an absolute altitude value measured form the mean sea level (AMSL).</p></li>
+</ul>
+<p>Next a custom text output is provided both for C++ output streams and the text formatting facility.</p>
+<p>The engine of this simple glide computer works on quantities of the SI units with a floating-point
+representation. The user can pass any unit valid for a given quantity and the library will automatically
+convert it to the one required by the engine interface.</p>
+<p>The glide calculator takes task created as a list of waypoints, glider performance data, weather conditions,
+safety constraints, and a towing height.</p>
+<p>Having all of that it estimates the number of flight phases (towing, circling, gliding, final glide)
+needed to finish a task. As an output it provides the duration needed to finish the task while
+flying a selected glider in the specific weather conditions.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../kalman_filter.html" class="btn btn-neutral float-right" title="Kalman Filter Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="total_energy.html" class="btn btn-neutral float-left" title="total_energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-present, Mateusz Pusz
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
