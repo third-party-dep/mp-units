@@ -254,7 +254,7 @@
 
 <dl class="cpp function">
 <dt>
-<span class="target" id="classunits_1_1quantity_1a08b2d61422cf90818d59dabeb7ab0013"></span><code class="sig-name descname"><span class="pre">template&lt;safe_convertible_to_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;</span> <span class="pre">Value&gt;</span> <span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">explicit</span> <span class="pre">(!(is_same_v&lt;</span> <span class="pre">dimension,</span> <span class="pre">dim_one</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;is_same_v&lt;</span> <span class="pre">unit,</span> <span class="pre">::units::one</span> <span class="pre">&gt;))</span> <span class="pre">quantity(const</span> <span class="pre">Value</span> <span class="pre">&amp;v)</span></code></dt>
+<span class="target" id="classunits_1_1quantity_1ac98ee29a858c8a8e3ebdf816a76ba32e"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span> <span class="pre">inline</span> <span class="pre">requires</span> <span class="pre">constexpr</span> <span class="pre">safe_convertible_to_&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;,</span> <span class="pre">rep</span> <span class="pre">&gt;</span> <span class="pre">explicit</span> <span class="pre">(!(std::same_as&lt;</span> <span class="pre">dimension,</span> <span class="pre">dim_one</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;std::same_as&lt;</span> <span class="pre">unit,</span> <span class="pre">::units::one</span> <span class="pre">&gt;))</span> <span class="pre">quantity(Value</span> <span class="pre">&amp;&amp;v)</span></code></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -278,8 +278,23 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK5units8quantity6numberEv">
-<span id="_CPPv3NK5units8quantity6numberEv"></span><span id="_CPPv2NK5units8quantity6numberEv"></span><span id="units::quantity::numberCCE"></span><span class="target" id="classunits_1_1quantity_1a927644e7c58f33282d8485615180e9af"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep"><span class="pre">rep</span></a> <code class="sig-name descname"><span class="pre">number</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NK5units8quantity6numberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NR5units8quantity6numberEv">
+<span id="_CPPv3NR5units8quantity6numberEv"></span><span id="_CPPv2NR5units8quantity6numberEv"></span><span id="units::quantity::numberRCE"></span><span class="target" id="classunits_1_1quantity_1a1d1cc60836db7ede4663d686a5d7f2a2"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep"><span class="pre">rep</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">number</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="pre">&amp;</span> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NR5units8quantity6numberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NKR5units8quantity6numberEv">
+<span id="_CPPv3NKR5units8quantity6numberEv"></span><span id="_CPPv2NKR5units8quantity6numberEv"></span><span id="units::quantity::numberCRCE"></span><span class="target" id="classunits_1_1quantity_1ae1d431797b1ce7a4f2949dca3d875a6b"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep"><span class="pre">rep</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">number</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <span class="pre">&amp;</span> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NKR5units8quantity6numberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NO5units8quantity6numberEv">
+<span id="_CPPv3NO5units8quantity6numberEv"></span><span id="_CPPv2NO5units8quantity6numberEv"></span><span id="units::quantity::numberOCE"></span><span class="target" id="classunits_1_1quantity_1ac776e7e804be9e1d78b57c74e1d3b3a6"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep"><span class="pre">rep</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">number</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="pre">&amp;&amp;</span> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NO5units8quantity6numberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NKO5units8quantity6numberEv">
+<span id="_CPPv3NKO5units8quantity6numberEv"></span><span id="_CPPv2NKO5units8quantity6numberEv"></span><span id="units::quantity::numberCOCE"></span><span class="target" id="classunits_1_1quantity_1a8dbf630f430c71ac065094dfd3b3618f"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">constexpr</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep"><span class="pre">rep</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">number</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <span class="pre">&amp;&amp;</span> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NKO5units8quantity6numberEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
