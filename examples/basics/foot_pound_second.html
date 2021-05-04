@@ -200,6 +200,172 @@
             
   <div class="section" id="foot-pound-second">
 <h1>foot_pound_second<a class="headerlink" href="#foot-pound-second" title="Permalink to this headline">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">foot_pound_second.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/density.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/mass.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/power.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/fps/volume.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/mass.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/power.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/volume.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string_view&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
+
+
+<span class="c1">// Some basic specs for the warship   </span>
+<span class="k">struct</span> <span class="n">Ship</span> <span class="p">{</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">foot</span><span class="o">&gt;</span> <span class="n">length</span><span class="p">;</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">foot</span><span class="o">&gt;</span> <span class="n">draft</span><span class="p">;</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">foot</span><span class="o">&gt;</span> <span class="n">beam</span><span class="p">;</span>
+
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">foot_per_second</span><span class="o">&gt;</span> <span class="n">speed</span><span class="p">;</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">pound</span><span class="o">&gt;</span> <span class="n">mass</span><span class="p">;</span>
+
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">inch</span><span class="o">&gt;</span> <span class="n">mainGuns</span><span class="p">;</span> 
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">pound</span><span class="o">&gt;</span> <span class="n">shellMass</span><span class="p">;</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">foot_per_second</span><span class="o">&gt;</span> <span class="n">shellSpeed</span><span class="p">;</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">power</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">foot_poundal_per_second</span><span class="o">&gt;</span> <span class="n">power</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Print &#39;a&#39; in its current units and print its value cast to the units in each of Args</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">...</span><span class="nc">Args</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">Quantity</span> <span class="n">Q</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">fmt_line</span><span class="p">(</span><span class="k">const</span> <span class="n">Q</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:22}&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;,{:20}&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="o">+</span> <span class="p">...);</span>
+<span class="p">}</span>
+
+<span class="c1">// Print the ship details in the units as defined in the Ship struct, in other si::imperial units, and in SI</span>
+<span class="kt">void</span> <span class="n">print_details</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span> <span class="n">description</span><span class="p">,</span> <span class="k">const</span> <span class="n">Ship</span><span class="o">&amp;</span> <span class="n">ship</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">waterDensity</span> <span class="o">=</span> <span class="mf">62.4</span> <span class="o">*</span> <span class="p">(</span><span class="n">lb</span> <span class="o">/</span> <span class="n">ft3</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;length&quot;</span><span class="p">,</span>               <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">length</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;draft&quot;</span><span class="p">,</span>                <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">draft</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;beam&quot;</span><span class="p">,</span>                 <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">yard</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">beam</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;mass&quot;</span><span class="p">,</span>                 <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">long_ton</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">tonne</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">mass</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;speed&quot;</span><span class="p">,</span>                <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">knot</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre_per_hour</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">speed</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;power&quot;</span><span class="p">,</span>                <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">power</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">horse_power</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">power</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilowatt</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">power</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;main guns&quot;</span><span class="p">,</span>            <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">inch</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">millimetre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">mainGuns</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;fire shells weighing&quot;</span><span class="p">,</span> <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">long_ton</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilogram</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">shellMass</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;fire shells at&quot;</span><span class="p">,</span>       <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">mile_per_hour</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre_per_hour</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">shellSpeed</span><span class="p">))</span>
+            <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:20} : {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;volume underwater&quot;</span><span class="p">,</span>    <span class="n">fmt_line</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">volume</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">cubic_metre</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">volume</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">litre</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">ship</span><span class="p">.</span><span class="n">mass</span> <span class="o">/</span> <span class="n">waterDensity</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">fps</span><span class="o">::</span><span class="n">references</span><span class="o">::</span><span class="n">ft</span><span class="p">;</span>  <span class="c1">// collides with si::femtotonne (alias unit of mass)</span>
+  
+  <span class="c1">// KMS Bismark, using the units the Germans would use, taken from Wiki</span>
+  <span class="k">auto</span> <span class="n">bismark</span> <span class="o">=</span> <span class="n">Ship</span><span class="p">{.</span><span class="n">length</span><span class="p">{</span><span class="mf">251.</span> <span class="o">*</span> <span class="n">m</span><span class="p">},</span> <span class="p">.</span><span class="n">draft</span><span class="p">{</span><span class="mf">9.3</span> <span class="o">*</span> <span class="n">m</span><span class="p">},</span> <span class="p">.</span><span class="n">beam</span><span class="p">{</span><span class="mi">36</span> <span class="o">*</span> <span class="n">m</span><span class="p">},</span> <span class="p">.</span><span class="n">speed</span><span class="p">{</span><span class="mi">56</span> <span class="o">*</span> <span class="p">(</span><span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">)},</span> <span class="p">.</span><span class="n">mass</span><span class="p">{</span><span class="mi">50&#39;300</span> <span class="o">*</span> <span class="n">t</span><span class="p">},</span> <span class="p">.</span><span class="n">mainGuns</span><span class="p">{</span><span class="mi">380</span> <span class="o">*</span> <span class="n">mm</span><span class="p">},</span> <span class="p">.</span><span class="n">shellMass</span><span class="p">{</span><span class="mi">800</span> <span class="o">*</span> <span class="n">kg</span><span class="p">},</span> <span class="p">.</span><span class="n">shellSpeed</span><span class="p">{</span><span class="mf">820.</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">)},</span> <span class="p">.</span><span class="n">power</span><span class="p">{</span><span class="mf">110.45</span> <span class="o">*</span> <span class="n">kW</span><span class="p">}};</span>
+
+  <span class="c1">// USS Iowa, using units from the foot-pound-second system</span>
+  <span class="k">auto</span> <span class="n">iowa</span> <span class="o">=</span> <span class="n">Ship</span><span class="p">{.</span><span class="n">length</span><span class="p">{</span><span class="mf">860.</span> <span class="o">*</span> <span class="n">ft</span><span class="p">},</span> <span class="p">.</span><span class="n">draft</span><span class="p">{</span><span class="mf">37.</span> <span class="o">*</span> <span class="n">ft</span> <span class="o">+</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">in</span><span class="p">},</span> <span class="p">.</span><span class="n">beam</span><span class="p">{</span><span class="mf">108.</span> <span class="o">*</span> <span class="n">ft</span> <span class="o">+</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">in</span><span class="p">},</span> <span class="p">.</span><span class="n">speed</span><span class="p">{</span><span class="mi">33</span> <span class="o">*</span> <span class="n">knot</span><span class="p">},</span> <span class="p">.</span><span class="n">mass</span><span class="p">{</span><span class="mi">57&#39;540</span> <span class="o">*</span> <span class="n">lton</span><span class="p">},</span> <span class="p">.</span><span class="n">mainGuns</span><span class="p">{</span><span class="mi">16</span> <span class="o">*</span> <span class="n">in</span><span class="p">},</span> <span class="p">.</span><span class="n">shellMass</span><span class="p">{</span><span class="mi">2700</span> <span class="o">*</span> <span class="n">lb</span><span class="p">},</span> <span class="p">.</span><span class="n">shellSpeed</span><span class="p">{</span><span class="mf">2690.</span> <span class="o">*</span> <span class="p">(</span><span class="n">ft</span> <span class="o">/</span> <span class="n">s</span><span class="p">)},</span> <span class="p">.</span><span class="n">power</span><span class="p">{</span><span class="mi">212&#39;000</span> <span class="o">*</span> <span class="n">hp</span><span class="p">}};</span>
+
+  <span class="c1">// HMS King George V, using units from the foot-pound-second system</span>
+  <span class="k">auto</span> <span class="n">kgv</span> <span class="o">=</span> <span class="n">Ship</span><span class="p">{.</span><span class="n">length</span><span class="p">{</span><span class="mf">745.1</span> <span class="o">*</span> <span class="n">ft</span><span class="p">},</span> <span class="p">.</span><span class="n">draft</span><span class="p">{</span><span class="mf">33.</span> <span class="o">*</span> <span class="n">ft</span> <span class="o">+</span> <span class="mf">7.5</span> <span class="o">*</span> <span class="n">in</span><span class="p">},</span> <span class="p">.</span><span class="n">beam</span><span class="p">{</span><span class="mf">103.2</span> <span class="o">*</span> <span class="n">ft</span> <span class="o">+</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">in</span><span class="p">},</span> <span class="p">.</span><span class="n">speed</span><span class="p">{</span><span class="mf">28.3</span> <span class="o">*</span> <span class="n">knot</span><span class="p">},</span> <span class="p">.</span><span class="n">mass</span><span class="p">{</span><span class="mi">42&#39;245</span> <span class="o">*</span> <span class="n">lton</span><span class="p">},</span> <span class="p">.</span><span class="n">mainGuns</span><span class="p">{</span><span class="mi">14</span> <span class="o">*</span> <span class="n">in</span><span class="p">},</span> <span class="p">.</span><span class="n">shellMass</span><span class="p">{</span><span class="mi">1&#39;590</span> <span class="o">*</span> <span class="n">lb</span><span class="p">},</span> <span class="p">.</span><span class="n">shellSpeed</span><span class="p">{</span><span class="mf">2483.</span> <span class="o">*</span> <span class="p">(</span><span class="n">ft</span> <span class="o">/</span> <span class="n">s</span><span class="p">)},</span> <span class="p">.</span><span class="n">power</span><span class="p">{</span><span class="mi">110&#39;000</span> <span class="o">*</span> <span class="n">hp</span><span class="p">}};</span>
+
+  <span class="n">print_details</span><span class="p">(</span><span class="s">&quot;KMS Bismark, defined in appropriate units from the SI system&quot;</span><span class="p">,</span> <span class="n">bismark</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">print_details</span><span class="p">(</span><span class="s">&quot;USS Iowa, defined in appropriate units foot-pound-second system&quot;</span><span class="p">,</span> <span class="n">iowa</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">print_details</span><span class="p">(</span><span class="s">&quot;HMS King George V, defined in appropriate units foot-pound-second system&quot;</span><span class="p">,</span> <span class="n">kgv</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 
 

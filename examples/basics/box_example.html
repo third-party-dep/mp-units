@@ -200,6 +200,184 @@
             
   <div class="section" id="box-example">
 <h1>box_example<a class="headerlink" href="#box-example" title="Permalink to this headline">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">box_example.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/generic/dimensionless.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/amount_of_substance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/area.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/constants.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/density.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/force.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/mass.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/volume.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="p">{</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">mass_references</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">volume_references</span><span class="p">;</span>
+
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">Acceleration</span> <span class="k">auto</span> <span class="n">g</span> <span class="o">=</span> <span class="n">si</span><span class="o">::</span><span class="n">si2019</span><span class="o">::</span><span class="n">standard_gravity</span><span class="o">&lt;&gt;</span><span class="p">;</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">Density</span> <span class="k">auto</span> <span class="n">air_density</span> <span class="o">=</span> <span class="mf">1.225</span> <span class="o">*</span> <span class="p">(</span><span class="n">kg</span> <span class="o">/</span> <span class="n">m3</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Box</span> <span class="p">{</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">area</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">square_metre</span><span class="o">&gt;</span> <span class="n">base_</span><span class="p">;</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">height_</span><span class="p">;</span>
+  <span class="n">si</span><span class="o">::</span><span class="n">density</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilogram_per_metre_cub</span><span class="o">&gt;</span> <span class="n">density_</span> <span class="o">=</span> <span class="n">air_density</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="k">constexpr</span> <span class="n">Box</span><span class="p">(</span><span class="k">const</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&amp;</span> <span class="n">length</span><span class="p">,</span> <span class="k">const</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;&amp;</span> <span class="n">width</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">height</span><span class="p">)</span> <span class="o">:</span> <span class="n">base_</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="n">width</span><span class="p">),</span> <span class="n">height_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">height</span><span class="p">))</span> <span class="p">{}</span>
+
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">force</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">newton</span><span class="o">&gt;</span> <span class="n">filled_weight</span><span class="p">()</span> <span class="k">const</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="n">Volume</span> <span class="k">auto</span> <span class="n">volume</span> <span class="o">=</span> <span class="n">base_</span> <span class="o">*</span> <span class="n">height_</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">Mass</span> <span class="k">auto</span> <span class="n">mass</span> <span class="o">=</span> <span class="n">density_</span> <span class="o">*</span> <span class="n">volume</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">g</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span> <span class="n">fill_level</span><span class="p">(</span><span class="k">const</span> <span class="n">si</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilogram</span><span class="o">&gt;&amp;</span> <span class="n">measured_mass</span><span class="p">)</span> <span class="k">const</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">height_</span> <span class="o">*</span> <span class="n">measured_mass</span> <span class="o">*</span> <span class="n">g</span> <span class="o">/</span> <span class="n">filled_weight</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">constexpr</span> <span class="n">si</span><span class="o">::</span><span class="n">volume</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">cubic_metre</span><span class="o">&gt;</span> <span class="n">spare_capacity</span><span class="p">(</span><span class="k">const</span> <span class="n">si</span><span class="o">::</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilogram</span><span class="o">&gt;&amp;</span> <span class="n">measured_mass</span><span class="p">)</span> <span class="k">const</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">height_</span> <span class="o">-</span> <span class="n">fill_level</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">))</span> <span class="o">*</span> <span class="n">base_</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">constexpr</span> <span class="kt">void</span> <span class="n">set_contents_density</span><span class="p">(</span><span class="k">const</span> <span class="n">si</span><span class="o">::</span><span class="n">density</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilogram_per_metre_cub</span><span class="o">&gt;&amp;</span> <span class="n">density_in</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">density_in</span> <span class="o">&gt;</span> <span class="n">air_density</span><span class="p">);</span>
+    <span class="n">density_</span> <span class="o">=</span> <span class="n">density_in</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="p">}</span>  <span class="c1">// namespace</span>
+
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">length_references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">time_references</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">height</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">200.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="mf">1000.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">,</span> <span class="mf">500.0</span> <span class="o">*</span> <span class="n">mm</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+  <span class="n">box</span><span class="p">.</span><span class="n">set_contents_density</span><span class="p">(</span><span class="mf">1000.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">kg</span> <span class="o">/</span> <span class="n">m3</span><span class="p">));</span>
+
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">fill_time</span> <span class="o">=</span> <span class="mf">200.0</span> <span class="o">*</span> <span class="n">s</span><span class="p">;</span>        <span class="c1">// time since starting fill</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">measured_mass</span> <span class="o">=</span> <span class="mf">20.0</span> <span class="o">*</span> <span class="n">kg</span><span class="p">;</span>    <span class="c1">// measured mass at fill_time</span>
+
+  <span class="k">const</span> <span class="n">Length</span> <span class="k">auto</span> <span class="n">fill_level</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">fill_level</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">Dimensionless</span> <span class="k">auto</span> <span class="n">fill_percent</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">percent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">fill_level</span> <span class="o">/</span> <span class="n">height</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">Volume</span> <span class="k">auto</span> <span class="n">spare_capacity</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">spare_capacity</span><span class="p">(</span><span class="n">measured_mass</span><span class="p">);</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">input_flow_rate</span> <span class="o">=</span> <span class="n">measured_mass</span> <span class="o">/</span> <span class="n">fill_time</span><span class="p">;</span>    <span class="c1">// unknown dimension</span>
+  <span class="k">const</span> <span class="n">Speed</span> <span class="k">auto</span> <span class="n">float_rise_rate</span> <span class="o">=</span> <span class="n">fill_level</span> <span class="o">/</span> <span class="n">fill_time</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">Time</span> <span class="k">auto</span> <span class="n">fill_time_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="n">fill_level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">fill_time</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;mp-units box example...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;fill height at {} = {} ({} full)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fill_time</span><span class="p">,</span> <span class="n">fill_level</span><span class="p">,</span> <span class="n">fill_percent</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;spare_capacity at {} = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fill_time</span><span class="p">,</span> <span class="n">spare_capacity</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;input flow rate after {} = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fill_time</span><span class="p">,</span> <span class="n">input_flow_rate</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;float rise rate = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">float_rise_rate</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;box full E.T.A. at current flow rate = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fill_time_left</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 
 

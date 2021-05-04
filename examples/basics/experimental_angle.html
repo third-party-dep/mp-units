@@ -200,6 +200,64 @@
             
   <div class="section" id="experimental-angle">
 <h1>experimental_angle<a class="headerlink" href="#experimental-angle" title="Permalink to this headline">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">experimental_angle.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/bits/external/hacks.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
+
+<span class="n">UNITS_DIAGNOSTIC_PUSH</span>
+<span class="n">UNITS_DIAGNOSTIC_IGNORE_SHADOW</span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/force.h&gt;   // &#39;N&#39; (Newton) shadows a template parameter traditionally used as a size of the array</span><span class="cp"></span>
+<span class="n">UNITS_DIAGNOSTIC_POP</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;units/generic/angle.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/energy.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/torque.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+
+  <span class="n">Torque</span> <span class="k">auto</span> <span class="n">torque</span> <span class="o">=</span> <span class="mf">20.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">m</span> <span class="o">/</span> <span class="n">rad</span><span class="p">);</span>
+  <span class="n">Energy</span> <span class="k">auto</span> <span class="n">energy</span> <span class="o">=</span> <span class="mf">20.0</span> <span class="o">*</span> <span class="n">J</span><span class="p">;</span>
+
+  <span class="n">units</span><span class="o">::</span><span class="n">Angle</span> <span class="k">auto</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="n">torque</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">angle</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 
 
