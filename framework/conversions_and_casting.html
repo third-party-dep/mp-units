@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Conversions and Casting &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -197,7 +201,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="conversions-and-casting">
+  <section id="conversions-and-casting">
 <h1>Conversions and Casting<a class="headerlink" href="#conversions-and-casting" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Programmers who are not full-time programming language geeks <strong>hate lack of
@@ -209,7 +213,7 @@ information.”</strong> That can reasonably easily be explained to non-language
 </div></blockquote>
 <p>The library tries to follow the above principle and at the same time is also consistent
 with conversions of <code class="docutils literal notranslate"><span class="pre">std::chrono::duration</span></code>.</p>
-<div class="section" id="no-conversions">
+<section id="no-conversions">
 <h2>No Conversions<a class="headerlink" href="#no-conversions" title="Permalink to this headline">¶</a></h2>
 <p>No conversions (either implicit or explicit) are available across quantities of
 different dimensions:</p>
@@ -218,8 +222,8 @@ different dimensions:</p>
 <span class="k">auto</span> <span class="n">d3</span> <span class="o">=</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>   <span class="c1">// Compile-time error</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="implicit">
+</section>
+<section id="implicit">
 <h2>Implicit<a class="headerlink" href="#implicit" title="Permalink to this headline">¶</a></h2>
 <p>Implicit conversions are allowed only across quantities of the same dimension:</p>
 <ul>
@@ -247,8 +251,8 @@ ratio:</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="explicit">
+</section>
+<section id="explicit">
 <h2>Explicit<a class="headerlink" href="#explicit" title="Permalink to this headline">¶</a></h2>
 <p>Explicit conversions are available with the <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code>, <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_cast</span></code>,
 <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_kind_cast</span></code>, and <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point_kind_cast</span></code> function templates.
@@ -264,20 +268,16 @@ dimension for integral representation types and ratios that may cause precision 
 More information on this subject can be found in the
 <a class="reference internal" href="../use_cases/legacy_interfaces.html#working-with-legacy-interfaces"><span class="std std-ref">Working with Legacy Interfaces</span></a> chapter.</p>
 </div>
-<div class="section" id="quantity-cast-overloads">
+<section id="quantity-cast-overloads">
 <h3>Quantity Cast Overloads<a class="headerlink" href="#quantity-cast-overloads" title="Permalink to this headline">¶</a></h3>
 <p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> comes with several overloads:</p>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">length</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">2</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">3</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">4</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">5</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quantity_cast</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">metre</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> in line #1 takes a specific target <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> type to which an explicit
 cast should be performed. This option will change multiple quantity properties at once
 (unit, representation, etc). However, it is also possible to force only some properties at
@@ -305,9 +305,9 @@ instead of a <a class="reference internal" href="../reference/core/concepts.html
 “integral” vs “floating-point” logic please refer to the
 <a class="reference internal" href="../use_cases/custom_representation_types.html#using-custom-representation-types"><span class="std std-ref">Using Custom Representation Types</span></a> chapter.</p>
 </div>
-</div>
-</div>
-<div class="section" id="implicit-conversions-of-dimensionless-quantities">
+</section>
+</section>
+<section id="implicit-conversions-of-dimensionless-quantities">
 <h2>Implicit conversions of dimensionless quantities<a class="headerlink" href="#implicit-conversions-of-dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
 <p>As noted in the <a class="reference internal" href="quantities.html#dimensionless-quantities"><span class="std std-ref">Dimensionless Quantities</span></a> chapter,
 <a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a> is somehow special but still obey most of the rules defined
@@ -383,8 +383,8 @@ code will not compile:</p>
 <p>Always remember to explicitly cast the quantity to the destination unit with <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_cast</span></code> before
 calling <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4NR5units8quantity6numberEv" title="units::quantity::number"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity::number()</span></code></a>!</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

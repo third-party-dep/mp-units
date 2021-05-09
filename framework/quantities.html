@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Quantities &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -103,6 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#udls-vs-quantity-references">UDLs vs Quantity References</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#quantity-references-vs-unit-specific-aliases">Quantity References vs Unit-specific Aliases</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#don-t-pay-for-what-you-don-t-use-compile-time-performance">Don’t pay for what you don’t use (compile-time performance)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#dimension-specific-concepts">Dimension-specific Concepts</a></li>
@@ -204,12 +209,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quantities">
+  <section id="quantities">
 <h1>Quantities<a class="headerlink" href="#quantities" title="Permalink to this headline">¶</a></h1>
 <p>A <a class="reference internal" href="../glossary.html#term-quantity"><span class="xref std std-term">quantity</span></a> is a concrete amount of a unit for a specified dimension
 with a specific representation and is represented in the library with a
 <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template.</p>
-<div class="section" id="construction">
+<section id="construction">
 <h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h2>
 <p>To create the quantity object from a <a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a> we just have to pass
 the value to the <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template explicit constructor:</p>
@@ -229,8 +234,8 @@ This is why the code below using
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="quantity-construction-helpers">
+</section>
+<section id="quantity-construction-helpers">
 <h2>Quantity Construction Helpers<a class="headerlink" href="#quantity-construction-helpers" title="Permalink to this headline">¶</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -241,7 +246,7 @@ out, vote, and share feedback in this
 <p>Most probably only one of the options will be included in the final product so
 please do not hesitate to vote on the one that suits you the best.</p>
 </div>
-<div class="section" id="dimension-specific-aliases-experimental">
+<section id="dimension-specific-aliases-experimental">
 <h3>Dimension-Specific Aliases (Experimental)<a class="headerlink" href="#dimension-specific-aliases-experimental" title="Permalink to this headline">¶</a></h3>
 <p>To simplify <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> objects creation the library provides helper aliases for
 quantities of each <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a> which additionally set the representation
@@ -262,12 +267,12 @@ type to <code class="docutils literal notranslate"><span class="pre">double</spa
 <span class="n">si</span><span class="o">::</span><span class="n">speed</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">kilometre_per_hour</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">(</span><span class="mi">70</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="unit-specific-aliases-experimental">
+</section>
+<section id="unit-specific-aliases-experimental">
 <h3>Unit-Specific Aliases (Experimental)<a class="headerlink" href="#unit-specific-aliases-experimental" title="Permalink to this headline">¶</a></h3>
 <p>Additionally to the dimension-specific aliases there are also ones provided for
 each and every <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> in the library:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef UNITS_ALIASES</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef UNITS_NO_ALIASES</span>
 
 <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">aliases</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="kr">inline</span> <span class="n">length</span> <span class="p">{</span>
 
@@ -283,7 +288,7 @@ each and every <a class="reference internal" href="../glossary.html#term-unit"><
 
 <span class="p">}</span>
 
-<span class="cp">#endif </span><span class="c1">// UNITS_ALIASES</span>
+<span class="cp">#endif </span><span class="c1">// UNITS_NO_ALIASES</span>
 </pre></div>
 </div>
 <p>Using the above our code can look as follows:</p>
@@ -307,12 +312,12 @@ by the user.</p>
 <span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">km_per_h</span><span class="p">(</span><span class="mi">70</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="quantity-references-experimental">
+</section>
+<section id="quantity-references-experimental">
 <h3>Quantity References (Experimental)<a class="headerlink" href="#quantity-references-experimental" title="Permalink to this headline">¶</a></h3>
 <p>Quantity References provide an alternative and simplified way to create quantities.
 They are defined using the <a class="reference internal" href="../reference/core/types/reference.html#_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE" title="units::reference"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">reference</span></code></a> class template:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef UNITS_REFERENCES</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef UNITS_NO_REFERENCES</span>
 
 <span class="k">namespace</span> <span class="n">length_references</span> <span class="p">{</span>
 
@@ -327,7 +332,7 @@ They are defined using the <a class="reference internal" href="../reference/core
 
 <span class="p">}</span>  <span class="c1">// namespace references</span>
 
-<span class="cp">#endif </span><span class="c1">// UNITS_REFERENCES</span>
+<span class="cp">#endif </span><span class="c1">// UNITS_NO_REFERENCES</span>
 </pre></div>
 </div>
 <p>With the above our code can look as follows:</p>
@@ -347,12 +352,12 @@ They are defined using the <a class="reference internal" href="../reference/core
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">mph</span> <span class="o">=</span> <span class="n">mi</span> <span class="o">/</span> <span class="n">h</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="user-defined-literals-experimental">
+</section>
+<section id="user-defined-literals-experimental">
 <h3>User Defined Literals (Experimental)<a class="headerlink" href="#user-defined-literals-experimental" title="Permalink to this headline">¶</a></h3>
 <p>Alternatively, to construct quantities with compile-time known values the library provides
 <abbr title="User Defined Literal">UDL</abbr> s for each <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> of every <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a>:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef UNITS_LITERALS</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef UNITS_NO_LITERALS</span>
 
 <span class="kr">inline</span> <span class="k">namespace</span> <span class="n">literals</span> <span class="p">{</span>
 
@@ -364,7 +369,7 @@ They are defined using the <a class="reference internal" href="../reference/core
 
 <span class="p">}</span>
 
-<span class="cp">#endif </span><span class="c1">// UNITS_LITERALS</span>
+<span class="cp">#endif </span><span class="c1">// UNITS_NO_LITERALS</span>
 </pre></div>
 </div>
 <p>Thanks to them the same code can be as simple as:</p>
@@ -382,14 +387,8 @@ language (i.e. <code class="docutils literal notranslate"><span class="pre">F</s
 <code class="docutils literal notranslate"><span class="pre">d</span></code> (day), <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> (litre), <code class="docutils literal notranslate"><span class="pre">erg</span></code>, <code class="docutils literal notranslate"><span class="pre">ergps</span></code>). This is why the
 <code class="docutils literal notranslate"><span class="pre">_q_</span></code> prefix was consistently applied to all the UDLs.</p>
 </div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>As one can read in the next section UDLs, are considered to be inferior to <a href="#id1"><span class="problematic" id="id2">`Quantity References`_</span></a>
-and their definition affects compile-time performance a lot. This is why they are an opt-in feature
-of the library and in order to use them one has to provide a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UNITS_LITERALS</span></code> preprocessor definition.</p>
-</div>
-</div>
-<div class="section" id="udls-vs-quantity-references">
+</section>
+<section id="udls-vs-quantity-references">
 <h3>UDLs vs Quantity References<a class="headerlink" href="#udls-vs-quantity-references" title="Permalink to this headline">¶</a></h3>
 <p>UDLs are helpful but they also have some disadvantages compared to Quantity References:</p>
 <ol class="arabic">
@@ -503,8 +502,8 @@ template instantiations in the application.</p>
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="quantity-references-vs-unit-specific-aliases">
+</section>
+<section id="quantity-references-vs-unit-specific-aliases">
 <h3>Quantity References vs Unit-specific Aliases<a class="headerlink" href="#quantity-references-vs-unit-specific-aliases" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Shadowing issues</p>
@@ -653,8 +652,8 @@ to override it if needed.</p>
 alias template is much faster than instantiating a class template).</p>
 </li>
 </ol>
-</div>
-<div class="section" id="summary">
+</section>
+<section id="summary">
 <h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -733,9 +732,21 @@ alias template is much faster than instantiating a class template).</p>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="don-t-pay-for-what-you-don-t-use-compile-time-performance">
+<h3>Don’t pay for what you don’t use (compile-time performance)<a class="headerlink" href="#don-t-pay-for-what-you-don-t-use-compile-time-performance" title="Permalink to this headline">¶</a></h3>
+<p>As noted in the previous chapter, each quantity creation helper has a different impact on the compile-time
+performance. Aliases tend to be the fastest to compile but even their definition can be expensive for some
+if it is not used in the source code. This is why it is possible to opt-out from each or every quantity
+creation helper with the following preprocessor defines:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define UNITS_NO_ALIASES</span>
+<span class="cp">#define UNITS_NO_REFERENCES</span>
+<span class="cp">#define UNITS_NO_LITERALS</span>
+</pre></div>
 </div>
-</div>
-<div class="section" id="dimension-specific-concepts">
+</section>
+</section>
+<section id="dimension-specific-concepts">
 <h2>Dimension-specific Concepts<a class="headerlink" href="#dimension-specific-concepts" title="Permalink to this headline">¶</a></h2>
 <p>In case the user does not care about the specific unit and representation but
 requires quantity of a concrete dimension than dimension-specific concepts can
@@ -804,8 +815,8 @@ units like CGS.</p>
 <p>Please refer to <span class="xref std std-ref">examples/avg_speed:avg_speed</span> example for more
 information on different kinds of interfaces supported by the library.</p>
 </div>
-</div>
-<div class="section" id="working-with-constrained-deduced-quantity-types">
+</section>
+<section id="working-with-constrained-deduced-quantity-types">
 <h2>Working With Constrained Deduced Quantity Types<a class="headerlink" href="#working-with-constrained-deduced-quantity-types" title="Permalink to this headline">¶</a></h2>
 <p>It is important to note that when we assign a result from the function to an
 automatically deduced type, even if it is constrained by a dimension-specific
@@ -835,8 +846,8 @@ but often we would like to know a specific type too. We have two options here:</
 <p>More information on this subject can be found in the
 <a class="reference internal" href="conversions_and_casting.html#conversions-and-casting"><span class="std std-ref">Conversions and Casting</span></a> chapter.</p>
 </div>
-</div>
-<div class="section" id="dimensionless-quantities">
+</section>
+<section id="dimensionless-quantities">
 <h2>Dimensionless Quantities<a class="headerlink" href="#dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
 <p>Whenever we divide two quantities of the same dimension we end up with a
 <a class="reference internal" href="../glossary.html#term-dimensionless-quantity"><span class="xref std std-term">dimensionless quantity</span></a> otherwise known as <a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a>:</p>
@@ -888,8 +899,8 @@ is expressed as a ratio of kilometers and megaparsecs.</p>
 <a class="reference internal" href="conversions_and_casting.html#implicit-conversions-of-dimensionless-quantities"><span class="std std-ref">Implicit conversions of dimensionless quantities</span></a>
 chapter.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

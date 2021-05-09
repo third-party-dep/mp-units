@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Working with Unknown Dimensions and Their Units &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -191,12 +195,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-unknown-dimensions-and-their-units">
+  <section id="working-with-unknown-dimensions-and-their-units">
 <h1>Working with Unknown Dimensions and Their Units<a class="headerlink" href="#working-with-unknown-dimensions-and-their-units" title="Permalink to this headline">¶</a></h1>
 <p>From time to time the user of this library will face an <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a> and
 <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4N5units21unknown_coherent_unitE" title="units::unknown_coherent_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_coherent_unit</span></code></a> types. This chapters describes their purpose and usage in
 detail.</p>
-<div class="section" id="what-is-an-unknown-dimension">
+<section id="what-is-an-unknown-dimension">
 <h2>What is an unknown dimension?<a class="headerlink" href="#what-is-an-unknown-dimension" title="Permalink to this headline">¶</a></h2>
 <p>As we learned in the <a class="reference internal" href="../framework/dimensions.html#dimensions"><span class="std std-ref">Dimensions</span></a> chapter, in most cases the result
 of multiplying or dividing two quantities of specific dimensions is a quantity of yet another
@@ -240,8 +244,8 @@ dimensions used in the division operation:</p>
 <p>To limit the possibility of an ODR violation please always include a header file
 with all the definitions for the current system (e.g. <em>units/isq/si/si.h</em>).</p>
 </div>
-</div>
-<div class="section" id="operations-on-unknown-dimensions-and-their-units">
+</section>
+<section id="operations-on-unknown-dimensions-and-their-units">
 <h2>Operations On Unknown Dimensions And Their Units<a class="headerlink" href="#operations-on-unknown-dimensions-and-their-units" title="Permalink to this headline">¶</a></h2>
 <p>For some cases we can eliminate the need to predefine a specific dimension and just use
 the <a class="reference internal" href="../reference/systems/generic/unknown.html#_CPPv4I_Dp8ExponentEN5units17unknown_dimensionE" title="units::unknown_dimension"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">unknown_dimension</span></code></a> instead. Let’s play with the previous example a bit:</p>
@@ -271,8 +275,8 @@ following:</p>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="temporary-results">
+</section>
+<section id="temporary-results">
 <h2>Temporary Results<a class="headerlink" href="#temporary-results" title="Permalink to this headline">¶</a></h2>
 <p>In many cases there is nothing inherently wrong with having unknown dimensions and units
 in your program. A typical example here are temporary results of a long calculation:</p>
@@ -292,8 +296,8 @@ in your program. A typical example here are temporary results of a long calculat
 <p>If a programmer wants to break the calculation to several lines/variables he/she does not
 have to ensure that the intermediate results are of predefined dimensions or just a clear
 science fiction :-) The final result will always be correct.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

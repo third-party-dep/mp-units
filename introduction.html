@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Introduction &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -180,7 +184,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction">
+  <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p><strong>mp-units</strong> is a compile-time enabled Modern C++ library that provides compile-time
 dimensional analysis and unit/quantity manipulation. The basic idea and design
@@ -194,14 +198,14 @@ general facility for unit conversions.</p>
 <p>The library architecture has been designed with flexibility and extensibility
 in mind. The demonstrations of the ease of adding new dimensions, their units,
 and unit conversions are provided in the <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Examples</span></a>.</p>
-<div class="section" id="open-source">
+<section id="open-source">
 <h2>Open Source<a class="headerlink" href="#open-source" title="Permalink to this headline">¶</a></h2>
 <p><strong>mp-units</strong> is Free and Open Source, with a permissive
 <a class="reference external" href="https://github.com/mpusz/units/blob/master/LICENSE.md">MIT license</a>. Check
 out the source code and issue tracking (for questions and support, reporting
 bugs and suggesting feature requests and improvements) at <a class="reference external" href="https://github.com/mpusz/units">https://github.com/mpusz/units</a>.</p>
-</div>
-<div class="section" id="approach">
+</section>
+<section id="approach">
 <h2>Approach<a class="headerlink" href="#approach" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Safety and performance</p></li>
@@ -230,8 +234,8 @@ bugs and suggesting feature requests and improvements) at <a class="reference ex
 <li><p>Possibility to be standardized as a freestanding part of the C++ Standard
 Library</p></li>
 </ol>
-</div>
-<div class="section" id="with-the-user-s-experience-in-mind">
+</section>
+<section id="with-the-user-s-experience-in-mind">
 <h2>With the User’s Experience in Mind<a class="headerlink" href="#with-the-user-s-experience-in-mind" title="Permalink to this headline">¶</a></h2>
 <p>Most of the important design decisions in the library are dictated by the requirement of
 providing the best user experience as possible. Other C++ physical units libraries are
@@ -252,8 +256,8 @@ break <code class="docutils literal notranslate"><span class="pre">std::string</
 log. Physical Units libraries are different. <strong>Generation of compile-time errors
 is the main reason to create such a library.</strong></p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

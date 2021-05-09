@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Prefixes &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -198,19 +202,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="prefixes">
+  <section id="prefixes">
 <h1>Prefixes<a class="headerlink" href="#prefixes" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp struct">
-<dt id="_CPPv4N5units13prefix_familyE">
-<span id="_CPPv3N5units13prefix_familyE"></span><span id="_CPPv2N5units13prefix_familyE"></span><span id="units::prefix_family"></span><span class="target" id="structunits_1_1prefix__family"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">prefix_family</span></code><a class="headerlink" href="#_CPPv4N5units13prefix_familyE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5units13prefix_familyE">
+<span id="_CPPv3N5units13prefix_familyE"></span><span id="_CPPv2N5units13prefix_familyE"></span><span id="units::prefix_family"></span><span class="target" id="structunits_1_1prefix__family"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">prefix_family</span></span></span><a class="headerlink" href="#_CPPv4N5units13prefix_familyE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The base for all prefix families. </p>
 <p>Every prefix family should inherit from this type to satisfy PrefixFamily concept. </p>
 <p>Subclassed by <a class="reference internal" href="../../systems/isq/iec80000/binary_prefixes.html#structunits_1_1isq_1_1iec80000_1_1binary__prefix"><span class="std std-ref">units::isq::iec80000::binary_prefix</span></a>, <a class="reference internal" href="../../systems/isq/si/prefixes.html#structunits_1_1isq_1_1si_1_1prefix"><span class="std std-ref">units::isq::si::prefix</span></a>, <a class="reference internal" href="#structunits_1_1no__prefix"><span class="std std-ref">units::no_prefix</span></a></p>
 </dd></dl>
 
 <dl class="cpp struct">
-<dt id="_CPPv4N5units9no_prefixE">
-<span id="_CPPv3N5units9no_prefixE"></span><span id="_CPPv2N5units9no_prefixE"></span><span id="units::no_prefix"></span><span class="target" id="structunits_1_1no__prefix"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">no_prefix</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../../systems/isq/si/mass.html#_CPPv45units" title="units"><span class="pre">units</span></a><span class="pre">::</span><a class="reference internal" href="#_CPPv4N5units13prefix_familyE" title="units::prefix_family"><span class="pre">prefix_family</span></a><a class="headerlink" href="#_CPPv4N5units9no_prefixE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5units9no_prefixE">
+<span id="_CPPv3N5units9no_prefixE"></span><span id="_CPPv2N5units9no_prefixE"></span><span id="units::no_prefix"></span><span class="target" id="structunits_1_1no__prefix"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">no_prefix</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="../../systems/isq/si/mass.html#_CPPv45units" title="units"><span class="n"><span class="pre">units</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5units13prefix_familyE" title="units::prefix_family"><span class="n"><span class="pre">prefix_family</span></span></a><a class="headerlink" href="#_CPPv4N5units9no_prefixE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>No prefix possible for the unit. </p>
 <p>This is a special prefix type tag specifying that the unit can not be scaled with any kind of the prefix. </p>
 </dd></dl>
@@ -219,7 +223,7 @@
 <p class="admonition-title">Warning</p>
 <p>doxygenstruct: Cannot find class “units::prefix” in doxygen xml output for project “mp-units” from directory: /home/runner/work/units/units/build/docs/doxygen/xml</p>
 </div>
-</div>
+</section>
 
 
            </div>

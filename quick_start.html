@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Quick Start &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -175,12 +179,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-start">
+  <section id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <p>Here is a small example of possible operations:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define UNITS_REFERENCES</span>
-
-<span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/area.h&gt;</span><span class="cp"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/area.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/frequency.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt;</span><span class="cp"></span>
@@ -210,18 +212,14 @@
 </div>
 <div class="admonition-try-it-on-compiler-explorer admonition">
 <p class="admonition-title">Try it on Compiler Explorer</p>
-<p><a class="reference external" href="https://godbolt.org/z/53bTahKd8">Example #1</a></p>
+<p><a class="reference external" href="https://godbolt.org/z/5dvY8Woh1">Example #1</a></p>
 </div>
 <p>This library requires some C++20 features (concepts, classes as
 <abbr title="Non-Type Template Parameter">NTTP</abbr>, …). Thanks to them the user gets a powerful
 but still easy to use interface where all unit conversions and dimensional analysis can be
 performed without sacrificing on accuracy. Please see the below example for a quick preview
 of basic library features:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define UNITS_ALIASES</span>
-<span class="cp">#define UNITS_LITERALS</span>
-<span class="cp">#define UNITS_REFERENCES</span>
-
-<span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/format.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/international/length.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/international/speed.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
@@ -268,13 +266,13 @@ of basic library features:</p>
 </div>
 <div class="admonition-try-it-on-compiler-explorer admonition">
 <p class="admonition-title">Try it on Compiler Explorer</p>
-<p><a class="reference external" href="https://godbolt.org/z/jKnPPPEx6">Example #2</a></p>
+<p><a class="reference external" href="https://godbolt.org/z/9fnzfbhb6">Example #2</a></p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>You can find more code examples in the <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Examples</span></a> chapter.</p>
 </div>
-</div>
+</section>
 
 
            </div>

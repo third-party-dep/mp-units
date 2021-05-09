@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>FAQ &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -196,7 +200,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="faq">
+  <section id="faq">
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="questions">
 <p class="topic-title">Questions:</p>
@@ -226,9 +230,9 @@
 </li>
 </ul>
 </div>
-<div class="section" id="general">
+<section id="general">
 <h2><a class="toc-backref" href="#id3">General</a><a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="why-dimensions-depend-on-units-and-not-vice-versa">
+<section id="why-dimensions-depend-on-units-and-not-vice-versa">
 <h3><a class="toc-backref" href="#id4">Why dimensions depend on units and not vice versa?</a><a class="headerlink" href="#why-dimensions-depend-on-units-and-not-vice-versa" title="Permalink to this headline">¶</a></h3>
 <p>Most of the libraries define units in terms of dimensions and this was also an
 initial approach for this library. However, it turns out that for such a design
@@ -243,8 +247,8 @@ measured with the same unit (i.e. <code class="docutils literal notranslate"><sp
 implement a systems where SI quantities of the same kind are expressed as
 different dimensions (i.e. height, width, and depth) all of them will just be
 measured in meters.</p>
-</div>
-<div class="section" id="why-other-systems-are-defined-in-the-isq-si-namespace">
+</section>
+<section id="why-other-systems-are-defined-in-the-isq-si-namespace">
 <h3><a class="toc-backref" href="#id5">Why other systems are defined in the <a class="reference internal" href="reference/systems/isq/si/mass.html#_CPPv4N5units3isq2siE" title="units::isq::si"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">isq::si</span></code></a> namespace?</a><a class="headerlink" href="#why-other-systems-are-defined-in-the-isq-si-namespace" title="Permalink to this headline">¶</a></h3>
 <p>All systems defined in the <a class="reference internal" href="reference/systems/isq/si/mass.html#_CPPv4N5units3isq2siE" title="units::isq::si"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">isq::si</span></code></a> namespace are defined in terms of
 base units that are convertible to the <a class="reference internal" href="glossary.html#term-SI"><span class="xref std std-term">SI</span></a> units. This enables conversions
@@ -254,8 +258,8 @@ of units of the same physical dimension between different systems.</p>
 <p>More details on this subject can be found in the
 <a class="reference internal" href="use_cases/extensions.html#custom-systems"><span class="std std-ref">Custom Systems</span></a> chapter.</p>
 </div>
-</div>
-<div class="section" id="why-a-dimensionless-quantity-is-not-just-an-fundamental-arithmetic-type">
+</section>
+<section id="why-a-dimensionless-quantity-is-not-just-an-fundamental-arithmetic-type">
 <h3><a class="toc-backref" href="#id6">Why a dimensionless quantity is not just an fundamental arithmetic type?</a><a class="headerlink" href="#why-a-dimensionless-quantity-is-not-just-an-fundamental-arithmetic-type" title="Permalink to this headline">¶</a></h3>
 <p>In the initial design of this library the resulting type of the division of
 two quantities was their common representation type:</p>
@@ -278,15 +282,15 @@ are only a few from many similar issues related to such an approach.</p>
 <p>More information on the current design can be found in
 the <a class="reference internal" href="framework/quantities.html#dimensionless-quantities"><span class="std std-ref">Dimensionless Quantities</span></a> chapter.</p>
 </div>
-</div>
-<div class="section" id="why-do-we-spell-metre-instead-of-meter">
+</section>
+<section id="why-do-we-spell-metre-instead-of-meter">
 <h3><a class="toc-backref" href="#id7">Why do we spell <code class="docutils literal notranslate"><span class="pre">metre</span></code> instead of <code class="docutils literal notranslate"><span class="pre">meter</span></code>?</a><a class="headerlink" href="#why-do-we-spell-metre-instead-of-meter" title="Permalink to this headline">¶</a></h3>
 <p>Well, this is how <a class="reference internal" href="references.html#iso80000" id="id1"><span>[ISO80000]</span></a> defines it (British English spelling by default).</p>
-</div>
-</div>
-<div class="section" id="user-defined-literals-udls">
+</section>
+</section>
+<section id="user-defined-literals-udls">
 <h2><a class="toc-backref" href="#id8">User Defined Literals (UDLs)</a><a class="headerlink" href="#user-defined-literals-udls" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="why-all-udls-are-prefixed-with-q-instead-of-just-using-unit-symbol">
+<section id="why-all-udls-are-prefixed-with-q-instead-of-just-using-unit-symbol">
 <h3><a class="toc-backref" href="#id9">Why all UDLs are prefixed with <code class="docutils literal notranslate"><span class="pre">_q_</span></code> instead of just using unit symbol?</a><a class="headerlink" href="#why-all-udls-are-prefixed-with-q-instead-of-just-using-unit-symbol" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -302,11 +306,11 @@ built-in types or numeric extensions. A few of those are: <code class="docutils 
 prefix to make the library work at all, but at some point we had to unify the
 naming and we came up with <code class="docutils literal notranslate"><span class="pre">_q_</span></code> prefix which results in a creation of
 quantity of a provided unit.</p>
-</div>
-</div>
-<div class="section" id="text-formatting">
+</section>
+</section>
+<section id="text-formatting">
 <h2><a class="toc-backref" href="#id10">Text formatting</a><a class="headerlink" href="#text-formatting" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="why-unicode-quantity-symbols-are-used-by-default-instead-of-ascii-only-characters">
+<section id="why-unicode-quantity-symbols-are-used-by-default-instead-of-ascii-only-characters">
 <h3><a class="toc-backref" href="#id11">Why Unicode quantity symbols are used by default instead of ASCII-only characters?</a><a class="headerlink" href="#why-unicode-quantity-symbols-are-used-by-default-instead-of-ascii-only-characters" title="Permalink to this headline">¶</a></h3>
 <p>Both C++ and <a class="reference internal" href="glossary.html#term-SI"><span class="xref std std-term">SI</span></a> (<a class="reference internal" href="references.html#iso80000" id="id2"><span>[ISO80000]</span></a>) are standardized by the
 <abbr title="International Organization for Standardization">ISO</abbr>. <a class="reference internal" href="glossary.html#term-SI"><span class="xref std std-term">SI</span></a> standard
@@ -319,20 +323,20 @@ to obey the rules and be consistent with ISO specifications.</p>
 <p>We do understand engineering reality and constraints and that is why the library
 has the option of <a class="reference internal" href="framework/text_output.html#ascii-only-quantity-symbols"><span class="std std-ref">ASCII-only Quantity Symbols</span></a>.</p>
 </div>
-</div>
-</div>
-<div class="section" id="compilation-errors">
+</section>
+</section>
+<section id="compilation-errors">
 <h2><a class="toc-backref" href="#id12">Compilation Errors</a><a class="headerlink" href="#compilation-errors" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="error-reference-to-time-is-ambiguous">
+<section id="error-reference-to-time-is-ambiguous">
 <h3><a class="toc-backref" href="#id13">error: reference to ‘time’ is ambiguous</a><a class="headerlink" href="#error-reference-to-time-is-ambiguous" title="Permalink to this headline">¶</a></h3>
 <p>Unfortunately, if <a class="reference external" href="https://en.cppreference.com/w/cpp/language/namespace#Using-directives">using-directives</a>
 (i.e. <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">units::isq::si</span></code>) are being used, <a class="reference internal" href="reference/systems/isq/si/time.html#_CPPv4I_6UnitOfI8dim_timeE_14RepresentationEN5units3isq2si4timeE" title="units::isq::si::time"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">units::isq::si::time</span></code></a>
 will collide with C <a class="reference external" href="https://en.cppreference.com/w/c/chrono/time">time</a> function. In
 such a case the library’s <code class="docutils literal notranslate"><span class="pre">time</span></code> function needs to be prefixed with at least one (or all)
 namespace names.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

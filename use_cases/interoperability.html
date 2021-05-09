@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Interoperability with Other Units Libraries &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -186,7 +190,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="interoperability-with-other-units-libraries">
+  <section id="interoperability-with-other-units-libraries">
 <h1>Interoperability with Other Units Libraries<a class="headerlink" href="#interoperability-with-other-units-libraries" title="Permalink to this headline">¶</a></h1>
 <p>Other units libraries can be easily integrated with <strong>mp-units</strong> via specialization of a
 <a class="reference internal" href="../reference/core/customization_points.html#_CPPv4I0EN5units20quantity_like_traitsE" title="units::quantity_like_traits"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_like_traits</span></code></a> for external quantity-like type. The type trait specialization should
@@ -255,7 +259,7 @@ provide a deduction guide from <code class="xref cpp cpp-any docutils literal no
 <span class="k">static_assert</span><span class="p">(</span><span class="n">quantity_point</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">sys_seconds</span><span class="p">{</span><span class="mi">1</span><span class="n">s</span><span class="p">}}</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">s</span> <span class="o">==</span> <span class="n">quantity_point</span><span class="p">{</span><span class="mi">2</span><span class="n">s</span><span class="p">});</span>
 </pre></div>
 </div>
-</div>
+</section>
 
 
            </div>

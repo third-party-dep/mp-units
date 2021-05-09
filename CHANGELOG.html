@@ -4,7 +4,8 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Release notes &mdash; mp-units 0.7.0 documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
@@ -28,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -175,7 +179,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="release-notes">
+  <section id="release-notes">
 <h1>Release notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <ul>
 <li><p><strong>0.7.0 WIP</strong></p>
@@ -185,7 +189,6 @@
 <li><p>(!) refactor: Refactored the library file tree</p></li>
 <li><p>(!) refactor: <code class="docutils literal notranslate"><span class="pre">quantity::count()</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">quantity::number()</span></code></p></li>
 <li><p>(!) refactor: <code class="docutils literal notranslate"><span class="pre">data</span></code> system renamed to <code class="docutils literal notranslate"><span class="pre">isq::iec80000</span></code> (quantity names renamed too)</p></li>
-<li><p>(!) refactor: quantity UDLs support has to be enabled with <code class="docutils literal notranslate"><span class="pre">UNITS_LITERALS</span></code> preprocessor define</p></li>
 <li><p>refactor: quantity (kind) point updated to reflect latest changes to <code class="docutils literal notranslate"><span class="pre">quantity</span></code></p></li>
 <li><p>refactor: basic concepts, <code class="docutils literal notranslate"><span class="pre">quantity</span></code> and <code class="docutils literal notranslate"><span class="pre">quantity_cast</span></code> refactored</p></li>
 <li><p>refactor: <code class="docutils literal notranslate"><span class="pre">abs()</span></code> definition refactored to be more explicit about the return type</p></li>
@@ -196,6 +199,7 @@
 <li><p>feat: CTAD for dimensionless quantity added</p></li>
 <li><p>feat: <code class="docutils literal notranslate"><span class="pre">modulation_rate</span></code> support added (thanks <a class="reference external" href="https://github.com/go2sh">&#64;go2sh</a>)</p></li>
 <li><p>feat: SI prefixes for <code class="docutils literal notranslate"><span class="pre">isq::iec80000</span></code> support added (thanks <a class="reference external" href="https://github.com/go2sh">&#64;go2sh</a>)</p></li>
+<li><p>feat: a possibility to disable quantity UDLs support with <code class="docutils literal notranslate"><span class="pre">UNITS_NO_LITERALS</span></code> preprocessor define</p></li>
 <li><p>perf: preconditions check do not influence the runtime performance of a Release build</p></li>
 <li><p>perf: <code class="docutils literal notranslate"><span class="pre">quantity_cast()</span></code> generates less assembly instructions</p></li>
 <li><p>perf: temporary string creation removed from <code class="docutils literal notranslate"><span class="pre">quantity::op&lt;&lt;()</span></code></p></li>
@@ -347,7 +351,7 @@ in drafting a new library design.</p>
 </ul>
 </li>
 </ul>
-</div>
+</section>
 
 
            </div>
