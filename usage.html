@@ -129,6 +129,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#copy-cmake">Copy + CMake</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#conan-cmake-release">Conan + CMake (release)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#conan-cmake-live-at-head">Conan + CMake (Live At Head)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install">Install</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#contributing-or-just-building-all-the-tests-examples-and-documentation">Contributing (or just building all the tests, examples, and documentation)</a></li>
@@ -469,7 +470,7 @@ for each CMake target directly linking with <code class="docutils literal notran
 <li><p>Download, build, and install Conan dependencies before running CMake configuration step:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir my_project/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> my_project/build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -b<span class="o">=</span>missing
 cmake .. -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake
 cmake --build .
@@ -525,13 +526,25 @@ differences:</p>
 <li><p>Force Conan to check for updated recipes <code class="docutils literal notranslate"><span class="pre">-u</span></code> and to build outdated packages <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">outdated</span></code>:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir my_project/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> my_project/build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -b<span class="o">=</span>outdated -u
 cmake .. -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake
 cmake --build .
 </pre></div>
 </div>
 </div></blockquote>
+</section>
+<section id="install">
+<h3>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+<p>In case you don’t want to use Conan in your project and just want to install the <strong>mp-units</strong>
+library on your file system and use it via <code class="docutils literal notranslate"><span class="pre">find_package(mp-units)</span></code> from another repository
+to find it, it is enough to perform the following steps:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir units/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units/build
+conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -b<span class="o">=</span>missing
+cmake ../src -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake
+cmake --install . --prefix &lt;install_dir&gt;
+</pre></div>
+</div>
 </section>
 </section>
 <section id="contributing-or-just-building-all-the-tests-examples-and-documentation">
@@ -547,7 +560,7 @@ in <strong>mp-units</strong> repository, you should:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add linear-algebra https://twonington.jfrog.io/artifactory/api/conan/conan-oss
 git clone https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
-mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+mkdir units/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units/build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
 conan build ..
 </pre></div>
