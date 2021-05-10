@@ -190,6 +190,7 @@
 <li><p>(!) refactor: <code class="docutils literal notranslate"><span class="pre">quantity::count()</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">quantity::number()</span></code></p></li>
 <li><p>(!) refactor: <code class="docutils literal notranslate"><span class="pre">data</span></code> system renamed to <code class="docutils literal notranslate"><span class="pre">isq::iec80000</span></code> (quantity names renamed too)</p></li>
 <li><p>(!) refactor: <code class="docutils literal notranslate"><span class="pre">*deduced_unit</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">*derived_unit</span></code></p></li>
+<li><p>(!) refactor: got rid of a <code class="docutils literal notranslate"><span class="pre">noble_derived_unit</span></code></p></li>
 <li><p>refactor: quantity (kind) point updated to reflect latest changes to <code class="docutils literal notranslate"><span class="pre">quantity</span></code></p></li>
 <li><p>refactor: basic concepts, <code class="docutils literal notranslate"><span class="pre">quantity</span></code> and <code class="docutils literal notranslate"><span class="pre">quantity_cast</span></code> refactored</p></li>
 <li><p>refactor: <code class="docutils literal notranslate"><span class="pre">abs()</span></code> definition refactored to be more explicit about the return type</p></li>
@@ -215,6 +216,7 @@
 <li><p>fix: ambiguous case for empty type list resolved</p></li>
 <li><p>fix: downcasting facility for non-default-constructible types</p></li>
 <li><p>fix: restore user-warnings within the library implementation</p></li>
+<li><p>fix: the text symbol of <code class="docutils literal notranslate"><span class="pre">foot_pound_force</span></code> and <code class="docutils literal notranslate"><span class="pre">foot_pound_force_per_second</span></code></p></li>
 <li><p>(!) build: Conan testing version is now hosted on <a class="reference external" href="https://mpusz.jfrog.io/ui/packages/conan:%2F%2Fmp-units">Artifactory</a></p></li>
 <li><p>(!) build: Linear Algebra is now hosted on its <a class="reference external" href="https://twonington.jfrog.io/artifactory/api/conan/conan-oss">Artifactory</a></p></li>
 <li><p>(!) build: <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> CMake option renamed to <code class="docutils literal notranslate"><span class="pre">UNITS_BUILD_DOCS</span></code></p></li>

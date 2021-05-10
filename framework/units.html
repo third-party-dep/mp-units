@@ -488,14 +488,12 @@ does not exist at all. With it <code class="docutils literal notranslate"><span 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In case the scaled derived unit should serve as a named one we can use either
+<p>In case the scaled derived unit should serve as a named one we can use
 a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_17basic_symbol_text_12PrefixFamily_4Unit_Dp4UnitEN5units18named_derived_unitE" title="units::named_derived_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_derived_unit</span></code></a> where the user is able to provide a symbol for the unit
-by him/her-self or <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units18noble_derived_unitE" title="units::noble_derived_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">noble_derived_unit</span></code></a> where the symbol is the deduced name
-based on the ingredients:</p>
+by him/her-self:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">fps</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">knot</span> <span class="p">:</span> <span class="n">named_derived_unit</span><span class="o">&lt;</span><span class="n">knot</span><span class="p">,</span> <span class="n">dim_speed</span><span class="p">,</span> <span class="s">&quot;knot&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">nautical_mile</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">foot_pound_force</span> <span class="p">:</span> <span class="n">noble_derived_unit</span><span class="o">&lt;</span><span class="n">foot_pound_force</span><span class="p">,</span> <span class="n">dim_energy</span><span class="p">,</span> <span class="n">pound_force</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="p">}</span>
 </pre></div>
