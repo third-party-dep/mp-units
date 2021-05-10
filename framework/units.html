@@ -103,15 +103,15 @@
 <li class="toctree-l2"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Units</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#base-units">Base Units</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#derived-units">Derived Units</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#derived-named-units">Derived Named Units</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#derived-unnamed-units">Derived Unnamed Units</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#scaled-units">Scaled Units</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#named-scaled-units">Named Scaled Units</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#prefixed-unit">Prefixed Unit</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deduced-units">Deduced Units</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#derived-units">Derived Units</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#derived-named-units">Derived Named Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#derived-unnamed-units">Derived Unnamed Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#derived-scaled-units">Derived Scaled Units</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#aliased-units">Aliased Units</a></li>
@@ -215,7 +215,7 @@ compare quantities of the same dimension a notion of a <a class="reference inter
 was introduced. Units are designated by conventionally assigned names and
 symbols. Thanks to them it is possible to compare two quantities of the
 same dimension and express the ratio of the second quantity to the first
-one as a number. For example <code class="docutils literal notranslate"><span class="pre">10s</span></code> is <code class="docutils literal notranslate"><span class="pre">10</span></code> times more than <code class="docutils literal notranslate"><span class="pre">1s</span></code>.</p>
+one as a number. For example <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">s</span></code> is <code class="docutils literal notranslate"><span class="pre">10</span></code> times more than <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">s</span></code>.</p>
 <p>Base quantities are expressed in terms of <a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">base units</span></a>
 (i.e. <code class="docutils literal notranslate"><span class="pre">m</span></code> (meter), <code class="docutils literal notranslate"><span class="pre">s</span></code> (second)), while derived quantities are expressed
 in terms of <a class="reference internal" href="../glossary.html#term-derived-unit"><span class="xref std std-term">derived units</span></a>.</p>
@@ -294,81 +294,13 @@ units of the same physical dimension can be found in the
 <a class="reference internal" href="../use_cases/extensions.html#custom-systems"><span class="std std-ref">Custom Systems</span></a> chapter.</p>
 </div>
 </section>
-<section id="derived-units">
-<h2>Derived Units<a class="headerlink" href="#derived-units" title="Permalink to this headline">¶</a></h2>
-<p>Derived units can be either named or unnamed.</p>
-<section id="derived-named-units">
-<h3>Derived Named Units<a class="headerlink" href="#derived-named-units" title="Permalink to this headline">¶</a></h3>
-<p>Derived named units have a unique symbol (i.e. <code class="docutils literal notranslate"><span class="pre">N</span></code> (newton) or <code class="docutils literal notranslate"><span class="pre">Pa</span></code>
-(pascal)) and they are defined in the same way as base units (which
-always have to be a named unit):</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
-
-<span class="k">struct</span> <span class="nl">newton</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">newton</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
-
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-<section id="derived-unnamed-units">
-<h3>Derived Unnamed Units<a class="headerlink" href="#derived-unnamed-units" title="Permalink to this headline">¶</a></h3>
-<p>Derived unnamed units are the units where the symbol is derived from the
-base quantities symbols and the expression of the dependence of the derived
-quantity on the base quantities (i.e. <code class="docutils literal notranslate"><span class="pre">m/s</span></code> (metre per second), <code class="docutils literal notranslate"><span class="pre">m²</span></code>
-(square metre)). To support such use cases a library introduced a notion of
-<a class="reference internal" href="../glossary.html#term-derived-dimension-recipe"><span class="xref std std-term">derived dimension recipe</span></a> which stores the information about the
-order, exponents, and types of dimensions used to defined this particular
-derived dimension. For example each of the below <code class="docutils literal notranslate"><span class="pre">momentum</span></code> definitions
-will result in a different unnamed unit symbol:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
-<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>    <span class="c1">// kg ⋅ m/s</span>
-</span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
-<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>    <span class="c1">// m ⋅ kg/s</span>
-</span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
-<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>     <span class="c1">// 1/s ⋅ m ⋅ kg</span>
-</span></pre></div>
-</div>
-<p>where <code class="docutils literal notranslate"><span class="pre">kilogram_metre_per_second</span></code> is defined as:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">kilogram_metre_per_second</span> <span class="p">:</span> <span class="n">unit</span><span class="o">&lt;</span><span class="n">kilogram_metre_per_second</span><span class="o">&gt;</span> <span class="p">{};</span>
-</pre></div>
-</div>
-<p>However, the easiest way to define momentum is just to use the
-<code class="docutils literal notranslate"><span class="pre">si::dim_speed</span></code> derived dimension in the recipe:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
-                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// kg ⋅ m/s</span>
-</span></pre></div>
-</div>
-<p>In such a case the library will do its magic and will automatically
-unpack a provided derived dimension to its base dimensions in order to
-end up with a <a class="reference internal" href="../glossary.html#term-normalized-derived-dimension"><span class="xref std std-term">normalized derived dimension</span></a> for a parent entity.</p>
-<p>The need to support a derived dimension in the recipe is not just a
-syntactic sugar that allows us to do less typing. It is worth to notice
-here that some of the derived unnamed units are defined in terms of other
-derived named units (i.e. surface tension quantity is measured in terms
-of <code class="docutils literal notranslate"><span class="pre">N/m</span></code>):</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_surface_tension</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_surface_tension</span><span class="p">,</span> <span class="n">newton_per_metre</span><span class="p">,</span>
-<span class="hll">                                               <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_force</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-</span>                                               <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// N/m</span>
-</pre></div>
-</div>
-<p>If we defined the above in terms of base units we would end up with
-a <code class="docutils literal notranslate"><span class="pre">kg/s²</span></code> derived unit symbol.</p>
-</section>
-</section>
 <section id="scaled-units">
 <h2>Scaled Units<a class="headerlink" href="#scaled-units" title="Permalink to this headline">¶</a></h2>
-<p>Until now we talked mostly about
-<a class="reference internal" href="../glossary.html#term-coherent-derived-unit"><span class="xref std std-term">coherent units</span></a> which are units used to
-define dimensions and thus, in their system of units, have proportionality
-factor/ratio equals one. However quantities of each dimension can also use
-other units of measurement to describe their magnitude (numerical value).</p>
+<p>Described above base units (in case of base quantities) and
+<a class="reference internal" href="../glossary.html#term-coherent-derived-unit"><span class="xref std std-term">coherent units</span></a> (in case of derived quantities),
+in their system of units, have proportionality factor/ratio equal to one.
+However, quantities of such dimensions can also use units of measurement
+with other ratios to describe their magnitude (numerical value).</p>
 <section id="named-scaled-units">
 <h3>Named Scaled Units<a class="headerlink" href="#named-scaled-units" title="Permalink to this headline">¶</a></h3>
 <p>We are used to use minutes, hours, or days to measure quantities of time.
@@ -464,42 +396,112 @@ wrong definitions (“kilo square metre” seams strange and spelled
 as <code class="docutils literal notranslate"><span class="pre">km²</span></code> would be invalid).</p>
 </div>
 </section>
-<section id="deduced-units">
-<h3>Deduced Units<a class="headerlink" href="#deduced-units" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="derived-units">
+<h2>Derived Units<a class="headerlink" href="#derived-units" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../glossary.html#term-derived-unit"><span class="xref std std-term">Derived units</span></a> are the units used to measure
+<a class="reference internal" href="../glossary.html#term-derived-quantity"><span class="xref std std-term">derived quantities</span></a>. They can either have their own unique
+names (i.e. <code class="docutils literal notranslate"><span class="pre">N</span></code> (newton)) or can be composed from the names of units of quantities
+used to define thier derived quantity (i.e. <code class="docutils literal notranslate"><span class="pre">km/h</span></code>).</p>
+<section id="derived-named-units">
+<h3>Derived Named Units<a class="headerlink" href="#derived-named-units" title="Permalink to this headline">¶</a></h3>
+<p>Derived named units have a unique symbol (i.e. <code class="docutils literal notranslate"><span class="pre">N</span></code> (newton) or <code class="docutils literal notranslate"><span class="pre">Pa</span></code>
+(pascal)) and they are defined in the same way as base units (which
+always have to be a named unit):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
+
+<span class="k">struct</span> <span class="nl">newton</span> <span class="p">:</span> <span class="n">named_unit</span><span class="o">&lt;</span><span class="n">newton</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="derived-unnamed-units">
+<h3>Derived Unnamed Units<a class="headerlink" href="#derived-unnamed-units" title="Permalink to this headline">¶</a></h3>
+<p>Derived unnamed units are the units where the symbol is derived from the
+base quantities symbols and the expression of the dependence of the derived
+quantity on the base quantities (i.e. <code class="docutils literal notranslate"><span class="pre">m/s</span></code> (metre per second), <code class="docutils literal notranslate"><span class="pre">m²</span></code>
+(square metre)). To support such use cases a library introduced a notion of
+<a class="reference internal" href="../glossary.html#term-derived-dimension-recipe"><span class="xref std std-term">derived dimension recipe</span></a> which stores the information about the
+order, exponents, and types of dimensions used to define this particular
+derived dimension. For example each of the below <code class="docutils literal notranslate"><span class="pre">momentum</span></code> definitions
+will result in a different unnamed unit symbol:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
+<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>    <span class="c1">// kg ⋅ m/s</span>
+</span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
+<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>    <span class="c1">// m ⋅ kg/s</span>
+</span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
+<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>     <span class="c1">// 1/s ⋅ m ⋅ kg</span>
+</span></pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">kilogram_metre_per_second</span></code> is defined as:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">kilogram_metre_per_second</span> <span class="p">:</span> <span class="n">unit</span><span class="o">&lt;</span><span class="n">kilogram_metre_per_second</span><span class="o">&gt;</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>However, the easiest way to define momentum is just to use the
+<code class="docutils literal notranslate"><span class="pre">si::dim_speed</span></code> derived dimension in the recipe:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_momentum</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_momentum</span><span class="p">,</span> <span class="n">kilogram_metre_per_second</span><span class="p">,</span>
+                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_mass</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="hll">                                        <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_speed</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// kg ⋅ m/s</span>
+</span></pre></div>
+</div>
+<p>In such a case the library will do its magic and will automatically
+unpack a provided derived dimension to its base dimensions in order to
+end up with a <a class="reference internal" href="../glossary.html#term-normalized-derived-dimension"><span class="xref std std-term">normalized derived dimension</span></a> for a parent entity.</p>
+<p>The need to support a derived dimension in the recipe is not just a
+syntactic sugar that allows us to do less typing. It is worth to notice
+here that some of the derived unnamed units are defined in terms of other
+derived named units (i.e. surface tension quantity is measured in terms
+of <code class="docutils literal notranslate"><span class="pre">N/m</span></code>):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">dim_surface_tension</span> <span class="p">:</span> <span class="n">derived_dimension</span><span class="o">&lt;</span><span class="n">dim_surface_tension</span><span class="p">,</span> <span class="n">newton_per_metre</span><span class="p">,</span>
+<span class="hll">                                               <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_force</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+</span>                                               <span class="n">exponent</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="p">{};</span> <span class="c1">// N/m</span>
+</pre></div>
+</div>
+<p>If we defined the above in terms of base units we would end up with
+a <code class="docutils literal notranslate"><span class="pre">kg/s²</span></code> derived unit symbol.</p>
+</section>
+<section id="derived-scaled-units">
+<h3>Derived Scaled Units<a class="headerlink" href="#derived-scaled-units" title="Permalink to this headline">¶</a></h3>
 <p>For some units determining of a correct scaling ratio may not be trivial,
 and even if done correctly, may be a pain to maintain. For a simple example
 let’s take a “kilometre per hour” unit. What is the easiest to maintain
-ratio in reference to “metre per second”:</p>
+ratio in reference to the “metre per second”:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">1000/3600</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">10/36</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">5/18</span></code></p></li>
 </ul>
 <p>Whichever, we choose there will always be someone not happy with our choice.</p>
-<p>Thanks to a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12deduced_unitE" title="units::deduced_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">deduced_unit</span></code></a> class template provided by the library this problem
+<p>Thanks to a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units12derived_unitE" title="units::derived_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">derived_unit</span></code></a> class template provided by the library this problem
 does not exist at all. With it <code class="docutils literal notranslate"><span class="pre">si::kilometre_per_hour</span></code> can be defined as:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span> <span class="p">{</span>
 
-<span class="k">struct</span> <span class="nl">kilometre_per_hour</span> <span class="p">:</span> <span class="n">deduced_unit</span><span class="o">&lt;</span><span class="n">kilometre_per_hour</span><span class="p">,</span> <span class="n">dim_speed</span><span class="p">,</span> <span class="n">kilometre</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">kilometre_per_hour</span> <span class="p">:</span> <span class="n">derived_unit</span><span class="o">&lt;</span><span class="n">kilometre_per_hour</span><span class="p">,</span> <span class="n">dim_speed</span><span class="p">,</span> <span class="n">kilometre</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In case the deduced unit should served as a named one we can use ether a
-<a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_17basic_symbol_text_12PrefixFamily_4Unit_Dp4UnitEN5units18named_deduced_unitE" title="units::named_deduced_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_deduced_unit</span></code></a> where the user is able to provide a symbol for the unit
-by him/her-self or <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units18noble_deduced_unitE" title="units::noble_deduced_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">noble_deduced_unit</span></code></a> where the symbol is the deduced name
+<p>In case the scaled derived unit should serve as a named one we can use either
+a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_17basic_symbol_text_12PrefixFamily_4Unit_Dp4UnitEN5units18named_derived_unitE" title="units::named_derived_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">named_derived_unit</span></code></a> where the user is able to provide a symbol for the unit
+by him/her-self or <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I0_16DerivedDimension_4Unit_Dp4UnitEN5units18noble_derived_unitE" title="units::noble_derived_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">noble_derived_unit</span></code></a> where the symbol is the deduced name
 based on the ingredients:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">si</span><span class="o">::</span><span class="n">fps</span> <span class="p">{</span>
 
-<span class="k">struct</span> <span class="nl">nautical_mile_per_hour</span> <span class="p">:</span> <span class="n">named_deduced_unit</span><span class="o">&lt;</span><span class="n">nautical_mile_per_hour</span><span class="p">,</span> <span class="n">dim_speed</span><span class="p">,</span>
-                                                   <span class="s">&quot;knot&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">nautical_mile</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span><span class="p">{};</span>
-<span class="k">struct</span> <span class="nl">foot_pound_force</span> <span class="p">:</span> <span class="n">noble_deduced_unit</span><span class="o">&lt;</span><span class="n">foot_pound_force</span><span class="p">,</span> <span class="n">dim_energy</span><span class="p">,</span> <span class="n">pound_force</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">knot</span> <span class="p">:</span> <span class="n">named_derived_unit</span><span class="o">&lt;</span><span class="n">knot</span><span class="p">,</span> <span class="n">dim_speed</span><span class="p">,</span> <span class="s">&quot;knot&quot;</span><span class="p">,</span> <span class="n">no_prefix</span><span class="p">,</span> <span class="n">nautical_mile</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nl">foot_pound_force</span> <span class="p">:</span> <span class="n">noble_derived_unit</span><span class="o">&lt;</span><span class="n">foot_pound_force</span><span class="p">,</span> <span class="n">dim_energy</span><span class="p">,</span> <span class="n">pound_force</span><span class="p">,</span> <span class="n">foot</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Please note that deduced units are the only unit-related class template that
-take a dimension as its parameter. This derived dimension provides a <a class="reference internal" href="../glossary.html#term-recipe"><span class="xref std std-term">recipe</span></a>
+<p>Please note that the dervided scaled units are the only unit-related class templates
+that take a dimension as its parameter. This derived dimension provides a <a class="reference internal" href="../glossary.html#term-recipe"><span class="xref std std-term">recipe</span></a>
 used for its definition. Based on the information stored in the recipe
 (order, type, and exponents of composite dimensions) and the ratios of units
 provided in the template parameter list after the derived dimension parameter,
