@@ -268,12 +268,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity__kind_1aef4f5239ea1405a795049cd4fc05688a"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span> <span class="pre">inline</span> <span class="pre">explicit</span> <span class="pre">requires</span> <span class="pre">std::same_as&lt;</span> <span class="pre">dimension,</span> <span class="pre">dim_one</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;safe_convertible_to_&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;,</span> <span class="pre">rep</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;constexpr</span> <span class="pre">std::constructible_from&lt;</span> <span class="pre">quantity_type,</span> <span class="pre">Value</span> <span class="pre">&gt;</span> <span class="pre">quantity_kind</span> <span class="pre">(Value</span> <span class="pre">&amp;&amp;v)</span></span></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity__kind_1a766045619ec8eb5ebb06cde5abbe7fc0"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Q&gt;</span> <span class="pre">inline</span>&#160; <span class="pre">requires</span> <span class="pre">(Quantity&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">Q</span> <span class="pre">&gt;&gt;||QuantityLike&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">Q</span> <span class="pre">&gt;&gt;)</span> <span class="pre">&amp;&amp;std</span></span></dt>
+<span class="target" id="classunits_1_1quantity__kind_1a46edc471e88a07d8e3f3b81485a5d082"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">T&gt;</span> <span class="pre">inline</span>&#160; <span class="pre">requires</span> <span class="pre">(Quantity&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">T</span> <span class="pre">&gt;&gt;||QuantityLike&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">T</span> <span class="pre">&gt;&gt;||(Dimensionless&lt;</span> <span class="pre">quantity_type</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;!Quantity&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">T</span> <span class="pre">&gt;&gt;))</span> <span class="pre">&amp;&amp;std</span></span></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -378,12 +373,12 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity__kind_1aa96c84d67eabcff6f989fad68417b9f7"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Rep2&gt;</span> <span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">quantity_kind&lt;</span> <span class="pre">downcast_kind&lt;</span> <span class="pre">K,</span> <span class="pre">dim_one</span> <span class="pre">&gt;,</span> <span class="pre">units::one,</span> <span class="pre">Rep2</span> <span class="pre">&gt;</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires</span> <span class="pre">requires(quantity_type</span> <span class="pre">q)</span></span></dt>
+<span class="target" id="classunits_1_1quantity__kind_1af1821c9e7eb18d32c97d04481039e662"></span><span class="sig-name descname"><span class="pre">template&lt;QuantityKind</span> <span class="pre">QK&gt;</span> <span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">QK</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(QuantityKindEquivalentTo&lt;</span> <span class="pre">QK</span></span></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity__kind_1a47f5982b3eac7c5afac984984f584b34"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;</span> <span class="pre">operator%=</span> <span class="pre">(const</span> <span class="pre">quantity_kind</span> <span class="pre">&amp;qk)</span> <span class="pre">requires</span> <span class="pre">requires(quantity_type</span> <span class="pre">q)</span></span></dt>
+<span class="target" id="classunits_1_1quantity__kind_1a02dfec2ac523462bb545254d11dc8481"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">quantity_kind</span> <span class="pre">quantity_kind</span> <span class="pre">std::same_as&lt;</span> <span class="pre">typename</span> <span class="pre">QK::kind_type,</span> <span class="pre">downcast_kind&lt;</span> <span class="pre">K,</span> <span class="pre">dim_one</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;</span> <span class="pre">requires</span> <span class="pre">(quantity_type</span> <span class="pre">q)</span></span></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">

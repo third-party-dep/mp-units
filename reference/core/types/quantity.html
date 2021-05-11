@@ -235,7 +235,12 @@
 
 <dl class="cpp type">
 <dt class="sig sig-object cpp" id="_CPPv4N5units8quantity3repE">
-<span id="_CPPv3N5units8quantity3repE"></span><span id="_CPPv2N5units8quantity3repE"></span><span class="target" id="classunits_1_1quantity_1a6d0d03a149664d0e12b1bb9ba29c16d6"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity::Rep"><span class="n"><span class="pre">Rep</span></span></a><a class="headerlink" href="#_CPPv4N5units8quantity3repE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5units8quantity3repE"></span><span id="_CPPv2N5units8quantity3repE"></span><span id="units::quantity::rep"></span><span class="target" id="classunits_1_1quantity_1a3e10b9267b33fdb08801481856974df7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity::Rep"><span class="n"><span class="pre">Rep</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rep</span></span></span><a class="headerlink" href="#_CPPv4N5units8quantity3repE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5units8quantity3retE">
+<span id="_CPPv3N5units8quantity3retE"></span><span id="_CPPv2N5units8quantity3retE"></span><span class="target" id="classunits_1_1quantity_1a5dbd5e90a33094b194dbfbbf1380b7d4"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ret</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><span class="n"><span class="pre">quantity</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity::D"><span class="n"><span class="pre">D</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity::U"><span class="n"><span class="pre">U</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">invoke_result_t</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">modulus</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep"><span class="n"><span class="pre">rep</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5units8quantity3repE" title="units::quantity::rep"><span class="n"><span class="pre">rep</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5units8quantity3retE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -403,7 +408,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity_1a721dd0ff4c5fea134737bb3b7f8cfd59"></span><span class="sig-name descname"><span class="pre">return</span> <span class="pre">units::quantity</span> <span class="pre">(lhs.number()</span> <span class="pre">%</span> <span class="pre">rhs.number())</span></span></dt>
+<span class="target" id="classunits_1_1quantity_1a8f3c3bf4e7f4482382ed30771656a0f9"></span><span class="sig-name descname"><span class="pre">return</span> <span class="pre">ret</span> <span class="pre">(lhs.number()</span> <span class="pre">%</span> <span class="pre">rhs.number())</span></span></dt>
 <dd></dd></dl>
 
 </div>
@@ -432,6 +437,11 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp">
 <span class="target" id="classunits_1_1quantity_1af03e9ee6e5d92449fb0e95ca538ff473"></span><span class="sig-name descname"><span class="pre">rep</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="classunits_1_1quantity_1a3e10b9267b33fdb08801481856974df7"></span><span class="sig-name descname"><span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">rep</span>&#160; <span class="pre">{gsl_ExpectsAudit(rhs.number()</span> <span class="pre">!=quantity_values&lt;rep&gt;::zero())</span></span></dt>
 <dd></dd></dl>
 
 </div>
@@ -515,7 +525,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity_1ad8ea88e3b2abdfc3f1b5b0558c9d8196"></span><span class="sig-name descname"><span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator%</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!floating_point_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;is_same_v&lt;</span> <span class="pre">unit</span></span></dt>
+<span class="target" id="classunits_1_1quantity_1a521bb9c7ebcd734ec772d6044220f963"></span><span class="sig-name descname"><span class="pre">friend</span> <span class="pre">constexpr</span> <span class="pre">friend</span> <span class="pre">Quantity</span> <span class="pre">auto</span> <span class="pre">operator%</span> <span class="pre">(const</span> <span class="pre">quantity</span> <span class="pre">&amp;lhs,</span> <span class="pre">const</span> <span class="pre">quantity</span> <span class="pre">&amp;rhs)</span> <span class="pre">requires(!floating_point_&lt;</span> <span class="pre">rep</span> <span class="pre">&gt;)</span> <span class="pre">&amp;&amp;invoke_result_convertible_to_&lt;</span> <span class="pre">rep</span></span></dt>
 <dd></dd></dl>
 
 </div>

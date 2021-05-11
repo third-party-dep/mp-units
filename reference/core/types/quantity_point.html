@@ -273,12 +273,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity__point_1a073e7b7685eaa9eb5ecc4bd2e4f4c96a"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Value&gt;</span> <span class="pre">inline</span> <span class="pre">explicit</span> <span class="pre">requires</span> <span class="pre">std::same_as&lt;</span> <span class="pre">dimension,</span> <span class="pre">dim_one</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;safe_convertible_to_&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">Value</span> <span class="pre">&gt;,</span> <span class="pre">rep</span> <span class="pre">&gt;</span> <span class="pre">&amp;&amp;constexpr</span> <span class="pre">std::constructible_from&lt;</span> <span class="pre">quantity_type,</span> <span class="pre">Value</span> <span class="pre">&gt;</span> <span class="pre">quantity_point</span> <span class="pre">(Value</span> <span class="pre">&amp;&amp;v)</span></span></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="classunits_1_1quantity__point_1a5a596b6248d9aea77e14eaa366591f4b"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Q&gt;</span> <span class="pre">inline</span>&#160; <span class="pre">requires</span> <span class="pre">(Quantity&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">Q</span> <span class="pre">&gt;&gt;||QuantityLike&lt;</span> <span class="pre">std::remove_cvref_t&lt;</span> <span class="pre">Q</span> <span class="pre">&gt;&gt;)</span> <span class="pre">&amp;&amp;std</span></span></dt>
+<span class="target" id="classunits_1_1quantity__point_1a3b18495ae27d868e1dc0d7dc2a4e7ad8"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">T&gt;</span> <span class="pre">inline</span> <span class="pre">explicit</span> <span class="pre">requires</span> <span class="pre">constexpr</span> <span class="pre">std::constructible_from&lt;</span> <span class="pre">quantity_type,</span> <span class="pre">T</span> <span class="pre">&gt;</span> <span class="pre">quantity_point</span> <span class="pre">(T</span> <span class="pre">&amp;&amp;t)</span></span></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
