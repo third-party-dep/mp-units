@@ -289,8 +289,9 @@ you can use a quantity argument instead of a quantity kind.</p>
 <section id="quantity-points">
 <h3>Quantity Points<a class="headerlink" href="#quantity-points" title="Permalink to this headline">¶</a></h3>
 <p>Quantity points have a more restricted set of operations.
-Quantity can be added to or subtracted from a quantity point.
-The result will always be a quantity point of the same dimension:</p>
+Quantity can be added to or subtracted
+from a quantity point of the same origin.
+The result will always be a quantity point of the same origin:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
 <span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
 <span class="hll"><span class="n">QuantityPoint</span> <span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">+</span> <span class="n">dist2</span><span class="p">;</span>
@@ -309,16 +310,19 @@ The result is a relative quantity of the same dimension:</p>
 <p class="admonition-title">Note</p>
 <p>It is not allowed to:</p>
 <ul class="simple">
-<li><p>add quantity points</p></li>
-<li><p>subtract a quantity point from a quantity:</p></li>
-<li><p>multiply nor divide quantity points with anything else.</p></li>
+<li><p>add quantity points,</p></li>
+<li><p>subtract a quantity point from a quantity,</p></li>
+<li><p>multiply nor divide quantity points with anything else, and</p></li>
+<li><p>mix quantity points with different origins:</p></li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Length</span> <span class="k">auto</span> <span class="n">dist1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
 <span class="n">Length</span> <span class="k">auto</span> <span class="n">dist2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
 <span class="hll"><span class="k">auto</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">+</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>  <span class="c1">// ERROR</span>
 </span><span class="hll"><span class="k">auto</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">-</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist2</span><span class="p">};</span>                  <span class="c1">// ERROR</span>
 </span><span class="hll"><span class="k">auto</span> <span class="n">res3</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">dist1</span><span class="p">}</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>                <span class="c1">// ERROR</span>
-</span></pre></div>
+</span><span class="k">auto</span> <span class="n">res4</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">utc_second</span><span class="p">{</span><span class="mi">1</span><span class="n">s</span><span class="p">}}</span> <span class="o">+</span>
+            <span class="n">quantity_point</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">sys_second</span><span class="p">{</span><span class="mi">1</span><span class="n">s</span><span class="p">}};</span>    <span class="c1">// ERROR</span>
+</pre></div>
 </div>
 </div>
 </section>
