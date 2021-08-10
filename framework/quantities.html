@@ -322,13 +322,19 @@ They are defined using the <a class="reference internal" href="../reference/core
 <span class="k">namespace</span> <span class="n">length_references</span> <span class="p">{</span>
 
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">km</span> <span class="o">=</span> <span class="n">reference</span><span class="o">&lt;</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">kilometre</span><span class="o">&gt;</span><span class="p">{};</span>
-<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">h</span> <span class="o">=</span> <span class="n">reference</span><span class="o">&lt;</span><span class="n">dim_time</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span><span class="p">{};</span>
 
 <span class="p">}</span>  <span class="c1">// namespace length_references</span>
+
+<span class="k">namespace</span> <span class="n">time_references</span> <span class="p">{</span>
+
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">h</span> <span class="o">=</span> <span class="n">reference</span><span class="o">&lt;</span><span class="n">dim_time</span><span class="p">,</span> <span class="n">hour</span><span class="o">&gt;</span><span class="p">{};</span>
+
+<span class="p">}</span>  <span class="c1">// namespace time_references</span>
 
 <span class="k">namespace</span> <span class="n">references</span> <span class="p">{</span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">length_references</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">time_references</span><span class="p">;</span>
 
 <span class="p">}</span>  <span class="c1">// namespace references</span>
 
