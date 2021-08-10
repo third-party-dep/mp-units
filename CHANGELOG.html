@@ -91,7 +91,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
@@ -102,13 +102,13 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Appendix:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -184,6 +184,8 @@
 <ul>
 <li><p><strong>0.8.0 WIP</strong></p>
 <ul class="simple">
+<li><p>(!) refactor: <code class="docutils literal notranslate"><span class="pre">common_quantity</span></code>, <code class="docutils literal notranslate"><span class="pre">common_quantity_for</span></code>, <code class="docutils literal notranslate"><span class="pre">common_quantity_point</span></code>, <code class="docutils literal notranslate"><span class="pre">common_quantity_kind</span></code>, and <code class="docutils literal notranslate"><span class="pre">common_quantity_point_kind</span></code> removed</p></li>
+<li><p>refactor: <code class="docutils literal notranslate"><span class="pre">quantity</span></code> <code class="docutils literal notranslate"><span class="pre">op+()</span></code> and <code class="docutils literal notranslate"><span class="pre">op-()</span></code> reimplemented in terms of <code class="docutils literal notranslate"><span class="pre">reference</span></code> rather then <code class="docutils literal notranslate"><span class="pre">quantity</span></code> types</p></li>
 <li><p>(!) fix: add <code class="docutils literal notranslate"><span class="pre">quantity_point::origin</span></code>, like <code class="docutils literal notranslate"><span class="pre">std::chrono::time_point::clock</span></code></p></li>
 <li><p>fix: account for different dimensions in <code class="docutils literal notranslate"><span class="pre">quantity_point_cast</span></code>’s constraint</p></li>
 <li><p>build: doxygen updated to 1.9.1</p></li>

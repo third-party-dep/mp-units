@@ -91,7 +91,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
@@ -120,13 +120,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Installation And Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/core.html">Core Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/systems.html">Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/random.html">Random</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Appendix:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
@@ -258,7 +258,7 @@
 <span class="linenos"> 51</span>  <span class="n">uncertainty_type</span> <span class="n">uncertainty</span><span class="p">;</span>
 <span class="linenos"> 52</span><span class="p">};</span>
 <span class="linenos"> 53</span>
-<span class="linenos"> 54</span><span class="cp">#if UNITS_COMP_CLANG == 12 || UNITS_COMP_MSVC</span>
+<span class="linenos"> 54</span><span class="cp">#if UNITS_COMP_CLANG &lt;= 13 || UNITS_COMP_MSVC</span>
 <span class="linenos"> 55</span>
 <span class="linenos"> 56</span><span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityOrQuantityPoint</span> <span class="n">QQP</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">Quantity</span> <span class="n">U</span><span class="o">&gt;</span>
 <span class="linenos"> 57</span><span class="n">estimation</span><span class="p">(</span><span class="n">state</span><span class="o">&lt;</span><span class="n">QQP</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">estimation</span><span class="o">&lt;</span><span class="n">QQP</span><span class="o">&gt;</span><span class="p">;</span>
