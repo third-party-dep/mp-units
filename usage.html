@@ -305,6 +305,9 @@ in <em>~/.conan/profiles</em> directory. An example profile can look as follows:
 <span class="k">[options]</span>
 <span class="k">[build_requires]</span>
 
+<span class="k">[conf]</span>
+<span class="na">tools.cmake.cmaketoolchain:generator</span><span class="o">=</span><span class="s">Ninja</span>
+
 <span class="k">[env]</span>
 <span class="na">CC</span><span class="o">=</span><span class="s">/usr/bin/gcc-10</span>
 <span class="na">CXX</span><span class="o">=</span><span class="s">/usr/bin/g++-10</span>
@@ -557,8 +560,7 @@ in <strong>mp-units</strong> repository, you should:</p>
 <li><p>Obtain Python dependencies.</p></li>
 <li><p>Run Conan with <a class="reference internal" href="#conan-run-tests">CONAN_RUN_TESTS</a> = <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ol>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conan remote add linear-algebra https://twonington.jfrog.io/artifactory/api/conan/conan-oss
-git clone https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/mpusz/units.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units
 pip3 install -r docs/requirements.txt
 mkdir units/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> units/build
 conan install .. -pr &lt;your_conan_profile&gt; -s compiler.cppstd<span class="o">=</span><span class="m">20</span> -e mp-units:CONAN_RUN_TESTS<span class="o">=</span>True -b outdated -u
