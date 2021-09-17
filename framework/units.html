@@ -1,77 +1,39 @@
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Units &mdash; mp-units 0.8.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Quantity Constants" href="constants.html" />
     <link rel="prev" title="Dimensions" href="dimensions.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
-          
-
-          
+            <a href="../index.html" class="icon icon-home"> mp-units
           </a>
-
-          
-            
-            
               <div class="version">
                 0.8.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
@@ -143,73 +94,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mp-units</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../framework.html">Framework Basics</a> &raquo;</li>
-        
       <li>Units</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/framework/units.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="units">
-<h1>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h1>
+<h1>Units<a class="headerlink" href="#units" title="Permalink to this headline"></a></h1>
 <p>Each quantity has a magnitude (a numerical value). In order to be able to
 compare quantities of the same dimension a notion of a <a class="reference internal" href="../glossary.html#term-measurement-unit"><span class="xref std std-term">measurement unit</span></a>
 was introduced. Units are designated by conventionally assigned names and
@@ -220,7 +131,7 @@ one as a number. For example <code class="docutils literal notranslate"><span cl
 (i.e. <code class="docutils literal notranslate"><span class="pre">m</span></code> (meter), <code class="docutils literal notranslate"><span class="pre">s</span></code> (second)), while derived quantities are expressed
 in terms of <a class="reference internal" href="../glossary.html#term-derived-unit"><span class="xref std std-term">derived units</span></a>.</p>
 <section id="base-units">
-<h2>Base Units<a class="headerlink" href="#base-units" title="Permalink to this headline">¶</a></h2>
+<h2>Base Units<a class="headerlink" href="#base-units" title="Permalink to this headline"></a></h2>
 <p><a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">Base units</span></a> are the units of
 <a class="reference internal" href="../glossary.html#term-base-quantity"><span class="xref std std-term">base quantities</span></a> defined for
 <a class="reference internal" href="../glossary.html#term-base-dimension"><span class="xref std std-term">base dimensions</span></a>. For example in <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a>
@@ -295,14 +206,14 @@ units of the same physical dimension can be found in the
 </div>
 </section>
 <section id="scaled-units">
-<h2>Scaled Units<a class="headerlink" href="#scaled-units" title="Permalink to this headline">¶</a></h2>
+<h2>Scaled Units<a class="headerlink" href="#scaled-units" title="Permalink to this headline"></a></h2>
 <p>Described above base units (in case of base quantities) and
 <a class="reference internal" href="../glossary.html#term-coherent-derived-unit"><span class="xref std std-term">coherent units</span></a> (in case of derived quantities),
 in their system of units, have proportionality factor/ratio equal to one.
 However, quantities of such dimensions can also use units of measurement
 with other ratios to describe their magnitude (numerical value).</p>
 <section id="named-scaled-units">
-<h3>Named Scaled Units<a class="headerlink" href="#named-scaled-units" title="Permalink to this headline">¶</a></h3>
+<h3>Named Scaled Units<a class="headerlink" href="#named-scaled-units" title="Permalink to this headline"></a></h3>
 <p>We are used to use minutes, hours, or days to measure quantities of time.
 Those units are the scaled versions of a time dimension’s base unit,
 namely second. Those can be defined easily in the library using
@@ -331,7 +242,7 @@ base/coherent unit (like <code class="docutils literal notranslate"><span class=
 <code class="docutils literal notranslate"><span class="pre">si::hour</span></code>) that is a scaled version of the dimension’s base/coherent unit.</p>
 </section>
 <section id="prefixed-unit">
-<h3>Prefixed Unit<a class="headerlink" href="#prefixed-unit" title="Permalink to this headline">¶</a></h3>
+<h3>Prefixed Unit<a class="headerlink" href="#prefixed-unit" title="Permalink to this headline"></a></h3>
 <p>Prefixed units are just scaled units with a standardized ratio. For example
 <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> defines prefixes based on the exponent of <code class="docutils literal notranslate"><span class="pre">10</span></code>. Here is a
 complete list of all the <a class="reference internal" href="../glossary.html#term-SI"><span class="xref std std-term">SI</span></a> prefixes supported by the library:</p>
@@ -398,13 +309,13 @@ as <code class="docutils literal notranslate"><span class="pre">km²</span></cod
 </section>
 </section>
 <section id="derived-units">
-<h2>Derived Units<a class="headerlink" href="#derived-units" title="Permalink to this headline">¶</a></h2>
+<h2>Derived Units<a class="headerlink" href="#derived-units" title="Permalink to this headline"></a></h2>
 <p><a class="reference internal" href="../glossary.html#term-derived-unit"><span class="xref std std-term">Derived units</span></a> are the units used to measure
 <a class="reference internal" href="../glossary.html#term-derived-quantity"><span class="xref std std-term">derived quantities</span></a>. They can either have their own unique
 names (i.e. <code class="docutils literal notranslate"><span class="pre">N</span></code> (newton)) or can be composed from the names of units of quantities
 used to define thier derived quantity (i.e. <code class="docutils literal notranslate"><span class="pre">km/h</span></code>).</p>
 <section id="derived-named-units">
-<h3>Derived Named Units<a class="headerlink" href="#derived-named-units" title="Permalink to this headline">¶</a></h3>
+<h3>Derived Named Units<a class="headerlink" href="#derived-named-units" title="Permalink to this headline"></a></h3>
 <p>Derived named units have a unique symbol (i.e. <code class="docutils literal notranslate"><span class="pre">N</span></code> (newton) or <code class="docutils literal notranslate"><span class="pre">Pa</span></code>
 (pascal)) and they are defined in the same way as base units (which
 always have to be a named unit):</p>
@@ -417,7 +328,7 @@ always have to be a named unit):</p>
 </div>
 </section>
 <section id="derived-unnamed-units">
-<h3>Derived Unnamed Units<a class="headerlink" href="#derived-unnamed-units" title="Permalink to this headline">¶</a></h3>
+<h3>Derived Unnamed Units<a class="headerlink" href="#derived-unnamed-units" title="Permalink to this headline"></a></h3>
 <p>Derived unnamed units are the units where the symbol is derived from the
 base quantities symbols and the expression of the dependence of the derived
 quantity on the base quantities (i.e. <code class="docutils literal notranslate"><span class="pre">m/s</span></code> (metre per second), <code class="docutils literal notranslate"><span class="pre">m²</span></code>
@@ -468,7 +379,7 @@ of <code class="docutils literal notranslate"><span class="pre">N/m</span></code
 a <code class="docutils literal notranslate"><span class="pre">kg/s²</span></code> derived unit symbol.</p>
 </section>
 <section id="derived-scaled-units">
-<h3>Derived Scaled Units<a class="headerlink" href="#derived-scaled-units" title="Permalink to this headline">¶</a></h3>
+<h3>Derived Scaled Units<a class="headerlink" href="#derived-scaled-units" title="Permalink to this headline"></a></h3>
 <p>For some units determining of a correct scaling ratio may not be trivial,
 and even if done correctly, may be a pain to maintain. For a simple example
 let’s take a “kilometre per hour” unit. What is the easiest to maintain
@@ -507,7 +418,7 @@ the library calculates the final ratio for this unit.</p>
 </section>
 </section>
 <section id="aliased-units">
-<h2>Aliased Units<a class="headerlink" href="#aliased-units" title="Permalink to this headline">¶</a></h2>
+<h2>Aliased Units<a class="headerlink" href="#aliased-units" title="Permalink to this headline"></a></h2>
 <p>In order to make our life easier people tend to assign alternative/aliased names
 to some popular units. As an example we often use “tonne” instead of “megagram”,
 “litre” instead of “cubic decimetre”, or “hectare” instead of “square hectometre”.</p>
@@ -531,7 +442,7 @@ class template:</p>
 </div>
 </section>
 <section id="class-hierarchy">
-<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline"></a></h2>
 <p>All of the above class templates to produce unit types inherit from some instance
 of a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> class template:</p>
 <img alt="../_images/units.png" class="align-center" src="../_images/units.png" />
@@ -559,53 +470,33 @@ type here instead.</p>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="constants.html" class="btn btn-neutral float-right" title="Quantity Constants" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="dimensions.html" class="btn btn-neutral float-left" title="Dimensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dimensions.html" class="btn btn-neutral float-left" title="Dimensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="constants.html" class="btn btn-neutral float-right" title="Quantity Constants" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2018-present, Mateusz Pusz
-
-    </p>
+    <p>&#169; Copyright 2018-present, Mateusz Pusz.</p>
   </div>
-    
-    
-      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

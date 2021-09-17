@@ -1,77 +1,39 @@
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quantities &mdash; mp-units 0.8.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Quantity Points" href="quantity_points.html" />
     <link rel="prev" title="Basic Concepts" href="basic_concepts.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
-          
-
-          
+            <a href="../index.html" class="icon icon-home"> mp-units
           </a>
-
-          
-            
-            
               <div class="version">
                 0.8.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
@@ -144,78 +95,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mp-units</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../framework.html">Framework Basics</a> &raquo;</li>
-        
       <li>Quantities</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/framework/quantities.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="quantities">
-<h1>Quantities<a class="headerlink" href="#quantities" title="Permalink to this headline">¶</a></h1>
+<h1>Quantities<a class="headerlink" href="#quantities" title="Permalink to this headline"></a></h1>
 <p>A <a class="reference internal" href="../glossary.html#term-quantity"><span class="xref std std-term">quantity</span></a> is a concrete amount of a unit for a specified dimension
 with a specific representation and is represented in the library with a
 <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template.</p>
 <section id="construction">
-<h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h2>
+<h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline"></a></h2>
 <p>To create the quantity object from a <a class="reference internal" href="../glossary.html#term-scalable-number"><span class="xref std std-term">scalable number</span></a> we just have to pass
 the value to the <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> class template explicit constructor:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
@@ -236,7 +147,7 @@ This is why the code below using
 </div>
 </section>
 <section id="quantity-construction-helpers">
-<h2>Quantity Construction Helpers<a class="headerlink" href="#quantity-construction-helpers" title="Permalink to this headline">¶</a></h2>
+<h2>Quantity Construction Helpers<a class="headerlink" href="#quantity-construction-helpers" title="Permalink to this headline"></a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Currently the library provides multiple experimental helpers to instantiate
@@ -247,7 +158,7 @@ out, vote, and share feedback in this
 please do not hesitate to vote on the one that suits you the best.</p>
 </div>
 <section id="dimension-specific-aliases-experimental">
-<h3>Dimension-Specific Aliases (Experimental)<a class="headerlink" href="#dimension-specific-aliases-experimental" title="Permalink to this headline">¶</a></h3>
+<h3>Dimension-Specific Aliases (Experimental)<a class="headerlink" href="#dimension-specific-aliases-experimental" title="Permalink to this headline"></a></h3>
 <p>To simplify <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> objects creation the library provides helper aliases for
 quantities of each <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a> which additionally set the representation
 type to <code class="docutils literal notranslate"><span class="pre">double</span></code> by default:</p>
@@ -269,7 +180,7 @@ type to <code class="docutils literal notranslate"><span class="pre">double</spa
 </div>
 </section>
 <section id="unit-specific-aliases-experimental">
-<h3>Unit-Specific Aliases (Experimental)<a class="headerlink" href="#unit-specific-aliases-experimental" title="Permalink to this headline">¶</a></h3>
+<h3>Unit-Specific Aliases (Experimental)<a class="headerlink" href="#unit-specific-aliases-experimental" title="Permalink to this headline"></a></h3>
 <p>Additionally to the dimension-specific aliases there are also ones provided for
 each and every <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> in the library:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef UNITS_NO_ALIASES</span>
@@ -314,7 +225,7 @@ by the user.</p>
 </div>
 </section>
 <section id="quantity-references-experimental">
-<h3>Quantity References (Experimental)<a class="headerlink" href="#quantity-references-experimental" title="Permalink to this headline">¶</a></h3>
+<h3>Quantity References (Experimental)<a class="headerlink" href="#quantity-references-experimental" title="Permalink to this headline"></a></h3>
 <p>Quantity References provide an alternative and simplified way to create quantities.
 They are defined using the <a class="reference internal" href="../reference/core/types/reference.html#_CPPv4I_9Dimension_6UnitOfI1DEEN5units9referenceE" title="units::reference"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">reference</span></code></a> class template:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef UNITS_NO_REFERENCES</span>
@@ -360,7 +271,7 @@ They are defined using the <a class="reference internal" href="../reference/core
 </div>
 </section>
 <section id="user-defined-literals-experimental">
-<h3>User Defined Literals (Experimental)<a class="headerlink" href="#user-defined-literals-experimental" title="Permalink to this headline">¶</a></h3>
+<h3>User Defined Literals (Experimental)<a class="headerlink" href="#user-defined-literals-experimental" title="Permalink to this headline"></a></h3>
 <p>Alternatively, to construct quantities with compile-time known values the library provides
 <abbr title="User Defined Literal">UDL</abbr> s for each <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> of every <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimension</span></a>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef UNITS_NO_LITERALS</span>
@@ -395,7 +306,7 @@ language (i.e. <code class="docutils literal notranslate"><span class="pre">F</s
 </div>
 </section>
 <section id="udls-vs-quantity-references">
-<h3>UDLs vs Quantity References<a class="headerlink" href="#udls-vs-quantity-references" title="Permalink to this headline">¶</a></h3>
+<h3>UDLs vs Quantity References<a class="headerlink" href="#udls-vs-quantity-references" title="Permalink to this headline"></a></h3>
 <p>UDLs are helpful but they also have some disadvantages compared to Quantity References:</p>
 <ol class="arabic">
 <li><p>UDLs are only for compile-time known values and do not work for runtime variables</p>
@@ -510,7 +421,7 @@ template instantiations in the application.</p>
 </ol>
 </section>
 <section id="quantity-references-vs-unit-specific-aliases">
-<h3>Quantity References vs Unit-specific Aliases<a class="headerlink" href="#quantity-references-vs-unit-specific-aliases" title="Permalink to this headline">¶</a></h3>
+<h3>Quantity References vs Unit-specific Aliases<a class="headerlink" href="#quantity-references-vs-unit-specific-aliases" title="Permalink to this headline"></a></h3>
 <ol class="arabic">
 <li><p>Shadowing issues</p>
 <ul>
@@ -660,7 +571,7 @@ alias template is much faster than instantiating a class template).</p>
 </ol>
 </section>
 <section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 54%" />
@@ -740,7 +651,7 @@ alias template is much faster than instantiating a class template).</p>
 </table>
 </section>
 <section id="don-t-pay-for-what-you-don-t-use-compile-time-performance">
-<h3>Don’t pay for what you don’t use (compile-time performance)<a class="headerlink" href="#don-t-pay-for-what-you-don-t-use-compile-time-performance" title="Permalink to this headline">¶</a></h3>
+<h3>Don’t pay for what you don’t use (compile-time performance)<a class="headerlink" href="#don-t-pay-for-what-you-don-t-use-compile-time-performance" title="Permalink to this headline"></a></h3>
 <p>As noted in the previous chapter, each quantity creation helper has a different impact on the compile-time
 performance. Aliases tend to be the fastest to compile but even their definition can be expensive for some
 if it is not used in the source code. This is why it is possible to opt-out from each or every quantity
@@ -753,7 +664,7 @@ creation helper with the following preprocessor defines:</p>
 </section>
 </section>
 <section id="dimension-specific-concepts">
-<h2>Dimension-specific Concepts<a class="headerlink" href="#dimension-specific-concepts" title="Permalink to this headline">¶</a></h2>
+<h2>Dimension-specific Concepts<a class="headerlink" href="#dimension-specific-concepts" title="Permalink to this headline"></a></h2>
 <p>In case the user does not care about the specific unit and representation but
 requires quantity of a concrete dimension than dimension-specific concepts can
 be used:</p>
@@ -823,7 +734,7 @@ information on different kinds of interfaces supported by the library.</p>
 </div>
 </section>
 <section id="working-with-constrained-deduced-quantity-types">
-<h2>Working With Constrained Deduced Quantity Types<a class="headerlink" href="#working-with-constrained-deduced-quantity-types" title="Permalink to this headline">¶</a></h2>
+<h2>Working With Constrained Deduced Quantity Types<a class="headerlink" href="#working-with-constrained-deduced-quantity-types" title="Permalink to this headline"></a></h2>
 <p>It is important to note that when we assign a result from the function to an
 automatically deduced type, even if it is constrained by a dimension-specific
 concept, we still do not know what is the exact unit and representation type
@@ -854,7 +765,7 @@ but often we would like to know a specific type too. We have two options here:</
 </div>
 </section>
 <section id="dimensionless-quantities">
-<h2>Dimensionless Quantities<a class="headerlink" href="#dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
+<h2>Dimensionless Quantities<a class="headerlink" href="#dimensionless-quantities" title="Permalink to this headline"></a></h2>
 <p>Whenever we divide two quantities of the same dimension we end up with a
 <a class="reference internal" href="../glossary.html#term-dimensionless-quantity"><span class="xref std std-term">dimensionless quantity</span></a> otherwise known as <a class="reference internal" href="../glossary.html#term-quantity-of-dimension-one"><span class="xref std std-term">quantity of dimension one</span></a>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">km</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">km</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
@@ -910,53 +821,33 @@ chapter.</p>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="quantity_points.html" class="btn btn-neutral float-right" title="Quantity Points" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="basic_concepts.html" class="btn btn-neutral float-left" title="Basic Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="basic_concepts.html" class="btn btn-neutral float-left" title="Basic Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quantity_points.html" class="btn btn-neutral float-right" title="Quantity Points" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2018-present, Mateusz Pusz
-
-    </p>
+    <p>&#169; Copyright 2018-present, Mateusz Pusz.</p>
   </div>
-    
-    
-      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -1,77 +1,39 @@
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quantity Points &mdash; mp-units 0.8.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Quantity Kinds" href="quantity_kinds.html" />
     <link rel="prev" title="Quantities" href="quantities.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> mp-units
-          
-
-          
+            <a href="../index.html" class="icon icon-home"> mp-units
           </a>
-
-          
-            
-            
               <div class="version">
                 0.8.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
@@ -132,77 +83,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mp-units</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../framework.html">Framework Basics</a> &raquo;</li>
-        
       <li>Quantity Points</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/framework/quantity_points.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="quantity-points">
-<h1>Quantity Points<a class="headerlink" href="#quantity-points" title="Permalink to this headline">¶</a></h1>
+<h1>Quantity Points<a class="headerlink" href="#quantity-points" title="Permalink to this headline"></a></h1>
 <p>A quantity point is an absolute quantity with respect to an origin
 and is represented in the library with a <a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_11PointOrigin_6UnitOfIN1O9dimensionEE_14RepresentationEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> class template.</p>
 <section id="point-origins">
-<h2>Point Origins<a class="headerlink" href="#point-origins" title="Permalink to this headline">¶</a></h2>
+<h2>Point Origins<a class="headerlink" href="#point-origins" title="Permalink to this headline"></a></h2>
 <p>We need a <code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">point_origin</span></code> to represent the origin of a quantity point:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">mean_sea_level</span> <span class="p">:</span> <span class="n">point_origin</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span> <span class="p">{};</span>
 </pre></div>
@@ -212,7 +123,7 @@ and is represented in the library with a <a class="reference internal" href="../
 for quantity points whose origin is not specified in the type system.</p>
 </section>
 <section id="construction">
-<h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h2>
+<h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline"></a></h2>
 <p>To create the quantity point object from a <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> we just have to pass
 the value to the <a class="reference internal" href="../reference/core/types/quantity_point.html#_CPPv4I_11PointOrigin_6UnitOfIN1O9dimensionEE_14RepresentationEN5units14quantity_pointE" title="units::quantity_point"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity_point</span></code></a> class template explicit constructor:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">quantity_point</span><span class="o">&lt;</span><span class="n">dynamic_origin</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">dim_length</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">kilometre</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">(</span><span class="mi">123</span> <span class="o">*</span> <span class="n">km</span><span class="p">);</span>
@@ -232,7 +143,7 @@ This is why the code below using
 </div>
 </section>
 <section id="differences-to-quantity">
-<h2>Differences To Quantity<a class="headerlink" href="#differences-to-quantity" title="Permalink to this headline">¶</a></h2>
+<h2>Differences To Quantity<a class="headerlink" href="#differences-to-quantity" title="Permalink to this headline"></a></h2>
 <p>Unlike <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a>, the library provides:</p>
 <ul class="simple">
 <li><p>no helper aliases for quantity points, such as <code class="docutils literal notranslate"><span class="pre">length_point</span></code>,</p></li>
@@ -247,53 +158,33 @@ This is why the code below using
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="quantity_kinds.html" class="btn btn-neutral float-right" title="Quantity Kinds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="quantities.html" class="btn btn-neutral float-left" title="Quantities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quantities.html" class="btn btn-neutral float-left" title="Quantities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quantity_kinds.html" class="btn btn-neutral float-right" title="Quantity Kinds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2018-present, Mateusz Pusz
-
-    </p>
+    <p>&#169; Copyright 2018-present, Mateusz Pusz.</p>
   </div>
-    
-    
-      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
