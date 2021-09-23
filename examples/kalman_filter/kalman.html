@@ -168,7 +168,7 @@
 <span class="linenos"> 51</span>  <span class="n">uncertainty_type</span> <span class="n">uncertainty</span><span class="p">;</span>
 <span class="linenos"> 52</span><span class="p">};</span>
 <span class="linenos"> 53</span>
-<span class="linenos"> 54</span><span class="cp">#if UNITS_COMP_CLANG &lt;= 13 || UNITS_COMP_MSVC</span>
+<span class="linenos"> 54</span><span class="cp">#if UNITS_COMP_CLANG &lt;= 13</span>
 <span class="linenos"> 55</span>
 <span class="linenos"> 56</span><span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityOrQuantityPoint</span> <span class="n">QQP</span><span class="p">,</span> <span class="n">units</span><span class="o">::</span><span class="n">Quantity</span> <span class="n">U</span><span class="o">&gt;</span>
 <span class="linenos"> 57</span><span class="n">estimation</span><span class="p">(</span><span class="n">state</span><span class="o">&lt;</span><span class="n">QQP</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">estimation</span><span class="o">&lt;</span><span class="n">QQP</span><span class="o">&gt;</span><span class="p">;</span>
