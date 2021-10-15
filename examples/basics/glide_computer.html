@@ -412,7 +412,7 @@ safety constraints, and a towing height.</p>
 <span class="linenos"> 75</span>  <span class="k">return</span> <span class="n">waypoints</span><span class="p">;</span>
 <span class="linenos"> 76</span><span class="p">}</span>
 <span class="linenos"> 77</span>
-<span class="linenos"> 78</span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">forward_range</span> <span class="n">R</span><span class="o">&gt;</span>
+<span class="linenos"> 78</span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">input_range</span> <span class="n">R</span><span class="o">&gt;</span>
 <span class="linenos"> 79</span>  <span class="k">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range_value_t</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">glider</span><span class="o">&gt;</span>
 <span class="linenos"> 80</span><span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">R</span><span class="o">&amp;</span> <span class="n">gliders</span><span class="p">)</span>
 <span class="linenos"> 81</span><span class="p">{</span>
@@ -427,7 +427,7 @@ safety constraints, and a towing height.</p>
 <span class="linenos"> 90</span>  <span class="p">}</span>
 <span class="linenos"> 91</span><span class="p">}</span>
 <span class="linenos"> 92</span>
-<span class="linenos"> 93</span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">forward_range</span> <span class="n">R</span><span class="o">&gt;</span>
+<span class="linenos"> 93</span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">input_range</span> <span class="n">R</span><span class="o">&gt;</span>
 <span class="linenos"> 94</span>  <span class="k">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range_value_t</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">,</span> <span class="n">weather</span><span class="o">&gt;&gt;</span>
 <span class="linenos"> 95</span><span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">R</span><span class="o">&amp;</span> <span class="n">conditions</span><span class="p">)</span>
 <span class="linenos"> 96</span><span class="p">{</span>
@@ -442,7 +442,7 @@ safety constraints, and a towing height.</p>
 <span class="linenos">105</span>  <span class="p">}</span>
 <span class="linenos">106</span><span class="p">}</span>
 <span class="linenos">107</span>
-<span class="linenos">108</span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">forward_range</span> <span class="n">R</span><span class="o">&gt;</span>
+<span class="linenos">108</span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">input_range</span> <span class="n">R</span><span class="o">&gt;</span>
 <span class="linenos">109</span>  <span class="k">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range_value_t</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">waypoint</span><span class="o">&gt;</span>
 <span class="linenos">110</span><span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">R</span><span class="o">&amp;</span> <span class="n">waypoints</span><span class="p">)</span>
 <span class="linenos">111</span><span class="p">{</span>
