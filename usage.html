@@ -67,10 +67,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cmake-options">CMake Options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#units-downcast-mode">UNITS_DOWNCAST_MODE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#units-as-system-headers">UNITS_AS_SYSTEM_HEADERS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#units-iwyu">UNITS_IWYU</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#units-build-docs">UNITS_BUILD_DOCS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-downcast-mode">UNITS_DOWNCAST_MODE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-iwyu">UNITS_IWYU</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#units-use-libfmt">UNITS_USE_LIBFMT</a></li>
 </ul>
 </li>
 </ul>
@@ -270,17 +271,23 @@ Additionally, enables project documentation generation when the project is being
 </section>
 <section id="cmake-options">
 <h3>CMake Options<a class="headerlink" href="#cmake-options" title="Permalink to this headline"></a></h3>
-<section id="units-downcast-mode">
-<h4>UNITS_DOWNCAST_MODE<a class="headerlink" href="#units-downcast-mode" title="Permalink to this headline"></a></h4>
-<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code>/<code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">AUTO</span></code></p>
-<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
-<p>Equivalent to <a class="reference internal" href="#downcast-mode">downcast_mode</a>.</p>
-</section>
 <section id="units-as-system-headers">
 <h4>UNITS_AS_SYSTEM_HEADERS<a class="headerlink" href="#units-as-system-headers" title="Permalink to this headline"></a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p>Exports library as system headers.</p>
+</section>
+<section id="units-build-docs">
+<h4>UNITS_BUILD_DOCS<a class="headerlink" href="#units-build-docs" title="Permalink to this headline"></a></h4>
+<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
+<p>Enables project documentation generation.</p>
+</section>
+<section id="units-downcast-mode">
+<h4>UNITS_DOWNCAST_MODE<a class="headerlink" href="#units-downcast-mode" title="Permalink to this headline"></a></h4>
+<p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">OFF</span></code>/<code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">AUTO</span></code></p>
+<p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
+<p>Equivalent to <a class="reference internal" href="#downcast-mode">downcast_mode</a>.</p>
 </section>
 <section id="units-iwyu">
 <h4>UNITS_IWYU<a class="headerlink" href="#units-iwyu" title="Permalink to this headline"></a></h4>
@@ -289,11 +296,11 @@ Additionally, enables project documentation generation when the project is being
 <p>Enables include-what-you-use when compiling with a clang compiler.
 Additionally turns on <a class="reference internal" href="#units-as-system-headers">UNITS_AS_SYSTEM_HEADERS</a>.</p>
 </section>
-<section id="units-build-docs">
-<h4>UNITS_BUILD_DOCS<a class="headerlink" href="#units-build-docs" title="Permalink to this headline"></a></h4>
+<section id="units-use-libfmt">
+<h4>UNITS_USE_LIBFMT<a class="headerlink" href="#units-use-libfmt" title="Permalink to this headline"></a></h4>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
 <p><strong>Defaulted to</strong>: <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
-<p>Enables project documentation generation.</p>
+<p>Enables usage of <a class="reference external" href="https://github.com/fmtlib/fmt">{fmt}</a> library instead of the C++20 Standard Library feature.</p>
 </section>
 </section>
 </section>
@@ -344,8 +351,8 @@ project’s top-level directory and add <strong>mp-units</strong> as a dependenc
 For example the simplest file may look as follows:</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div><div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[requires]</span>
 <span class="na">mp-units/0.7.0</span>
 
@@ -419,8 +426,8 @@ differences:</p>
 <li><p>In your Conan configuration file provide package identifier of the <code class="docutils literal notranslate"><span class="pre">mpusz/testing</span></code> stream:</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">conanfile.txt</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[requires]</span>
 <span class="na">mp-units/0.8.0@mpusz/testing</span>
 
