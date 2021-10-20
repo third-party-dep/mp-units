@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quantity Constants" href="constants.html" />
+    <link rel="next" title="Arithmetics" href="arithmetics.html" />
     <link rel="prev" title="Dimensions" href="dimensions.html" /> 
 </head>
 
@@ -53,6 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="quantity_kinds.html">Quantity Kinds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dimensions.html">Dimensions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Units</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#base-units">Base Units</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scaled-units">Scaled Units</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#named-scaled-units">Named Scaled Units</a></li>
@@ -66,9 +67,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#aliased-units">Aliased Units</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#class-hierarchy">Class Hierarchy</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="arithmetics.html">Arithmetics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">Quantity Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conversions_and_casting.html">Conversions and Casting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="text_output.html">Text Output</a></li>
@@ -130,6 +131,25 @@ one as a number. For example <code class="docutils literal notranslate"><span cl
 <p>Base quantities are expressed in terms of <a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">base units</span></a>
 (i.e. <code class="docutils literal notranslate"><span class="pre">m</span></code> (meter), <code class="docutils literal notranslate"><span class="pre">s</span></code> (second)), while derived quantities are expressed
 in terms of <a class="reference internal" href="../glossary.html#term-derived-unit"><span class="xref std std-term">derived units</span></a>.</p>
+<section id="class-hierarchy">
+<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline"></a></h2>
+<p>All of the described here class templates to produce unit types inherit from some instance
+of a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> class template:</p>
+<object data="/_static/img/units.svg" type="image/svg+xml" class="align-center" style="max-width: 100%;"></object><p><a class="reference internal" href="../reference/core/types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> is a class template used exclusively by the library’s framework
+and user should not instantiate it by him/her-self. However the user can sometimes
+observe this type in case an unit/dimension conversion expression will end up with an
+unknown/undefined unit type like in the below example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
+
+<span class="n">Length</span> <span class="k">auto</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The type of <code class="docutils literal notranslate"><span class="pre">l</span></code> above will be
+<code class="docutils literal notranslate"><span class="pre">si::length&lt;scaled_unit&lt;ratio(1,</span> <span class="pre">36,</span> <span class="pre">1),</span> <span class="pre">si::metre&gt;,</span> <span class="pre">long</span> <span class="pre">double&gt;</span></code>. This is caused
+by the fact that the library does not define a unit of a length quantity that has the
+ratio <code class="docutils literal notranslate"><span class="pre">10/36</span></code> of a <code class="docutils literal notranslate"><span class="pre">si::metre</span></code>. If such a unit was predefined we would see its concrete
+type here instead.</p>
+</section>
 <section id="base-units">
 <h2>Base Units<a class="headerlink" href="#base-units" title="Permalink to this headline"></a></h2>
 <p><a class="reference internal" href="../glossary.html#term-base-unit"><span class="xref std std-term">Base units</span></a> are the units of
@@ -440,26 +460,6 @@ class template:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="class-hierarchy">
-<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline"></a></h2>
-<p>All of the above class templates to produce unit types inherit from some instance
-of a <a class="reference internal" href="../reference/core/types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> class template:</p>
-<img alt="../_images/units.png" class="align-center" src="../_images/units.png" />
-<p><a class="reference internal" href="../reference/core/types/units.html#_CPPv4I_5ratio0EN5units11scaled_unitE" title="units::scaled_unit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">scaled_unit</span></code></a> is a class template used exclusively by the library’s framework
-and user should not instantiate it by him/her-self. However the user can sometimes
-observe this type in case an unit/dimension conversion expression will end up with an
-unknown/undefined unit type like in the below example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">units</span><span class="o">::</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">references</span><span class="p">;</span>
-
-<span class="n">Length</span> <span class="k">auto</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">km</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>The type of <code class="docutils literal notranslate"><span class="pre">l</span></code> above will be
-<code class="docutils literal notranslate"><span class="pre">si::length&lt;scaled_unit&lt;ratio(1,</span> <span class="pre">36,</span> <span class="pre">1),</span> <span class="pre">si::metre&gt;,</span> <span class="pre">long</span> <span class="pre">double&gt;</span></code>. This is caused
-by the fact that the library does not define a unit of a length quantity that has the
-ratio <code class="docutils literal notranslate"><span class="pre">10/36</span></code> of a <code class="docutils literal notranslate"><span class="pre">si::metre</span></code>. If such a unit was predefined we would see its concrete
-type here instead.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>To learn more about unknown units please refer to the
@@ -473,7 +473,7 @@ type here instead.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dimensions.html" class="btn btn-neutral float-left" title="Dimensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="constants.html" class="btn btn-neutral float-right" title="Quantity Constants" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="arithmetics.html" class="btn btn-neutral float-right" title="Arithmetics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
