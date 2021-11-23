@@ -51,7 +51,10 @@
 <li class="toctree-l2"><a class="reference internal" href="unknown_dimensions.html">Working with Unknown Dimensions and Their Units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="legacy_interfaces.html">Working with Legacy Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_representation_types.html">Using Custom Representation Types</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Interoperability with Other Units Libraries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Interoperability with Other Units Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interoperability-with-the-c-standard-library">Interoperability with the C++ Standard Library</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">Linear Algebra vs. Quantities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extensions.html">Extending the Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="natural_units.html">Working with Natural Units</a></li>
@@ -171,6 +174,31 @@ provide a deduction guide from <code class="xref cpp cpp-any docutils literal no
 <span class="k">static_assert</span><span class="p">((</span><span class="n">quantity_point</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">sys_seconds</span><span class="p">{</span><span class="mi">1</span><span class="n">s</span><span class="p">}}</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">s</span><span class="p">).</span><span class="n">relative</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="n">s</span><span class="p">);</span>
 </pre></div>
 </div>
+<section id="interoperability-with-the-c-standard-library">
+<h2>Interoperability with the C++ Standard Library<a class="headerlink" href="#interoperability-with-the-c-standard-library" title="Permalink to this headline"></a></h2>
+<p>The above <code class="docutils literal notranslate"><span class="pre">std::chrono</span></code>-specific customization points are already predefined in the <code class="docutils literal notranslate"><span class="pre">mp-units</span></code>
+library for both <code class="docutils literal notranslate"><span class="pre">std::chrono::duration</span></code> as well as <code class="docutils literal notranslate"><span class="pre">std::chrono::time_point</span></code>.
+They are provided in a dedicated header file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;units/chrono.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>The same header file provides additional conversion helpers from <code class="docutils literal notranslate"><span class="pre">mp-units</span></code> to
+the C++ Standard Library types:</p>
+<ul>
+<li><p>an explicit conversion of <a class="reference internal" href="../reference/core/types/quantity.html#_CPPv4I_9Dimension_6UnitOfI1DE_14RepresentationEN5units8quantityE" title="units::quantity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">quantity</span></code></a> to <code class="docutils literal notranslate"><span class="pre">std::chrono::duration</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">QuantityOf</span><span class="o">&lt;</span><span class="n">isq</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">dim_time</span><span class="o">&gt;</span> <span class="n">Q</span><span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="k">auto</span> <span class="n">to_std_duration</span><span class="p">(</span><span class="k">const</span> <span class="n">Q</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>an alias that provides a conversion from <a class="reference internal" href="../reference/core/types/utilities/ratio.html#_CPPv4N5units5ratioE" title="units::ratio"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ratio</span></code></a> to <code class="docutils literal notranslate"><span class="pre">std::ratio</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">ratio</span> <span class="n">R</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">to_std_ratio</span> <span class="o">=</span> <span class="cm">/* ... */</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
 </section>
 
 
