@@ -212,7 +212,7 @@ to <code class="docutils literal notranslate"><span class="pre">std::chrono::tim
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">qp1</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="n">sys_seconds</span><span class="p">{</span><span class="mi">1</span><span class="n">s</span><span class="p">}};</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="n">tp1</span> <span class="o">=</span> <span class="n">to_std_time_point</span><span class="p">(</span><span class="n">qp1</span><span class="p">);</span>  <span class="c1">// OK</span>
 
-<span class="n">conat</span> <span class="k">auto</span> <span class="n">qp2</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="mi">1</span> <span class="o">*</span> <span class="n">s</span><span class="p">};</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">qp2</span> <span class="o">=</span> <span class="n">quantity_point</span><span class="p">{</span><span class="mi">1</span> <span class="o">*</span> <span class="n">s</span><span class="p">};</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="n">tp2</span> <span class="o">=</span> <span class="n">to_std_time_point</span><span class="p">(</span><span class="n">qp2</span><span class="p">);</span>  <span class="c1">// Compile-time Error</span>
 </pre></div>
 </div>
