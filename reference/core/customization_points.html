@@ -118,12 +118,11 @@
 <span id="_CPPv3I0EN5units15quantity_valuesE"></span><span id="_CPPv2I0EN5units15quantity_valuesE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Rep</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structunits_1_1quantity__values"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">quantity_values</span></span></span><a class="headerlink" href="#_CPPv4I0EN5units15quantity_valuesE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>A type trait that defines zero, one, min, and max for a representation type. </p>
 <p>The zero, one, min, and max member functions in <a class="reference internal" href="types/quantity.html#classunits_1_1quantity"><span class="std std-ref">units::quantity</span></a> forward their work to these methods. This type can be specialized if the representation Rep requires a specific implementation to return these quantity objects.</p>
-<p><dl class="field-list simple">
-<dt class="field-odd">tparam Rep</dt>
-<dd class="field-odd"><p>a representation type for which a type trait is defined </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Rep</strong> – a representation type for which a type trait is defined </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp struct">
@@ -132,12 +131,11 @@
 <dd><p>Provides support for external quantity-like types. </p>
 <p>The type trait should provide the following nested type aliases: <code class="docutils literal notranslate"><span class="pre">dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">unit</span></code>, <code class="docutils literal notranslate"><span class="pre">rep</span></code>, and a static member function <code class="docutils literal notranslate"><span class="pre">number(T)</span></code> that will return the raw value of the quantity.</p>
 <p>Usage example can be found in <code class="docutils literal notranslate"><span class="pre">units/chrono.h</span></code> header file.</p>
-<p><dl class="field-list simple">
-<dt class="field-odd">tparam T</dt>
-<dd class="field-odd"><p>the type to provide support for </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>T</strong> – the type to provide support for </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp struct">
@@ -146,12 +144,11 @@
 <dd><p>Provides support for external quantity point-like types. </p>
 <p>The type trait should provide the following nested type aliases: <code class="docutils literal notranslate"><span class="pre">origin</span></code>, <code class="docutils literal notranslate"><span class="pre">unit</span></code>, <code class="docutils literal notranslate"><span class="pre">rep</span></code>, and a static member function <code class="docutils literal notranslate"><span class="pre">relative(T)</span></code> that will return the quantity-like value of the quantity point.</p>
 <p>Usage example can be found in <code class="docutils literal notranslate"><span class="pre">units/chrono.h</span></code> header file.</p>
-<p><dl class="field-list simple">
-<dt class="field-odd">tparam T</dt>
-<dd class="field-odd"><p>the type to provide support for </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>T</strong> – the type to provide support for </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 </section>

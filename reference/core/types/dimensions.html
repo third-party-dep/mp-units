@@ -121,15 +121,14 @@
 <p>Base quantity is a quantity in a conventionally chosen subset of a given system of quantities, where no quantity in the subset can be expressed in terms of the other quantities within that subset. They are referred to as being mutually independent since a base quantity cannot be expressed as a product of powers of the other base quantities.</p>
 <p>Base unit is a measurement unit that is adopted by convention for a base quantity in a specific system of units.</p>
 <p>Pair of Symbol and Unit template parameters form an unique identifier of the base dimension. The same identifiers can be multiplied and divided which will result with an adjustment of its factor in an Exponent of a DerivedDimension (in case of zero the dimension will be simplified and removed from further analysis of current expresion). In case the Symbol is the same but the Unit differs (i.e. mixing SI and CGS length), there is no automatic simplification but is possible to force it with a quantity_cast.</p>
-<p><dl class="field-list simple">
-<dt class="field-odd">tparam Symbol</dt>
-<dd class="field-odd"><p>an unique identifier of the base dimension used to provide dimensional analysis support </p>
-</dd>
-<dt class="field-even">tparam U</dt>
-<dd class="field-even"><p>a base unit to be used for this base dimension </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Symbol</strong> – an unique identifier of the base dimension used to provide dimensional analysis support </p></li>
+<li><p><strong>U</strong> – a base unit to be used for this base dimension </p></li>
+</ul>
 </dd>
 </dl>
-</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp type">
@@ -154,18 +153,15 @@
 <dt class="sig sig-object cpp" id="_CPPv4I_9Dimension_NSt8intmax_tE_NSt8intmax_tEEN5units8exponentE">
 <span id="_CPPv3I_9Dimension_NSt8intmax_tE_NSt8intmax_tEEN5units8exponentE"></span><span id="_CPPv2I_9Dimension_NSt8intmax_tE_NSt8intmax_tEEN5units8exponentE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../concepts.html#_CPPv4I0EN5units9DimensionE" title="units::Dimension"><span class="n"><span class="pre">Dimension</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Dim</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">intmax_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Num</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">intmax_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Den</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structunits_1_1exponent"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">exponent</span></span></span><a class="headerlink" href="#_CPPv4I_9Dimension_NSt8intmax_tE_NSt8intmax_tEEN5units8exponentE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>A power of factor corresponding to the dimension of a quantity. </p>
-<p><dl class="field-list simple">
-<dt class="field-odd">tparam Dim</dt>
-<dd class="field-odd"><p>component dimension of a derived quantity </p>
-</dd>
-<dt class="field-even">tparam Num</dt>
-<dd class="field-even"><p>numinator of the factor </p>
-</dd>
-<dt class="field-odd">tparam Den</dt>
-<dd class="field-odd"><p>denominator of the factor </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Dim</strong> – component dimension of a derived quantity </p></li>
+<li><p><strong>Num</strong> – numinator of the factor </p></li>
+<li><p><strong>Den</strong> – denominator of the factor </p></li>
+</ul>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp struct">
@@ -176,18 +172,15 @@
 <p>Coherent unit is a unit that, for a given system of quantities and for a chosen set of base units, is a product of powers of base units with no other proportionality factor than one.</p>
 <p>The implementation is responsible for unpacking all of the dimensions into a list containing only base dimensions and their factors and putting them to derived_dimension_base class template.</p>
 <p>Sometimes units of equivalent quantities in different systems of units do not share the same reference so they cannot be easily converted to each other. An example can be a pressure for which a coherent unit in SI is pascal and in CGS barye. Those two units are not directly related with each other with some ratio. As they both are coherent units of their dimensions, the ratio between them is directly determined by the ratios of base units defined in base dimensions end their exponents in the derived dimension recipe. To provide interoperability of such quantities of different systems base_units_ratio is being used. The result of the division of two base_units_ratio of two quantities of equivalent dimensions in two different systems gives a ratio between their coherent units. Alternatively, the user would always have to directly define a barye in terms of pascal or vice versa.</p>
-<p><dl class="field-list simple">
-<dt class="field-odd">tparam Child</dt>
-<dd class="field-odd"><p>inherited class type used by the downcasting facility (CRTP Idiom) </p>
-</dd>
-<dt class="field-even">tparam U</dt>
-<dd class="field-even"><p>a coherent unit of a derived dimension </p>
-</dd>
-<dt class="field-odd">tparam Es</dt>
-<dd class="field-odd"><p>the list of exponents of ingredient dimensions </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Child</strong> – inherited class type used by the downcasting facility (CRTP Idiom) </p></li>
+<li><p><strong>U</strong> – a coherent unit of a derived dimension </p></li>
+<li><p><strong>Es</strong> – the list of exponents of ingredient dimensions </p></li>
+</ul>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 </section>
