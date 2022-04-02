@@ -117,7 +117,7 @@
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">unknown_dimension.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/length.h&gt;</span><span class="cp"></span>
-<span class="linenos"> 2</span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt; // IWYU pragma: keep</span><span class="cp"></span>
+<span class="linenos"> 2</span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/speed.h&gt;  // IWYU pragma: keep</span><span class="cp"></span>
 <span class="linenos"> 3</span><span class="cp">#include</span> <span class="cpf">&lt;units/isq/si/time.h&gt;</span><span class="cp"></span>
 <span class="linenos"> 4</span><span class="cp">#include</span> <span class="cpf">&lt;units/quantity_io.h&gt;</span><span class="cp"></span>
 <span class="linenos"> 5</span><span class="cp">#include</span> <span class="cpf">&lt;exception&gt;</span><span class="cp"></span>
@@ -140,32 +140,31 @@
 <span class="linenos">22</span>  <span class="n">Time</span> <span class="k">auto</span> <span class="n">t1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">s</span><span class="p">;</span>
 <span class="linenos">23</span>  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">avg_speed</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">t1</span><span class="p">);</span>
 <span class="linenos">24</span>
-<span class="linenos">25</span>  <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span>  <span class="c1">// produces intermediate unknown dimension with &#39;unknown_coherent_unit&#39; as its &#39;coherent_unit&#39;</span>
-<span class="linenos">26</span>  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span> <span class="c1">// back to known dimensions again</span>
-<span class="linenos">27</span>  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
-<span class="linenos">28</span>
-<span class="linenos">29</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;d1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">d1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="linenos">30</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="linenos">31</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="linenos">32</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;temp1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">temp1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="linenos">33</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v2 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v2</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="linenos">34</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;d2 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">d2</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="linenos">35</span><span class="p">}</span>
-<span class="linenos">36</span>
-<span class="linenos">37</span><span class="p">}</span> <span class="c1">// namespace</span>
-<span class="linenos">38</span>
-<span class="linenos">39</span><span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
-<span class="linenos">40</span><span class="p">{</span>
-<span class="linenos">41</span>  <span class="k">try</span> <span class="p">{</span>
-<span class="linenos">42</span>    <span class="n">example</span><span class="p">();</span>
-<span class="linenos">43</span>  <span class="p">}</span>
-<span class="linenos">44</span>  <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">25</span>  <span class="k">auto</span> <span class="n">temp1</span> <span class="o">=</span>
+<span class="linenos">26</span>    <span class="n">v1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span>  <span class="c1">// produces intermediate unknown dimension with &#39;unknown_coherent_unit&#39; as its &#39;coherent_unit&#39;</span>
+<span class="linenos">27</span>  <span class="n">Speed</span> <span class="k">auto</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">temp1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">m</span><span class="p">);</span>  <span class="c1">// back to known dimensions again</span>
+<span class="linenos">28</span>  <span class="n">Length</span> <span class="k">auto</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;d1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">d1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">31</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">32</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">33</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;temp1 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">temp1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">34</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v2 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v2</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">35</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;d2 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">d2</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">36</span><span class="p">}</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="p">}</span>  <span class="c1">// namespace</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="linenos">41</span><span class="p">{</span>
+<span class="linenos">42</span>  <span class="k">try</span> <span class="p">{</span>
+<span class="linenos">43</span>    <span class="n">example</span><span class="p">();</span>
+<span class="linenos">44</span>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
 <span class="linenos">45</span>    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Unhandled std exception caught: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="linenos">46</span>  <span class="p">}</span>
-<span class="linenos">47</span>  <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
-<span class="linenos">48</span>    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Unhandled unknown exception caught</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="linenos">49</span>  <span class="p">}</span>
-<span class="linenos">50</span><span class="p">}</span>
+<span class="linenos">46</span>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+<span class="linenos">47</span>    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Unhandled unknown exception caught</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="linenos">48</span>  <span class="p">}</span>
+<span class="linenos">49</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
