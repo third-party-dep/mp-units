@@ -271,7 +271,7 @@ safety constraints, and a towing height.</p>
 <span class="linenos">136</span>
 <span class="linenos">137</span><span class="k">struct</span> <span class="n">waypoint</span> <span class="p">{</span>
 <span class="linenos">138</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-<span class="linenos">139</span>  <span class="n">geographic</span><span class="o">::</span><span class="n">position</span> <span class="n">pos</span><span class="p">;</span>
+<span class="linenos">139</span>  <span class="n">geographic</span><span class="o">::</span><span class="n">position</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">pos</span><span class="p">;</span>
 <span class="linenos">140</span>  <span class="n">altitude</span> <span class="n">alt</span><span class="p">;</span>
 <span class="linenos">141</span><span class="p">};</span>
 <span class="linenos">142</span>
